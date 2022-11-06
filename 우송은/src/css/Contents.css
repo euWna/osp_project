@@ -1,0 +1,64 @@
+:root{
+    --ewhagreen: rgb(0, 70, 42);
+    --grayborder: 1px solid #BBBBBB;
+}
+
+.outer{
+    text-align: center;
+}
+
+.pane {
+    display: inline-block;
+    width: 70%;
+    border: var(--grayborder);
+    margin: 10px;
+    background-color : rgb(255, 255, 255);
+}
+
+#paneName{ 
+    text-align: left;
+    font: black bold;
+    padding: 20px;
+    border-bottom: var(--grayborder);
+}
+
+.image{
+    float: center;
+    width: 90%;
+    border: var(--grayborder);
+}
+
+.info{
+    font-size: 14px;
+    float:left;
+    width:50%;
+    border: var(--grayborder);
+    text-align:left;
+    line-height: 200%;
+    padding:30px;
+    padding-top:0px;
+}
+
+#info1 #name{
+    font-size: 25px;
+}
+
+.button{
+    padding:12px;
+    padding-left:15px;
+    padding-right:15px;
+    background-color: var(--ewhagreen);
+    border: 0px;
+    border-radius: 14px;
+    
+    color:white;
+    font-size: 12px;
+
+    margin:2px;
+}
+
+.map{
+    clear:both;
+    margin-bottom: 10px;
+}
+
