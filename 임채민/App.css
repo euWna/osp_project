@@ -1,0 +1,205 @@
+
+.nanumsquare {
+    font-family: 'NanumSquare', sans-serif !important;
+}
+
+:root {
+    --egreen : #00462A;
+}
+
+body {
+    margin: 0px;
+    font-family:'NanumSquare',san-serif;
+    font-size:17px;
+    line-height:1.5;
+}
+
+/* * {
+    box-sizing: border-box;
+  } */
+
+header {
+    padding: 50px;
+    text-align: center;
+    background: rgb(238, 238, 238);
+}
+
+Nav {
+    background-color: var(--egreen);
+    color: white;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+section {
+    text-align: center;
+    background-color: var(--egreen);
+}
+
+.green {
+    display: inline-block;
+
+}
+
+.hottitle h2 {
+    margin: 0px;
+}
+
+.hottitle {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: larger;
+    color: rgb(255, 255, 255);
+}
+
+/*리스트*/
+
+.hotlist_container {
+    display: flex;
+    justify-content: center;
+    height: 470px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    text-align: center;
+    align-items: center;
+
+}
+
+.hotlist {
+    margin: 20px;
+    box-sizing: border-box;
+    flex-basis: 268px;
+    height: 390px;
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    text-decoration:none;
+}
+
+.hotlist:hover{
+    position:relative;
+	bottom:5px;
+}
+
+.upcontainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.descname {
+    display: flex;
+    margin-left: 8px;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+}
+
+.descloca {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+
+    color: #949494;
+}
+
+.menuname {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 7px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #000000;
+    
+}
+
+.review {
+    display: flex;
+    margin-left: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #858585;
+}
+
+/* .star{
+    line-height: 33px;
+    align-items: center;
+    color: rgb(255, 206, 46);
+} */
+
+
+.deco1{
+    float:left;
+    position: relative;
+    top: -600px;
+}
+
+.deco2{
+    float:right;
+    position: relative;
+    top: -25px;
+}
+
+.deco3{
+    float:right;
+    position: relative;
+    top: -25px;
+}
+
+
+/*버튼있는곳*/
+
+.box {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.homeButton {
+    margin: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-basis: 250px;
+    justify-content:center;
+    align-items:center;
+    text-align : center;
+
+    /*디자인*/
+	background: #222228;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius:15px;
+	border:1px solid #202020;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+
+.homeButton:hover {
+	background-color:#0a0a0a;
+}
+
+.homeButton:active {
+	position:relative;
+	top:1px;
+}
+
+footer {
+    text-align: center;
+}
+
