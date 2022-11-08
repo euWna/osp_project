@@ -4,6 +4,8 @@ import "./MyPageMenu.css";
 export default function App() {
   return (
     <>
+    <Header></Header>
+      <NavBar></NavBar>
     <header>
       <h1>My Page</h1>
     </header>
