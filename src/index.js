@@ -8,19 +8,23 @@ import Review from './component/review';
 import NavBar from './component/NavBar';
 import reportWebVitals from './reportWebVitals';
 import Section from './pages/Homepage';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const styles = {
   background: "#F0F0F3",
 };
 
+//index.js에서 App.js를 렌더링 중입니다. 코드 수정하지 않아도 괜찮습니다.
+
 root.render(
   <React.StrictMode>
-    <Header />
+    {/* <Header />
     <body style={styles}>
     <Section></Section>
-    </body>
+    </body> */}
 
+    <App></App>
   </React.StrictMode>
 );
 
