@@ -7,6 +7,7 @@ import Menu from './component/menu';
 import Review from './component/review';
 import NavBar from './component/NavBar';
 import reportWebVitals from './reportWebVitals';
+import Section from './pages/Homepage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const styles = {
@@ -17,9 +18,7 @@ root.render(
   <React.StrictMode>
     <Header />
     <body style={styles}>
-    <Info/>
-    <Menu />
-    <Review />
+    <Section></Section>
     </body>
 
   </React.StrictMode>

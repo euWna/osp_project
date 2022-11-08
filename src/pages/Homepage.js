@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import '../css/HomePage.css';
 import {useState} from 'react';
-import Header from './components/Header';
-import sample from "./img/sample.PNG";
-import samplelocation from "./img/location.png";
+import Header from '../component/header';
+import sample from "../img/sample.PNG";
+import samplelocation from "../img/location.png";
 // import deco1 from "./img/deco1.png";
 // import deco2 from "./img/deco2.png";
 // import deco3 from "./img/deco3.png";
@@ -77,13 +76,12 @@ function Section(){
   </section>
 }
 
-function App() {
+function Homepage() {
   return (
     <div className="">
       <head>
       </head>
       <body>
-        <Header></Header>
         <Section></Section>
           <div class = "box">
             <a href="#" class="homeButton">맛집 모아보기</a>
@@ -95,4 +93,4 @@ function App() {
   );
 }
 
-export default App;
+export default Homepage;
