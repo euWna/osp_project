@@ -3,7 +3,9 @@ import "./MyPage.css";
 
 export default function App() {
   return (
-       
+      <>
+      <Header></Header>
+      <NavBar></NavBar>
     <div class="row">
         <div class="column left" id="cl">
             <div class = "profile">
@@ -36,5 +38,6 @@ export default function App() {
           </form>
         </div>
       </div>
+      </>
   );
 }

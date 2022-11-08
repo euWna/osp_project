@@ -4,6 +4,8 @@ import "./MyPageBookmark.css";
 export default function App() {
   return (
     <>
+    <Header></Header>
+      <NavBar></NavBar>
     <div class ="mainbar">좋아요 누른 맛집 모아보기</div>
     <div class="background">
         <div class="resultbar">
