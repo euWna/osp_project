@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommend Menu</title>
+    <style>
+        
+* {
+  box-sizing: border-box;
+}
+
+body {
+          margin : 0;
+        }
+
+.mainbar {
+  background-color:#00462A;
+  color: white;
+  padding : 15px;
+  font-size: x-large;
+  top:269px;
+  width:100%;
+
+}
+
+.menu {
+  width : 700px;
+  margin : 0;
+  font-size:medium;
+}
+
+.store {
+  padding:0;
+}
+
+.storename{
+  width:fit-content;
+  float:left;
+  font-size:x-large;
+}
+
+.background {
+  background-color:#F0F0F3;
+  padding-top: 2%;
+  flex : center;
+  text-align: center;
+  height : 623px;
+}
+
+
+ul {
+  list-style-type: none;
+  padding: 10px;
+  margin: auto;
+  width : 960px;
+}
+
+ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  float:right;
+}
+    </style>
+</head>
+<body>
+    <header>    
+        <h1>My Page</h1>
+    </header>
+        <div class ="mainbar">좋아요 누른 메뉴 모아보기</div>
+            <ul>
+                <li> <div class="storename">와플와플</div>
+                    <ul class ="store">
+                        <li class="menu"> 메뉴1 </li>
+                        <li class="menu"> 메뉴2 </li>
+                        <li class="menu"> 메뉴3 </li>
+                    </ul>
+                </li>
+                <li><div class="storename">돈천동식당</div>
+                    <ul class ="store">
+                        <li class="menu"> 메뉴1 </li>
+                        <li class="menu"> 메뉴2 </li>
+                        <li class="menu"> 메뉴3 </li>
+                    </ul>
+                </li>
+            </ul>
+</body>
+</html>

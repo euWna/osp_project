@@ -1,6 +1,5 @@
 import '../css/Header.css';
 import homelogo from '../img/symbol-mark.png'
-
 function Header(){
     return(
         <div>        
