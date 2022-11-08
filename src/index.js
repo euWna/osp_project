@@ -8,6 +8,7 @@ import Review from './component/review';
 import NavBar from './component/NavBar';
 import reportWebVitals from './reportWebVitals';
 import Section from './pages/Homepage';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const styles = {
@@ -16,11 +17,12 @@ const styles = {
 
 root.render(
   <React.StrictMode>
-    <Header />
+    {/* <Header />
     <body style={styles}>
     <Section></Section>
-    </body>
+    </body> */}
 
+    <App></App>
   </React.StrictMode>
 );
 

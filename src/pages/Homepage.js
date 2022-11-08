@@ -1,6 +1,12 @@
+import React from 'react';
+import { Link } from 'react-router-dom'; //라우팅을 위한 임포트문
+
 import '../css/HomePage.css';
+
 import {useState} from 'react';
+
 import Header from '../component/header';
+
 import sample from "../img/sample.PNG";
 import samplelocation from "../img/location.png";
 // import deco1 from "./img/deco1.png";
@@ -86,7 +92,8 @@ function Homepage() {
           <div class = "box">
             <a href="#" class="homeButton">맛집 모아보기</a>
             <a href="#" class="homeButton">맛집 정보 추가하기</a>
-            <a href="reviewAll.html" class="homeButton">리뷰 모아보기</a>
+            <Link to="/reviewAll" class="homeButton"><a href="#" class="homeButton">리뷰 모아보기</a></Link>
+            {/* 페이지 링크는 이렇게 걸어주세요 */}
           </div>
       </body>
     </div>
