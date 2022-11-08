@@ -1,50 +1,65 @@
-.Search-logo {
-    float: left;
-}
-
-.Search-searching {
+.StoreListView-Searching {
     display: inline;
     float: center;
 }
 
-.Search-topBtn {
+.StoreListView-TopBtn {
     float: right;
     font-size: small;
 }
 
-.Search-nav {
+.StoreListView-nav {
     color: white;
-    background-color: green;
+    background-color: #00462A;
+
 }
 
-.Search-topBar {
+.StoreListView-TopBar {
     color: white;
 
 }
 
-.Search-left {
+.StoreListView-StoreList {
     width: 50%;
+    float: left;
 }
 
-.Search-right {
+.StoreListView-StoreMap {
     width: 50%;
+    float: right;
 }
 
-.Search-button {
-    background-color: green;
+.StoreListView-button {
+    background-color: #00462A;
 }
 
-.Search-restaurant {
+.StoreListView-Restaurant {
     background-color: white;
+    width: 632.69px;
+    height: 123.06px;
     border: 1px solid black;
     color: black;
 }
 
-.Search-restaurant-tag {
-    float: left;
+.StoreListView-Restaurant-Tag {
+    float: right;
     display: inline;
+    width: 63px;
+    height: 12px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
 }
 
-.Search-restaurant-img {
-    width: 25%;
+.StoreListView-Restaurant-img {
+    width: 345.45px;
+    height: 123.06px;
+    left: 83px;
+}
+
+.StoreListView-Restaurant-StoreName {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
 }

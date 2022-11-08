@@ -1,22 +1,48 @@
-.Login-logo {
-    float: left;
+.Login-Header {
+    float: center;
 }
 
-.Login-headline {
-    font-size: medium;
+.Login-Headline {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 55px;
+    line-height: 65px;
+    color: black;
 }
 
-.Login-left {
-    float: left;
-    width: 50%;
+.Login-Left {
+    position: absolute;
+    width: 540px;
+    height: 443.72px;
+    left: 86px;
+    top: 369px;
+    color: black;
 }
 
-.Login-right {
-    float: right;
-    width: 50%;
+.Login-Right {
+    position: absolute;
+    width: 717px;
+    height: 421.72px;
+    left: 723px;
+    top: 391px;
+    color: black;
+}
+
+.Login-Right-p {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 47px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .Login-button {
-    background-color: green;
+    background: #00462A;
+    border-radius: 10px;
+    text-align: center;
     color: white;
 }
