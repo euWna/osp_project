@@ -5,10 +5,10 @@ class SignIn extends React.Component {
     render() {
         return (
             <div>
-                <Header></Header>
-                <div className="Headline">
-                    <p>회원가입</p>
-                </div>
+
+                <span className="Headline">
+                    <h3>회원가입</h3>
+                </span>
                 <table>
                     <tr>
                         <th className="Th1">닉네임</th>
@@ -41,7 +41,7 @@ class SignIn extends React.Component {
                             <p>*비밀번호는 영문과 숫자, 특수기호를 포함한 10~15자리로 설정해주세요</p>
                         </th>
                     </tr>
-                </table>
+                </table><br></br>
                 <button type="button" name="join_button">회원가입 완료하기</button>
 
 

@@ -1,16 +1,26 @@
+.SignIn {
+    float: center;
+    margin: 0;
+}
+
 .SignIn-logo {
     float: left;
 }
 
-.SignIn-Headline {
+.SignIn-div-Headline {
     float: center;
-    font-size: medium;
+    display: flex;
+    text-align: center;
 }
 
 .SignIn-table-Th1 {
-    width: 335px;
+    width: 20%;
     background-color: rgba(217, 217, 217, 0.8);
     border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.SignIn-table-tr {
+    width: 100%;
 }
 
 #lastLine {
@@ -29,7 +39,7 @@
 
 }
 
-.SignIn-table-input-withButton {
+.SignIn-table-input.withButton {
     width: 615px;
 }
 
@@ -39,7 +49,7 @@
 }
 
 .SignIn-table-button {
-    background-color: green;
+    background-color: #00462A;
     color: white;
     position: absolute;
     width: 171px;

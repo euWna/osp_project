@@ -1,44 +1,16 @@
-.StoreListView-Searching {
-    display: inline;
-    float: center;
-}
-
-.StoreListView-TopBtn {
-    float: right;
-    font-size: small;
-}
-
-.StoreListView-nav {
-    color: white;
-    background-color: #00462A;
-
-}
-
-.StoreListView-TopBar {
-    color: white;
-
-}
-
-.StoreListView-StoreList {
-    width: 50%;
-    float: left;
-}
-
-.StoreListView-StoreMap {
-    width: 50%;
-    float: right;
-}
-
-.StoreListView-button {
-    background-color: #00462A;
-}
-
-.StoreListView-Restaurant {
+.StoreListView-Restaurant-table {
     background-color: white;
-    width: 632.69px;
+    float: left;
+    width: 50%;
     height: 123.06px;
     border: 1px solid black;
     color: black;
+}
+
+.StoreListView-Restaurant-table-ImagePart {
+    float: left;
+    width: 25%;
+    margin: 0;
 }
 
 .StoreListView-Restaurant-Tag {
