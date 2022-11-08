@@ -15,6 +15,8 @@ const styles = {
   background: "#F0F0F3",
 };
 
+//index.js에서 App.js를 렌더링 중입니다. 코드 수정하지 않아도 괜찮습니다.
+
 root.render(
   <React.StrictMode>
     {/* <Header />

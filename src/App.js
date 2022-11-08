@@ -14,6 +14,8 @@ import Section from './pages/Homepage';
 import Homepage from './pages/Homepage';
 import ReviewAll from './pages/ReviewAll';
 
+//App.js를  index.js에서 렌더링 중입니다!
+
 function App() {
   return (
     <div className="App">
