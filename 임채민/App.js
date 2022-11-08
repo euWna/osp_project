@@ -10,12 +10,18 @@ import samplelocation from "./img/location.png";
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"></link>
 
 //금주의 HOT 맛집
-//진짜 보이게만 만들엇어요 아직 정보 객체에서 못받아옴ㅠㅠ
+//아직 정보 객체에서 못받아옴
 function Section(){
   return <section>
           <div class = "green">
             <div class = "hottitle">
-            <h2>금주의 HOT 맛집</h2>
+            {/* <h2>HOT TOPIC</h2> */}
+            <div class="link-1">
+        <a class="hottopic" href="#">
+        <span class="thick">HOT </span><span class="thin">TOPIC</span>
+        </a>
+        <p>금주의 인기 맛집</p>
+      </div>
             </div>
             <div class = "hotlist_container">
             <a href ="#" class = "hotlist">
@@ -73,7 +79,7 @@ function Section(){
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <head>
       </head>
       <body>

@@ -1,6 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,900);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+
 
 .nanumsquare {
     font-family: 'NanumSquare', sans-serif !important;
+}
+
+.Monserrat {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.NotoSansKR {
+    font-family: 'Noto Sans KR', sans-serif !important;
 }
 
 :root {
@@ -9,19 +21,21 @@
 
 body {
     margin: 0px;
-    font-family:'NanumSquare',san-serif;
+    font-family: 'Noto Sans KR';
     font-size:17px;
     line-height:1.5;
 }
-
+  
 /* * {
     box-sizing: border-box;
   } */
 
 header {
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     text-align: center;
     background: rgb(238, 238, 238);
+    min-width: 1400px; 
 }
 
 Nav {
@@ -35,30 +49,75 @@ Nav {
 section {
     text-align: center;
     background-color: var(--egreen);
+    /* background-color:wheat; */
+    min-width: 1400px; 
 }
 
-.green {
+.green {   
     display: inline-block;
-
-}
-
-.hottitle h2 {
-    margin: 0px;
 }
 
 .hottitle {
-    margin-top: 50px;
-    margin-bottom: 10px;
-    font-size: larger;
+    font-size: 18px;
     color: rgb(255, 255, 255);
+}
+
+.thin { font-weight: 100; }
+.thick { font-weight:900; }
+
+.hottopic {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    top: 10px;
+}
+
+p {
+  font-weight: 600;
+  font-size: 80%;
+  margin: 1px;
+  position: relative;
+  top: 14px;
+}
+
+[class^="link-"] {
+  display: inline-block;
+  margin: 2em
+}
+
+/* linkone */
+.link-1 a:before, .link-1 a:after {
+  content: '';
+  border-bottom: solid 2px white;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+}
+
+.link-1 a:before { left: 0; }
+.link-1 a:after { right: 0; }
+
+.link-1 a:hover:before, .link-1 a:hover:after {
+  width: 50%;
+}
+
+.link-1 a:before, .link-1 a:after {
+  -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease;
 }
 
 /*리스트*/
 
 .hotlist_container {
+    /* flex-wrap: wrap; */
+    position: relative; 
+    width: 100%;
     display: flex;
     justify-content: center;
-    height: 470px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -77,11 +136,12 @@ section {
     border: 10px solid #FFFFFF;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     text-decoration:none;
+    border-radius:3px;
 }
 
 .hotlist:hover{
     position:relative;
-	bottom:5px;
+	bottom:10px;
 }
 
 .upcontainer {
@@ -92,17 +152,17 @@ section {
 .descname {
     display: flex;
     margin-left: 8px;
-    margin-top: 10px;
+    margin-top: 9px;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 25px;
     line-height: 33px;
     color: #000000;
 }
 
 .descloca {
     display: flex;
-    margin-left: 10px;
+    margin-left: 6px;
     margin-top: 5px;
     font-style: normal;
     font-weight: 400;
@@ -141,31 +201,14 @@ section {
 } */
 
 
-.deco1{
-    float:left;
-    position: relative;
-    top: -600px;
-}
-
-.deco2{
-    float:right;
-    position: relative;
-    top: -25px;
-}
-
-.deco3{
-    float:right;
-    position: relative;
-    top: -25px;
-}
-
-
 /*버튼있는곳*/
 
 .box {
+    /* width: 100%; */
     display: flex;
     margin-top: 50px;
     justify-content: center;
+    min-width: 1400px; 
 }
 
 .homeButton {
