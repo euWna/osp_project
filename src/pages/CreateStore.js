@@ -3,7 +3,7 @@ import "./CreateStore.css";
 
 function StoreCreate(){
     return (
-        <><aside>
+        <body><aside>
             <div class="asideleft">
                 <div class="up">기본정보</div>
                 <div class="down">메뉴</div>
@@ -58,6 +58,6 @@ function StoreCreate(){
                         <span class="cell col2"><input type="button" value="기본 정보 등록" /></span>
                     </div>
                 </div>
-            </section></>
+            </section></body>
     )
                     }
