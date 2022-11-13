@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "../component/header";
-import "../css/Header.css";
 import NavBar from "../component/NavBar";
-import "../css/StoreListView.css";
+import styles from "../css/StoreListView.module.css";
 import { Link } from 'react-router-dom';
 
 class StoreListView extends React.Component {
@@ -10,15 +9,11 @@ class StoreListView extends React.Component {
         return (
             <div>
                 <NavBar />
-
-
-                <div className="StoreList">
-                    <div className="TopBar">
+                <div className={styles.StoreList}>
+                    <div className={styles.TopBar}>
                         <span className="Result">결과건</span>
-
                         <span className="Dropdown1">
                             <select name="dropFood">
-
                                 <option value="Dessert">디저트</option>
                                 <option value="Korean">한식</option>
                                 <option value="Japanese">일식</option>
@@ -27,15 +22,14 @@ class StoreListView extends React.Component {
                         </span>
                         <span className="Dropdown2">
                             <select name="dropSort">
-
                                 <option value="SortByRecommendation">추천순</option>
                                 <option value="SortByReview">리뷰많은 순</option>
                                 <option value="SortByPrice">가격 낮은 순</option>
                             </select>
                         </span>
                     </div>
-                    < div className="Restaurant">
-                        <div className="Restaurant1">
+                    < div className={styles.Restaurant}>
+                        <div className={styles.Restaurant1}>
                             <table>
                                 <tr>
                                     <th className="ImagePart">
@@ -59,7 +53,7 @@ class StoreListView extends React.Component {
                             </table>
 
                         </div>
-                        <div className="Restaurant2">
+                        <div className={styles.Restaurant2}>
                             <table>
                                 <tr>
                                     <th>
@@ -83,7 +77,7 @@ class StoreListView extends React.Component {
                             </table>
 
                         </div>
-                        <div className="Restaurant3">
+                        <div className={styles.Restaurant3}>
                             <table>
                                 <tr>
                                     <th>
@@ -108,7 +102,7 @@ class StoreListView extends React.Component {
 
                         </div>
 
-                        <div className="StoreMap">
+                        <div className={styles.StoreMap}>
                             {/*지도 API 추가할 부분*/}
                         </div>
                         <button type="button" name="next_button"></button>

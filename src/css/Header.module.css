@@ -1,0 +1,88 @@
+:root{
+    --ewhagreen: rgb(0, 70, 42);
+}
+
+/* *{
+    font-family: 'a드림고딕2';
+} */
+
+a{ 
+    text-decoration: none; /*링크 밑줄 제거*/
+    color: inherit; /*링크 색상 제거*/
+}
+
+header{
+    display: flex;
+    padding: 20px;
+    /* margin-bottom: 30px; */
+    min-width: 1400px; 
+    justify-content: space-between
+}
+
+.signInUp {
+    display: flex;
+    float: right; 
+    top: 25px;
+    align-items: center
+}
+
+.signInUp a{
+    margin-left: 30px;
+    position: relative;
+}
+
+.signInUp a:hover {
+    color: #01c9ca;  
+  }
+  
+.signInUp a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transform: scale(0);
+    transition: all 0.2s;
+  }
+  
+ .signInUp a:hover:before {
+    background: #01c9ca;
+    transform: scale(1);
+  }
+
+#homelogo {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+/* 네비게이션 바 */
+
+nav {
+    justify-content: center;
+    color: white;
+    background-color: var(--ewhagreen);
+    padding: 10px;
+    min-width: 1400px; 
+}
+
+nav .pageName{
+    font: 25px bolder;
+    margin-left: 30px;
+}
+
+nav a {
+    padding-left: 20px;
+    padding-right: 20px;
+    /* border-right: 1px solid white; */
+    font-size: 15px;
+    float: right;
+    /* margin-top:10px; */
+}
+
+nav a:hover {
+
+}
