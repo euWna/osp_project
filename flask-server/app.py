@@ -2,9 +2,9 @@ from flask import Flask, render_template
 import sys
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/members")
 def index():
-    return render_template("./public/index.js")
+    return {"members": ["Member1", "Member2", "Member3"]}
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
