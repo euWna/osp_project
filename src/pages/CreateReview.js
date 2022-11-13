@@ -1,64 +1,46 @@
 import React from "react";
-import styles from "../css/CreateMenu.module.css";
+import styles from "../css/CreateReview.module.css";
+import { Link } from 'react-router-dom'; 
 
-function CreateMenu(){
-    return (
+function CreateReview(){
+    return(
         <body>
             <aside>
                 <div class = "asideleft">
-                <div class = "up">기본정보</div>
-                <div class = "down">메뉴</div>
+                <Link to = "/CreateStore" class={styles.up}>기본정보</Link>
+                <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>
                 </div>
             </aside>
             <section>
                 <div id = "table">
                     <div class = "row">
-                    <span class = "cell col1">돈카츠우동</span>
-                    <span class = "cell col2"><input type = 'button' value ="편집"/></span>
+                    <span class = "cell col1">전체 평점</span>
+                    <span class = "cell col2"><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/></span> 
                     </div>
                     <div class = "row">
-                    <span class = "cell col1">가츠동(돈카츠덮밥)</span>
-                    <span class = "cell col2"><input type = 'button' value ="편집"/></span>
+                    <span class = "cell col1">작성자</span>
+                    <span class = "cell col2"><input type ="text" name = "location"/></span>
                     </div>
                     <div class = "row">
-                    <span class = "cell col1">김치나베돈카츠</span>
-                    <span class = "cell col2"></span>
+                    <span class = "cell col1">리뷰 제목</span>
+                    <span class = "cell col2"><input type ="text" name = "phonenumber" size = "70"/></span>
                     </div>
                     <div class = "row">
-                    <span class = "cell col1"></span>
-                    <span class = "cell col2">
-                    <table>
-                  <tr>
-                    <th>메뉴명</th>
-                    <td><input type ="text" name = "food"/></td>
-                  </tr>
-                  <tr>
-                    <th>가격</th>
-                    <td><input type ="text" name = "money"/></td>
-                  </tr>
-                  <tr>
-                    <th rowspan = "2">영양성분</th>
-                    <td><input type ="site" name = "site" value = "+" size = "70"/></td>
-                  </tr>
-                  <tr>
-                    <td>-계란</td>
-                    </tr>
-                  <tr>
-                    <th>대표사진</th>
-                    <td><input type = 'button' value ="파일 첨부 (.jpg , .png)"/></td>
-                  </tr>
-                  <tr>
-                    <td><input type = 'button' value ="메뉴 정보 등록"/></td>
-                    </tr>
-                  </table>
-                        </span>
+                    <span class = "cell col1">리뷰 내용</span>
+                    <span class = "cell col2"><textarea name = "aboutreview" rows ="10" cols = "70"/></span>
+                    </div>
+                    <div class = "row">
+                    <span class = "cell col1">사진</span>
+                    <span class = "cell col2"><input type = 'button' value ="파일 첨부 (.jpg , .png)"/></span>
                     </div>
                     <div class = "row">
                     <span class = "cell col1"></span>
-                    <span class = "cell col2">+ 메뉴 새로 추가하기</span>
+                    <span class = "cell col2"><input type = 'button' value ="리뷰 등록"/></span>
                     </div>
                 </div>
             </section>
         </body>
     )
 }
+
+export default CreateReview;

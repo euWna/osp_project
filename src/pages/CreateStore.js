@@ -10,10 +10,11 @@ function CreateStore(){
         <section>
         <aside>
             <div class={styles.asideleft}>
-                <div class={styles.up}>기본정보</div>
-                <div class={styles.down}>메뉴</div>
+                <Link to = "/CreateStore" class={styles.up}>기본정보</Link>
+                <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>
             </div>
         </aside>
+                <form action="http://127.0.0.1:5000/result" method="post" enctype="multipart/form-data">
                 <div id={styles.table}>
                     <div class={styles.row}>
                         <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
@@ -52,17 +53,18 @@ function CreateStore(){
                     </div>
                     <div class={styles.row}>
                         <span class={`${styles.cell} ${styles.col1}`}>사이트</span>
-                        <span class={`${styles.cell} ${styles.col2}`}><input type="site" name="site" value="+" size="70" /></span>
+                        <span class={`${styles.cell} ${styles.col2}`}><input type="site" name="site" size="70" /></span>
                     </div>
                     <div class={styles.row}>
                         <span class={`${styles.cell} ${styles.col1}`}>대표사진</span>
-                        <span class={`${styles.cell} ${styles.col2}`}><input type='button' value="파일 첨부 (.jpg , .png)" /></span>
+                        <span class={`${styles.cell} ${styles.col2}`}><input type="file" name="file" accept="image/*" /></span>
                     </div>
                     <div class={styles.row}>
                         <span class={`${styles.cell} ${styles.col1}`}></span>
-                        <span class={`${styles.cell} ${styles.col2}`}><input type="button" value="기본 정보 등록" /></span>
+                        <span class={`${styles.cell} ${styles.col2}`}><input type="submit" value="기본 정보 등록" /></span>
                     </div>
                 </div>
+                </form>
             </section>
             </div>
     )

@@ -1,5 +1,6 @@
 import styles from '../css/Contents.module.css';
-import homelogo from '../img/symbol-mark.png'
+import homelogo from '../img/symbol-mark.png';
+import { Link } from 'react-router-dom'; 
 
 
 function Info(){
@@ -29,8 +30,8 @@ function Info(){
                     </div>
                 </div>
                 <div class={styles.buttons}>
-                    <a href=""><button class={styles.button}>정보 수정</button></a>
-                    <a href=""><button class={styles.button}>리뷰 등록</button></a>
+                    <Link to = "/CreateStore"><button class={styles.button}>정보 수정</button></Link>
+                    <Link to = "/CreateReview"><button class={styles.button}>리뷰 등록</button></Link>
                 </div>
 
                 <div class="map">
