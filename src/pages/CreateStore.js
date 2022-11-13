@@ -5,14 +5,15 @@ import NavBar from '../component/NavBar';
 
 function CreateStore(){
     return (
-        <body>
+        <div>
             <NavBar></NavBar>
-            <aside>
+        <section>
+        <aside>
             <div class={styles.asideleft}>
                 <div class={styles.up}>기본정보</div>
                 <div class={styles.down}>메뉴</div>
             </div>
-        </aside><section>
+        </aside>
                 <div id={styles.table}>
                     <div class={styles.row}>
                         <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
@@ -62,7 +63,8 @@ function CreateStore(){
                         <span class={`${styles.cell} ${styles.col2}`}><input type="button" value="기본 정보 등록" /></span>
                     </div>
                 </div>
-            </section></body>
+            </section>
+            </div>
     )
                     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import sample from "../img/sample.PNG";
 import styles from '../css/ReviewAll.module.css';
 import NavBar from '../component/NavBar';
 
@@ -14,7 +15,8 @@ function ReviewSection() {
                     <div class={styles.store_location}>신촌동 xxx xxx</div>
                     <div class={styles.review_title}>리뷰 제목입니다.</div>
                     <div class={styles.review_desc}>본문샘플<br/>본문샘플</div>
-                    <div class={styles.review_img}><img src="sample.PNG" width="250" height="230" /></div>
+                    <div class={styles.review_img}><img src={sample} width="250" height="230"/></div>
+                    
                 </div>
                 <div class = {styles.pr_description}>
                     <div class={styles.user_name}>사용자</div>
@@ -22,7 +24,7 @@ function ReviewSection() {
                     <div class={styles.store_location}>신촌동 xxx xxx</div>
                     <div class={styles.review_title}>리뷰 제목입니다.</div>
                     <div class={styles.review_desc}>본문샘플<br/>본문샘플</div>
-                    <div class={styles.review_img}><img src="sample.PNG" width="250" height="230" /></div>
+                    <div class={styles.review_img}><img src={sample} width="250" height="230"/></div>
                 </div>
                 <div class = {styles.pr_description}>
                     <div class={styles.user_name}>사용자</div>
@@ -30,7 +32,7 @@ function ReviewSection() {
                     <div class={styles.store_location}>신촌동 xxx xxx</div>
                     <div class={styles.review_title}>리뷰 제목입니다.</div>
                     <div class={styles.review_desc}>본문샘플<br/>본문샘플</div>
-                    <div class={styles.review_img}><img src="sample.PNG" width="250" height="230" /></div>
+                    <div class={styles.review_img}><img src={sample} width="250" height="230"/></div>
                 </div>
             </div>
             <div class = {styles.hotreview}>
@@ -46,12 +48,10 @@ function ReviewSection() {
 function ReviewAll() {
     return (
         <div class={styles.default}>
-          <head>
-          </head>
-          <body class={styles.body}>
-            <NavBar></NavBar>
-            <ReviewSection></ReviewSection>
-          </body>
+            <div class={styles.body}>
+              <NavBar></NavBar>
+              <ReviewSection></ReviewSection>
+            </div>
         </div>
       );
 }

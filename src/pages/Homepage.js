@@ -17,7 +17,7 @@ function Section(){
           <div class={styles.green}>
             <div class = {styles.hottitle}>
             {/* <h2>HOT TOPIC</h2> */}
-            <div class={styles.link-1}>
+            <div class={styles['link-1']}>
         <a class={styles.hottopic} href="#">
         <span class={styles.thick}>HOT </span><span class={styles.thin}>TOPIC</span>
         </a>
@@ -81,9 +81,6 @@ function Section(){
 function Homepage() {
   return (
     <div className="">
-      <head>
-      </head>
-      <body>
         <Section></Section>
           <div class = {styles.Hbox}>
             <Link to="/StoreListView" class={styles.homeButton}>맛집 모아보기</Link>
@@ -91,7 +88,6 @@ function Homepage() {
             <Link to="/reviewAll" class={styles.homeButton}>리뷰 모아보기</Link>
             {/* 페이지 링크는 이렇게 걸어주세요 */}
           </div>
-      </body>
     </div>
   );
 } 

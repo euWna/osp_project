@@ -23,7 +23,6 @@ root.render(
     <body style={styles}>
     <Section></Section>
     </body> */}
-
     <App></App>
   </React.StrictMode>
 );

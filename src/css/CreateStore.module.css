@@ -2,10 +2,16 @@ body{
 background-color: rgb(238, 238, 238);
 }
 
+section{
+  display: flex;
+  justify-content: center;
+  min-width: 1400px; 
+}
+
 aside{
-width:200px;
+/* width:200px; */
 height:400px;
-background-color: rgb(238, 238, 238);
+/* background-color: rgb(238, 238, 238); */
 padding:20px ;
 float:left;
 }
@@ -16,7 +22,7 @@ background-color: white;
 border: solid #dcdcdc 2px;
 width:230px;
 height:130px;
-left:30px;
+/* left:30px; */
 }
 
 .up{
@@ -35,26 +41,28 @@ right:22px;
 display:table;
 width:900px;
 }
+
 .cell {display: table-cell; padding: 3px; border-bottom: 1px solid #DDD;}
 
 .row{
 position: relative;
 background-color:white;
-left:80px;
+/* left:80px; */
 top :20px;
 border: solid #dcdcdc 0.5px;
 }
 
 .col1{
 position:relative;
-top:15px;
+top:10px;
+left: 20px;
 width:150px;
 height:50px;
 }
 
 .col2{
 position:relative;
-  top:15px;
+  top:8px;
 height:50px;
 }
 

@@ -8,9 +8,9 @@ function Header(){
         <header>
             <Link to="/"><img id={styles.homelogo} src={homelogo}/></Link>
                 <div class={styles.signInUp}>
-            <Link to="/Login">로그인</Link>
-            <Link to="/SignUp">회원가입</Link>
-            </div>
+                    <Link to="/Login">로그인</Link>
+                    <Link to="/SignUp">회원가입</Link>
+                </div>
         </header>
         </div>
     );

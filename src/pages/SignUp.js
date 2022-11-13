@@ -46,9 +46,6 @@ class SignUp extends React.Component {
                     </tr>
                 </table><br></br>
                 <button type="button" name="join_button">회원가입 완료하기</button>
-
-
-
             </div>
         );
     }

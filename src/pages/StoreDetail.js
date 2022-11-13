@@ -8,14 +8,10 @@ import NavBar from "../component/NavBar";
 function StoreDetail(){
     return(
         <div>
-         <head>
-        </head>
-        <body>
         <NavBar></NavBar>
          <Info/>
             <Menu/>
             <Review/>
-        </body>
         </div>
     );
 }
