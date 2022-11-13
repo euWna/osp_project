@@ -31,6 +31,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header></Header>
+        <p>My Token = {window.flask_token}</p>
           <Routes>
               <Route path="/" element={<Homepage />}></Route>
               <Route path="/CreateStore" element={<CreateStore />}></Route>
