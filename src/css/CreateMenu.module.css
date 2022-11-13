@@ -1,89 +1,98 @@
 header {
-    padding: 50px;
-    text-align: center;
-    background: rgb(238, 238, 238);
+  padding: 50px;
+  text-align: center;
+  background: rgb(238, 238, 238);
 }
 
 body{
-  background-color: #dcdcdc;
+background-color: #dcdcdc;
 }
 nav {
-    background-color: #214832;
-    color:white;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
+  background-color: #214832;
+  color:white;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
 }
 
 aside{
-  width:200px;
-  height:70px;
-  background-color:white;
-  border:20px  solid #dcdcdc;
-  padding:30px ;
-  float:left;
+width:200px;
+height:70px;
+background-color:white;
+border:20px  solid #dcdcdc;
+padding:30px ;
+float:left;
 }
 
+
 table{
-  width: 1000px;
-  background-color:white;
+width: 500px;
+background-color:white;
 }
 th{
-  text-align:left;
-  border-bottom: 1px solid #dcdcdc;
-  padding: 10px;
+text-align:left;
+border-bottom: 1px solid #dcdcdc;
+padding: 10px;
 }
 
 td{
-  border-bottom: 1px solid #dcdcdc;
-  padding: 10px;
-  text-align:left;
+border-bottom: 1px solid #dcdcdc;
+padding: 10px;
+text-align:left;
 }
+
+#table {
+display:table;
+width:900px;
+}
+.cell {display: table-cell; padding: 3px; border-bottom: 1px solid #DDD;}
+
+.row{
+position: relative;
+background-color:white;
+left:80px;
+top :20px;
+border: solid #dcdcdc 0.5px;
+}
+
+.col1{
+position:relative;
+top:15px;
+width:160px;
+height:50px;
+}
+
+.col2{
+position:relative;
+top:15px;
+height:50px;
+}
+
 
 .box{
-    border:10px  solid #dcdcdc;
+  border:10px  solid #dcdcdc;
 }
 .adding {
-  float:left;
-  font-weight:bold;
-  font-size:25px;
-  margin-left:35px;
-  margin-right :750px;
-}
-.one {
-  float:left;
-  font-size:14px;
-  margin-right:40px;
+float:left;
+font-weight:bold;
+font-size:25px;
+margin-left:35px;
+margin-right :750px;
 }
 
-.two {
-  float:left;
-  font-size:14px;
-  margin-right:40px;
-}
-
-.three {
-  float:left;
-  font-size:14px;
-}
-
-.time1{
-  width:100px;
-  height:100px;
-}
 
 .up{
-  color:#adb5bd;
-  line-height:30px;
-  font-weight:600;
-  font-size:25px;
-  text-align:right;
+color:#adb5bd;
+line-height:30px;
+font-weight:600;
+font-size:25px;
+text-align:right;
 
 }
 .down{
-  color:#214832;
-  line-height:50px;
-  font-weight:600;
-  font-size:25px;
-  text-align:right;
+color:#214832;
+line-height:50px;
+font-weight:600;
+font-size:25px;
+text-align:right;
 }
