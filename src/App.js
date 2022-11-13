@@ -44,7 +44,6 @@ function App() {
               <Route path="/StoreDetail" element={<StoreDetail />}></Route>
               <Route path="/StoreListView" element={<StoreListView />}></Route>
           </Routes>
-
       </BrowserRouter>
     </div>
   );

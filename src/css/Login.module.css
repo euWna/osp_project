@@ -1,8 +1,8 @@
-.Login-Header {
+.Header {
     float: center;
 }
 
-.Login-Headline {
+.Headline {
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 600;
@@ -11,7 +11,7 @@
     color: black;
 }
 
-.Login-Left {
+.Left {
     position: absolute;
     width: 540px;
     height: 443.72px;
@@ -20,7 +20,7 @@
     color: black;
 }
 
-.Login-Right {
+.Right {
     position: absolute;
     width: 717px;
     height: 421.72px;
@@ -29,7 +29,7 @@
     color: black;
 }
 
-.Login-Right-p {
+.Right-p {
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 400;
@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-.Login-button {
+.button {
     background: #00462A;
     border-radius: 10px;
     text-align: center;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/index.css';
+import './css/index.module.css';
 import Header from './component/header';
 import Info from './component/info';
 import Menu from './component/menu';

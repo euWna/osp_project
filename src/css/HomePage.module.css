@@ -26,9 +26,9 @@ body {
     line-height:1.5;
 }
   
-/* * {
+* {
     box-sizing: border-box;
-  } */
+  }
 
 /* header {
     padding-top: 50px;
@@ -38,28 +38,31 @@ body {
     min-width: 1400px; 
 } */
 
-Nav {
+/* Nav {
     background-color: var(--egreen);
     color: white;
     height: 60px;
     line-height: 60px;
     text-align: center;
-}
+} */
 
-section {
+.section {
     text-align: center;
     background-color: var(--egreen);
-    /* background-color:wheat; */
     min-width: 1400px; 
 }
 
 .green {   
     display: inline-block;
+    min-width: 1400px;
 }
 
 .hottitle {
+    /* display: inline-block; */
     font-size: 18px;
     color: rgb(255, 255, 255);
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .thin { font-weight: 100; }

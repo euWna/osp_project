@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "../component/header";
 import { Link } from 'react-router-dom';
-import '../css/SignUp.css';
+import styles from '../css/SignUp.module.css';
+import NavBar from "../component/NavBar";
 
 class SignUp extends React.Component {
     render() {
         return (
             <div>
-
+                <NavBar></NavBar>
                 <span className="Headline">
                     <h3>회원가입</h3>
                 </span>
