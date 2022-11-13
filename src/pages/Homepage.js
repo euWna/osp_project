@@ -7,6 +7,7 @@ import {useState} from 'react';
 
 import sample from "../img/sample.PNG";
 import samplelocation from "../img/location.png";
+import NavBar from '../component/NavBar';
 
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"></link>
 
@@ -81,6 +82,7 @@ function Section(){
 function Homepage() {
   return (
     <div className="">
+        <NavBar></NavBar>
         <Section></Section>
           <div class = {styles.Hbox}>
             <Link to="/StoreListView" class={styles.homeButton}>맛집 모아보기</Link>
