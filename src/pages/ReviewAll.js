@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/ReviewAll.css';
+import NavBar from '../component/NavBar';
 
 function ReviewSection() {
   return <reviewsection>
@@ -46,6 +47,7 @@ function ReviewAll() {
           <head>
           </head>
           <body>
+            <NavBar></NavBar>
             <ReviewSection></ReviewSection>
           </body>
         </div>

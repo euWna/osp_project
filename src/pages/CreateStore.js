@@ -1,7 +1,8 @@
 import React from "react";
-import "./CreateStore.css";
+import "../css/CreateStore.css";
+import { Link } from 'react-router-dom';
 
-function StoreCreate(){
+function CreateStore(){
     return (
         <body><aside>
             <div class="asideleft">
@@ -61,3 +62,5 @@ function StoreCreate(){
             </section></body>
     )
                     }
+
+export default CreateStore;

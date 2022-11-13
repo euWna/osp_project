@@ -4,14 +4,17 @@
   body {
     margin : 0;
   }
-  header {
+
+  /* header {
     display : inline;
     text-align: center;
-  }
+  } */
+
   .profile {
       padding : 20%;
   }
   /* Create two unequal columns that floats next to each other */
+  
   .column {
     float: left;
     padding: 5%;

@@ -2,11 +2,11 @@ import Header from "../component/header";
 import Info from "../component/info"
 import Menu from "../component/menu";
 import Review from "../component/review";
+import { Link } from 'react-router-dom';
 
 function StoreDetail(){
     return(
         <div>
-            <Header/>
             <Info/>
             <Menu/>
             <Review/>

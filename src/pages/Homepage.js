@@ -89,15 +89,15 @@ function Homepage() {
       </head>
       <body>
         <Section></Section>
-          <div class = "box">
-            <a href="#" class="homeButton">맛집 모아보기</a>
-            <a href="#" class="homeButton">맛집 정보 추가하기</a>
-            <Link to="/reviewAll" class="homeButton"><a href="#" class="homeButton">리뷰 모아보기</a></Link>
+          <div class = "Hbox">
+            <Link to="/StoreListView" class="homeButton">맛집 모아보기</Link>
+            <Link to="/CreateStore" class="homeButton">맛집 정보 추가하기</Link>
+            <Link to="/reviewAll" class="homeButton">리뷰 모아보기</Link>
             {/* 페이지 링크는 이렇게 걸어주세요 */}
           </div>
       </body>
     </div>
   );
-}
+} 
 
 export default Homepage;

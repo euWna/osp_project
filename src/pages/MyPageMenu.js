@@ -1,11 +1,10 @@
 import React from "react";
-import "./MyPageMenu.css";
+import "../css/MyPageMenu.css";
+import { Link } from 'react-router-dom';
 
-export default function App() {
+export default function MyPageMenu() {
   return (
     <>
-    <Header></Header>
-      <NavBar></NavBar>
     <header>
       <h1>My Page</h1>
     </header>

@@ -30,13 +30,13 @@ body {
     box-sizing: border-box;
   } */
 
-header {
+/* header {
     padding-top: 50px;
     padding-bottom: 50px;
     text-align: center;
     background: rgb(238, 238, 238);
     min-width: 1400px; 
-}
+} */
 
 Nav {
     background-color: var(--egreen);
@@ -203,7 +203,7 @@ p {
 
 /*버튼있는곳*/
 
-.box {
+.Hbox {
     /* width: 100%; */
     display: flex;
     margin-top:30px;

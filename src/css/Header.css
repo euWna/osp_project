@@ -2,9 +2,9 @@
     --ewhagreen: rgb(0, 70, 42);
 }
 
-*{
+/* *{
     font-family: 'a드림고딕2';
-}
+} */
 
 a{ 
     text-decoration: none; /*링크 밑줄 제거*/

@@ -1,11 +1,9 @@
 import React from "react";
-import "./MyPage.css";
+import "../css/MyPage.css";
+import { Link } from 'react-router-dom';
 
-export default function App() {
+export default function MyPage() {
   return (
-      <>
-      <Header></Header>
-      <NavBar></NavBar>
     <div class="row">
         <div class="column left" id="cl">
             <div class = "profile">
@@ -38,6 +36,6 @@ export default function App() {
           </form>
         </div>
       </div>
-      </>
   );
 }
+

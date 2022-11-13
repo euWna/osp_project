@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "../component/header";
+import { Link } from 'react-router-dom';
+import '../css/SignUp.css';
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
     render() {
         return (
             <div>
@@ -51,4 +53,4 @@ class SignIn extends React.Component {
     }
 
 }
-export default SignIn;
+export default SignUp;

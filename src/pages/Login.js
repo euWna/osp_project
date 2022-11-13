@@ -1,12 +1,13 @@
 import React from "react";
 import Header from "../component/header";
-import "./Login.css";
+import "../css/Login.css";
+import { Link } from 'react-router-dom';
+
 class Login extends React.Component {
     render() {
 
         return (
             <div>
-                <Header></Header>
                 <div className="Headline">
                     <p>로그인</p>
                 </div>
@@ -29,5 +30,6 @@ class Login extends React.Component {
     };
 
 }
+
 export default Login;
 

@@ -1,11 +1,10 @@
 import React from "react";
-import "./MyPageBookmark.css";
+import "../css/MyPageBookmark.css";
+import { Link } from 'react-router-dom';
 
-export default function App() {
+export default function MyPageBookmark() {
   return (
     <>
-    <Header></Header>
-      <NavBar></NavBar>
     <div class ="mainbar">좋아요 누른 맛집 모아보기</div>
     <div class="background">
         <div class="resultbar">
