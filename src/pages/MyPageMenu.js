@@ -1,15 +1,16 @@
 import React from "react";
-import "./MyPageMenu.css";
+import styles from "../css/MyPageMenu.module.css";
+import { Link } from 'react-router-dom';
 
-export default function App() {
+export default function MyPageMenu() {
   return (
     <>
     <header>
       <h1>My Page</h1>
     </header>
-    <div class ="mainbar">좋아요 누른 메뉴 모아보기</div>
+    <div class ={styles.mainbar}>좋아요 누른 메뉴 모아보기</div>
             <ul>
-                <li> <div class="storename">와플와플</div>
+                <li> <div class={styles.storename}>와플와플</div>
                     <ul class ="store">
                         <li class="menu"> MenuPost1 </li>
                         <li class="menu"> MenuPost2 </li>

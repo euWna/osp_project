@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/index.css';
+import './css/index.module.css';
 import Header from './component/header';
 import Info from './component/info';
 import Menu from './component/menu';
 import Review from './component/review';
 import NavBar from './component/NavBar';
 import reportWebVitals from './reportWebVitals';
+import Section from './pages/Homepage';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const styles = {
@@ -15,13 +17,7 @@ const styles = {
 
 root.render(
   <React.StrictMode>
-    <Header />
-    <body style={styles}>
-    <Info/>
-    <Menu />
-    <Review />
-    </body>
-
+    <App></App>
   </React.StrictMode>
 );
 
