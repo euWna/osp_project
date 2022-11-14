@@ -1,45 +1,53 @@
 import React from "react";
 import styles from "../css/CreateReview.module.css";
 import { Link } from 'react-router-dom'; 
+import NavBar from '../component/NavBar';
 
 function CreateReview(){
     return(
-        <body>
+        <div>
+            <NavBar></NavBar>
             <aside>
-                <div class = "asideleft">
+                <div class = {styles.asideleft}>
                 <Link to = "/CreateStore" class={styles.up}>기본정보</Link>
                 <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>
                 </div>
             </aside>
-            <section>
-                <div id = "table">
-                    <div class = "row">
-                    <span class = "cell col1">전체 평점</span>
-                    <span class = "cell col2"><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/></span> 
+            <form action="http://127.0.0.1:5000/CreateReview" method="post" enctype="multipart/form-data">
+                <section>
+                    <div id = {styles.table}>
+                        <div class = {styles.row}>
+                        <span class = {`${styles.cell} ${styles.col1}`}>전체 평점</span>
+                        <span class = {`${styles.cell} ${styles.col1}`}>
+
+                        <input type="text" name="storescore" size="70" />
+                                {/* <img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/> */}
+                            </span> 
+                        </div>
+                        <div class = {styles.row}>
+                        <span class = {`${styles.cell} ${styles.col1}`}>작성자</span>
+                        <span class = {`${styles.cell} ${styles.col1}`}><input type ="text" name = "username"/></span>
+                        </div>
+                        <div class = {styles.row}>
+                        <span class = {`${styles.cell} ${styles.col1}`}>리뷰 제목</span>
+                        <span class = {`${styles.cell} ${styles.col1}`}><input type ="text" name = "reviewtitle" size = "70"/></span>
+                        </div>
+                        <div class = {styles.row}>
+                        <span class = {`${styles.cell} ${styles.col1}`}>리뷰 내용</span>
+                        <span class = {`${styles.cell} ${styles.col1}`}><textarea name = "reviewdesc" rows ="10" cols = "70"/></span>
+                        </div>
+                        <div class = {styles.row}>
+                        <span class = {`${styles.cell} ${styles.col1}`}>사진</span>
+                        <span class = {`${styles.cell} ${styles.col1}`}><input type="file" name="file" accept="image/*" /></span>
+                        </div>
+                        <div class = {styles.row}>
+                        <span class = {`${styles.cell} ${styles.col1}`}></span>
+                        <span class = {`${styles.cell} ${styles.col1}`}><input type="submit" value="리뷰 등록" /></span>
+                        </div>
                     </div>
-                    <div class = "row">
-                    <span class = "cell col1">작성자</span>
-                    <span class = "cell col2"><input type ="text" name = "location"/></span>
-                    </div>
-                    <div class = "row">
-                    <span class = "cell col1">리뷰 제목</span>
-                    <span class = "cell col2"><input type ="text" name = "phonenumber" size = "70"/></span>
-                    </div>
-                    <div class = "row">
-                    <span class = "cell col1">리뷰 내용</span>
-                    <span class = "cell col2"><textarea name = "aboutreview" rows ="10" cols = "70"/></span>
-                    </div>
-                    <div class = "row">
-                    <span class = "cell col1">사진</span>
-                    <span class = "cell col2"><input type = 'button' value ="파일 첨부 (.jpg , .png)"/></span>
-                    </div>
-                    <div class = "row">
-                    <span class = "cell col1"></span>
-                    <span class = "cell col2"><input type = 'button' value ="리뷰 등록"/></span>
-                    </div>
-                </div>
-            </section>
-        </body>
+                </section>
+            </form>
+        </div>
     )
 }
 
