@@ -14,7 +14,7 @@ function CreateStore(){
                 <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>
             </div>
         </aside>
-                <form action="http://127.0.0.1:5000/result" method="post" enctype="multipart/form-data">
+                <form action="http://127.0.0.1:5000/CreateStore" method="post" enctype="multipart/form-data">
                 <div id={styles.table}>
                     <div class={styles.row}>
                         <span class={`${styles.cell} ${styles.col1}`}>매장명</span>

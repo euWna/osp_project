@@ -7,7 +7,8 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/result", methods=['POST', 'GET'])
+
+@app.route("/CreateStore", methods=['POST'])
 def Store_result():
     if request.method == 'POST':
         result = request.form
