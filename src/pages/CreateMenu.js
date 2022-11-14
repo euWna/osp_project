@@ -1,33 +1,35 @@
 import React from "react";
 import styles from "../css/CreateMenu.module.css";
 import { Link } from 'react-router-dom'; 
+import NavBar from '../component/NavBar';
 
 function CreateMenu(){
     return (
-        <body>
+        <div>
+           <NavBar></NavBar>
             <aside>
-                <div class = "asideleft">
-                <div class = "up">기본정보</div>
-                <div class = "down">메뉴</div>
+                <div class = {styles.asideleft}>
+                <Link to = "/CreateStore" class={styles.up}>기본정보</Link>
+                <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>
                 </div>
             </aside>
             <section>
-                <div id = "table">
-                    <div class = "row">
-                    <span class = "cell col1">돈카츠우동</span>
-                    <span class = "cell col2"><input type = 'button' value ="편집"/></span>
+                <div id = {styles.table}>
+                    <div class = {styles.row}>
+                    <span class = {`${styles.cell} ${styles.col1}`}>돈카츠우동</span>
+                    <span class = {`${styles.cell} ${styles.col1}`}><input type = 'button' value ="편집"/></span>
                     </div>
-                    <div class = "row">
-                    <span class = "cell col1">가츠동(돈카츠덮밥)</span>
-                    <span class = "cell col2"><input type = 'button' value ="편집"/></span>
+                    <div class = {styles.row}>
+                    <span class = {`${styles.cell} ${styles.col1}`}>가츠동(돈카츠덮밥)</span>
+                    <span class = {`${styles.cell} ${styles.col1}`}><input type = 'button' value ="편집"/></span>
                     </div>
-                    <div class = "row">
-                    <span class = "cell col1">김치나베돈카츠</span>
-                    <span class = "cell col2"></span>
+                    <div class = {styles.row}>
+                    <span class = {`${styles.cell} ${styles.col1}`}>김치나베돈카츠</span>
+                    <span class = {`${styles.cell} ${styles.col1}`}></span>
                     </div>
-                    <div class = "row">
-                    <span class = "cell col1"></span>
-                    <span class = "cell col2">
+                    <div class = {styles.row}>
+                    <span class = {`${styles.cell} ${styles.col1}`}></span>
+                    <span class = {`${styles.cell} ${styles.col1}`}>
                     <table>
                   <tr>
                     <th>메뉴명</th>
@@ -54,13 +56,13 @@ function CreateMenu(){
                   </table>
                         </span>
                     </div>
-                    <div class = "row">
-                    <span class = "cell col1"></span>
-                    <span class = "cell col2">+ 메뉴 새로 추가하기</span>
+                    <div class = {styles.row}>
+                    <span class ={`${styles.cell} ${styles.col1}`}></span>
+                    <span class = {`${styles.cell} ${styles.col1}`}>+ 메뉴 새로 추가하기</span>
                     </div>
                 </div>
             </section>
-        </body>
+          </div>
     )
 }
 
