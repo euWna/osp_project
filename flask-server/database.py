@@ -3,26 +3,83 @@ import json
 
 class DBhandler:
     def __init__(self):
-        with open() as f:
+        with open('./authentication/firebase_auth.json') as f:
             config = json.load(f)
 
         firebase = pyrebase.initialize_app(config)
-        self.db = firebase.datasbase()
+        self.db = firebase.database()
+
+    #맛집 정보 입력 함수
+    def insert_store(self,name,data,img_path):
+        store_info ={
+            "storename" : data['storename'],
+            "location" : data['location'],
+            "phonenumber" : data['phonenumber'], 
+            "time1" : data['time1'],
+            "time2" : data['time2'],
+            "food" : data['food'],
+            "park" : data['park'],
+            "price1" : data['price1'],
+            "price2" : data['price2'],
+            "site" : data['site'],
+            "file" : data['file'],
+            "img_path" : img_path
+        }
+        if self.store_duplicate_check(name):
+            self.db.child("store").child(name).set(store_info)
+            print(data,img_path)
+            return True
+        else:
+            return False
+        
+    # 맛집 정보 중복 체크 함수(insertStore에서 사용)
+    def store_duplicate_check(self, name):
+        stores = self.db.child("store").get()
+        for res in stores.each():
+            if res.key() == name:
+                return False
+        return True
 
 
-#맛집 정보 입력 함수
-def insertStore(self, name, data, img_path):
-    store_info ={
+    def insert_menu(self,name,data,img_path):
+        menu_info ={
+            "food" : data['food'],
+            "money" : data['money'],
+            "nutrient" : data['nutrient'],
+            "file" : data['file'],
+            "img_path" : img_path
+        }
+        if self.menu_duplicate_check(name):
+            self.db.child("menu").child(name).set(menu_info)
+            print(data,img_path)
+            return True
+        else:
+            return False
+
+    # 메뉴 정보 중복 체크 함수(insertmenu에서 사용)
+    def menu_duplicate_check(self, name):
+        menus = self.db.child("menu").get()
+        for res in menus.each():
+            if res.key() == name:
+                return False
+        return True
 
 
-    }
-    self.db.child("stores").child(name).set(store_info)
-    print(data,img_path)
-    return True
-    
-# 맛집 정보 중복 체크 함수(insertStore에서 사용)
-    def store_duplicate_check():
-        return False
+    def insert_review(self,name,data,img_path):
+        review_info ={
+            "storescore" : data['storescore'],
+            "username" : data['username'],
+            "reviewtitle" : data['reviewtitle'],
+            "reviewdesc" : data['reviewdesc'],
+            "reviewfile" : data['file'],
+            "img_path" : img_path
+        }
+        self.db.child("review").child(name).set(review_info)
+        print(data,img_path)
+        return True
+
+
+
 
 
 ...
