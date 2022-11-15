@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function CreateMenu() {
   return (
     <body>
-      <aside>
+      <aside class={styles.aside}>
         <div className={styles.asideleft}>
             <Link to = "/CreateStore" class={styles.up}>기본정보</Link>
             <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>

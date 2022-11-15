@@ -8,7 +8,7 @@ function CreateStore(){
         <div>
             <NavBar></NavBar>
         <section>
-        <aside>
+        <aside class={styles.aside}>
             <div class={styles.asideleft}>
                 <Link to = "/CreateStore" class={styles.up}>기본정보</Link>
                 <Link to = "/CreateMenu" class={styles.down}>메뉴</Link>

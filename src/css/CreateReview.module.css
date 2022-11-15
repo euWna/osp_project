@@ -7,15 +7,9 @@ header {
 body{
 background-color: #dcdcdc;
 }
-nav {
-  background-color: #214832;
-  color:white;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-}
 
-aside{
+
+.aside{
 width:200px;
 height:250px;
 background-color:white;
