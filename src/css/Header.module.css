@@ -13,7 +13,7 @@ a{
 
 header{
     display: flex;
-    padding: 20px;
+    /* padding: 20px; */
     /* margin-bottom: 30px; */
     min-width: 1400px; 
     justify-content: space-between
@@ -65,8 +65,10 @@ nav {
     justify-content: center;
     color: white;
     background-color: var(--ewhagreen);
-    padding: 10px;
+    height: 20px;
     min-width: 1400px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 nav .pageName{
