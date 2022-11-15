@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from database import DBhandler
 import sys
 
+
+
 app = Flask(__name__)
 
 DB = DBhandler()
