@@ -33,21 +33,21 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header></Header>
-          <Routes>
-              <Route path="/" element={<Homepage />}></Route>
-              <Route path="/CreateStore" element={<CreateStore />}></Route>
-              <Route path="/CreateMenu" element={<CreateMenu />}></Route>
-              <Route path="/CreateReview" element={<CreateReview/>}></Route>
-              <Route path="/Homepage" element={<Homepage />}></Route>
-              <Route path="/Login" element={<Login />}></Route>
-              <Route path="/MyPage" element={<MyPage />}></Route>
-              <Route path="/MyPageBookmark" element={<MyPageBookmark />}></Route>
-              <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>
-              <Route path="/ReviewAll" element={<ReviewAll />}></Route>
-              <Route path="/SignUp" element={<SignUp />}></Route>
-              <Route path="/StoreDetail" element={<StoreDetail />}></Route>
-              <Route path="/StoreListView" element={<StoreListView />}></Route>
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Homepage />}></Route>
+          <Route path="/CreateStore" element={<CreateStore />}></Route>
+          <Route path="/CreateMenu" element={<CreateMenu />}></Route>
+          <Route path="/CreateReview" element={<CreateReview />}></Route>
+          <Route path="/Homepage" element={<Homepage />}></Route>
+          <Route path="/Login" element={<Login />}></Route>
+          <Route path="/MyPage" element={<MyPage />}></Route>
+          <Route path="/MyPageBookmark" element={<MyPageBookmark />}></Route>
+          <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>
+          <Route path="/ReviewAll" element={<ReviewAll />}></Route>
+          <Route path="/SignUp" element={<SignUp />}></Route>
+          <Route path="/StoreDetail" element={<StoreDetail />}></Route>
+          <Route path="/StoreListView" element={<StoreListView />}></Route>
+        </Routes>
       </BrowserRouter>
     </div>
   );

@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
 
 .nanumsquare {
     font-family: 'NanumSquare', sans-serif !important;
@@ -16,24 +19,38 @@
 }
 
 :root {
-    --egreen : #00462A;
+    --egreen: #00462A;
 }
 
 body {
-    margin: 0px;
+    /* margin: 0px; */
+    /* margin-top: 80px; */
     font-family: 'Noto Sans KR';
-    font-size:17px;
-    line-height:1.5;
-    min-width: 1400px; 
+    font-size: 17px;
+    line-height: 1.5;
+    min-width: 1400px;
+    background-color: #f1f1f1;
+    margin-bottom: 200px;
 }
+
+/* input {
+    width: 500px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 2px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+  } */
 
 .section {
     text-align: center;
-    background-color: var(--egreen);
-    min-width: 1400px; 
+    /* background-color: var(--egreen); */
+    min-width: 1400px;
 }
 
-.green {   
+.green {
     display: inline-block;
     min-width: 1400px;
 }
@@ -41,19 +58,24 @@ body {
 .hottitle {
     display: inline-block;
     font-size: 18px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     margin-top: 20px;
     margin-bottom: 30px;
 }
 
-.thin { font-weight: 100; }
-.thick { font-weight:900; }
+.thin {
+    font-weight: 100;
+}
+
+.thick {
+    font-weight: 900;
+}
 
 .hottopic {
     font-family: 'Montserrat';
     text-transform: uppercase;
     font-size: 40px;
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     position: relative;
     display: block;
@@ -61,53 +83,60 @@ body {
 }
 
 p {
-  font-weight: 600;
-  font-size: 80%;
-  margin: 1px;
-  position: relative;
-  top: 14px;
+    font-weight: 600;
+    font-size: 80%;
+    margin: 1px;
+    position: relative;
+    top: 14px;
 }
 
 [class^="link-"] {
-  display: inline-block;
-  margin: 2em
+    display: inline-block;
+    margin: 2em
 }
 
 /* linkone */
-.link-1 a:before, .link-1 a:after {
-  content: '';
-  border-bottom: solid 2px white;
-  position: absolute;
-  bottom: 0;
-  width: 0;
+.link-1 a:before,
+.link-1 a:after {
+    content: '';
+    border-bottom: solid 2px rgb(0, 0, 0);
+    position: absolute;
+    bottom: 0;
+    width: 0;
 }
 
-.link-1 a:before { left: 0; }
-.link-1 a:after { right: 0; }
-
-.link-1 a:hover:before, .link-1 a:hover:after {
-  width: 52%;
+.link-1 a:before {
+    left: 0;
 }
 
-.link-1 a:before, .link-1 a:after {
-  -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease;
+.link-1 a:after {
+    right: 0;
+}
+
+.link-1 a:hover:before,
+.link-1 a:hover:after {
+    width: 52%;
+}
+
+.link-1 a:before,
+.link-1 a:after {
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 /*리스트*/
 
 .hotlist_container {
     /* flex-wrap: wrap; */
-    position: relative; 
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-bottom: 20px;
     box-sizing: content-box;
     text-align: center;
     align-items: center;
+
 
 }
 
@@ -119,13 +148,21 @@ p {
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-    text-decoration:none;
-    border-radius:3px;
+    text-decoration: none;
+    border-radius: 3px;
 }
 
-.hotlist:hover{
-    position:relative;
-	bottom:10px;
+.hotlist:hover {
+    /* position:relative;
+	bottom:10px; */
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
 .upcontainer {
@@ -165,7 +202,7 @@ p {
     font-size: 10px;
     line-height: 14px;
     color: #000000;
-    
+
 }
 
 .review {
@@ -190,9 +227,10 @@ p {
 .Hbox {
     /* width: 100%; */
     display: flex;
-    margin-top:30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     justify-content: center;
-    min-width: 1400px; 
+    min-width: 1400px;
 }
 
 .homeButton {
@@ -200,33 +238,45 @@ p {
     padding: 20px;
     box-sizing: border-box;
     flex-basis: 250px;
-    justify-content:center;
-    align-items:center;
-    text-align : center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     /*디자인*/
-	background: #222228;
+    background: #222228;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius:15px;
-	border:1px solid #202020;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2f6627;
+    border-radius: 15px;
+    border: 1px solid #202020;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
 .homeButton:hover {
-	background-color:#0a0a0a;
+    /* background-color:#0a0a0a; */
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+    background-color: var(--egreen);
+    /* color: rgb(255, 255, 255); */
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
 .homeButton:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
 footer {
     text-align: center;
 }
-
