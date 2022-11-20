@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.4c1a6a81.css",
-    "main.js": "/static/react/js/main.e52e4e69.js",
+    "main.css": "/static/react/css/main.6e3ab79a.css",
+    "main.js": "/static/react/js/main.422c62eb.js",
     "js/787.ec704a7a.chunk.js": "/static/react/js/787.ec704a7a.chunk.js",
     "media/symbol-mark.png": "/static/react/media/symbol-mark.8a35bde01c62d01eaa4b.png",
     "media/sample.PNG": "/static/react/media/sample.5b41e09dc2adbb809249.PNG",
     "media/logo.svg": "/static/react/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "../../templates/index.html": "/static/react/../../templates/index.html",
-    "main.4c1a6a81.css.map": "/static/react/css/main.4c1a6a81.css.map",
-    "main.e52e4e69.js.map": "/static/react/js/main.e52e4e69.js.map",
+    "main.6e3ab79a.css.map": "/static/react/css/main.6e3ab79a.css.map",
+    "main.422c62eb.js.map": "/static/react/js/main.422c62eb.js.map",
     "787.ec704a7a.chunk.js.map": "/static/react/js/787.ec704a7a.chunk.js.map"
   },
   "entrypoints": [
-    "css/main.4c1a6a81.css",
-    "js/main.e52e4e69.js"
+    "css/main.6e3ab79a.css",
+    "js/main.422c62eb.js"
   ]
 }

@@ -36,10 +36,9 @@ def Store_result():
             img_file.save("./flask-server/static/img/"+img_file.filename)
         print(img_file)
 
-        #return render_template("result.html", result=result)
+        return render_template("result.html", result=data)
         
-        #여기 윤주영이 오소플 자료 보고 추가한 내용
-        if DB.insert_restaurant(data['name'], data, img_file.filename):
+        if DB.insert_store(data['storename'], data, img_file.filename):
             return render_template("result.html", data = data, img_path="static/img"+img_file.filename)
         else:
             return "CreateStore name already exist!"

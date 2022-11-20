@@ -3,7 +3,7 @@ import json
 
 class DBhandler:
     def __init__(self):
-        with open('./authentication/firebase_auth.json') as f:
+        with open('./flask-server/authentication/firebase_auth.json') as f:
             config = json.load(f)
 
         firebase = pyrebase.initialize_app(config)
@@ -25,6 +25,9 @@ class DBhandler:
             "file" : data['file'],
             "img_path" : img_path
         }
+        self.db.child("store").child(name).set(store_info)
+        print(data,img_path)
+        return True
         if self.store_duplicate_check(name):
             self.db.child("store").child(name).set(store_info)
             print(data,img_path)
