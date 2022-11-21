@@ -27,7 +27,7 @@ class DBhandler:
 
         if self.store_duplicate_check(name):
             self.db.child("STORE").child(name).set(store_info)
-            print(data,img_path)
+            #print(data,img_path)
             return True
         else:
             return False
@@ -52,7 +52,7 @@ class DBhandler:
         }
         if self.menu_duplicate_check(name):
             self.db.child("MENU").child(name).set(menu_info)
-            print(data,img_path)
+            #print(data,img_path)
             return True
         else:
             return False
@@ -75,7 +75,6 @@ class DBhandler:
             "username" : data['username'],
             "reviewtitle" : data['reviewtitle'],
             "reviewdesc" : data['reviewdesc'],
-            "reviewfile" : data['file'],
             "img_path" : img_path
         }
         self.db.child("REVIEW").child(name).set(review_info)

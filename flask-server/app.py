@@ -39,23 +39,24 @@ def Submit_store():
         if img_file:
             img_file.save("./flask-server/static/img/"+img_file.filename)
         # print(img_file)
-        # DB.insert_store(data['storename'], data, img_file.filename)
+        #DB.insert_store(data['storename'], data, img_file.filename)
 
-        #return render_template("result.html", result=data, img_path="static/img"+img_file.filename)
+        # return render_template("result.html", result=data, img_path="static/img"+img_file.filename)
         
         if DB.insert_store(data['storename'], data, img_file.filename):
-            return redirect(url_for('Submit_menu', request_method=request.method))
+            return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
         else:
             return "The submitted store already exists!"
 
-
+'''
 @app.route("/CreateMenu",methods=['GET','POST'])
 def go_menucreate():
     return redirect(url_for('Submit_menu', request_method=request.method))
+'''
 
 @app.route("/CreateMenu",methods=['GET','POST'])
-def Submit_menu(request_method):
-    if request_method == 'POST':
+def Submit_menu():
+    if request.method == 'POST':
             data = request.form
             #print(data)
 
@@ -72,14 +73,14 @@ def Submit_menu(request_method):
             #return render_template("result_menu.html", result=result)
 
             if DB.insert_menu(data['food'], data, img_file.filename):
-                return render_template("result_menu.html", result = data, img_path="static/img"+img_file.filename)
+                return render_template("result_menu.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
-
+    '''
     else :
         if request_method == 'GET':
             request_method == 'POST'
-            return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)
+            return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)'''
 
         
 @app.route("/CreateReview", methods=['GET','POST'])
@@ -98,7 +99,8 @@ def Submit_Review():
             img_file.save("./flask-server/static/img/"+img_file.filename)
             #print(img_file)
 
-        return render_template("result_review.html", result = data)
+        if DB.insert_review(data['username'], data, img_file.filename):
+            return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
 
 
