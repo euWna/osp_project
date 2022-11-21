@@ -81,9 +81,3 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
-
-
-
-
-
-...

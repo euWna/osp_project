@@ -35,7 +35,7 @@ class StoreListView extends React.Component {
                                 </div>
                             </div>
                             < div className={styles.Restaurant}>
-
+                                {/* flask에서 받아올 수 있는 코드 수정 */}
                                 <StoreList></StoreList>
                                 <StoreList></StoreList>
                                 <StoreList></StoreList>
