@@ -82,7 +82,6 @@ function Section() {
 function Homepage() {
   return (
     <div className="">
-      <NavBar></NavBar>
       <Section></Section>
       <div class={styles.Hbox}>
         <Link to="/StoreListView" class={styles.homeButton}>맛집 모아보기</Link>
