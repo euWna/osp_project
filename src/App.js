@@ -1,6 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 
+//////////////////////////
+//윤주영이 작성한 코드//
+import{ auth } from './fbase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useSta}
+//윤주영이 작성한 코드//
+/////////////////////////
+
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

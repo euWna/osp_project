@@ -12,6 +12,7 @@ class DBhandler:
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
         store_info ={
+            "name" : name,
             "storename" : data['storename'],
             "location" : data['location'],
             "phonenumber" : data['phonenumber'], 
@@ -26,7 +27,7 @@ class DBhandler:
         }
 
         if self.store_duplicate_check(name):
-            self.db.child("STORE").child(name).set(store_info)
+            self.db.child("STORE").push(store_info)
             #print(data,img_path)
             return True
         else:
@@ -36,7 +37,9 @@ class DBhandler:
     def store_duplicate_check(self, name):
         stores = self.db.child("STORE").get()
         for res in stores.each():
-            if res.key() == name:
+            value = res.val()
+
+            if value['name'] == name:
                 return False
         return True
 
@@ -45,13 +48,14 @@ class DBhandler:
 
     def insert_menu(self,name,data,img_path):
         menu_info ={
+            "name" : name,
             "food" : data['food'],
             "money" : data['money'],
             "nutrient" : data['nutrient'],
             "img_path" : img_path
         }
         if self.menu_duplicate_check(name):
-            self.db.child("MENU").child(name).set(menu_info)
+            self.db.child("MENU").push(menu_info)
             #print(data,img_path)
             return True
         else:
@@ -61,7 +65,8 @@ class DBhandler:
     def menu_duplicate_check(self, name):
         menus = self.db.child("MENU").get()
         for res in menus.each():
-            if res.key() == name:
+            value = res.val()
+            if value['name'] == name:
                 return False
         return True
 
@@ -71,12 +76,13 @@ class DBhandler:
 
     def insert_review(self,name,data,img_path):
         review_info ={
+            "name" : name,
             "storescore" : data['storescore'],
             "username" : data['username'],
             "reviewtitle" : data['reviewtitle'],
             "reviewdesc" : data['reviewdesc'],
             "img_path" : img_path
         }
-        self.db.child("REVIEW").child(name).set(review_info)
+        self.db.child("REVIEW").push(review_info)
         print(data,img_path)
         return True
