@@ -44,9 +44,15 @@ def Submit_store():
         # return render_template("result.html", result=data, img_path="static/img"+img_file.filename)
         
         if DB.insert_store(data['storename'], data, img_file.filename):
-            return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
+            #return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
+            return redirect(url_for('view', store_id=name))
         else:
             return "The submitted store already exists!"
+
+
+@app.route("/CreateMenu/<store_id>",methods=['GET','POST'])
+def view(store_id):
+    return render_template("index.html")
 
 '''
 @app.route("/CreateMenu",methods=['GET','POST'])
