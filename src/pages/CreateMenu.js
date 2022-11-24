@@ -19,7 +19,7 @@ function CreateMenu() {
         <form action="http://127.0.0.1:5000/CreateMenu" method="post" enctype="multipart/form-data">
           <div id={styles.table}>
             <div className={styles.row}>
-              <span className={`${styles.cell} ${styles.col1}`}>김치나베돈카츠</span>
+              <span className={`${styles.cell} ${styles.col1}`}>{김치나베돈카츠}</span>
               <span className={`${styles.cell} ${styles.col2}`}></span>
             </div>
             <div className={styles.row}>

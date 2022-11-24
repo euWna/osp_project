@@ -1,17 +1,20 @@
-
-
+<!DOCTYPE html>
 <html>
-    <body>
-        <h2>맛집 정보 example</h2>
-        <p> 가게명 : {{result.storename}}<br/>
-            주소 : {{result.location}} <br/>
-            전화번호 : {{result.phonenumber}} <br/>
-            영업시간 : {{result.time1}} ~ {{result.time2}} <br/>
-            카테고리 : {{result.food}} <br/>
-            주차장 : {{result.park}} <br/>
-            가격대 : {{result.price1}} ~ {{result.price2}} <br/>
-            사이트 : {{result.site}} <br/>
-            이미지 : <img src="{{img_path}}" alt="Store Image"/> <br/>
-        </p>
-    </body>
+<!-- 기존의 result=data부분이 app.py의 insert store함수에서 data로 바뀌어서 
+result.--를 data.--로 바꿨습니다 -->
+
+<body>
+    <h2>맛집 정보 example</h2>
+    <p> 가게명 : {{data.storename}}<br />
+        주소 : {{data.location}} <br />
+        전화번호 : {{data.phonenumber}} <br />
+        영업시간 : {{data.time1}} ~ {{data.time2}} <br />
+        카테고리 : {{data.food}} <br />
+        주차장 : {{data.park}} <br />
+        <!-- 가격대 : {{data.price1}} ~ {{data.price2}} <br/> -->
+        사이트 : {{data.site}} <br />
+        이미지 : <img src="{{img_path}}" alt="Store Image" /> <br />
+    </p>
+</body>
+
 </html>
