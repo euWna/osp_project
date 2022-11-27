@@ -1,5 +1,5 @@
 import styles from '../css/Contents.module.css';
-import homelogo from '../img/symbol-mark.png';
+import sample from '../img/sample.PNG';
 import { Link } from 'react-router-dom';
 
 
@@ -7,11 +7,11 @@ function Info() {
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>
-                <div id='paneName'>
+                <div id={styles.paneName}>
                     음식점 정보
-                </div><br />
+                </div>
                 <div>
-                    <img class={styles.image} src={homelogo} /><br /><br />
+                    <img class={styles.image} src={sample} /><br /><br />
                 </div>
 
                 <div class={styles.info}>

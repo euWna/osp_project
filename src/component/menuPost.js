@@ -12,12 +12,10 @@ function MenuPost() {
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>
-                    <div class={styles.MenuName}>메뉴 이름</div>
-                    <div class={styles.heart}>
-                        <img src={heart} class={styles.heartimg} width="14" height="16" />
-                        <div class={styles.heartnum}>150</div>
-                    </div>
-
+                    <div id={styles.MenuName}>메뉴 이름</div>
+                    <div class={styles.heart}><img src={heart} class={styles.heartimg} width="14" height="16" /> 150</div>
+                    <div class={styles.price}>가격</div>
+                    <div class={styles.nutrients}>영양성분</div>
                 </div>
             </div>
     );

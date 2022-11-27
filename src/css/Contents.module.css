@@ -1,6 +1,6 @@
 :root {
     --ewhagreen: rgb(0, 70, 42);
-    --grayborder: 1px solid #BBBBBB;
+    --grayborder: 1px solid #d2d2d2;
 }
 
 .outer {
@@ -16,15 +16,30 @@
 }
 
 #paneName {
+    font-size: 40px;
     text-align: left;
-    font: black bold;
-    padding: 20px;
+    padding: 25px;
+    padding-left: 100px;
     border-bottom: var(--grayborder);
+    vertical-align: middle;
+}
+
+.editPane{
+    text-align: left;
+    padding: 15px;
+    padding-left: 100px;
+    border-bottom: var(--grayborder);
+}
+
+.menuPane{
+    padding: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .image {
     float: center;
-    width: 90%;
+    width:50%;
     border: var(--grayborder);
 }
 
@@ -44,6 +59,7 @@
 }
 
 .button {
+    display: flex;
     padding: 12px;
     padding-left: 15px;
     padding-right: 15px;
