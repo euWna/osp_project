@@ -2,45 +2,60 @@ import React from "react";
 import Header from "../component/header";
 import NavBar from "../component/NavBar";
 import styles from "../css/StoreListView.module.css";
-import styles from '../css/Storelist.module.css';
-import samplelocation from "../img/location.png";
-import heart from "../img/heart.png";
 import { Link } from 'react-router-dom';
 import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
-import Storelist from "../component/storelist";
-import { data } from 'browserslist';
-import DBhandler from database;
-DB = DBhandler()
-function Storelist() {
+// import { data } from 'browserslist';
+import { useEffect, useState } from 'react';
+// const [articles, setArticles] = useState([]);
+// useEffect(() => {
+//     fetch('http://127.0.0.1:5000/StoreList', {
+//         'methods': 'GET',
+//         headers: {
+//             'Content-Type': 'applications/json'
+//         }
+
+//     })
+//         .then(resp => resp.json())
+//         .then(resp => resp.log(resp))
+//         .catch(error => console.log(error))
+// }, [])
+function Stores() {
+    const [data, setData] = useState([{}])
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:5000/StoreListView", {
+            headers: {
+                Accept: "application / json",
+            },
+        }, { method: "GET" })
+            .then(
+                response => response.json()
+            ).then(
+                data => {
+                    setData(data);
+                }
+            ).catch(
+                (err) => console.log(err)
+            )
+    }, [])
+
     return (
-        <Link to="/StoreDetail">
-            <div class={styles.listbox}>
-                <div className={styles.ImagePart}>
-                    <img src={sample} width="295" height="125" />
-                </div>
-                {/* 본문 박스 */}
-                <div class={styles.listdesc}>
-                    <div class={styles.StoreName}>{data.Storename}</div>
-                    <div class={styles.storelocation}>
-                        <img src={samplelocation} class={styles.locationimg} width="18" height="18" />
-                        <p class={styles.locationtext}>{data.location}</p>
-                    </div>
-                    <div class={styles.Tag}>{data.food}</div>
-                    <div class={styles.heart}>
-                        <img src={heart} class={styles.heartimg} width="14" height="16" />
-                        <div class={styles.heartnum}>{data.heartnum}</div>
-                    </div>
-                    <div class={styles.reviewnum}>리뷰{data.reviewnum}개</div>
-                    {/* heartnum과 reviewnum 속성 추가해야함 */}
-                </div>
-            </div>
-        </Link>
-    );
+        <div>
+            {/* 삼항연산자 */}
+            {(typeof data.StoreListView === 'undefined') ? (
+                // fetch가 완료되지 않았을 경우에 대한 처리
+                <p>loading...</p>
+            ) : (
+                data.StoreListView.map((u) => <p>{u.storename}</p>)
+            )}
+        </div>
+    )
 }
 
 class StoreListView extends React.Component {
     render() {
+        var datas = document.getElementsById('STORELISTVIEW')
         return (
             <div>
                 <NavBar />
@@ -68,9 +83,16 @@ class StoreListView extends React.Component {
                                 </div>
                             </div>
                             < div className={styles.Restaurant}>
+
                                 {/* flask에서 받아올 수 있는 코드 수정 */}
                                 {/* store_id를 받아오는 식이 필요함(여기말고 database.py나 result.html에서) */}
+                                {/* /* i=start_idx */}
+                                {/* while(i<end_idx){
+                                    <StoreList></StoreList>
+                                } */}
                                 {/* 여기에 app.py- list_Stores활용하기 */}
+
+
                             </div>
                         </div>
                         <div class={styles.rightbox}>
@@ -85,7 +107,6 @@ class StoreListView extends React.Component {
                     </div >
                 </section >
             </div >
-
         )
     }
 }

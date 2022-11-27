@@ -83,8 +83,9 @@ class DBhandler:
         print(data,img_path)
         return True
 
-    def get_Stores(self):
+    def get_stores(self):
         stores=self.db.child("STORE").get().val()
+        return stores
 
     def get_store_byname(self,name):
         stores=self.db.child("STORE").get()

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,jsonify
 from database import DBhandler
 import sys
 
@@ -12,8 +12,9 @@ DB.__init__()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
-    # return redirect(url_for("list_stores")) 윗줄을 이걸로 바꿔야함
+    # return render_template("index.html")
+    return redirect(url_for("list_stores")) 
+    #윗줄을 이걸로 바꿔야함
 
 def refresh(site):
     return redirect
@@ -110,23 +111,24 @@ def Submit_Review():
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
 
-@app.route("/list")
+@app.route("/StoreListView")
 def list_stores():
     page=request.args.get("page",0,type=int)
     limit=10
     start_idx=limit*page
     end_idx=limit*(page+1)
-    data=DB.get_Stores()
+    data=DB.get_stores()
     tot_count=len(data)
     data=dict(list(data.items())[start_idx:end_idx])
 
     return render_template(
         "StoreListView.html",
-    datas=data.items(),
+    data=jsonify(data),
     total=tot_count,
     limit=limit,
     page=page,
     page_count=int((tot_count/10)+1))
+
 @app.route("/StoreDetail/<storename>/")
 def view_store_detail(name):
     data=DB.get_store_byname(str(name))
@@ -138,11 +140,12 @@ def view_store_detail(name):
 
 @app.route("/listfoods/<storename>/")
 def view_foods(storename):
-    data= DB.get_food_byname(str(storename))
+    storedata= DB.get_food_byname(str(storename))
 #여기서는 storename이 아니라 res_name이어도 되려나요...
-    tot_count=len(data)
-    page_count=len(data)
-    return render_template("food_list.html",datas=data,total=tot_count)
+    tot_count=len(storedata)
+    page_count=len(storedata)
+  
+    return render_template("food_list.html",datas=storedata,total=tot_count)
     #대표메뉴 조회화면으로 이동
     # food_list.html: info.js와 연결지어질 것 
 if __name__ == "__main__":
