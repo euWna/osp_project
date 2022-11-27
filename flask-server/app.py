@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from database import DBhandler
 import sys
 
@@ -13,9 +13,6 @@ DB.__init__()
 @app.route("/")
 def index():
     return render_template("index.html")
-
-def refresh(site):
-    return redirect
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
 def Submit_store():
@@ -113,15 +110,14 @@ def Submit_Review():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
-@app.route('/StoreListView', methods=['GET','POST'])
+@app.route("/StoreListView")
 def list_stores():
-    data = DB.get_stores()
-    tot_count = len(data)
+    storedata = DB.get_store().items()
+    #tot_count = len(storedata) #리스트 길이 반환
 
-    return render_template("index.html", datas=data.items(), total=tot_count())
+    return storedata
 
-'''
+
 @app.route("/StoreListView",methods=['GET','POST'])
 def view_storelist(store_id):
     return render_template("index.html")
-'''
