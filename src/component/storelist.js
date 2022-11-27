@@ -6,6 +6,7 @@ import heart from "../img/heart.png";
 
 // 맛집 모아보기 페이지 가게 리스트 컴포넌트
 
+
 function Storelist() {
     return (
         <Link to="/StoreDetail">

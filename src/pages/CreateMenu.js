@@ -21,7 +21,7 @@ function CreateMenu() {
 
         <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}>
-              ${params}
+              {params}
               </span>
               <span className={`${styles.cell} ${styles.col2}`}></span>
         </div>

@@ -40,6 +40,12 @@ class DBhandler:
                 return False
         return True
 
+    # 맛집 데이터 가져오기
+    def get_store(self):
+        stores = self.db.child("STORE").get().val()
+        return stores
+
+    
 
 
 

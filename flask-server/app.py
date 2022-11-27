@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 from database import DBhandler
 import sys
 
@@ -107,6 +107,23 @@ def Submit_Review():
 
         if DB.insert_review(data['username'], data, img_file.filename):
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
+
+#맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
+@app.route("/StoreListView")
+def list_stores():
+    storedata = DB.get_store() #read the table
+    tot_count = len(storedata) #리스트 길이 반환
+
+    return render_template(
+    "index.html",
+    storedatas=storedata.items(),
+    total=tot_count)
+
+
+
+
+
+
 
 
 
