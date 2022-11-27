@@ -13,6 +13,7 @@ DB.__init__()
 @app.route("/")
 def index():
     return render_template("index.html")
+    #return redirect(url_for('list_stores'))
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
 def Submit_store():
@@ -110,12 +111,13 @@ def Submit_Review():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
-@app.route("/StoreListView")
+@app.route("/list", methods=['GET','POST'])
 def list_stores():
-    storedata = DB.get_store().items()
-    #tot_count = len(storedata) #리스트 길이 반환
+    storedata = DB.get_stores().items()
+    print(storedata)
+    tot_count = len(storedata) #리스트 길이 반환
 
-    return storedata
+    return render_template("list.html", total=tot_count)
 
 
 @app.route("/StoreListView",methods=['GET','POST'])
