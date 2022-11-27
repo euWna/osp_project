@@ -6,7 +6,7 @@ import NavBar from '../component/NavBar';
 
 function CreateMenu() {
   return (
-    <body>
+    <div>
       <NavBar></NavBar>
       <section>
         <aside class={styles.aside}>
@@ -58,7 +58,7 @@ function CreateMenu() {
           </div>
         </form>
       </section>
-    </body>
+    </div>
   )
 }
 

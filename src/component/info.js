@@ -1,7 +1,7 @@
 import styles from '../css/Contents.module.css';
+import samplelocation from "../img/location.png";
 import sample from '../img/sample.PNG';
 import { Link } from 'react-router-dom';
-
 
 function Info() {
     return (
@@ -11,22 +11,25 @@ function Info() {
                     음식점 정보
                 </div>
                 <div>
-                    <img class={styles.image} src={sample} /><br /><br />
+                    <img class={styles.image} src={sample} /><br/><br/>
                 </div>
 
                 <div class={styles.info}>
-                    <div id="info1">
-                        <div id="name">"맛집 이름"</div>
-                        <div id="address">"주소"</div>
-                        <div id="intro">"소개 한 줄 문구"</div>
+                    <div>
+                        <div class={styles.StoreName}>맛집 이름</div>
+                        <div class={styles.storelocation}>
+                            <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
+                            "주소"
+                        </div>
                     </div>
-                    <br />
-                    <div id="info2">
-                        <div id="site">사이트 </div>
-                        <div id="category">카테고리 </div>
-                        <div id="phone">전화번호 </div>
-                        <div id="hours">운영시간 </div>
-                        <div id="parking">주차장 </div>
+                    <br/>
+                    <br/>
+                    <div>
+                    <div class="Tag">카테고리 </div>
+                        <div class={styles.site}>사이트 </div>
+                        <div class={styles.phone}>전화번호 </div>
+                        <div class={styles.time}>운영시간 </div>
+                        <div class={styles.parking}>주차장 </div>
                     </div>
                 </div>
                 <div class={styles.buttons}>

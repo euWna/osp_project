@@ -10,10 +10,8 @@ function Menu(){
                     메뉴 목록
                 </div>
                 <div class={styles.editPane}>
-                    직접 메뉴를 등록하고 수정하세요! 
-                    <div class={styles.buttons}>
+                    <span>직접 메뉴를 등록하고 수정하세요!</span>
                     <Link to="/CreateMenu"><button class={styles.button}>메뉴 정보 수정</button></Link>
-                    </div>
                 </div>
                 <div class={styles.menuPane}>
                     <MenuPost/>
