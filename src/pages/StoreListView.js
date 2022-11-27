@@ -6,6 +6,18 @@ import { Link } from 'react-router-dom';
 import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
 
+/*
+const uploadFile = async(e)=>{
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    
+    const res = await axios.post(
+        "http://192.249.28.86:5000/StoreListView", formData
+    );
+    console.log(res.data);
+}*/
+
 class StoreListView extends React.Component {
     render() {
         return (
