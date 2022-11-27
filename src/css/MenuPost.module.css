@@ -1,0 +1,64 @@
+.listbox {
+    display: flex;
+    height: 130px;
+    border: 1px solid rgb(225, 225, 225);
+    justify-content: left;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
+
+.ImagePart {
+    display: flex;
+    width: 300px;
+    height: 130px;
+    align-items: center;
+    margin-left: 2px;
+}
+
+.listdesc {
+    margin-left: 25px;
+}
+
+.MenuName {
+    top: 30px;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.storelocation {
+    position: relative;
+    top: 35px;
+
+}
+
+.Tag {
+    position: relative;
+    bottom: -13px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.heart {
+    position: relative;
+    top: 15px;
+}
+
+.heartimg {
+    position: relative;
+}
+
+.heartnum {
+    position: relative;
+    font-size: 13px;
+    font-weight: 800;
+    left: 24px;
+}
+
+.reviewnum {
+    position: relative;
+    font-size: 13px;
+    font-weight: 800;
+    right: 50px;
+    top: -27px;
+}

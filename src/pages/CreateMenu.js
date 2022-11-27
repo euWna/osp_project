@@ -5,6 +5,8 @@ import NavBar from '../component/NavBar';
 
 
 function CreateMenu() {
+  const store = useLocation();
+
   return (
     <body>
       <NavBar></NavBar>
