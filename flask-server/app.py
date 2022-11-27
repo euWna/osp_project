@@ -110,13 +110,16 @@ def Submit_Review():
 
 #맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
 @app.route("/StoreListView")
+def view2():
+    return render_template("index.html")
 def list_stores():
     storedata = DB.get_store() #read the table
     tot_count = len(storedata) #리스트 길이 반환
-
+    storedatas=jsonify(storedata)
+    return jsonify(storedata)
     return render_template(
     "index.html",
-    storedatas=storedata.items(),
+    storedatas=jsonify(storedata),
     total=tot_count)
 
 
