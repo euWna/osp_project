@@ -31,16 +31,27 @@
                             </div>
                         </div>
                         <div class=Restaurant>
-                            <!--flask에서 받아오는 코드로-->
-                            <!--<StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>
-                            <StoreList></StoreList>-->
+                            <Link to="/StoreDetail">
+                                <div class="listbox">
+                                    <div class="ImagePart">
+                                        <img src="sample" width="295" height="125" />
+                                    </div>
+                                    {/* 본문 박스 */}
+                                    <div class="listdesc">
+                                        <div class="StoreName">음식점 이름</div>
+                                        <div class="storelocation">
+                                            <img src="samplelocation" class="locationimg" width="18" height="18" />
+                                            <p class="locationtext">음식점 주소</p>
+                                        </div>
+                                        <div class="Tag">#태그 #태그</div>
+                                        <div class="heart">
+                                            <img src="heart" class="heartimg" width="14" height="16" />
+                                            <div class="heartnum">150</div>
+                                        </div>
+                                        <div class="reviewnum">리뷰""개</div>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                     <div class=rightbox>
