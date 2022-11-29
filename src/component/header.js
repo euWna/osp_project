@@ -1,26 +1,22 @@
-import '../css/Header.css';
+import styles from '../css/Header.module.css';
 import homelogo from '../img/symbol-mark.png'
-function Header(){
-    return(
-        <div>        
-        <header>
-            <div>
-                <a href=""><img id="homelogo" src={homelogo}/></a>
-            </div>
-            <div class="signInUp">
-            <a href=""/*링크*/>로그인</a>
-            <a href=""/*링크*/>회원가입</a>
-            </div>
-        </header>
-        <nav class="page">
-        <span class="pageName">맛집 상세 조회 </span>{/* 해당 페이지명 뜨도록*/}
-            <a href=""/*링크*/>리뷰 모아보기</a>
-            <a href=""/*링크*/>맛집 정보 추가하기</a>
-            <a href="" id="last"/*링크*/>맛집 모아보기</a>
-        </nav>
+import { Link } from 'react-router-dom';
+
+function Header() {
+    return (
+        <div>
+            <header>
+                <div class={styles.logotitle}>
+                    <Link to="/"><img id={styles.homelogo} src={homelogo} /></Link>
+                    <Link to="/" class={styles.hometitle}>이화여자대학교 맛집 오픈소스</Link>
+                </div>
+                <div class={styles.signInUp}>
+                    <Link to="/Login">로그인</Link>
+                    <Link to="/SignUp">회원가입</Link>
+                </div>
+            </header>
         </div>
     );
 }
-
 
 export default Header;

@@ -1,0 +1,71 @@
+.all {
+    display: flex;
+    margin-top: 20px;
+    height: 685px;
+}
+
+
+.StoreList {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+
+.TopBar {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    border-top: 1px solid #C6C6C6;
+    border-right: 1px solid #C6C6C6;
+    border-left: 1px solid #C6C6C6;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: space-between
+}
+
+.Result {
+    margin-left: 15px;
+}
+
+.dropdown {
+    margin-right: 15px;
+}
+
+.Dropdown1 {
+    margin-right: 15px;
+}
+
+.Dropdown2 {}
+
+
+.Restaurant {
+    /* display: flex; */
+    border: 1px solid rgb(191, 191, 191);
+    width: 630px;
+    /* height: 120px; */
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25); */
+    border-radius: 3px;
+    overflow: auto;
+}
+
+.rightbox {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    height: 100%;
+}
+
+.storemap {
+    width: 630px;
+    height: 50%;
+    background-color: rgb(107, 107, 107);
+}
+
+.storelistdetail {
+    width: 630px;
+    background-color: rgb(255, 255, 255);
+    height: 50%;
+}

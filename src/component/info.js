@@ -1,25 +1,26 @@
-import '../css/Contents.css';
-import homelogo from '../img/symbol-mark.png'
+import styles from '../css/Contents.module.css';
+import homelogo from '../img/symbol-mark.png';
+import { Link } from 'react-router-dom';
 
 
-function Info(){
-    return(
-        <div class="outer">
-            <div class="pane">
-                <div id="paneName">
+function Info() {
+    return (
+        <div class={styles.outer}>
+            <div class={styles.pane}>
+                <div id='paneName'>
                     음식점 정보
-                </div><br/>
+                </div><br />
                 <div>
-                <img class="image" src={homelogo}/><br/><br/>
+                    <img class={styles.image} src={homelogo} /><br /><br />
                 </div>
 
-                <div class="info">
+                <div class={styles.info}>
                     <div id="info1">
                         <div id="name">"맛집 이름"</div>
                         <div id="address">"주소"</div>
                         <div id="intro">"소개 한 줄 문구"</div>
                     </div>
-                    <br/>
+                    <br />
                     <div id="info2">
                         <div id="site">사이트 </div>
                         <div id="category">카테고리 </div>
@@ -28,9 +29,9 @@ function Info(){
                         <div id="parking">주차장 </div>
                     </div>
                 </div>
-                <div class="buttons">
-                    <a href=""><button class="button">정보 수정</button></a>
-                    <a href=""><button class="button">리뷰 등록</button></a>
+                <div class={styles.buttons}>
+                    <Link to="/CreateStore"><button class={styles.button}>정보 수정</button></Link>
+                    <Link to="/CreateReview"><button class={styles.button}>리뷰 등록</button></Link>
                 </div>
 
                 <div class="map">
