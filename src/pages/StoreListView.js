@@ -13,67 +13,34 @@ import heart from "../img/heart.png";
 import { useState, useEffect } from 'react';
 
 function Stores(){
-    const [data, setData] = useState([{}])
-
+    const [storedata, setData] = useState([{}])
     useEffect(() => {
-        axios.get({
-            url:'/StoreListView',
-            header:{
-               'Accept':'application/json',
-               'Content-Type':'application/json'
+        fetch("/StoreListView", {
+            headers: {
+                Accept: "application/json",
             }
         })
-        .then((response) => {
-            setData(response.data);
-            console.log(data);
+        .then(response => response.json())
+        .then(jsonData => {
+            console.log(jsonData)
+            setData(storedata);
         })
-        .catch((err) => console.log(err))
-    },[]);
+        .catch(
+            (err) => console.log(err))
+    }, [])
 
-
-  return (
-      <div>
-        {/* 삼항연산자 */}
-        { (typeof data.StoreListView === 'undefined') ? (
-          // fetch가 완료되지 않았을 경우에 대한 처리
-          <p>loading...</p>
-        ) : (
-          data.StoreListView.map((u) => <p>{u.storename}</p>)
-        )}
-      </div>
-  )
-
+    return (
+          <div>
+            {/* 삼항연산자 */}
+            { (typeof storedata.storename === 'undefined') ? (
+              // fetch가 완료되지 않았을 경우에 대한 처리
+              <p>loding...</p>
+            ) : (
+              storedata.storename.map((u) => <p>{u.storename}</p>)
+            )}
+            </div>
+      )
 }
-
-// function Stores() {
-//   const [data, setData] = useState([{}])
-
-//   useEffect(() => {
-//     	fetch("http://127.0.0.1:5000/StoreListView", {
-//         // 'methods' : 'GET',    
-//         headers: {
-//            'Content-Type':'application/json'
-//          }
-//         })
-//         .then(
-//             resp => resp.json
-//         )
-//         .then(resp=>console.log(resp))
-//         .catch((err) => console.log(err))
-//     }, [])
-
-//   return (
-//       <div>
-//         {/* 삼항연산자 */}
-//         { (typeof data.StoreListView === 'undefined') ? (
-//           // fetch가 완료되지 않았을 경우에 대한 처리
-//           <p>loading...</p>
-//         ) : (
-//           data.StoreListView.map((u) => <p>{u.storename}</p>)
-//         )}
-//       </div>
-//   )
-// }
 
 
 class StoreListView extends React.Component {
@@ -83,6 +50,7 @@ class StoreListView extends React.Component {
                 <NavBar />
                 <section>
                 <Stores></Stores>
+                
                     <div class={styles.all} >
                         <div className={styles.StoreList}>
                             <div className={styles.TopBar}>

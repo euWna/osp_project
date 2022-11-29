@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 from database import DBhandler
+from collections import OrderedDict
+import json
 import sys
 
 
@@ -9,6 +11,7 @@ app = Flask(__name__)
 DB = DBhandler()
 
 DB.__init__()
+
 
 @app.route("/")
 def index():
@@ -109,25 +112,18 @@ def Submit_Review():
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
 #맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
-@app.route("/StoreListView")
-def view2():
-    return render_template("index.html")
+@app.route("/StoreListView", methods=['GET','POST'])
 def list_stores():
     storedata = DB.get_store() #read the table
     tot_count = len(storedata) #리스트 길이 반환
-    storedatas=jsonify(storedata)
-    return jsonify(storedata)
+    storedatajson =  json.dumps(storedata)
+    # storedatas=storedata.items()
+    return redirect(url_for('list_stores', storedatas=storedatajson))
+    return storedatajson
     return render_template(
     "index.html",
-    storedatas=jsonify(storedata),
+    storedatas=storedatajson,
     total=tot_count)
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
