@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for,jsonify
 from database import DBhandler
-import sys
+import sys,json
 
 
 
@@ -12,9 +12,9 @@ DB.__init__()
 
 @app.route("/")
 def index():
-    # return render_template("index.html")
-    return redirect(url_for("list_stores")) 
-    #윗줄을 이걸로 바꿔야함
+    return render_template("index.html")
+    # return redirect(url_for("list_stores")) 
+    # #윗줄을 이걸로 바꿔야함
 
 def refresh(site):
     return redirect
@@ -47,13 +47,13 @@ def Submit_store():
         
         if DB.insert_store(data['storename'], data, img_file.filename):
             #return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
-            return redirect(url_for('view', store_id=name))
+            return redirect(url_for('view', storename=name))
         else:
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>",methods=['GET','POST'])
-def view(store_id):
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view(storename):
     return render_template("index.html")
 
 '''
@@ -111,23 +111,36 @@ def Submit_Review():
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
 
-@app.route("/StoreListView")
-def list_stores():
-    page=request.args.get("page",0,type=int)
-    limit=10
-    start_idx=limit*page
-    end_idx=limit*(page+1)
-    data=DB.get_stores()
-    tot_count=len(data)
-    data=dict(list(data.items())[start_idx:end_idx])
+# @app.route("/StoreListView")
+# def list_stores():
+#     page=request.args.get("page",0,type=int)
+#     limit=10
+#     start_idx=limit*page
+#     end_idx=limit*(page+1)
+#     data=DB.get_stores()
+#     tot_count=len(data)
+#     data=dict(list(data.items())[start_idx:end_idx])
 
+#     return render_template(
+#         "StoreListView.html",
+#     data=jsonify(data),
+#     total=tot_count,
+#     limit=limit,
+#     page=page,
+#     page_count=int((tot_count/10)+1))
+
+@app.route("/StoreListView", methods=['GET','POST'])
+def list_stores():
+    storedata = DB.get_stores() #read the table
+    tot_count = len(storedata) #리스트 길이 반환
+    storedatas =  json.dumps(storedata)
+    print(type(storedatas))
+    # return storedatas
     return render_template(
-        "StoreListView.html",
-    data=jsonify(data),
-    total=tot_count,
-    limit=limit,
-    page=page,
-    page_count=int((tot_count/10)+1))
+    "index.html",
+    storedatas=storedatas,
+    total=tot_count)
+
 
 @app.route("/StoreDetail/<storename>/")
 def view_store_detail(name):

@@ -67,10 +67,6 @@ class DBhandler:
                 return False
         return True
 
-
-
-
-
     def insert_review(self,name,data,img_path):
         review_info ={
             "storescore" : data['storescore'],

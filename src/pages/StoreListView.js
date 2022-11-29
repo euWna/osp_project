@@ -7,6 +7,7 @@ import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
 // import { data } from 'browserslist';
 import { useEffect, useState } from 'react';
+var hreq = new XMLHttpRequest();
 // const [articles, setArticles] = useState([]);
 // useEffect(() => {
 //     fetch('http://127.0.0.1:5000/StoreList', {
@@ -20,9 +21,20 @@ import { useEffect, useState } from 'react';
 //         .then(resp => resp.log(resp))
 //         .catch(error => console.log(error))
 // }, [])
-function Stores() {
-    const [data, setData] = useState([{}])
 
+function Stores() {
+    // 여기서부터가 ajax활용한 부분, useEffect사용한 것과 동일한 효과
+    const [data, setData] = useState([{}])
+    // fetch("http://127.0.0.1:5000/StoreListView", {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         name: "name",
+    //         number: 1,
+    //     }),
+    // })
     useEffect(() => {
         fetch("http://127.0.0.1:5000/StoreListView", {
             headers: {
@@ -41,21 +53,24 @@ function Stores() {
     }, [])
 
     return (
+
         <div>
-            {/* 삼항연산자 */}
-            {(typeof data.StoreListView === 'undefined') ? (
+            getJSON();
+            {/* 삼항연산자
+            {(typeof data.storename === 'undefined') ? (
                 // fetch가 완료되지 않았을 경우에 대한 처리
                 <p>loading...</p>
             ) : (
-                data.StoreListView.map((u) => <p>{u.storename}</p>)
-            )}
+                data.keys.storename.map((u) => <p>{u.keys.storename}</p>)
+
+            )} */}
         </div>
     )
 }
 
 class StoreListView extends React.Component {
     render() {
-        var datas = document.getElementsById('STORELISTVIEW')
+
         return (
             <div>
                 <NavBar />
@@ -92,7 +107,10 @@ class StoreListView extends React.Component {
                                 } */}
                                 {/* 여기에 app.py- list_Stores활용하기 */}
 
-
+                                <StoreList></StoreList>
+                                <StoreList></StoreList>
+                                <StoreList></StoreList>
+                                <StoreList></StoreList>
                             </div>
                         </div>
                         <div class={styles.rightbox}>
@@ -110,4 +128,36 @@ class StoreListView extends React.Component {
         )
     }
 }
+
+// function getJSON() {
+//     $.ajax({
+//         type: "get",
+//         url: "data.json",
+//         dataType: "json",
+//         success: function (data) {
+//             console.log("통신성공");
+//             console.log(data);
+//             str = '<TR>';
+//             $.each(data, function (i) {
+//                 str += '<TD>' + data[i].food + '</TD>';
+//                 '<TD > ' + data[i].img_path + '</TD>';
+//                 '<TD>' + data[i].location + '</TD>';
+//                 '<TD>' + data[i].park + '</TD>';
+//                 '<TD>' + data[i].phonenumber + '</TD>';
+//                 '<TD > ' + data[i].price1 + '</TD >';
+//                 '<TD > ' + data[i].price2 + '</TD >';
+//                 '<TD>' + data[i].site + '</TD>';
+//                 '<TD>' + data[i].storename + '</TD>';
+//                 '<TD>' + data[i].time1 + '</TD>';
+//                 '<TD>' + data[i].time2 + '</TD>';
+//                 str += '</TR>';
+//             });
+//             $('.table_body').append(str);
+//         },
+//         error: function () {
+//             console.log("통신에러");
+//         }
+//     })
+// }
+
 export default StoreListView;
