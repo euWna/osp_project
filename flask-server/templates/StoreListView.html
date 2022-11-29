@@ -52,6 +52,17 @@
                                         </div>
                                         <div class="reviewnum">리뷰""개</div>
                                     </div>
+                                    <div class = "page-wrap">
+                                        <div class = "page-nation">
+                                            <ul>
+                                                <li>
+                                                    {% for i in range(page_count)%}
+                                                        <a href = "{{url_for('list_stores', page=i}}" color="black">{{i}}</a>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                     {% endfor %}
                                 </div>
                             <!--</a>-->
