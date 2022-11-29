@@ -13,8 +13,8 @@ DB.__init__()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
-    #return redirect(url_for('view_2'))
+    #return render_template("index.html")
+    return redirect(url_for('list_stores'))
 
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
