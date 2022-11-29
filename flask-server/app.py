@@ -110,25 +110,23 @@ def Submit_Review():
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
 #맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
-# @app.route("/StoreListView", methods=['GET','POST'])
-# def view_StoreListView():
-#     return render_template("index.html")
 
 @app.route("/StoreListView", methods=['GET','POST'])
-# def view_storelistview():
-#     return render_template("index.html")
+def StoreListView():
+    return render_template("index.html")
+
+@app.route("/StoreListView_send_data", methods=['GET','POST'])
 def list_stores():
-    storedata = DB.get_store() #read the table
-    tot_count = len(storedata) #리스트 길이 반환
-    storedatajson =  json.dumps(storedata)
-    # storedatas=storedata.items()
-    return storedatajson
+    if request.method == 'GET':
+        storedata = DB.get_store() #read the table
+        tot_count = len(storedata) #리스트 길이 반환
+        storedatajson =  json.dumps(storedata)
+        return storedatajson
+
     # return render_template(
-    # "index.html")
-    return render_template(
-    "index.html",
-    storedatas=storedatajson,
-    total=tot_count)
+    # "index.html",
+    # storedatas=storedatajson,
+    # total=tot_count)
 
 
 if __name__ == "__main__":

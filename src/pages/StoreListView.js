@@ -38,41 +38,42 @@ function StoreTemplate(storename) {
     );
 }
 
-function Storelist(storeinfo){ //value 객체를 props로 받아옴
-    var infoarr = new Array(); 
-    for(const [info] in Object.keys(storeinfo)){ //식당 정보만큼 반복
-        infoarr[info]=Object.values(storeinfo)[info] //식당 정보 저장
-    }
-    return infoarr //정보 담긴 배열 리턴
-}
+// function Storelist(storeinfo){ //value 객체를 props로 받아옴
+//     var infoarr = new Array(); 
+//     for(const [info] in Object.keys(storeinfo)){ //식당 정보만큼 반복
+//         infoarr[info]=Object.values(storeinfo)[info] //식당 정보 저장
+//     }
+//     return infoarr //정보 담긴 배열 리턴
+// }
 
 function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
-    
-    const [storedata, setData] = useState([{}])
+    const [storedata, setData] = useState()
     var storearr = new Array(); 
     useEffect(() => {
-        fetch("/StoreListView", { //json 데이터를 받아옴
+        fetch("/StoreListView_send_data", { //json 데이터를 받아옴
             headers: {
-                Accept: "application/json",
+                Accept: 'application/json',
+                method: 'GET'
             }
         })
         .then(response => response.json())
         .then(jsonData => {
-
             for(const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
-                var infoobject = Object.values(jsonData)[key] //각 식당의 정보 객체를 변수 a에 저장
-                storearr[key]=Storelist(infoobject)
+                storearr[key]=Object.values(jsonData)[key]  // 객체임 객체를 배열에 넣는건데...
             }
+            setData(storearr)
         })
         .catch(
             (err) => console.log(err))
     }, [])
-    if (storearr) {
-        console.log('출력확인')
-        console.log(storearr[0][8])
-    }
 
-    return storearr
+    return (
+          <div>
+            {(storedata && storedata.map((u) => <p>{u.storename}</p>))}
+            {(storedata && storedata.map((u) => <p>{u.location}</p>))}
+            {(storedata && storedata.map((u) => <p>{u.food}</p>))}
+          </div>
+      )
 }
 
 
@@ -82,7 +83,6 @@ class StoreListView extends React.Component {
             <div>
                 <NavBar />
                 <section>
-                <Stores></Stores>
                     <div class={styles.all} >
                         <div className={styles.StoreList}>
                             <div className={styles.TopBar}>
@@ -106,7 +106,7 @@ class StoreListView extends React.Component {
                                 </div>
                             </div>
                             < div className={styles.Restaurant}>
-                                {/* flask에서 받아올 수 있는 코드 수정 */}
+                                <Stores></Stores>
                                 <StoreList></StoreList>
                                 <StoreList></StoreList>
                                 <StoreList></StoreList>
