@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import *
 from database import DBhandler
 import sys
-
+from json import *
+from flask_cors import CORS, cross_origin
+import numpy as np
 
 
 app = Flask(__name__)
@@ -10,10 +12,12 @@ DB = DBhandler()
 
 DB.__init__()
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
-    #return redirect(url_for('list_stores'))
+    #return redirect(url_for('view_2'))
+
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
 def Submit_store():
@@ -106,20 +110,32 @@ def Submit_Review():
         if DB.insert_review(data['username'], data, img_file.filename):
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
+      
 
+
+@app.route("/StoreListView")
+def list_stores():
+    return render_template("StoreListView.html")
+
+
+
+
+'''
+@app.route("/StoreListView")
+def list_stores():
+    storedata = DB.get_stores().items
+    storedatas = list(storedata)
+    print(storedata, type(storedatas))
+    tot_count = len(storedata) #리스트 길이 반환
+
+    return storedata
+
+@app.route('/StoreListView')
+def users():
+    return {"members" : [{"id" : 1, "name" : "yerin"},
+                        { "id" : 2, "name" : "dalkong"}]}
+'''
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
-@app.route("/list", methods=['GET','POST'])
-def list_stores():
-    storedata = DB.get_stores().items()
-    print(storedata)
-    tot_count = len(storedata) #리스트 길이 반환
-
-    return render_template("list.html", total=tot_count)
-
-
-@app.route("/StoreListView",methods=['GET','POST'])
-def view_storelist(store_id):
-    return render_template("index.html")

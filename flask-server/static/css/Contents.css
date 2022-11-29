@@ -1,0 +1,145 @@
+:root {
+    --ewhagreen: rgb(0, 70, 42);
+    --grayborder: 1px solid #d2d2d2;
+}
+
+.outer {
+    text-align: center;
+}
+
+.pane {
+    display: inline-block;
+    width: 50%;
+    border: var(--grayborder);
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+#paneName {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+    padding: 25px;
+    padding-left: 70px;
+    border-bottom: var(--grayborder);
+    vertical-align: middle;
+}
+
+.editPane{
+    text-align: left;
+    padding: 15px;
+    padding-left: 100px;
+    border-bottom: var(--grayborder);
+}
+
+.editPane > span {
+    margin-right: 15px;
+}
+
+.button {
+    display: inline-block;
+
+    width: 130px;
+
+    padding: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: var(--ewhagreen);
+    border: 0px;
+    border-radius: 14px;
+
+    color: white;
+    font-size: 15px;
+    font: bold;
+
+    margin: 2px;
+}
+
+.menuPane{
+    padding: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.image {
+    float: center;
+    width:50%;
+    border: var(--grayborder);
+}
+
+
+/*info */
+
+.info {
+    font-size: 16px;
+    float: left;
+    width: 50%;
+    text-align: left;
+    line-height: 200%;
+    padding: 30px;
+    padding-left: 100px;
+    padding-top: 0px;
+}
+
+
+.map {
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.StoreName {
+    position: relative;
+    top: 30px;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.storelocation {
+    position: relative;
+    top: 50px;
+    font-size: 20px;
+
+}
+
+.locationimg {
+    position: relative;
+}
+
+.locationtext {
+    position: relative;
+    top: -23px;
+    left: 15px;
+    font-size: 10px;
+    color: rgb(120, 120, 120);
+}
+
+.Tag {
+    position: relative;
+    bottom: -13px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.heart {
+    position: relative;
+    top: 15px;
+}
+
+.heartimg {}
+
+.heartnum {
+    position: relative;
+    font-size: 13px;
+    font-weight: 800;
+    top: -24px;
+    left: 24px;
+}
+
+.reviewnum {
+    position: relative;
+    font-size: 13px;
+    font-weight: 800;
+    right: 50px;
+    top: -27px;
+}

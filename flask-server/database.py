@@ -42,8 +42,8 @@ class DBhandler:
 
     #맛집 정보 가져오는 함수(StoreListView에서 사용)
     def get_stores(self):
-        stores = self.db.child("STORE").get.val()
-        print(stores)
+        stores = self.db.child("STORE").get().val()
+        #print(stores)
         return stores
 
 

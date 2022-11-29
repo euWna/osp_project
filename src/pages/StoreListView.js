@@ -8,64 +8,92 @@ import StoreList from '../component/storelist';
 
 import samplelocation from "../img/location.png";
 import heart from "../img/heart.png";
+import axios from 'axios';
 
 
-class StoreListView extends Component {
-    render() {
-        return (
-            <div>
-                <NavBar />
-                <section>
-                    <div class={styles.all} >
-                        <div className={styles.StoreList}>
-                            <div className={styles.TopBar}>
-                                <span className={styles.Result}>결과건</span>
-                                <div class={styles.dropdown}>
-                                    <span className={styles.Dropdown1}>
-                                        <select name="dropFood">
-                                            <option value="Dessert">디저트</option>
-                                            <option value="Korean">한식</option>
-                                            <option value="Japanese">일식</option>
-                                            <option value="Chinese">중식</option>
-                                        </select>
-                                    </span>
-                                    <span className="Dropdown2">
-                                        <select name="dropSort">
-                                            <option value="SortByRecommendation">추천순</option>
-                                            <option value="SortByReview">리뷰많은 순</option>
-                                            <option value="SortByPrice">가격 낮은 순</option>
-                                        </select>
-                                    </span>
-                                </div>
-                            </div>
-                            < div className={styles.Restaurant}>
-                                <p>맛집 이름 : </p>
-                                {/* flask에서 받아올 수 있는 코드 수정 */}
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                            </div>
-                        </div>
-                        <div class={styles.rightbox}>
-                            <div className={styles.StoreMap}>
-                                {/*지도 API 추가할 부분*/}
-                            </div>
-                            <button type="button" name="next_button"></button>
-                            {/*음식점 목록과 지도 API 사이에 있는 버튼*/}
-                            <div class={styles.storelistdetail}>
-                            </div>
-                        </div>
-                    </div >
-                </section >
-            </div >
-
+function StoreListView() {
+    //const [storedata, setData]= useState([{}]);
+    //useEffect(() => {
+    //    fetch('http://127.0.0.1:5000/StoreListView').then(
+    //        response => response.json()
+    //    ).then(data => setData(data.storedata))
+    //    console.log("뙜냐")
+    //    console.log(storedata)
+    //}, []);
+    const [data, setData] = useState([{}])
+    useEffect(() => {
+        fetch("/StoreListView").then(
+            //response 객체의 json() 이용하여 json 데이터를 객체로 전환
+            response=>response.json()
+        ).then(
+            data =>{
+                setData(data);
+            }
+        ).catch(
+            (err) => console.log(err)
         )
-    }
+    },[])
+
+    return (
+        <div>
+            <NavBar />
+            <section>
+                <div class={styles.all} >
+                    <div className={styles.StoreList}>
+                        <div className={styles.TopBar}>
+                            <span className={styles.Result}>결과건</span>
+                            <div class={styles.dropdown}>
+                                <span className={styles.Dropdown1}>
+                                    <select name="dropFood">
+                                        <option value="Dessert">디저트</option>
+                                        <option value="Korean">한식</option>
+                                        <option value="Japanese">일식</option>
+                                        <option value="Chinese">중식</option>
+                                    </select>
+                                </span>
+                                <span className="Dropdown2">
+                                    <select name="dropSort">
+                                        <option value="SortByRecommendation">추천순</option>
+                                        <option value="SortByReview">리뷰많은 순</option>
+                                        <option value="SortByPrice">가격 낮은 순</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        < div className={styles.Restaurant}>
+                            <div>
+                            { (typeof data.users === 'undefined') ? (
+                                <p>loading...</p>
+                            ) : (
+                                storedata..map((u) => <p>{u.name}</p>)
+                            )}
+                            </div>
+                            {/* flask에서 받아올 수 있는 코드 수정 */}
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                        </div>
+                    </div>
+                    <div class={styles.rightbox}>
+                        <div className={styles.StoreMap}>
+                            {/*지도 API 추가할 부분*/}
+                        </div>
+                        <button type="button" name="next_button"></button>
+                        {/*음식점 목록과 지도 API 사이에 있는 버튼*/}
+                        <div class={styles.storelistdetail}>
+                        </div>
+                    </div>
+                </div >
+            </section >
+        </div >
+
+    )
 }
+
 export default StoreListView;

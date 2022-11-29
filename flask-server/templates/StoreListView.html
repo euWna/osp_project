@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+    <head>
+		<link rel="stylesheet" href="../static/css/StoreListView.css">
+	</head>
+    <body>
+        <div>
+            <NavBar />
+            <section>
+                <div class=all >
+                    <div class=StoreList>
+                        <div class=TopBar>
+                            <span class=Result>결과건</span>
+                            <div class=dropdown>
+                                <span class=Dropdown1>
+                                    <select name="dropFood">
+                                        <option value="Dessert">디저트</option>
+                                        <option value="Korean">한식</option>
+                                        <option value="Japanese">일식</option>
+                                        <option value="Chinese">중식</option>
+                                    </select>
+                                </span>
+                                <span class="Dropdown2">
+                                    <select name="dropSort">
+                                        <option value="SortByRecommendation">추천순</option>
+                                        <option value="SortByReview">리뷰많은 순</option>
+                                        <option value="SortByPrice">가격 낮은 순</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <div class=Restaurant>
+                            <!--flask에서 받아오는 코드로-->
+                            <!--<StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>
+                            <StoreList></StoreList>-->
+                        </div>
+                    </div>
+                    <div class=rightbox>
+                        <div class=StoreMap>
+                            <!--지도 API 추가할 부분-->
+                        </div>
+                        <button type="button" name="next_button"></button>
+                        <!--음식점 목록과 지도 API 사이에 있는 버튼-->
+                        <div class=storelistdetail>
+                        </div>
+                    </div>
+                </div >
+            </section >
+        </div >
+    </body>
+</html>
