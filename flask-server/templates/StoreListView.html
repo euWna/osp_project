@@ -32,11 +32,13 @@
                         </div>
                         <div class=Restaurant>
                             <!--<a href="">-->
-                            {% for storedata in storedata %}
                                 <div class="listbox">
+                                    {% for storedata in storedata %}
+                                    <a href="/StoreDetail/{{storedata[1].storename}}">
                                     <div class="ImagePart">
                                         <img src="../static/img/sample.PNG" width="295" height="125" />
                                     </div>
+                                    </a>
                                     <div class="listdesc">
                                         <div class="StoreName">{{storedata[1].storename}}</div>
                                         <div class="storelocation">
@@ -46,13 +48,13 @@
                                         <div class="Tag">#{{storedata[1].food}}</div>
                                         <div class="heart">
                                             <img src="../static/img/heart.png" class="heartimg" width="14" height="16" />
-                                            <div class="heartnum">150</div>-->
+                                            <div class="heartnum">150</div>
                                         </div>
                                         <div class="reviewnum">리뷰""개</div>
                                     </div>
+                                    {% endfor %}
                                 </div>
                             <!--</a>-->
-                            {% endfor %}
                         </div>
                     </div>
                     <div class=rightbox>
