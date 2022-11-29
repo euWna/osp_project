@@ -12,42 +12,67 @@ import heart from "../img/heart.png";
 
 import { useState, useEffect } from 'react';
 
-function Stores(){
-    const [storedata, setData] = useState([{}])
-    var storename
-    var location
 
+function StoreTemplate(storename) {
+    return (
+        <Link to="/StoreDetail">
+            <div class={styles.listbox}>
+                <div className={styles.ImagePart}>
+                    <img src={sample} width="295" height="125" />
+                </div>
+                <div class={styles.listdesc}>
+                    <div class={styles.StoreName}>{storename}</div>
+                    <div class={styles.storelocation}>
+                        <img src={samplelocation} class={styles.locationimg} width="18" height="18" />
+                        <p class={styles.locationtext}>음식점 주소</p>
+                    </div>
+                    <div class={styles.Tag}>#태그 #태그</div>
+                    <div class={styles.heart}>
+                        <img src={heart} class={styles.heartimg} width="14" height="16" />
+                        <div class={styles.heartnum}>150</div>
+                    </div>
+                    <div class={styles.reviewnum}>리뷰""개</div>
+                </div>
+            </div>
+        </Link>
+    );
+}
+
+function Storelist(storeinfo){ //value 객체를 props로 받아옴
+    var infoarr = new Array(); 
+    for(const [info] in Object.keys(storeinfo)){ //식당 정보만큼 반복
+        infoarr[info]=Object.values(storeinfo)[info] //식당 정보 저장
+    }
+    return infoarr //정보 담긴 배열 리턴
+}
+
+function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
+    
+    const [storedata, setData] = useState([{}])
+    var storearr = new Array(); 
     useEffect(() => {
-        fetch("/StoreListView", {
+        fetch("/StoreListView", { //json 데이터를 받아옴
             headers: {
                 Accept: "application/json",
             }
         })
         .then(response => response.json())
         .then(jsonData => {
-            for(const [key] in Object.keys(jsonData)) {
-                console.log(Object.keys(jsonData)[key])
-                storename=Object.keys(jsonData)[key]
-                var a = Object.values(jsonData)[key]
-                for(const [info] in Object.keys(a)){
-                    console.log(Object.values(a)[info])
-                }
+
+            for(const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
+                var infoobject = Object.values(jsonData)[key] //각 식당의 정보 객체를 변수 a에 저장
+                storearr[key]=Storelist(infoobject)
             }
-            setData(storedata);
         })
         .catch(
             (err) => console.log(err))
     }, [])
+    if (storearr) {
+        console.log('출력확인')
+        console.log(storearr[0][8])
+    }
 
-    return (
-        <div>
-        { (typeof storedata.users === 'undefined') ? (
-            <p>loading...</p>
-        ) : (
-            storedata.keys.storename.map((u) => <p>{u.name}</p>)
-        )}
-        </div>
-      )
+    return storearr
 }
 
 
@@ -58,7 +83,6 @@ class StoreListView extends React.Component {
                 <NavBar />
                 <section>
                 <Stores></Stores>
-                
                     <div class={styles.all} >
                         <div className={styles.StoreList}>
                             <div className={styles.TopBar}>
