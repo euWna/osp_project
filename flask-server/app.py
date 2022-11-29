@@ -13,8 +13,8 @@ DB.__init__()
 
 @app.route("/")
 def index():
-    #return render_template("index.html")
-    return redirect(url_for('list_stores'))
+    return render_template("index.html")
+    #return redirect(url_for('list_stores'))
 
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
@@ -30,8 +30,8 @@ def Submit_store():
         time2 = data['time2']
         category = data['food']
         park = data['park']
-        time1 = data['price1']
-        time2 = data['price2']
+        price1 = data['price1']
+        price2 = data['price2']
         site = data['site']
         # print(name, location, phonenumber, category,site)
 
@@ -110,9 +110,23 @@ def Submit_Review():
 
 @app.route("/StoreListView")
 def view_list():
+    page = request.args.get("page",0,type=int)
+    limit = 3
+
+    start_idx=limit*page
+    end_idx=limit*(page+1)
     storedata = DB.get_stores()
     tot_count = len(storedata)
-    return render_template("StoreListView.html", storedata=storedata.items(), total=tot_count)
+    storedata = dict(list(storedata.items())[start_idx:end_idx])
+
+
+    return render_template(
+        "StoreListView.html",
+        storedata=storedata.items(),
+        total=tot_count,
+        limit=limit,
+        page=page,
+        page_count=int(tot_count/10)+1)
 
 @app.route("/StoreDetail/<storename>")
 def view_detail(storename):

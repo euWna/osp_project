@@ -12,8 +12,7 @@ class DBhandler:
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
         store_info ={
-            "name":name,
->>>>>>> 957b3797f5a2860c1fe0f3f141d2c890567a953d
+            "name" : name,
             "storename" : data['storename'],
             "location" : data['location'],
             "phonenumber" : data['phonenumber'], 
