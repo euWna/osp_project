@@ -14,7 +14,8 @@ DB.__init__()
 @app.route("/")
 def index():
     return render_template("index.html")
-    #return redirect(url_for('list_stores'))
+    #return redirect(url_for('view_list'))
+
 
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
@@ -42,7 +43,7 @@ def Submit_store():
         #DB.insert_store(data['storename'], data, img_file.filename)
 
         # return render_template("result.html", result=data, img_path="static/img"+img_file.filename)
-        
+
         if DB.insert_store(data['storename'], data, img_file.filename):
             #return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
             return redirect(url_for('view', storename=name))
@@ -88,7 +89,7 @@ def Submit_menu():
             request_method == 'POST'
             return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)'''
 
-        
+
 @app.route("/CreateReview", methods=['GET','POST'])
 def Submit_Review():
     if request.method == 'POST':
@@ -99,7 +100,7 @@ def Submit_Review():
         reviewtitle = data['reviewtitle']
         reviewdesc = data['reviewdesc']
         #print(username,"\n",reviewtitle, '\n', reviewdesc)
-        
+
         img_file = request.files['file']
         if img_file:
             img_file.save("./flask-server/static/img/"+img_file.filename)
@@ -149,7 +150,7 @@ def view_detail(storename):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
-  
+
 
 '''
 @app.route("/StoreListView")
@@ -173,4 +174,3 @@ def users():
     return {"members" : [{"id" : 1, "name" : "yerin"},
                         { "id" : 2, "name" : "dalkong"}]}
 '''
-
