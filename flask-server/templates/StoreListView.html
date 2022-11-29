@@ -32,8 +32,9 @@
                         </div>
                         <div class=Restaurant>
                             <!--<a href="">-->
+                            {% if total > 0%}
                                 <div class="listbox">
-                                    {% for storedata in storedata %}
+                                    {% for storedata in storedatas %}
                                     <a href="/StoreDetail/{{storedata[1].storename}}">
                                     <div class="ImagePart">
                                         <img src="../static/img/sample.PNG" width="295" height="125" />
@@ -57,15 +58,17 @@
                                         <div class = "page-nation">
                                             <ul>
                                                 <li>
-                                                    {% for i in range(page_count)%}
-                                                        <a href = "{{url_for('list_stores', page=i}}" color="black">{{i}}</a>
-                                                    {% endfor %}
+                                                {% for i in range(page_count)%}
+                                                    <a href = "{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
+                                                {% endfor %}
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            <!--</a>-->
+                            {% else %}
+                            <p> 등록된 맛집이 없습니다.</p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class=rightbox>

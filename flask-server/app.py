@@ -14,7 +14,8 @@ DB.__init__()
 @app.route("/")
 def index():
     return render_template("index.html")
-    #return redirect(url_for('list_stores'))
+    #return redirect(url_for('view_list'))
+
 
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
@@ -122,11 +123,12 @@ def view_list():
 
     return render_template(
         "StoreListView.html",
-        storedata=storedata.items(),
+        storedatas=storedata.items(),
         total=tot_count,
         limit=limit,
         page=page,
-        page_count=int(tot_count/10)+1)
+        page_count=int((tot_count/10)+1)
+        )
 
 @app.route("/StoreDetail/<storename>")
 def view_detail(storename):
