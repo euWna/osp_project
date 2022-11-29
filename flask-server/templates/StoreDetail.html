@@ -2,14 +2,17 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="../static/css/StoreListView.css">
+        <link rel="stylesheet" href="../static/css/Contents.css">
+        <link rel="stylesheet" href="../static/css/Header.css">
+        <link rel="stylesheet" href="../static/css/Storelist.css">
+        <link rel="stylesheet" href="../static/css/MenuPost.css">
     </head>
     <body>
         <div>
             <nav>
-                <Link to="/ReviewAll">리뷰 모아보기</Link>
-                <Link to="/CreateStore">맛집 정보 추가하기</Link>
-                <Link to="/StoreListView">맛집 모아보기</Link>
+                <link>리뷰 모아보기</link>
+                <a href="/CreateStore">맛집 정보 추가하기</a>
+                <a href="/StoreListView">맛집 모아보기</a>
             </nav>
             <div class="outer">
                 <div class="pane">
@@ -38,7 +41,7 @@
                             <div class="parking">주차장 </div>
                         </div>
                     </div>
-                    <div class=buttons>
+                    <div class="buttons">
                         <Link to="/CreateStore"><button class="button">정보 수정</button></Link>
                         <Link to="/CreateReview"><button class="button">리뷰 등록</button></Link>
                     </div>
@@ -48,48 +51,39 @@
                     </div>
                 </div>
             </div>
-                <Menu/>
-                <Review/>
-            <NavBar></NavBar>
-             <Info/>
-
-             <div class = menu>
-                <div class={styles.outer}>
-                    <div class={styles.pane}>
-                        <div id={styles.paneName}>
+             <div class = "menu">
+                <div class="outer">
+                    <div class="pane">
+                        <div id="paneName">
                             메뉴 목록
                         </div>
-                        <div class={styles.editPane}>
+                        <div class="editPane">
                             <span>직접 메뉴를 등록하고 수정하세요!</span>
-                            <Link to="/CreateMenu"><button class={styles.button}>메뉴 정보 수정</button></Link>
+                            <Link to="/CreateMenu"><button class="button">메뉴 정보 수정</button></Link>
                         </div>
-                        <div class={styles.menuPane}>
-                            <MenuPost/>
-                            <MenuPost/>
+                        <div class="menuPane">
                             <MenuPost/>
                         </div>
                     </div>
                 </div>
              </div>
 
-             <div class = review>
-                <div class= outer>
-                    <div class= pane>
-                        <div id= paneName>
+            <div class = "review">
+                <div class= "outer">
+                    <div class= "pane">
+                        <div id= "paneName">
                             리뷰&#40; /*total*/ 건&#41;
                         </div>
-                        <div class= editPane>
+                        <div class= "editPane">
                             <span>여러분의 맛집 후기를 남겨주세요!</span>
-                            <Link to="/CreateMenu"><button class= button>리뷰 등록</button></Link>
+                            <Link to="/CreateMenu"><button class= "button">리뷰 등록</button></Link>
                         </div>
-                        <div class= menuPane>
-                            <ReviewPost/>
-                            <ReviewPost/>
+                        <div class= "menuPane">
                             <ReviewPost/>
                         </div>
                     </div>
                 </div>
-             </div>
             </div>
+        </div>
     </body>
 </html>
