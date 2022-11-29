@@ -5,8 +5,44 @@
         <div>
             <NavBar></NavBar>
              <Info/>
-                <Menu/>
-                <Review/>
+
+             <div class = menu>
+                <div class={styles.outer}>
+                    <div class={styles.pane}>
+                        <div id={styles.paneName}>
+                            메뉴 목록
+                        </div>
+                        <div class={styles.editPane}>
+                            <span>직접 메뉴를 등록하고 수정하세요!</span>
+                            <Link to="/CreateMenu"><button class={styles.button}>메뉴 정보 수정</button></Link>
+                        </div>
+                        <div class={styles.menuPane}>
+                            <MenuPost/>
+                            <MenuPost/>
+                            <MenuPost/>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+             <div class = review>
+                <div class= outer>
+                    <div class= pane>
+                        <div id= paneName>
+                            리뷰&#40; /*total*/ 건&#41;
+                        </div>
+                        <div class= editPane>
+                            <span>여러분의 맛집 후기를 남겨주세요!</span>
+                            <Link to="/CreateMenu"><button class= button>리뷰 등록</button></Link>
+                        </div>
+                        <div class= menuPane>
+                            <ReviewPost/>
+                            <ReviewPost/>
+                            <ReviewPost/>
+                        </div>
+                    </div>
+                </div>
+             </div>
             </div>
     </body>
 </html>
