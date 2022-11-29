@@ -60,14 +60,13 @@ class DBhandler:
 
     def insert_menu(self,name,data,img_path):
         menu_info ={
-            "name" : name,
             "food" : data['food'],
             "money" : data['money'],
             "nutrient" : data['nutrient'],
             "img_path" : "static/image/"+img_path
         }
         if self.menu_duplicate_check(name):
-            self.db.child("MENU").push(menu_info)
+            self.db.child("MENU").child(name).push(menu_info)
             print(data,img_path)
             return True
         else:
