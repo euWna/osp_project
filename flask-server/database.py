@@ -70,6 +70,10 @@ class DBhandler:
                 return False
         return True
 
+    def get_menus(self):
+        menus = self.db.child("MENU").get().val()
+        #print(stores)
+        return menus
 
 
 
@@ -85,4 +89,9 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
+
+    def get_reviews(self):
+        reviews = self.db.child("REVIEW").get().val()
+        #print(stores)
+        return reviews
     

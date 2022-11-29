@@ -20,14 +20,14 @@ function StoreListView() {
     //    console.log("뙜냐")
     //    console.log(storedata)
     //}, []);
-    const [data, setData] = useState([{}])
+    const [storedata, setData] = useState([{}])
     useEffect(() => {
         fetch("/StoreListView").then(
             //response 객체의 json() 이용하여 json 데이터를 객체로 전환
             response=>response.json()
         ).then(
             data =>{
-                setData(data);
+                setData(storedata);
             }
         ).catch(
             (err) => console.log(err)

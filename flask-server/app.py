@@ -108,17 +108,31 @@ def Submit_Review():
         if DB.insert_review(data['username'], data, img_file.filename):
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
-      
+@app.route("/StoreListView")
+def view_list():
+    storedata = DB.get_stores()
+    tot_count = len(storedata)
+    return render_template("StoreListView.html", storedata=storedata.items(), total=tot_count)
+
+@app.route("/StoreDetail")
+def view_detail():
+    menudata = DB.get_menus()
+    reviewdata = DB.get_reviews()
+    return render_template("StoreDetail.html")
 
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True)
+  
+
+'''
 @app.route("/StoreListView")
 def list_stores():
+    storedata = DB.get_stores().keys()
+    print(storedata)
     return render_template("StoreListView.html")
 
 
-
-
-'''
 @app.route("/StoreListView")
 def list_stores():
     storedata = DB.get_stores().items
@@ -133,7 +147,4 @@ def users():
     return {"members" : [{"id" : 1, "name" : "yerin"},
                         { "id" : 2, "name" : "dalkong"}]}
 '''
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
 

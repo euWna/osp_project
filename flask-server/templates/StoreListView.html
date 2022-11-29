@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -8,10 +8,10 @@
         <div>
             <NavBar />
             <section>
-                <div class=all >
+                <div class=all>
                     <div class=StoreList>
                         <div class=TopBar>
-                            <span class=Result>결과건</span>
+                            <span class=Result>결과건( {{total}}개 )</span>
                             <div class=dropdown>
                                 <span class=Dropdown1>
                                     <select name="dropFood">
@@ -31,27 +31,28 @@
                             </div>
                         </div>
                         <div class=Restaurant>
-                            <Link to="/StoreDetail">
+                            <!--<a href="">-->
+                            {% for storedata in storedata %}
                                 <div class="listbox">
                                     <div class="ImagePart">
-                                        <img src="sample" width="295" height="125" />
+                                        <img src="../static/img/sample.PNG" width="295" height="125" />
                                     </div>
-                                    {/* 본문 박스 */}
                                     <div class="listdesc">
-                                        <div class="StoreName">음식점 이름</div>
+                                        <div class="StoreName">{{storedata[0].storename}}</div>
                                         <div class="storelocation">
-                                            <img src="samplelocation" class="locationimg" width="18" height="18" />
+                                            <img src="../static/img/location.png" class="locationimg" width="18" height="18" />
                                             <p class="locationtext">음식점 주소</p>
                                         </div>
                                         <div class="Tag">#태그 #태그</div>
                                         <div class="heart">
-                                            <img src="heart" class="heartimg" width="14" height="16" />
+                                            <img src="../static/img/heart.png" class="heartimg" width="14" height="16" />
                                             <div class="heartnum">150</div>
                                         </div>
                                         <div class="reviewnum">리뷰""개</div>
                                     </div>
                                 </div>
-                            </Link>
+                            <!--</a>-->
+                            {% endfor %}
                         </div>
                     </div>
                     <div class=rightbox>
