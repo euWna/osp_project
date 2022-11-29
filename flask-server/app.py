@@ -2,8 +2,6 @@ from flask import *
 from database import DBhandler
 import sys
 from json import *
-from flask_cors import CORS, cross_origin
-import numpy as np
 
 
 app = Flask(__name__)
