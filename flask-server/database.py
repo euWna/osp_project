@@ -12,6 +12,7 @@ class DBhandler:
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
         store_info ={
+            "name":name,
             "storename" : data['storename'],
             "location" : data['location'],
             "phonenumber" : data['phonenumber'], 
@@ -46,6 +47,15 @@ class DBhandler:
         #print(stores)
         return stores
 
+    def get_store_byname(self,name):
+        stores = self.db.child("STORE").get()
+        target_value=""
+        for res in stores.each():
+            value = res.val()
+            
+            if value["storename"] == name:
+                target_value=value
+        return target_value
 
 
     def insert_menu(self,name,data,img_path):

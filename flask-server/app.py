@@ -45,13 +45,13 @@ def Submit_store():
         
         if DB.insert_store(data['storename'], data, img_file.filename):
             #return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
-            return redirect(url_for('view', store_id=name))
+            return redirect(url_for('view', storename=name))
         else:
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>",methods=['GET','POST'])
-def view(store_id):
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view(storename):
     return render_template("index.html")
 
 '''
@@ -114,11 +114,12 @@ def view_list():
     tot_count = len(storedata)
     return render_template("StoreListView.html", storedata=storedata.items(), total=tot_count)
 
-@app.route("/StoreDetail")
-def view_detail():
-    menudata = DB.get_menus()
-    reviewdata = DB.get_reviews()
-    return render_template("StoreDetail.html")
+@app.route("/StoreDetail/<storename>")
+def view_detail(name):
+    storedata = DB.get_store_byname(str(name))
+    #menudata = DB.get_menus()
+    #reviewdata = DB.get_reviews()
+    return render_template("StoreDetail.html", storedata=storedata)
 
 
 if __name__ == "__main__":
