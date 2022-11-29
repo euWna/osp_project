@@ -14,6 +14,9 @@ import { useState, useEffect } from 'react';
 
 function Stores(){
     const [storedata, setData] = useState([{}])
+    var storename
+    var location
+
     useEffect(() => {
         fetch("/StoreListView", {
             headers: {
@@ -22,7 +25,14 @@ function Stores(){
         })
         .then(response => response.json())
         .then(jsonData => {
-            console.log(jsonData)
+            for(const [key] in Object.keys(jsonData)) {
+                console.log(Object.keys(jsonData)[key])
+                storename=Object.keys(jsonData)[key]
+                var a = Object.values(jsonData)[key]
+                for(const [info] in Object.keys(a)){
+                    console.log(Object.values(a)[info])
+                }
+            }
             setData(storedata);
         })
         .catch(
@@ -30,15 +40,13 @@ function Stores(){
     }, [])
 
     return (
-          <div>
-            {/* 삼항연산자 */}
-            { (typeof storedata.storename === 'undefined') ? (
-              // fetch가 완료되지 않았을 경우에 대한 처리
-              <p>loding...</p>
-            ) : (
-              storedata.storename.map((u) => <p>{u.storename}</p>)
-            )}
-            </div>
+        <div>
+        { (typeof storedata.users === 'undefined') ? (
+            <p>loading...</p>
+        ) : (
+            storedata.keys.storename.map((u) => <p>{u.name}</p>)
+        )}
+        </div>
       )
 }
 
