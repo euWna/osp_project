@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="../static/css/StoreListView.css">
+    </head>
     <body>
         <div>
-            <NavBar></NavBar>
-             <Info/>
+            <nav>
+                <Link to="/ReviewAll">리뷰 모아보기</Link>
+                <Link to="/CreateStore">맛집 정보 추가하기</Link>
+                <Link to="/StoreListView">맛집 모아보기</Link>
+            </nav>
+            <div class="outer">
+                <div class="pane">
+                    <div id="paneName">
+                        음식점 정보
+                    </div>
+                    <div>
+                        <img class="image" src="sample" /><br /><br />
+                    </div>
+            
+                    <div class=info>
+                        <div>
+                            <div class="StoreName">맛집 이름</div>
+                            <div class="storelocation">
+                                <img src="samplelocation" class="locationimg" width="24" height="24" />
+                                "주소"
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div>
+                            <div class="Tag">카테고리 </div>
+                            <div class="site">사이트 </div>
+                            <div class="phone">전화번호 </div>
+                            <div class="time">운영시간 </div>
+                            <div class="parking">주차장 </div>
+                        </div>
+                    </div>
+                    <div class=buttons>
+                        <Link to="/CreateStore"><button class="button">정보 수정</button></Link>
+                        <Link to="/CreateReview"><button class="button">리뷰 등록</button></Link>
+                    </div>
+            
+                    <div class="map">
+                        지도API
+                    </div>
+                </div>
+            </div>
                 <Menu/>
                 <Review/>
             </div>
