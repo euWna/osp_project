@@ -115,8 +115,8 @@ def view_list():
     return render_template("StoreListView.html", storedata=storedata.items(), total=tot_count)
 
 @app.route("/StoreDetail/<storename>")
-def view_detail(name):
-    storedata = DB.get_store_byname(str(name))
+def view_detail(storename):
+    storedata = DB.get_store_byname(str(storename))
     #menudata = DB.get_menus()
     #reviewdata = DB.get_reviews()
     return render_template("StoreDetail.html", storedata=storedata)

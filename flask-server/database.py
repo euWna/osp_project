@@ -56,9 +56,9 @@ class DBhandler:
         target_value=""
         for res in stores.each():
             value = res.val()
-            
-            if value["storename"] == name:
+            if value['storename'] == name:
                 target_value=value
+                break
         return target_value
 
 
