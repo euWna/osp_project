@@ -108,25 +108,36 @@ def Submit_Review():
         if DB.insert_review(data['username'], data, img_file.filename):
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
-@app.route("/StoreListView")
-def view_list():
-    page = request.args.get("page",0,type=int)
-    limit = 3
+# @app.route("/StoreListView")
+# def view_list():
+#     page = request.args.get("page",0,type=int)
+#     limit = 3
 
-    start_idx=limit*page
-    end_idx=limit*(page+1)
-    storedata = DB.get_stores()
-    tot_count = len(storedata)
-    storedata = dict(list(storedata.items())[start_idx:end_idx])
+#     start_idx=limit*page
+#     end_idx=limit*(page+1)
+#     storedata = DB.get_stores()
+#     tot_count = len(storedata)
+#     storedata = dict(list(storedata.items())[start_idx:end_idx])
 
 
-    return render_template(
-        "StoreListView.html",
-        storedata=storedata.items(),
-        total=tot_count,
-        limit=limit,
-        page=page,
-        page_count=int(tot_count/10)+1)
+#     return render_template(
+#         "StoreListView.html",
+#         storedata=storedata.items(),
+#         total=tot_count,
+#         limit=limit,
+#         page=page,
+#         page_count=int(tot_count/10)+1)
+@app.route("/StoreListView", methods=['GET','POST'])
+def StoreListView():
+    return render_template("index.html")
+
+@app.route("/StoreListView_send_data", methods=['GET','POST'])
+def list_stores():
+    if request.method == 'GET':
+        storedata = DB.get_store() #read the table
+        tot_count = len(storedata) #리스트 길이 반환
+        storedatajson =  json.dumps(storedata)
+        return storedatajson
 
 @app.route("/StoreDetail/<storename>")
 def view_detail(storename):

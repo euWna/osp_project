@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component} from "react";
+import React, { useState, useEffect, Component } from "react";
 import Header from "../component/header";
 import NavBar from "../component/NavBar";
 import styles from "../css/StoreListView.module.css";
@@ -8,9 +8,29 @@ import StoreList from '../component/storelist';
 
 import samplelocation from "../img/location.png";
 import heart from "../img/heart.png";
-import axios from 'axios';
 
-
+function Stores() { //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
+    const [storedata, setData] = useState([{}])
+    var storearr = new Array();
+    useEffect(async () => {
+        fetch("/StoreListView_send_data", { //json 데이터를 받아옴
+            headers: {
+                Accept: 'application/json',
+                method: 'GET'
+            }
+        })
+            .then(response => response.json())
+            .then(jsonData => {
+                for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
+                    var infoobject = Object.values(jsonData)[key] //각 식당의 정보 객체를 변수 a에 저장
+                    storearr[key] = infoobject
+                }
+                console.log(storearr)
+            })
+            .catch(
+                (err) => console.log(err))
+    }, [])
+}
 function StoreListView() {
     //const [storedata, setData]= useState([{}]);
     //useEffect(() => {
@@ -24,15 +44,15 @@ function StoreListView() {
     useEffect(() => {
         fetch("/StoreListView").then(
             //response 객체의 json() 이용하여 json 데이터를 객체로 전환
-            response=>response.json()
+            response => response.json()
         ).then(
-            data =>{
+            data => {
                 setData(storedata);
             }
         ).catch(
             (err) => console.log(err)
         )
-    },[])
+    }, [])
 
     return (
         <div>
@@ -62,11 +82,11 @@ function StoreListView() {
                         </div>
                         < div className={styles.Restaurant}>
                             <div>
-                            { (typeof data.users === 'undefined') ? (
-                                <p>loading...</p>
-                            ) : (
-                                storedata.map((u) => <p>{u.name}</p>)
-                            )}
+                                {(typeof storedata.users === 'undefined') ? (
+                                    <p>loading...</p>
+                                ) : (
+                                    storedata.map((u) => <p>{u.name}</p>)
+                                )}
                             </div>
                             {/* flask에서 받아올 수 있는 코드 수정 */}
                             <Link to="/StoreDetail">
