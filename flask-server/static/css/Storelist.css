@@ -1,5 +1,5 @@
 .listbox {
-    display: flex;
+    display: inline-block;
     height: 130px;
     border: 1px solid rgb(225, 225, 225);
     justify-content: space-between;

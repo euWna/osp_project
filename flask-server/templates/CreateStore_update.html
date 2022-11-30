@@ -8,26 +8,26 @@
             <aside>
                 <div class="asideleft">
                     <a href="/CreateStore" class="up">기본정보</a>
-                    <a href="/CreateMenu" class="down">메뉴</a>
+                    <a href="/CreateMenu/{{submitted.storename}}" class="down">메뉴</a>
                 </div>
             </aside>
-            <form action="/submit_store" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <div id=table>
                     <div class=row>
                         <span class="cell col1">매장명</span>
-                        <span class="cell col2"><input type="text" name="storename"/></span>
+                        <span class="cell col2"><input type="text" name="storename" value="{{submitted.storename}}"/></span>
                     </div>
                     <div class="row">
                         <span class="cell col1">주소</span>
-                        <span class="cell col2"><input type="text" name="location" size="70" /></span>
+                        <span class="cell col2"><input type="text" name="location" size="70" value="{{submitted.location}}"/></span>
                     </div>
                     <div class=row>
                         <span class="cell col1">전화번호</span>
-                        <span class="cell col2"><input type="text" name="phonenumber" /></span>
+                        <span class="cell col2"><input type="text" name="phonenumber" value="{{submitted.phonenumber}}"/></span>
                     </div>
                     <div class="row">
                         <span class="cell col1">영업시간</span>
-                        <span class="cell col2"><input type="time" name="time1" size="1" /> ~ <input type="time" name="time2" size="1" /></span>
+                        <span class="cell col2"><input type="time" name="time1" size="1" value="{{submitted.time1}}"/> ~ <input type="time" name="time2" size="1" value="{{submitted.time2}}"/></span>
                     </div>
                     <div class="row">
                         <span class="cell col1">카테고리</span>
@@ -43,22 +43,22 @@
                     <div class="row">
                         <span class="cell col1">주차장</span>
                         <span class="cell col2">
-                            <select name="park">
+                            <select name="park" value="{{submitted.parking}}">
                                 <option value="yes">O</option>
                                 <option value="no">X</option>
                             </select></span>
                     </div>
                     <div class="row">
                         <span class="cell col1">가격대</span>
-                        <span class="cell col2"><input type="text" name="price1" size="1" /> ~ <input type="text" name="price2" size="1" /></span>
+                        <span class="cell col2"><input type="text" name="price1" size="1" value="{{submitted.price1}}" /> ~ <input type="text" name="price2" size="1" value="{{submitted.price2}}"/></span>
                     </div>
                     <div class="row">
                         <span class="cell col1">사이트</span>
-                        <span class="cell col2"><input type="text" name="site" size="70" /></span>
+                        <span class="cell col2"><input type="text" name="site" size="70" value="{{submitted.site}}"/></span>
                     </div>
                     <div class="row">
                         <span class="cell col1">대표사진</span>
-                        <span class="cell col2"><input type="file" name="imgfile" accept="image/*" /></span>
+                        <span class="cell col2"><input type="file" name="file" accept="image/*" value="{{submitted.img_path}}"/></span>
                     </div>
                     <div class="row">
                         <span class="cell col1"></span>
