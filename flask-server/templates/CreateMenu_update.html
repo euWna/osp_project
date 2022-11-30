@@ -11,13 +11,16 @@
           </div>
         </aside>
 
-        <form action="/submit_menu" method="post" enctype="multipart/form-data">
+        <form action="/CreateMenu_update" method="post" enctype="multipart/form-data">
           <div id="table">
-            <div class="row"><input type="hidden" name="storename" value="{{storename}}">매장명: {{storename}}</label></div>
-            <!--<<div class="row">
-              <span class="cell col1">김치나베돈카츠</span>
+            <div class="row"><label for="storename">매장명:{{storename}}</label></div>
+            {% for menu in menudata %}
+            <div class="row">
+              <span class="cell col1">{{menu[1].menuname}}</span>
               <span class="cell col2"></span>
-            </div>-->
+            </div>
+            {% endfor %}
+            <!--
             <div class="row">
               <span class="cell col1"></span>
               <span class="cell col2">
@@ -46,7 +49,7 @@
                   </tr>
                 </table>
               </span>
-            </div>
+            </div>-->
             <div class="row">
               <span class="cell col1"></span>
               <span class="cell col2">+ 메뉴 새로 추가하기</span>

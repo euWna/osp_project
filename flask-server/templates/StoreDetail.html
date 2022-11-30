@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../static/css/Header.css">
         <link rel="stylesheet" href="../static/css/Storelist.css">
         <link rel="stylesheet" href="../static/css/MenuPost.css">
+        <link rel="stylesheet" href="../static/css/Review.css">
     </head>
     <body>
         <div>
@@ -16,18 +17,18 @@
             </nav>
             <div class="outer">
                 <div class="pane">
-                    <div id="pane">
+                    <div id="paneName">
                         음식점 정보
                     </div>
                     <div>
-                        <img class="image" src="sample" /><br /><br />
+                        <img class="image" src="../static/img/sample.PNG" /><br /><br />
                     </div>
             
                     <div class=info>
                         <div>
                             <div class="Store">{{storedata.storename}}</div>
                             <div class="storelocation">
-                                <img src="samplelocation" class="locationimg" width="24" height="24" />
+                                <img class="locationimg" src="../static/img/location.png" width="24" height="24" />
                                 {{storedata.location}}
                             </div>
                         </div>
@@ -42,7 +43,7 @@
                         </div>
                     </div>
                     <div class="buttons">
-                        <Link to="/CreateStore"><button class="button">정보 수정</button></Link>
+                        <a href="/Created_store/{{storedata.storename}}"><button class="button">정보 수정</button></Link>
                         <Link to="/CreateReview"><button class="button">리뷰 등록</button></Link>
                     </div>
             
@@ -51,28 +52,29 @@
                     </div>
                 </div>
             </div>
-             <div class = "menu">
+            <div class = "menu">
                 <div class="outer">
                     <div class="pane">
-                        <div id="pane">
+                        <div id="paneName">
                             메뉴 목록
                         </div>
                         <div class="editPane">
                             <span>직접 메뉴를 등록하고 수정하세요!</span>
-                            <Link to="/CreateMenu"><button class="button">메뉴 정보 수정</button></Link>
+                            <a href="/Created_menu/{{storedata.storename}}"><button class="button">메뉴 정보 수정</button></a>
                         </div>
                         <div class="menuPane">
                             <div class="listbox">
+                                {% for menu in menudata %}
                                 <div class="ImagePart">
-                                    <img src="sample" width="295" height="125" />
+                                    <img src="{{menu[1].img_path}}" width="295" height="125" />
                                 </div>
-                               
                                 <div class="listdesc">
-                                    <div id="Menu">메뉴 이름</div>
-                                    <div class="heart"><img src="heart" class="heartimg" width="14" height="16" /> 150</div>
-                                    <div class="price">가격</div>
-                                    <div class="nutrients">영양성분</div>
+                                    <div id="Menu">{{menu[1].menuname}}</div>
+                                    <!--<div class="heart"><img src="../static/img/heart.png" class="heartimg" width="14" height="16" /> 150</div>-->
+                                    <div class="price">{{menu[1].price}}</div>
+                                    <div class="nutrients">{{menu[1].nutrient}}</div>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -82,35 +84,20 @@
             <div class = "review">
                 <div class= "outer">
                     <div class= "pane">
-                        <div id= "pane">
+                        <div id="paneName">
                             리뷰&#40; /*total*/ 건&#41;
                         </div>
                         <div class= "editPane">
                             <span>여러분의 맛집 후기를 남겨주세요!</span>
-                            <Link to="/CreateMenu"><button class= "button">리뷰 등록</button></Link>
+                            <a href="/CreateReview/{{storedata.storename}}"><button class= "button">리뷰 등록</button></a>
                         </div>
                         <div class= "menuPane">
-                            <div class="outer">
-                                <div class="pane">
-                                    <div id="pane">
-                                        리뷰&#40; {/*total*/" 건&#41;
-                                    </div>
-                                    <div class="editPane">
-                                        <span>여러분의 맛집 후기를 남겨주세요!</span>
-                                        <Link to="/CreateMenu"><button class="button">리뷰 등록</button></Link>
-                                    </div>
-                                    <div class="menuPane">
-                                        <Link to="/CreateMenu">
-                                            <div class="pr_description">
-                                                <div class="user_">사용자</div>
-                                                <div class="store_">음식점 이름</div>
-                                                <div class="review_title">리뷰 제목입니다.</div>
-                                                <div class="review_desc">본문샘플<br />본문샘플</div>
-                                                <div class="review_img"><img src="sample" width="250" height="230" /></div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                </div>
+                            <div class="pr_description">
+                                <div class="user_">사용자</div>
+                                <div class="store_">음식점 이름</div>
+                                <div class="review_title">리뷰 제목입니다.</div>
+                                <div class="review_desc">본문샘플<br />본문샘플</div>
+                                <div class="review_img"><img src="sample" width="250" height="230" /></div>
                             </div>
                         </div>
                     </div>

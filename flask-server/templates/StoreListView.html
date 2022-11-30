@@ -8,12 +8,12 @@
         <div>
             <NavBar />
             <section>
-                <div class=all>
-                    <div class=StoreList>
-                        <div class=TopBar>
-                            <span class=Result>결과건( {{total}}개 )</span>
-                            <div class=dropdown>
-                                <span class=Dropdown1>
+                <div class="all">
+                    <div class="StoreList">
+                        <div class="TopBar">
+                            <span class="Result">결과건( {{total}}개 )</span>
+                            <div class="dropdown">
+                                <span class="Dropdown1">
                                     <select name="dropFood">
                                         <option value="Dessert">디저트</option>
                                         <option value="Korean">한식</option>
@@ -30,10 +30,9 @@
                                 </span>
                             </div>
                         </div>
-                        <div class=Restaurant>
-                            <!--<a href="">-->
+                        <div class="Restaurant">
+                                {% for storedata in storedata %}
                                 <div class="listbox">
-                                    {% for storedata in storedata %}
                                     <a href="/StoreDetail/{{storedata[1].storename}}">
                                     <div class="ImagePart">
                                         <img src="../static/img/sample.PNG" width="295" height="125" />
@@ -52,22 +51,28 @@
                                         </div>
                                         <div class="reviewnum">리뷰""개</div>
                                     </div>
-                                    <div class = "page-wrap">
-                                        <div class = "page-nation">
-                                        </div>
-                                    </div>
-                                    {% endfor %}
                                 </div>
-                            <!--</a>-->
+                                {% endfor %}
+                                <div class="page-wrap">
+                                    <div class="page-nation">
+                                        <ul>
+                                            <li>
+                                                {% for i in range(page_count) %}
+                                                    <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
+                                                {% endfor %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                    <div class=rightbox>
-                        <div class=StoreMap>
+                    <div class="rightbox">
+                        <div class="StoreMap">
                             <!--지도 API 추가할 부분-->
                         </div>
                         <button type="button" name="next_button"></button>
                         <!--음식점 목록과 지도 API 사이에 있는 버튼-->
-                        <div class=storelistdetail>
+                        <div class="storelistdetail">
                         </div>
                     </div>
                 </div >
