@@ -83,7 +83,7 @@ class DBhandler:
             return True
 
 
-    def insert_menu(self,storename, menudata,img_path):
+    def insert_menu(self, storename, menudata,img_path):
         menu_info ={
             "menuname" : menudata['menuname'],
             "price" : menudata['price'],
@@ -128,24 +128,21 @@ class DBhandler:
         return target_value
 
 
-    def insert_review(self,name,data,img_path):
+    def insert_review(self, storename, reviewdata, img_path):
         review_info ={
-            "name" : name,
-            "storescore" : data['storescore'],
-            "username" : data['username'],
-            "reviewtitle" : data['reviewtitle'],
-            "reviewdesc" : data['reviewdesc'],
+            "storename" : storename,
+            "storescore" : reviewdata['storescore'],
+            "username" : reviewdata['username'],
+            "reviewtitle" : reviewdata['reviewtitle'],
+            "reviewdesc" : reviewdata['reviewdesc'],
             "img_path" : "static/image/"+img_path
         }
-        if self.review_duplicate_check(name):
-            self.db.child("REVIEW").push(review_info)
-            print(data,img_path)
-            return True
-        else:
-            return False
+        self.db.child("REVIEW").child(storename).child(reviewdata['username']).set(review_info)
+        return True
 
-    def get_reviews(self):
-        reviews = self.db.child("REVIEW").get().val()
+    def get_reviews(self, storename):
+        reviews = self.db.child("REVIEW").child(storename).get().val()
         #print(stores)
         return reviews
+
     

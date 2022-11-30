@@ -24,17 +24,47 @@ def view_CreateStore():
 def view_CreateMenu(storename):
     return render_template("CreateMenu.html", storename=storename)
 
-@app.route("/StoreList")
-def view_StoreList():
-    return render_template("StoreList.html")
+@app.route("/CreateReview/<storename>")
+def view_CreateReview(storename):
+    return render_template("CreateReview.html", storename=storename)
+
+@app.route("/StoreListView")
+def view_list():
+    page = request.args.get("page",0,type=int)
+    limit = 5
+
+    start_idx=limit*page
+    end_idx=limit*(page+1)
+    storedata = DB.get_stores()
+    tot_count = len(storedata)
+    storedata = dict(list(storedata.items())[start_idx:end_idx])
+
+    #print(tot_count, limit, page, int(tot_count/5)+1)
+    return render_template(
+        "StoreListView.html",
+        storedata=storedata.items(),
+        total=tot_count,
+        limit=limit,
+        page=page,
+        page_count=int(tot_count/limit)+1)
+
+
+@app.route("/StoreDetail/<storename>")
+def view_detail(storename):
+    storedata = DB.get_store_byname(str(storename))
+    menudata = DB.get_menus(str(storename))
+    reviewdata = DB.get_reviews(str(storename))
+    #menudata = DB.get_menus()
+    #reviewdata = DB.get_reviews()
+    return render_template("StoreDetail.html", storedata=storedata, menudata=menudata.items(), reviewdata=reviewdata.items())
 
 @app.route("/ReviewAll")
 def view_ReviewList():
     return render_template("ReviewList.html")
 
 
-
 #Submit(POST) functions
+
 @app.route("/submit_store", methods=['POST'])
 def submit_store():
     img_file=request.files["imgfile"]
@@ -54,6 +84,8 @@ def submit_store():
 def Created_store(storename):
     submitted = DB.get_store_byname(storename)
     return render_template("CreateStore_update.html", submitted=submitted)
+
+
 
 @app.route("/submit_menu", methods=['POST'])
 def submit_menu():
@@ -76,33 +108,27 @@ def Created_menu(storename):
     #submitted = DB.get_menu_byname(storename)
     return render_template("CreateMenu_update.html", storename=storename, menudata=menudata.items())
 
-@app.route("/StoreListView")
-def view_list():
-    page = request.args.get("page",0,type=int)
-    limit = 5
 
-    start_idx=limit*page
-    end_idx=limit*(page+1)
-    storedata = DB.get_stores()
-    tot_count = len(storedata)
-    storedata = dict(list(storedata.items())[start_idx:end_idx])
+@app.route("/submit_review", methods=['POST'])
+def submit_reivew():
+        img_file=request.files["imgfile"]
+        if img_file:
+            img_file.save("./flask-server/static/img/"+img_file.filename)
+        data=request.form
+        storename=data["storename"]
 
-    #print(tot_count, limit, page, int(tot_count/5)+1)
-    return render_template(
-        "StoreListView.html",
-        storedata=storedata.items(),
-        total=tot_count,
-        limit=limit,
-        page=page,
-        page_count=int(tot_count/limit)+1)
+        if(DB.insert_review(storename, data, img_file.filename)):
+            print("submit_review success")
+            return redirect(url_for('Created_review', storename=storename))
 
-@app.route("/StoreDetail/<storename>")
-def view_detail(storename):
-    storedata = DB.get_store_byname(str(storename))
-    menudata = DB.get_menus(str(storename))
-    #menudata = DB.get_menus()
-    #reviewdata = DB.get_reviews()
-    return render_template("StoreDetail.html", storedata=storedata, menudata=menudata.items())
+
+@app.route("/Created_review/<storename>")
+def Created_review(storename):
+    submitted = DB.get_reviews(storename)
+    #print(menudata.items())
+    #submitted = DB.get_menu_byname(storename)
+    return render_template("CreateReview_update.html", storename=storename, submitted=submitted)
+
 
 
 if __name__=="__main__":

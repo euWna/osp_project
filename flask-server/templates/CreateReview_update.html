@@ -18,21 +18,21 @@
                             <span class="cell col1">전체 평점</span>
                             <span class="cell col1">
 
-                                <input type="number" name="storescore" size="70" />
+                                <input type="number" name="storescore" size="70" value="{{submitted.storescore}}"/>
                                 <!--<img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/>-->
                             </span>
                         </div>
                         <div class="row">
                             <span class="cell col1">작성자</span>
-                            <span class="cell col1"><input type="text" name="username" />
+                            <span class="cell col1"><input type="text" name="username" value="{{submitted.username}}"/>
                         </div>
                         <div class="row">
                             <span class="cell col1">리뷰 제목</span>
-                            <span class="cell col1"><input type="text" name="reviewtitle" size="70" />
+                            <span class="cell col1"><input type="text" name="reviewtitle" size="70" value="{{submitted.reviewtitle}}"/>
                         </div>
                         <div class="row">
                             <span class="cell col1">리뷰 내용</span>
-                            <span class="cell col1"><textarea name="reviewdesc" rows="10" cols="70"></textarea></span>
+                            <span class="cell col1"><textarea name="reviewdesc" rows="10" cols="70" value="{{submitted.reviewdesc}}"></textarea></span>
                         </div>
                         <div class="row">
                             <span class="cell col1">사진</span>

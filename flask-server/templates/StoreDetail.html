@@ -93,11 +93,13 @@
                         </div>
                         <div class= "menuPane">
                             <div class="pr_description">
-                                <div class="user_">사용자</div>
-                                <div class="store_">음식점 이름</div>
-                                <div class="review_title">리뷰 제목입니다.</div>
-                                <div class="review_desc">본문샘플<br />본문샘플</div>
-                                <div class="review_img"><img src="sample" width="250" height="230" /></div>
+                                {% for review in reviewdata %}
+                                <!--<div class="user">-->작성자 : {{review[1].username}}<br>
+                                <!--<div class="store_">{{review[1].storename}}<br>-->
+                                <!--<div class="review_title">-->제목 : {{review[1].reviewtitle}}<br>
+                                <!--<div class="review_desc">-->내용 : {{review[1].reviewdesc}}<br>
+                                <!--<div class="review_img">--><img src="sample" width="250" height="230" /><br>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
