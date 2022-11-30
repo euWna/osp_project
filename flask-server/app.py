@@ -135,7 +135,7 @@ def StoreListView():
 @app.route("/StoreListView_send_data", methods=['GET','POST'])
 def list_stores():
     if request.method == 'GET':
-        storedata = DB.get_store() #read the table
+        storedata = DB.get_stores() #read the table
         tot_count = len(storedata) #리스트 길이 반환
         storedatajson =  json.dumps(storedata)
         return storedatajson
