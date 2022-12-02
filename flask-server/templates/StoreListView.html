@@ -1,82 +1,86 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-		<link rel="stylesheet" href="../static/css/StoreListView.css">
-	</head>
-    <body>
-        <div>
-            <NavBar />
-            <section>
-                <div class="all">
-                    <div class="StoreList">
-                        <div class="TopBar">
-                            <span class="Result">결과건( {{total}}개 )</span>
-                            <div class="dropdown">
-                                <span class="Dropdown1">
-                                    <select name="dropFood">
-                                        <option value="Dessert">디저트</option>
-                                        <option value="Korean">한식</option>
-                                        <option value="Japanese">일식</option>
-                                        <option value="Chinese">중식</option>
-                                    </select>
-                                </span>
-                                <span class="Dropdown2">
-                                    <select name="dropSort">
-                                        <option value="SortByRecommendation">추천순</option>
-                                        <option value="SortByReview">리뷰많은 순</option>
-                                        <option value="SortByPrice">가격 낮은 순</option>
-                                    </select>
-                                </span>
+
+<head>
+    <link rel="stylesheet" href="../static/css/StoreListView.css">
+</head>
+
+<body>
+    <div>
+        <NavBar />
+        <section>
+            <div class="all">
+                <div class="StoreList">
+                    <div class="TopBar">
+                        <span class="Result">결과건( {{total}}개 )</span>
+                        <div class="dropdown">
+                            <span class="Dropdown1">
+                                <select name="dropFood">
+                                    <option value="Dessert">디저트</option>
+                                    <option value="Korean">한식</option>
+                                    <option value="Japanese">일식</option>
+                                    <option value="Chinese">중식</option>
+                                </select>
+                            </span>
+                            <span class="Dropdown2">
+                                <select name="dropSort">
+                                    <option value="SortByRecommendation">추천순</option>
+                                    <option value="SortByReview">리뷰많은 순</option>
+                                    <option value="SortByPrice">가격 낮은 순</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="RestaurantInStoreList">
+                        {% for storedata in storedata %}
+                        <div class="listbox">
+                            <a href="/StoreDetail/{{storedata[1].storename}}">
+                                <div class="ImagePart">
+                                    <img src="../static/img/sample.PNG" width="295" height="125" />
+                                </div>
+                            </a>
+                            <div class="listdesc">
+                                <div class="StoreName">{{storedata[1].storename}}</div>
+                                <div class="storelocation">
+                                    <img src="../static/img/location.png" class="locationimg" width="18" height="18" />
+                                    <p class="locationtext">{{storedata[1].location}}</p>
+                                </div>
+                                <div class="Tag">#{{storedata[1].food}}</div>
+                                <div class="heart">
+                                    <img src="../static/img/heart.png" class="heartimg" width="14" height="16" />
+                                    <div class="heartnum">150</div>
+                                </div>
+                                <div class="reviewnum">리뷰""개</div>
                             </div>
                         </div>
-                        <div class="Restaurant">
-                                {% for storedata in storedata %}
-                                <div class="listbox">
-                                    <a href="/StoreDetail/{{storedata[1].storename}}">
-                                    <div class="ImagePart">
-                                        <img src="../static/img/sample.PNG" width="295" height="125" />
-                                    </div>
-                                    </a>
-                                    <div class="listdesc">
-                                        <div class="StoreName">{{storedata[1].storename}}</div>
-                                        <div class="storelocation">
-                                            <img src="../static/img/location.png" class="locationimg" width="18" height="18" />
-                                            <p class="locationtext">{{storedata[1].location}}</p>
-                                        </div>
-                                        <div class="Tag">#{{storedata[1].food}}</div>
-                                        <div class="heart">
-                                            <img src="../static/img/heart.png" class="heartimg" width="14" height="16" />
-                                            <div class="heartnum">150</div>
-                                        </div>
-                                        <div class="reviewnum">리뷰""개</div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                                <div class="page-wrap">
-                                    <div class="page-nation">
-                                        <ul>
-                                            <li>
-                                                {% for i in range(page_count) %}
-                                                    <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
-                                                {% endfor %}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                        {% endfor %}
+                        <div class="page-wrap">
+                            <div class="page-nation">
+                                <ul>
+                                    <li>
+                                        {% for i in range(page_count) %}
+                                        <a href="{{url_for('view_list', page=i)}}" color="black"
+                                            class="pageButton{{i}}">{{i}}</a>
+                                        {% endfor %}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="rightbox">
-                        <div class="StoreMap">
-                            <!--지도 API 추가할 부분-->
-                        </div>
-                        <button type="button" name="next_button"></button>
-                        <!--음식점 목록과 지도 API 사이에 있는 버튼-->
-                        <div class="storelistdetail">
-                        </div>
+                </div>
+                <div class="rightbox">
+                    <div class="StoreMap">
+                        <!--지도 API 추가할 부분-->
                     </div>
-                </div >
-            </section >
-        </div >
-    </body>
+                    <button type="button" name="next_button"></button>
+                    <!--음식점 목록과 지도 API 사이에 있는 버튼-->
+                    <div class="storelistdetail">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
 </html>

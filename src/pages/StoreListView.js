@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component} from "react";
+import React, { useState, useEffect, Component } from "react";
 import Header from "../component/header";
 import NavBar from "../component/NavBar";
 import styles from "../css/StoreListView.module.css";
@@ -24,20 +24,27 @@ function StoreListView() {
     useEffect(() => {
         fetch("/StoreListView").then(
             //response 객체의 json() 이용하여 json 데이터를 객체로 전환
-            response=>response.json()
+            response => response.json()
         ).then(
-            data =>{
+            data => {
                 setData(storedata);
             }
         ).catch(
             (err) => console.log(err)
         )
-    },[])
+    }, [])
+    // const pagebutton = document.getElementByClassName("pageButton{{i}}");
+    // pagebutton.addEventListener('click', () => {
+    //     alert("clicked!")
+    // })
+
 
     return (
+
         <div>
             <NavBar />
             <section>
+
                 <div class={styles.all} >
                     <div className={styles.StoreList}>
                         <div className={styles.TopBar}>
@@ -62,11 +69,11 @@ function StoreListView() {
                         </div>
                         < div className={styles.Restaurant}>
                             <div>
-                            { (typeof data.users === 'undefined') ? (
-                                <p>loading...</p>
-                            ) : (
-                                storedata.map((u) => <p>{u.name}</p>)
-                            )}
+                                {(typeof data.users === 'undefined') ? (
+                                    <p>loading...</p>
+                                ) : (
+                                    storedata.map((u) => <p>{u.name}</p>)
+                                )}
                             </div>
                             {/* flask에서 받아올 수 있는 코드 수정 */}
                             <Link to="/StoreDetail">
