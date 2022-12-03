@@ -115,6 +115,8 @@ class DBhandler:
         #print(stores)
         return menus
 
+        # 여기서 오류가..??????/
+
     #해당 맛집의 특정 메뉴의 정보를 가져오는 함수
     def get_menu_byname(self,storename,menuname):
         menus = self.db.child("MENU").child("storename").get()

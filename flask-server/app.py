@@ -57,6 +57,7 @@ def view_detail(storename):
     #menudata = DB.get_menus()
     #reviewdata = DB.get_reviews()
     return render_template("StoreDetail.html", storedata=storedata, menudata=menudata.items(), reviewdata=reviewdata.items())
+    # menudata=menudata.items() 에서 item이 없다고 뜸
 
 @app.route("/ReviewAll")
 def view_ReviewList():

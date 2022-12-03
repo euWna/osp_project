@@ -33,10 +33,10 @@ function StoreListView() {
             (err) => console.log(err)
         )
     }, [])
-    // const pagebutton = document.getElementByClassName("pageButton{{i}}");
-    // pagebutton.addEventListener('click', () => {
-    //     alert("clicked!")
-    // })
+    const gotoStore = document.getElementsByClassName("listdesc");
+    gotoStore.addEventListener('click', () => {
+        alert("clicked!")
+    })
 
 
     return (
