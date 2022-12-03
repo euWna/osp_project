@@ -21,8 +21,8 @@ def refresh(site):
     return redirect
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
-# def view_createstore():
-#     return render_template("index.html")
+def view_createstore():
+    return render_template("index.html")
 def Submit_store():
     if request.method == 'POST':
         data = request.form
