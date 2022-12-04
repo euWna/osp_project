@@ -15,6 +15,9 @@ function Storelist(props) {
     // storedata = storedata;
     var storedata;
     storedata = JSON.stringify(props.storedata);
+    var storename = new Array();
+
+    storename[0] = props.storename;
     /*props.storedata: Stores에서 반환할 때 storedata= 으로 준 값 */
 
 
@@ -32,7 +35,7 @@ function Storelist(props) {
                         </div>
                     </a>
                     <div class="listdesc">
-                        <div class="StoreName"> {props.location}</div>
+                        <div class="StoreName"> {storename[0]}</div>
                         <div class="storelocation">
                             <img src="../static/img/location.png" class="locationimg" width="18" height="18" />
                             {/* <p class="locationtext">{props.location}</p> */}

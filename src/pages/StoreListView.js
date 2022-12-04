@@ -72,8 +72,14 @@ function Stores() { //데이터 받아와서 식당의 정보들이 들어있는
         <div>
             {(storedata && storedata.map((u) => <p>{u.storename}</p>))}
             {(storedata && storedata.map((u) => <p>{u.location}</p>))}
+            {/* {storearr.storename} */}
             {(storedata && storedata.map((u) => <p>{u.food}</p>))}
-            <StoreList storename={storearr.storename} location={storearr.location} />
+            {/* {storearr.location} */}
+            <StoreList
+                storename={(storedata && storedata.map((u) => <p>{u.storename}</p>))}
+                location={(storedata && storedata.map((u) => <p>{u.food}</p>))}
+                food={(storedata && storedata.map((u) => <p>{u.food}</p>))}
+            />
             {/* 어떻게 해도 storearr는 그냥 그대로 분리되지 않고 나옴... */}
             {/* <StoreList storedata={storearr} /> */}
         </div >
