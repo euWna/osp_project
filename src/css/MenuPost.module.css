@@ -1,0 +1,44 @@
+.listbox {
+    display: flex;
+    height: 180px;
+    border: 1px solid rgb(225, 225, 225);
+    justify-content: left;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
+
+.listdesc{
+    text-align: left;
+    margin-left: 30px;
+    font-weight: 600;
+    color:dimgray;
+}
+
+.ImagePart {
+    display: flex;
+    width: 240px;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#MenuName {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 7px;
+}
+
+.heart {
+    position: relative;
+    font-size: 15px;
+    font-weight: 800;
+    color:black;
+    margin-bottom: 5px;
+}
+
+.heartimg {
+    position: relative;
+}
+

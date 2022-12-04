@@ -128,3 +128,16 @@ def Get_img(storekey):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
+
+@app.route('/StoreListView', methods=['GET','POST'])
+def list_stores():
+    data = DB.get_stores()
+    tot_count = len(data)
+
+    return render_template("index.html", datas=data.items(), total=tot_count())
+
+'''
+@app.route("/StoreListView",methods=['GET','POST'])
+def view_storelist(store_id):
+    return render_template("index.html")
+'''
