@@ -9,7 +9,7 @@ function CreateMenu() {
   const params = useParams().id;
 
   return (
-    <body>
+    <div>
       <NavBar></NavBar>
       <section>
         <aside class={styles.aside}>
@@ -68,7 +68,7 @@ function CreateMenu() {
           </div>
         </form>
       </section>
-    </body>
+    </div>
   )
 }
 

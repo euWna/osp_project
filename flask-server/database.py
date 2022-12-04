@@ -45,8 +45,6 @@ class DBhandler:
         stores = self.db.child("STORE").get().val()
         return stores
 
-    
-
 
 
     def insert_menu(self,name,data,img_path):
@@ -86,3 +84,4 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
+    
