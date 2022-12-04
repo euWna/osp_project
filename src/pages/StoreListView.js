@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 function StoreListView() {
     const [storedata, setData] = useState()
     var storearr = new Array(); 
+
     useEffect(() => {
         fetch("/StoreListView_send_data", { //json 데이터를 받아옴
             headers: {
@@ -20,7 +21,8 @@ function StoreListView() {
         .then(response => response.json())
         .then(jsonData => {
             for(const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
-                storearr[key]=Object.values(jsonData)[key]  // 객체임 객체를 배열에 넣는건데...
+                storearr[key]=Object.values(jsonData)[key]
+                storearr[key]["key"]=Object.keys(jsonData)[key] //키값 필요해서 가져옴
             }
             setData(storearr)
         })
@@ -56,7 +58,7 @@ function StoreListView() {
                             </div>
                             < div className={styles.Restaurant}>
                                 {    storedata&&storedata.map((a => {
-                                     return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img}/>   
+                                     return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} storekey={a.key}/>   
                                 }))}
                             </div>
                         </div>

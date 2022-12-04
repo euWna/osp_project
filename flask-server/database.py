@@ -22,12 +22,10 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" : img_path
+            "img_path" : img_path,
         }
-
         if self.store_duplicate_check(name):
-            self.db.child("STORE").child(name).set(store_info)
-            #print(data,img_path)
+            self.db.child("STORE").push(store_info)
             return True
         else:
             return False
@@ -44,10 +42,6 @@ class DBhandler:
     def get_store(self):
         stores = self.db.child("STORE").get().val()
         return stores
-
-    
-
-
 
     def insert_menu(self,name,data,img_path):
         menu_info ={
