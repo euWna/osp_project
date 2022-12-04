@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 from database import DBhandler
+from collections import OrderedDict
+import json
 import sys
 
 
@@ -10,6 +12,7 @@ DB = DBhandler()
 
 DB.__init__()
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -18,6 +21,8 @@ def refresh(site):
     return redirect
 
 @app.route("/CreateStore", methods=['GET', 'POST'])
+def view_createstore():
+    return render_template("index.html")
 def Submit_store():
     if request.method == 'POST':
         data = request.form
@@ -33,18 +38,10 @@ def Submit_store():
         time1 = data['price1']
         time2 = data['price2']
         site = data['site']
-        # print(name, location, phonenumber, category,site)
-
         img_file = request.files['file']
         if img_file:
             img_file.save("./flask-server/static/img/"+img_file.filename)
-        # print(img_file)
-        #DB.insert_store(data['storename'], data, img_file.filename)
-
-        # return render_template("result.html", result=data, img_path="static/img"+img_file.filename)
-        
         if DB.insert_store(data['storename'], data, img_file.filename):
-            #return render_template("result.html", result=data, img_path="static/img/"+img_file.filename)
             return redirect(url_for('view', store_id=name))
         else:
             return "The submitted store already exists!"
@@ -61,6 +58,8 @@ def go_menucreate():
 '''
 
 @app.route("/CreateMenu",methods=['GET','POST'])
+def view_createmenu():
+    return render_template("index.html")
 def Submit_menu():
     if request.method == 'POST':
             data = request.form
@@ -90,6 +89,8 @@ def Submit_menu():
 
         
 @app.route("/CreateReview", methods=['GET','POST'])
+def view_createrefview():
+    return render_template("index.html")
 def Submit_Review():
     if request.method == 'POST':
         data = request.form
@@ -108,6 +109,24 @@ def Submit_Review():
         if DB.insert_review(data['username'], data, img_file.filename):
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
 
+#맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
+
+@app.route("/StoreListView", methods=['GET','POST'])
+def StoreListView():
+    return render_template("index.html")
+
+@app.route("/StoreListView_send_data", methods=['GET','POST'])
+def list_stores():
+    if request.method == 'GET':
+        storedata = DB.get_store() #read the table
+        tot_count = len(storedata) #리스트 길이 반환
+        storedatajson =  json.dumps(storedata)
+        return storedatajson
+
+    # return render_template(
+    # "index.html",
+    # storedatas=storedatajson,
+    # total=tot_count)
 
 
 if __name__ == "__main__":

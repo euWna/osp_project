@@ -5,22 +5,30 @@ import styles from "../css/StoreListView.module.css";
 import { Link } from 'react-router-dom';
 import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
+import { useState, useEffect } from 'react';
 
-/*
-const uploadFile = async(e)=>{
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("fileName", fileName);
-    
-    const res = await axios.post(
-        "http://192.249.28.86:5000/StoreListView", formData
-    );
-    console.log(res.data);
-}*/
+function StoreListView() {
+    const [storedata, setData] = useState()
+    var storearr = new Array(); 
+    useEffect(() => {
+        fetch("/StoreListView_send_data", { //json 데이터를 받아옴
+            headers: {
+                Accept: 'application/json',
+                method: 'GET'
+            }
+        })
+        .then(response => response.json())
+        .then(jsonData => {
+            for(const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
+                storearr[key]=Object.values(jsonData)[key]  // 객체임 객체를 배열에 넣는건데...
+            }
+            setData(storearr)
+        })
+        .catch(
+            (err) => console.log(err))
+    }, [])
 
-class StoreListView extends React.Component {
-    render() {
-        return (
+    return (
             <div>
                 <NavBar />
                 <section>
@@ -47,16 +55,9 @@ class StoreListView extends React.Component {
                                 </div>
                             </div>
                             < div className={styles.Restaurant}>
-                                {/* flask에서 받아올 수 있는 코드 수정 */}
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
+                                {    storedata&&storedata.map((a => {
+                                     return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img}/>   
+                                }))}
                             </div>
                         </div>
                         <div class={styles.rightbox}>
@@ -71,8 +72,6 @@ class StoreListView extends React.Component {
                     </div >
                 </section >
             </div >
-
         )
-    }
 }
 export default StoreListView;

@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "../css/CreateMenu.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 
 
 function CreateMenu() {
+
+  const params = useParams().id;
+
   return (
     <div>
       <NavBar></NavBar>
@@ -15,6 +18,13 @@ function CreateMenu() {
             <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
           </div>
         </aside>
+
+        <div className={styles.row}>
+              <span className={`${styles.cell} ${styles.col1}`}>
+              {params}
+              </span>
+              <span className={`${styles.cell} ${styles.col2}`}></span>
+        </div>
 
         <form action="http://127.0.0.1:5000/CreateMenu" method="post" enctype="multipart/form-data">
           <div id={styles.table}>

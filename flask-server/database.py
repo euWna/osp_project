@@ -40,9 +40,10 @@ class DBhandler:
                 return False
         return True
 
-    #맛집 정보 가져오는 함수(StoreListView에서 사용)
-    def get_stores(self):
-        stores = self.db.child("STORE").get.val()
+    # 맛집 데이터 가져오기
+    def get_store(self):
+        stores = self.db.child("STORE").get().val()
+        return stores
 
 
 
