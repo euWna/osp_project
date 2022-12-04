@@ -5,48 +5,9 @@ import styles from "../css/StoreListView.module.css";
 import { Link } from 'react-router-dom';
 import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
-import axios from "axios";
-
-import samplelocation from "../img/location.png";
-import heart from "../img/heart.png";
-
 import { useState, useEffect } from 'react';
 
-
-function StoreTemplate(storename) {
-    return (
-        <Link to="/StoreDetail">
-            <div class={styles.listbox}>
-                <div className={styles.ImagePart}>
-                    <img src={sample} width="295" height="125" />
-                </div>
-                <div class={styles.listdesc}>
-                    <div class={styles.StoreName}>{storename}</div>
-                    <div class={styles.storelocation}>
-                        <img src={samplelocation} class={styles.locationimg} width="18" height="18" />
-                        <p class={styles.locationtext}>음식점 주소</p>
-                    </div>
-                    <div class={styles.Tag}>#태그 #태그</div>
-                    <div class={styles.heart}>
-                        <img src={heart} class={styles.heartimg} width="14" height="16" />
-                        <div class={styles.heartnum}>150</div>
-                    </div>
-                    <div class={styles.reviewnum}>리뷰""개</div>
-                </div>
-            </div>
-        </Link>
-    );
-}
-
-// function Storelist(storeinfo){ //value 객체를 props로 받아옴
-//     var infoarr = new Array(); 
-//     for(const [info] in Object.keys(storeinfo)){ //식당 정보만큼 반복
-//         infoarr[info]=Object.values(storeinfo)[info] //식당 정보 저장
-//     }
-//     return infoarr //정보 담긴 배열 리턴
-// }
-
-function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
+function StoreListView() {
     const [storedata, setData] = useState()
     var storearr = new Array(); 
     useEffect(() => {
@@ -68,18 +29,6 @@ function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 
     }, [])
 
     return (
-          <div>
-            {(storedata && storedata.map((u) => <p>{u.storename}</p>))}
-            {(storedata && storedata.map((u) => <p>{u.location}</p>))}
-            {(storedata && storedata.map((u) => <p>{u.food}</p>))}
-          </div>
-      )
-}
-
-
-class StoreListView extends React.Component {
-    render() {
-        return (
             <div>
                 <NavBar />
                 <section>
@@ -106,16 +55,9 @@ class StoreListView extends React.Component {
                                 </div>
                             </div>
                             < div className={styles.Restaurant}>
-                                <Stores></Stores>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
+                                {    storedata&&storedata.map((a => {
+                                     return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img}/>   
+                                }))}
                             </div>
                         </div>
                         <div class={styles.rightbox}>
@@ -130,8 +72,6 @@ class StoreListView extends React.Component {
                     </div >
                 </section >
             </div >
-
         )
-    }
 }
 export default StoreListView;
