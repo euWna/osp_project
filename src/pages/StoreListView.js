@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 
 
 function StoreTemplate(storename) {
+
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
@@ -46,9 +47,9 @@ function StoreTemplate(storename) {
 //     return infoarr //정보 담긴 배열 리턴
 // }
 
-function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
+function Stores() { //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
     const [storedata, setData] = useState()
-    var storearr = new Array(); 
+    var storearr = new Array();
     useEffect(() => {
         fetch("/StoreListView_send_data", { //json 데이터를 받아옴
             headers: {
@@ -56,24 +57,29 @@ function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 
                 method: 'GET'
             }
         })
-        .then(response => response.json())
-        .then(jsonData => {
-            for(const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
-                storearr[key]=Object.values(jsonData)[key]  // 객체임 객체를 배열에 넣는건데...
-            }
-            setData(storearr)
-        })
-        .catch(
-            (err) => console.log(err))
+            .then(response => response.json())
+            .then(jsonData => {
+                for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
+                    storearr[key] = Object.values(jsonData)[key]  // 객체임 객체를 배열에 넣는건데...
+                }
+                setData(storearr)
+            })
+            .catch(
+                (err) => console.log(err))
     }, [])
 
     return (
-          <div>
+        <div>
             {(storedata && storedata.map((u) => <p>{u.storename}</p>))}
             {(storedata && storedata.map((u) => <p>{u.location}</p>))}
             {(storedata && storedata.map((u) => <p>{u.food}</p>))}
-          </div>
-      )
+            <StoreList storename={storearr.storename} location={storearr.location} />
+            {/* 어떻게 해도 storearr는 그냥 그대로 분리되지 않고 나옴... */}
+            {/* <StoreList storedata={storearr} /> */}
+        </div >
+
+
+    )
 }
 
 
@@ -134,4 +140,13 @@ class StoreListView extends React.Component {
         )
     }
 }
-export default StoreListView;
+export { StoreListView };
+export { Stores };
+// export function StoresInfoOut() {
+//     Stores();
+
+//     return (
+
+//         storedata = storedata
+//     );
+// }

@@ -47,8 +47,8 @@ def Submit_store():
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>",methods=['GET','POST'])
-def view(store_id):
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view(storename):
     return render_template("index.html")
 
 '''

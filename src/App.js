@@ -26,7 +26,7 @@ import MyPageMenu from './pages/MyPageMenu';
 import ReviewAll from './pages/ReviewAll';
 import SignUp from './pages/SignUp';
 import StoreDetail from './pages/StoreDetail';
-import StoreListView from './pages/StoreListView';
+import { StoreListView } from './pages/StoreListView';
 
 //App.js를  index.js에서 렌더링 중입니다!
 
