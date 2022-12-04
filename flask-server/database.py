@@ -22,6 +22,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
+            "file" : data['file'],
             "img_path" : img_path
         }
 
@@ -29,7 +30,7 @@ class DBhandler:
             self.db.child("STORE").child(name).set(store_info)
             #print(data,img_path)
             return True
-        else:
+        else: #중복검사-중복이면
             return False
         
     # 맛집 정보 중복 체크 함수(insertStore에서 사용)

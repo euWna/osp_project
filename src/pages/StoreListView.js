@@ -12,7 +12,7 @@ import heart from "../img/heart.png";
 
 import { useState, useEffect } from 'react';
 
-
+   /* 
 function StoreTemplate(storename) {
     return (
         <Link to="/StoreDetail">
@@ -46,6 +46,7 @@ function StoreTemplate(storename) {
 //     return infoarr //정보 담긴 배열 리턴
 // }
 
+   /* 
 function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 2차원 배열 반환해주는 함수
     const [storedata, setData] = useState()
     var storearr = new Array(); 
@@ -74,7 +75,7 @@ function Stores(){ //데이터 받아와서 식당의 정보들이 들어있는 
             {(storedata && storedata.map((u) => <p>{u.food}</p>))}
           </div>
       )
-}
+}*/
 
 
 class StoreListView extends React.Component {
@@ -106,16 +107,8 @@ class StoreListView extends React.Component {
                                 </div>
                             </div>
                             < div className={styles.Restaurant}>
-                                <Stores></Stores>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
-                                <StoreList></StoreList>
+                                {/*<Stores></Stores>*/}
+                                <StoreList/>
                             </div>
                         </div>
                         <div class={styles.rightbox}>
