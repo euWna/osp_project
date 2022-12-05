@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file
 from database import DBhandler
 from collections import OrderedDict
 import json
@@ -32,9 +32,11 @@ def Submit_store():
         data = request.form
         name = data['storename']
         img_file = request.files['file']
-        img_random = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        # img_random = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        # if img_file:
+        #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
-            img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
+            img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
         if DB.insert_store(data['storename'], data, img_file.filename):
             return redirect(url_for('view', store_id=name))
         else:
@@ -97,7 +99,7 @@ def Submit_Review():
         
         img_file = request.files['file']
         if img_file:
-            img_file.save("./flask-server/static/img/"+img_file.filename)
+            img_file.save("../../public/assets/"+img_file.filename)
             #print(img_file)
 
         if DB.insert_review(data['username'], data, img_file.filename):
@@ -116,14 +118,16 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
-@app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
-def Get_img(storekey):
-    print("///////////////////////////////")
-    img_name = DB.db.child("STORE").child(storekey).child('img_path').get().val()
-    img_path = "./flask-server/static/img/"+ img_name #흠...
-    print(img_path)
-    if request.method == 'GET':#겟요청이 들어오고있는건지...?안들어오고잇는거같아요...
-        return img_path #지금은 경로를 리턴해주는 중입니다
+#이미지 불러오기 함수였는데 안써도 됩니당
+# @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
+# def Get_img(storekey):
+#     print("///////////////////////////////")
+#     img_name = DB.db.child("STORE").child(storekey).child('img_path').get().val()
+#     # request.headers["content-type"] = "image/png"
+#     img = "../../public/assets/"+ img_name
+#     print(img)
+#     # if request.method == 'GET':#겟요청이 들어오고있는건지...?안들어오고잇는거같아요...
+#     return img #지금은 경로를 리턴해주는 중입니다
 
 
 if __name__ == "__main__":

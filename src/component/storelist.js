@@ -3,13 +3,12 @@ import styles from '../css/Storelist.module.css';
 import samplelocation from "../img/location.png";
 
 function Storelist(props) {
-    const src =`/get_img/`+`${props.storekey}` //app.py의 이미지 가져오는 함수 URL
+
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
-                    <img src={src} width="295" height="125" />
-                    {/* 이미지 경로에 해당 api를 넣으래서 그냥 넣었는데 안되는중 */}
+                    <img src={process.env.PUBLIC_URL + '/assets/' + `${props.img}` } width="295" height="125" />
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>
