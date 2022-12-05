@@ -132,12 +132,12 @@ def list_stores():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
-@app.route('/StoreListView', methods=['GET','POST'])
-def list_stores():
-    data = DB.get_stores()
-    tot_count = len(data)
+# @app.route('/StoreListView', methods=['GET','POST'])
+# def list_stores():
+#     data = DB.get_stores()
+#     tot_count = len(data)
 
-    return render_template("index.html", datas=data.items(), total=tot_count())
+#     return render_template("index.html", datas=data.items(), total=tot_count())
 
 '''
 @app.route("/StoreListView",methods=['GET','POST'])
