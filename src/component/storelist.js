@@ -3,11 +3,12 @@ import styles from '../css/Storelist.module.css';
 import samplelocation from "../img/location.png";
 
 function Storelist(props) {
+    console.log(props.name)
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
-                    <img src={'http://127.0.0.1:5000/'+ process.env.PUBLIC_URL + '/assets/' + `${props.img}` } width="295" height="125" />
+                    <img src={process.env.PUBLIC_URL + '/assets/' + `${props.img}` } width="295" height="125" />
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>
