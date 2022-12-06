@@ -27,7 +27,7 @@ def view_createstore():
 def view_registeredstore(storename):
     registered = DB.get_store_byname(storename)
     print(type(registered)," ", registered)
-    return render_template("index.html", storename=storename, registered=registered)
+    return registered
 
 @app.route("/CreateMenu/<store_id>")
 def view_menu(store_id):
@@ -113,11 +113,7 @@ def get_registered_store():
     return registered_json
 
 
-
-
 #맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
-
-
 @app.route("/StoreListView_send_data", methods=['GET','POST'])
 def list_stores():
     if request.method == 'GET':

@@ -18,7 +18,7 @@ function RegisteredStore() {
         })
         .then(response => response.json())
         .then(response => {
-            console.log(resonse);
+            console.log(response);
             setData(response);
         })
         .catch(
