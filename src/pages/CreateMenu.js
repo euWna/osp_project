@@ -17,11 +17,17 @@ import { render } from "@testing-library/react";
 //   < Link to="http://127.0.0.1:5000/CreateMenu/" />
 // })
 // // }
+function MenuPlusBtn() {
 
+  const params = params;
+
+  return (< Link to={`http://127.0.0.1:5000/CreateMenu/${params}`} />)
+}
 
 function CreateMenu() {
 
   const params = useParams().storename;
+  const param2 = useParams().menuname;
   // MinusButton = document.getElementsByClassName("MinusButton");
   // nutrient = document.getElementsByClassName("nutrient").innerHTML;
   // MinusButton.addEventListener("click", removeNutrient(nutrient));
@@ -46,7 +52,7 @@ function CreateMenu() {
           <span className={`${styles.cell} ${styles.col2}`}></span>
         </div> */}
 
-        <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} method="post" enctype="multipart/form-data">
+        <form action={`http://127.0.0.1:5000/CreateMenu/${params}/${param2}`} method="post" enctype="multipart/form-data">
           <div id={styles.table}>
             <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
@@ -85,7 +91,7 @@ function CreateMenu() {
             </div>
             <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}></span>
-              <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" >+ 메뉴 새로 추가하기</span>
+              <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" ><button on onClick={MenuPlusBtn(params)}>+ 메뉴 새로 추가하기</button></span>
             </div>
           </div>
         </form>
