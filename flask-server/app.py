@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file
+from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file, flash, session
 from database import DBhandler
 from collections import OrderedDict
+import hashlib
 import json
 import sys
 import string
@@ -18,6 +19,43 @@ DB.__init__()
 @app.route("/")
 def index():
     return render_template("index.html")
+
+def refresh(site):
+    return redirect
+
+# 회원가입 부분
+@app.route("/SignUp")
+def signup():
+    return render_template("index.html")
+
+@app.route("/SignUp_post", methods=['POST'])
+def register_user():
+    data=request.form
+    pw=request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.insert_user(data,pw_hash):
+        return render_template("index.html")
+    else:
+        flash("user id already exist!")
+        return render_template("index.html")
+# 회원가입 부분
+
+# 로그인 부분
+@app.route("/Login")
+def login():
+    return render_template("index.html")
+@app.route("/login_confirm", methods=['POST'])
+def login_user():
+    id_=request.form['id']
+    pw=request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.find_user(id_,pw_hash):
+        session['id']=id_
+        return redirect(url_for('list_restaurants'))
+    else:
+        flash("Wrong ID or PW!")
+        return render_template("login.html")
+# 로그인 부분
 
 @app.route("/CreateStore")
 def view_createstore():
