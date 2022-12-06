@@ -1,6 +1,5 @@
 import pyrebase
 import json
-
 class DBhandler:
     def __init__(self):
         with open('flask-server/authentication/firebase_auth.json') as f:
@@ -8,6 +7,7 @@ class DBhandler:
 
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
+     
 
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
@@ -80,4 +80,4 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
-    
+   

@@ -38,13 +38,13 @@ def Submit_store():
         if img_file:
             img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
         if DB.insert_store(data['storename'], data, img_file.filename):
-            return redirect(url_for('view', store_id=name))
+            return redirect(url_for('view', storename=name))
         else:
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>",methods=['GET','POST'])
-def view(store_id):
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view(storename):
     return render_template("index.html")
 
 '''
@@ -74,7 +74,7 @@ def Submit_menu():
             #return render_template("result_menu.html", result=result)
 
             if DB.insert_menu(data['food'], data, img_file.filename):
-                return render_template("result_menu.html", result = data, img_path="static/img/"+img_file.filename)
+                return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
     '''
@@ -133,9 +133,9 @@ def list_stores():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
-@app.route('/StoreListView', methods=['GET','POST'])
-def list_stores():
-    data = DB.get_stores()
+@app.route('/StoreListViews', methods=['GET','POST'])
+def list_stores2():
+    data = DB.get_store()
     tot_count = len(data)
 
     return render_template("index.html", datas=data.items(), total=tot_count())

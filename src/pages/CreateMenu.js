@@ -2,11 +2,31 @@ import React from "react";
 import styles from "../css/CreateMenu.module.css";
 import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
+import { render } from "@testing-library/react";
+
+// function removeNutrient(nutrient) {
+//   // DB에서 정의...?
+// }
+// var i = 0;
+// var MenuPlus = document.getElementsById("menuPlus")
+// // for (i = 0; i < MenuPlus.length; i++) {
+// MenuPlus[i].addEventListener("click", (event) => {
+//   // render_template("index.html")
+//   // CreateMenu();
+//   // render("http://127.0.0.1:5000/CreateMenu/{params}");
+//   < Link to="http://127.0.0.1:5000/CreateMenu/" />
+// })
+// // }
 
 
 function CreateMenu() {
 
-  const params = useParams().id;
+  const params = useParams().storename;
+  // MinusButton = document.getElementsByClassName("MinusButton");
+  // nutrient = document.getElementsByClassName("nutrient").innerHTML;
+  // MinusButton.addEventListener("click", removeNutrient(nutrient));
+  // nutrient 대신 key 를 넣을 수 있으면 좋음 
+
 
   return (
     <div>
@@ -18,18 +38,18 @@ function CreateMenu() {
             <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
           </div>
         </aside>
-
+        {/* 
         <div className={styles.row}>
-              <span className={`${styles.cell} ${styles.col1}`}>
-              {params}
-              </span>
-              <span className={`${styles.cell} ${styles.col2}`}></span>
-        </div>
+          <span className={`${styles.cell} ${styles.col1}`}>
 
-        <form action="http://127.0.0.1:5000/CreateMenu" method="post" enctype="multipart/form-data">
+          </span>
+          <span className={`${styles.cell} ${styles.col2}`}></span>
+        </div> */}
+
+        <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} method="post" enctype="multipart/form-data">
           <div id={styles.table}>
             <div className={styles.row}>
-              <span className={`${styles.cell} ${styles.col1}`}>김치나베돈카츠</span>
+              <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
               <span className={`${styles.cell} ${styles.col2}`}></span>
             </div>
             <div className={styles.row}>
@@ -49,7 +69,9 @@ function CreateMenu() {
                     <td><input type="text" name="nutrient" placeholder="+" size="70" /></td>
                   </tr>
                   <tr>
-                    <td>-계란</td>
+                    <td className="nutrient"><div className="MinusButton">-</div>계란</td>
+                    {/* 이부분 나중에 nutrient{i} 배열 반환하는 것으로 수정해서 동적으로 생성하게 해야함 */}
+
                   </tr>
                   <tr>
                     <th>대표사진</th>
@@ -63,7 +85,7 @@ function CreateMenu() {
             </div>
             <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}></span>
-              <span className={`${styles.cell} ${styles.col2}`}>+ 메뉴 새로 추가하기</span>
+              <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" >+ 메뉴 새로 추가하기</span>
             </div>
           </div>
         </form>
