@@ -54,12 +54,23 @@ def Submit_store():
         if img_file:
             img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
         if DB.insert_store(storename, data, img_file.filename):
-            return redirect(url_for('view_registeredstore', storename=storename)) 
-            
+            return redirect(url_for('view_registeredstore', storename=storename))
+
         else:
             return "The submitted store already exists!"
 
-@app.route("/CreateMenu_submit",methods=['POST'])
+
+@app.route("/CreateMenu/<store_id>")
+def view(store_id):
+    return render_template("index.html")
+
+'''
+@app.route("/CreateMenu",methods=['GET','POST'])
+def go_menucreate():
+    return redirect(url_for('Submit_menu', request_method=request.method))
+'''
+
+@app.route("/CreateMenu",methods=['GET','POST'])
 def Submit_menu():
     if request.method == 'POST':
             data = request.form
@@ -83,7 +94,7 @@ def Submit_menu():
                 return "The submitted menu already exists!"
 
 
-@app.route("/CreateReview/<store_id>")        
+@app.route("/CreateReview/<store_id>")
 def Submit_Review():
     if request.method == 'POST':
         data = request.form
@@ -93,7 +104,7 @@ def Submit_Review():
         reviewtitle = data['reviewtitle']
         reviewdesc = data['reviewdesc']
         #print(username,"\n",reviewtitle, '\n', reviewdesc)
-        
+
         img_file = request.files['file']
         if img_file:
             img_file.save("../../public/assets/"+img_file.filename)
@@ -135,15 +146,12 @@ def list_stores():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
+# @app.route('/StoreListView', methods=['GET','POST'])
+# def list_stores():
+#     data = DB.get_stores()
+#     tot_count = len(data)
 
-
-'''
-@app.route('/StoreListView', methods=['GET','POST'])
-def list_stores():
-    data = DB.get_stores()
-    tot_count = len(data)
-
-    return render_template("index.html", datas=data.items(), total=tot_count())
+#     return render_template("index.html", datas=data.items(), total=tot_count())
 
 
 @app.route("/StoreListView",methods=['GET','POST'])
