@@ -91,15 +91,14 @@ def Submit_store():
         #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
             img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
-        if DB.insert_store(storename, data, img_file.filename):
-            return redirect(url_for('view_registeredstore', storename=storename))
-
+        if DB.insert_store(data['storename'], data, img_file.filename):
+            return redirect(url_for('view', storename=name))
         else:
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>")
-def view(store_id):
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view(storename):
     return render_template("index.html")
 
 '''
@@ -127,7 +126,7 @@ def Submit_menu():
             #return render_template("result_menu.html", result=result)
 
             if DB.insert_menu(data['food'], data, img_file.filename):
-                return render_template("result_menu.html", result = data, img_path="static/img/"+img_file.filename)
+                return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
 

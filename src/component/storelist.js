@@ -4,7 +4,7 @@ import samplelocation from "../img/location.png";
 import { useState, useEffect } from 'react';
 
 function Storelist(props) {
-
+    // super(props)
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
