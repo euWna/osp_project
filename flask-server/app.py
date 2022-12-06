@@ -131,16 +131,15 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
-#이미지 불러오기 함수였는데 안써도 됩니당
 # @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
 # def Get_img(storekey):
 #     print("///////////////////////////////")
 #     img_name = DB.db.child("STORE").child(storekey).child('img_path').get().val()
 #     # request.headers["content-type"] = "image/png"
-#     img = "../../public/assets/"+ img_name
-#     print(img)
+#     img = "http://127.0.0.1:5000/static/img/"+ img_name
+#     imgurl = json.dumps(img)
 #     # if request.method == 'GET':#겟요청이 들어오고있는건지...?안들어오고잇는거같아요...
-#     return img #지금은 경로를 리턴해주는 중입니다
+#     return imgurl #지금은 경로를 리턴해주는 중입니다
 
 
 if __name__ == "__main__":
