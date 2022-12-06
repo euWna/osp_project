@@ -9,6 +9,46 @@ class DBhandler:
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
 
+
+    #회원가입
+    def insert_user(self, data, pwd):
+        user_info = {
+            "ID" : data['ID'],
+            "pwd" : pwd,
+            "nickname" : data['nickname']
+        }
+        if self.user_duplicate_check(str(data['ID'])):
+            self.db.child("user").push(user_info)
+            print(data)
+            return True
+        else:
+            return False
+
+    def user_duplicate_check(self, id_string):
+        users = self.db.child("user").get()
+        print("users###",users.val())
+        if str(users.val()) == "None": # first registration
+            return True
+        else:
+            for res in users.each():
+                value = res.val()
+                if value['ID'] == id_string:
+                    return False
+            return True
+
+
+    #로그인 부분
+    def find_user(self, ID_, pwd_):
+        users = self.db.child("user").get()
+        target_value=[]
+        for res in users.each():
+            value = res.val()
+            if value['ID'] == ID_ and value['pwd'] == pwd_:
+                return True
+            return False
+    
+
+
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
         store_info ={
