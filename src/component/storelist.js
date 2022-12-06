@@ -1,14 +1,37 @@
 import { Link } from 'react-router-dom';
 import styles from '../css/Storelist.module.css';
 import samplelocation from "../img/location.png";
+import { useState, useEffect } from 'react';
 
 function Storelist(props) {
-    console.log(props.name)
+
+    // const image_src = `/get_image/`+ `${props.storekey}`
+
+    const [image_src, setData] = useState()
+
+    useEffect(() => {
+        fetch(`/get_img/`+ `${props.storekey}`, {
+            headers: {
+                method: 'GET'
+            }
+        })
+        .then(response => response.json())
+        .then(jsonData => {
+            console.log(jsonData)
+            setData(jsonData)
+        })
+        .catch(
+            (err) => console.log(err))
+    }, [])
+
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
-                    <img src={process.env.PUBLIC_URL + '/assets/' + `${props.img}` } width="295" height="125" />
+                {/* {    image_src&&image_src.map((a => {
+                    return <img src={a} width="295" height="125" />   
+                 }))} */}
+                 <img src={"http://127.0.0.1:5000/static/img/"+ `${props.img}`} width="295" height="125" />
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>
