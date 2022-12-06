@@ -2,17 +2,21 @@ import { Link } from 'react-router-dom';
 import styles from '../css/Storelist.module.css';
 import samplelocation from "../img/location.png";
 import heart from "../img/heart.png";
+// import storeimg from "../../flask-server/static/img/storeimg";
 
 function Storelist(props) {
+    // this.state = {
+    //     img1: storeimg,
+    // };
+    const img = `../../flask-server/static/img/${props.img}`
+    // 근데 이렇게 바꾸면 file 경로는 제대로 들어가는데 not found가 떠서 안뜨네요...
 
-    const img = `.../flask-server/static/img/` + `${props.image}`
-    const url = `static/img/${props.img}`;
 
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
-                    <img src={props.img} width="295" height="125" />
+                    <img src={img} width="295" height="125" />
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>

@@ -56,7 +56,7 @@ function StoreListView() {
                         </div>
                         < div className={styles.Restaurant}>
                             {storedata && storedata.map((a => {
-                                return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_file} />
+                                return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} /> //img_path로 해야 undefined가 안떠서 수정했어요
                             }))}
                         </div>
                     </div>
