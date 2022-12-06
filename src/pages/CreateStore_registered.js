@@ -1,9 +1,30 @@
 import React from "react";
 import styles from "../css/CreateStore.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 
-function CreateStore() {
+function RegisteredStore() {
+    const params = useParams().storename;
+    console.log(params)
+    const [registered, setData] = useState()
+    //var storearr = new Array(); 
+
+    useEffect(() => {
+        fetch(`/RegisteredStore/${params}`, { //json 데이터를 받아옴
+            headers: {
+                Accept: 'application/json',
+                method: 'GET'
+            }
+        })
+        .then(response => response.json())
+        .then(response => {
+            console.log(resonse);
+            setData(response);
+        })
+        .catch(
+            (err) => console.log(err))
+    }, [])
+
     return (
         <div>
             <NavBar></NavBar>
@@ -14,11 +35,12 @@ function CreateStore() {
                         <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
                     </div>
                 </aside>
+                { registered && registered.map((a) => (
                 <form action="/CreateStore_submit" method="POST" enctype="multipart/form-data">
                     <div id={styles.table}>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="storename" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="storename" value={a.storename}/></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>주소</span>
@@ -69,9 +91,10 @@ function CreateStore() {
                         </div>
                     </div>
                 </form>
+                ))}
             </section>
         </div>
     )
 }
 
-export default CreateStore;
+export default RegisteredStore;

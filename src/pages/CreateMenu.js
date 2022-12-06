@@ -9,7 +9,7 @@ function CreateMenu() {
   const params = useParams().id;
 
   return (
-    <body>
+    <div>
       <NavBar></NavBar>
       <section>
         <aside class={styles.aside}>
@@ -26,7 +26,7 @@ function CreateMenu() {
               <span className={`${styles.cell} ${styles.col2}`}></span>
         </div>
 
-        <form action="http://127.0.0.1:5000/CreateMenu" method="post" enctype="multipart/form-data">
+        <form action="CreateMenu/{params}" method="post" enctype="multipart/form-data">
           <div id={styles.table}>
             <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}>김치나베돈카츠</span>
@@ -68,7 +68,7 @@ function CreateMenu() {
           </div>
         </form>
       </section>
-    </body>
+    </div>
   )
 }
 

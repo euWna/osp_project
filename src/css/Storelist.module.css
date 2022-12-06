@@ -20,7 +20,7 @@
 }
 
 .listdesc {
-    position: relative;
+    /* display: flex; */
     margin-right: 25px;
 }
 

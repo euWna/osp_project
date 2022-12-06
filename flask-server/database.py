@@ -22,13 +22,10 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "file" : data['file'],
-            "img_path" : img_path
+            "img_path" :  "./public/assets/" + img_path,
         }
-
         if self.store_duplicate_check(name):
-            self.db.child("STORE").child(name).set(store_info)
-            #print(data,img_path)
+            self.db.child("STORE").push(store_info)
             return True
         else: #중복검사-중복이면
             return False
@@ -46,9 +43,15 @@ class DBhandler:
         stores = self.db.child("STORE").get().val()
         return stores
 
-    
-
-
+    def get_store_byname(self, storename):
+        stores = self.db.child("STORE").get()
+        target_value=""
+        for res in stores.each():
+            value = res.val()
+            if value['storename'] == storename:
+                target_value=value
+                break
+        return target_value
 
     def insert_menu(self,name,data,img_path):
         menu_info ={
@@ -87,3 +90,4 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
+    
