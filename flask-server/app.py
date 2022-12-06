@@ -107,15 +107,19 @@ def go_menucreate():
     return redirect(url_for('Submit_menu', request_method=request.method))
 '''
 
-@app.route("/CreateMenu",methods=['GET','POST'])
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view_createmenu():
+    return render_template("index.html")
+
+@app.route("/CreateMenu/<storename>/<menuname>",methods=['GET','POST'])
 def Submit_menu():
     if request.method == 'POST':
             data = request.form
             #print(data)
-
-            menuname = data['food']
-            price = data['money']
-            nutrient = data['nutrient']
+            # storename=data['storename']
+            # menuname = data['food']
+            # price = data['money']
+            # nutrient = data['nutrient']
             #print(menuname, price, nutrient)
 
             img_file = request.files['file']
@@ -126,12 +130,21 @@ def Submit_menu():
             #return render_template("result_menu.html", result=result)
 
             if DB.insert_menu(data['food'], data, img_file.filename):
-                return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
+                 return redirect(url_for("view_created_menu",menuname=menuname,data = data, img_path="static/img/"+img_file.filename , img_file=img_file))
+                #  return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
 
 
-@app.route("/CreateReview/<store_id>")
+def view_created_menu():
+
+      return render_template("index.html",result = data, img_path=img_path)
+
+
+
+@app.route("/CreateReview", methods=['GET','POST'])
+def view_createrefview():
+    return render_template("index.html")
 def Submit_Review():
     if request.method == 'POST':
         data = request.form
