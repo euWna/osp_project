@@ -36,7 +36,7 @@ def Submit_store():
         # if img_file:
         #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
-            img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장경로
+            img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장
         if DB.insert_store(data['storename'], data, img_file.filename):
             return redirect(url_for('view', store_id=name))
         else:
