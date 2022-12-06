@@ -92,13 +92,14 @@
 }
 
 .listdesc {
-    position: relative;
+    display: flex;
+    /* position: relative; */
     margin-right: 25px;
 }
 
 .StoreName {
-    position: relative;
-    top: 30px;
+    /* position: relative; */
+    /* top: 30px; */
     font-size: 18px;
     font-weight: 600;
 

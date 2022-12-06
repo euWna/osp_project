@@ -43,7 +43,7 @@ def Submit_store():
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>",methods=['GET','POST'])
+@app.route("/CreateMenu/<store_id>")
 def view(store_id):
     return render_template("index.html")
 
@@ -54,8 +54,6 @@ def go_menucreate():
 '''
 
 @app.route("/CreateMenu",methods=['GET','POST'])
-def view_createmenu():
-    return render_template("index.html")
 def Submit_menu():
     if request.method == 'POST':
             data = request.form
@@ -133,12 +131,12 @@ def list_stores():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
-@app.route('/StoreListView', methods=['GET','POST'])
-def list_stores():
-    data = DB.get_stores()
-    tot_count = len(data)
+# @app.route('/StoreListView', methods=['GET','POST'])
+# def list_stores():
+#     data = DB.get_stores()
+#     tot_count = len(data)
 
-    return render_template("index.html", datas=data.items(), total=tot_count())
+#     return render_template("index.html", datas=data.items(), total=tot_count())
 
 '''
 @app.route("/StoreListView",methods=['GET','POST'])
