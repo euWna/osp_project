@@ -8,7 +8,8 @@ function Storelist(props) {
     // this.state = {
     //     img1: storeimg,
     // };
-    const img = `../../flask-server/static/img/${props.img}`
+    const img = `flask-server/static/img/${props.img}`
+
     // 근데 이렇게 바꾸면 file 경로는 제대로 들어가는데 not found가 떠서 안뜨네요...
 
 
@@ -17,6 +18,9 @@ function Storelist(props) {
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
                     <img src={img} width="295" height="125" />
+                    <div>{props.img_file}</div>
+                    {/*http://127.0.0.1:5000/flask-server/static/img 이런식으로 링크가 들어가서 상대경로를 쓰면 안될 것 같아요
+                    -> 절대경로로 바꿔도 같은 결과로 나옴....*/}
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>

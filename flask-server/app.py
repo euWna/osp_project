@@ -103,11 +103,11 @@ def Submit_Review():
         
         img_file = request.files['file']
         if img_file:
-            img_file.save("./flask-server/static/img/"+img_file.filename)
+            img_file.save("../static/img/"+img_file.filename)
             #print(img_file)
 
         if DB.insert_review(data['username'], data, img_file.filename):
-            return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
+            return render_template("result_review.html", result = data, img_path="flask-server/static/img/"+img_file.filename, img_file=img_file)
 
 #맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
 
