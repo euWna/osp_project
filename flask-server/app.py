@@ -112,9 +112,10 @@ def view_createmenu():
     return render_template("index.html")
 
 @app.route("/CreateMenu/<storename>/<menuname>",methods=['GET','POST'])
-def Submit_menu():
+def Submit_menu(storename,menuname):
     if request.method == 'POST':
             data = request.form
+            menuname=menuname
             #print(data)
             # storename=data['storename']
             # menuname = data['food']
@@ -130,15 +131,15 @@ def Submit_menu():
             #return render_template("result_menu.html", result=result)
 
             if DB.insert_menu(data['food'], data, img_file.filename):
-                 return redirect(url_for("view_created_menu",menuname=menuname,data = data, img_path="static/img/"+img_file.filename , img_file=img_file))
+                 return redirect(url_for("view_created_menu",storename=storename,menuname=menuname,data = data, img_path="static/img/"+img_file.filename ))
                 #  return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
 
 
-def view_created_menu():
+def view_created_menu(storename, menuname):
 
-      return render_template("index.html",result = data, img_path=img_path)
+      return render_template("index.html",storename=storename,menuname=menuname,result = data, img_path=img_path)
 
 
 

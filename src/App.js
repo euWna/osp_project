@@ -28,6 +28,7 @@ import ReviewAll from './pages/ReviewAll';
 import SignUp from './pages/SignUp';
 import StoreDetail from './pages/StoreDetail';
 import StoreListView from './pages/StoreListView';
+import CreateMenuShow from "./pages/CreateMenuShow"
 
 //App.js를  index.js에서 렌더링 중입니다!
 
@@ -51,7 +52,7 @@ function App() {
           <Route path="/StoreDetail/:id" element={<StoreDetail />}></Route>
           <Route path="/StoreListView" element={<StoreListView />}></Route>
           <Route path="/StoreListViews" element={<StoreListView />}></Route>
-          <Route path="/CreateMenu/:storename/:menuname" element={<CreateMenu />}></Route>
+          <Route path="/CreateMenu/:storename/:menuname" element={<CreateMenuShow />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
