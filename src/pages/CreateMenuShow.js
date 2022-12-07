@@ -27,7 +27,7 @@ function MenuPlusBtn() {
 function CreateMenuShow(props) {
 
     const params = useParams().storename;
-    const param2 = useParams().menuname;
+    const param2 = useParams().food;
     // MinusButton = document.getElementsByClassName("MinusButton");
     // nutrient = document.getElementsByClassName("nutrient").innerHTML;
     // MinusButton.addEventListener("click", removeNutrient(nutrient));

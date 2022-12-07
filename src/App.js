@@ -51,7 +51,7 @@ function App() {
           <Route path="/StoreDetail" element={<StoreDetail />}></Route>
           <Route path="/StoreListView" element={<StoreListView />}></Route>
           <Route path="/StoreListViews" element={<StoreListView />}></Route>
-          <Route path="/CreateMenu/:storename/:menuname" element={<CreateMenuShow />}></Route>
+          <Route path="/CreateMenu/:storename/:food" element={<CreateMenu />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

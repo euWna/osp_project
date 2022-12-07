@@ -48,9 +48,10 @@ class DBhandler:
             "food" : data['food'],
             "money" : data['money'],
             "nutrient" : data['nutrient'],
-            "img_path" : img_path
+            "img_path" : img_path,
+            "storename" :name
         }
-        if self.menu_duplicate_check(name):
+        if self.menu_duplicate_check(name,data['food']):
             self.db.child("MENU").child(name).set(menu_info)
             #print(data,img_path)
             return True
@@ -58,15 +59,13 @@ class DBhandler:
             return False
 
     # 메뉴 정보 중복 체크 함수(insertmenu에서 사용)
-    def menu_duplicate_check(self, name):
-        menus = self.db.child("MENU").get()
+    def menu_duplicate_check(self, name,food):
+        menus = self.db.child("MENU").child(name).get()
         for res in menus.each():
-            if res.key() == name:
+            if res.key() == food:
                 return False
-        return True
-
-
-
+        return menus
+    # 지금은 key값이 매장명임...
 
 
     def insert_review(self,name,data,img_path):
