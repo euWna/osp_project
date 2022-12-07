@@ -111,11 +111,15 @@ def go_menucreate():
 def view_createmenu():
     return render_template("index.html")
 
-@app.route("/CreateMenu/<storename>/<menuname>",methods=['GET','POST'])
-def Submit_menu(storename,menuname):
+@app.route("/CreateMenu/<storename>/<food>",methods=['GET','POST'])
+def Submit_menu(storename,food):
     if request.method == 'POST':
+
             data = request.form
-            menuname=menuname
+            storename=storename
+            # storename=data.ref().parent().name()
+            food=food
+
             #print(data)
             # storename=data['storename']
             # menuname = data['food']
@@ -129,17 +133,26 @@ def Submit_menu(storename,menuname):
                 #print(img_file)
 
             #return render_template("result_menu.html", result=result)
-
-            if DB.insert_menu(data['food'], data, img_file.filename):
-                 return redirect(url_for("view_created_menu",storename=storename,menuname=menuname,data = data, img_path="static/img/"+img_file.filename ))
-                #  return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
+            # data['food'] 이면 menuname 밑에 menuname 으로 들어가서 storename으로 바꿈(데이터 똑바로 들어감)
+            if DB.insert_menu( storename,data, img_file.filename):
+                # 아니 데이터가 넘어가긴 하는데...?
+                #  return redirect(url_for("view_created_menu",data = data, img_path="static/img/"+img_file.filename, menuname=menuname,storename=storename ))
+                #  return render_template("index.html")
+                return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
+    return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
+    '''
+    else :
+        if request_method == 'GET':
+            request_method == 'POST'
+            return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)'''
 
 
-def view_created_menu(storename, menuname):
-
-      return render_template("index.html",storename=storename,menuname=menuname,result = data, img_path=img_path)
+def view_created_menu():
+    # 여기서 문제가 생기는 이유가 뭘까요..?
+    # storename이 Parent인데 이걸 받아오는 방법이...?
+      return render_template("index.html")
 
 
 

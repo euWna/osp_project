@@ -20,7 +20,7 @@ import CreateMenuShow from "./CreateMenuShow";
 // // }
 var Return_value = 0
 function NewValue() {
-  return Return_value = 1;
+  return (Return_value = 1);
 }
 function MenuPlusBtn() {
 
@@ -33,7 +33,7 @@ function MenuPlusBtn() {
 function CreateMenu() {
 
   const params = useParams().storename;
-  const param2 = useParams().menuname;
+  const param2 = useParams().food;
   // MinusButton = document.getElementsByClassName("MinusButton");
   // nutrient = document.getElementsByClassName("nutrient").innerHTML;
   // MinusButton.addEventListener("click", removeNutrient(nutrient));
@@ -42,7 +42,7 @@ function CreateMenu() {
   var menuarr = new Array();
 
   useEffect(() => {
-    fetch("/CreateMenu/<storename>/<menuname>", { //json 데이터를 받아옴
+    fetch("/CreateMenu/<storename>/<food>", { //json 데이터를 받아옴
       headers: {
         Accept: 'application/json',
         method: 'GET'
@@ -59,10 +59,12 @@ function CreateMenu() {
       .catch(
         (err) => console.log(err))
   }, [menuarr])
-  if (Return_value == 1) {  //Return_value는 메뉴 등록 버튼을 누르면 1이 되게 하고 싶음 on submit으로 구현 예정
+
+
+  if (Return_value == 1) {  //Return_value는 메뉴 등록 버튼을 누르면 1이 되게 하고 싶음  on submit으로 구현 예정
     return (< div >
       {menudata && menudata.map((a => {
-        return <CreateMenuShow storename={a.storename} menuname={a.food} price={a.money} nutrient={a.nutrient} />
+        return <CreateMenuShow storename={a.storename} food={a.food} price={a.money} nutrient={a.nutrient} />
       }))}
     </div>)
   }
