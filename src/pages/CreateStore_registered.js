@@ -9,7 +9,7 @@ function RegisteredStore() {
     console.log(params)
 
     const [registered, setData] = useState()
-    //var registeredarr = new Array();
+    var registeredarr = new Array();
     //var storearr = new Array(); 
 
     useEffect(() => {
@@ -21,13 +21,14 @@ function RegisteredStore() {
         })
         .then(response => response.json())
         .then(jsonData => {
-            //registered = Object.values(jsonData);
-            setData(jsonData);
-            console.log(registered);
+            registeredarr = Object.values(jsonData);
+            setData(registeredarr);
         })
         .catch(
             (err) => console.log(err))
-    }, [])
+        },[])
+
+    console.log(registered)
 
     return (
         <div>
