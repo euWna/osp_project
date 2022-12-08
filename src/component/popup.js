@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom';
-import styles from '../css/Storelist.module.css';
+import styles from '../css/PopUp.module.css';
 import samplelocation from "../img/location.png";
+import React, { ReactElement, useEffect, useState } from 'react';
 
-function Storelist(props) {
-    // super(props)
+function PopUp(props) {
+
     return (
         <Link to="/StoreDetail">
             <div class={styles.listbox}>
-                <div className={styles.ImagePart}>
+                <div className={styles.ImagePart2}>
                     <img src={process.env.PUBLIC_URL + '/assets/' + `${props.img}`} width="295" height="125" />
                 </div>
                 {/* 본문 박스 */}
-                <div class={styles.listdesc}>
-                    <div class={styles.StoreName}>{props.name}</div>
-                    <div class={styles.storelocation}>
-                        <p class={styles.locationtext}>
+                <div class={styles.listdesc2}>
+                    <div class={styles.StoreName2}>{props.name}</div>
+                    <div class={styles.storelocation2}>
+                        <p class={styles.locationtext2}>
                             <img src={samplelocation} class={styles.locationimg} width="18" height="18" />{props.location}</p>
                     </div>
                     <div class={styles.Tag}>#{props.food}</div>
@@ -29,4 +30,4 @@ function Storelist(props) {
     );
 }
 
-export default Storelist;
+export default PopUp;
