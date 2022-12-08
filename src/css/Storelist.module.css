@@ -20,50 +20,40 @@
 }
 
 .listdesc {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
+    /* display: flex; */
     margin-right: 25px;
 }
 
 .StoreName {
-    /* position: relative;
-    top: 30px; */
-    line-height: 40px;
+    position: relative;
+    top: 30px;
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 10px;
 
 }
 
 .storelocation {
-    display:flex;
-    line-height: 20px;
-    /* position: relative;
-    top: 35px; */
+    position: relative;
+    top: 35px;
 
 }
 
 .locationimg {
-
-    /* display:flex; */
-    /* position: relative; */
-    /* left: -20px; */
+    position: relative;
+    left: -20px;
 }
 
 .locationtext {
-    /* display:flex; */
-    /* position: relative;
+    position: relative;
     top: -23px;
-    left: 15px; */
-    margin: 0px;
+    left: 15px;
     font-size: 10px;
     color: rgb(120, 120, 120);
 }
 
 .Tag {
-    /* position: relative;
-    bottom: -13px; */
+    position: relative;
+    bottom: -13px;
     font-size: 13px;
     font-weight: 800;
 }

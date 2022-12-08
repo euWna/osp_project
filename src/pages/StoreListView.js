@@ -25,20 +25,17 @@ function StoreListView() {
                 method: 'GET'
             }
         })
-        .then(response => response.json())
-        .then(jsonData => {
-            var length = Object.keys(jsonData).length
-            for(var i=0; i<length; i++) { //식당 갯수만큼 반복
-                storearr[i]=Object.values(jsonData)[i]
-                storearr[i]["key"]=Object.keys(jsonData)[i] //키값 필요해서 가져옴
-            }
-            setData(storearr)
-            console.log(storearr)
-        })
-        .catch(
-            (err) => console.log(err))
-    }, [])
-
+            .then(response => response.json())
+            .then(jsonData => {
+                for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
+                    storearr[key] = Object.values(jsonData)[key]
+                    storearr[key]["key"] = Object.keys(jsonData)[key] //키값 필요해서 가져옴
+                }
+                setData(storearr)
+            })
+            .catch(
+                (err) => console.log(err))
+    }, [storearr])
 
     return (
         <div>

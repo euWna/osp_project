@@ -22,7 +22,7 @@ function Section() {
           <a className={styles.hottopic} href="#">
             <span className={styles.thick}>HOT </span><span class={styles.thin}>TOPIC</span>
           </a>
-          <p className={styles.homep}>금주의 인기 맛집</p>
+          <p>금주의 인기 맛집</p>
         </div>
       </div>
       <div className={styles.hotlist_container}>
