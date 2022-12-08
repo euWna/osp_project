@@ -111,39 +111,6 @@ def go_menucreate():
 def view_createmenu():
     return render_template("index.html")
 
-# @app.route("/CreateMenu_submit/<storename>",methods=['POST'])
-# def Submit_menu(storename):
-#     if request.method == 'POST':
-           
-#             data = request.form
-#             storename=storename
-#             # storename=data.ref().parent().name()
-
-      
-#             #print(data)
-#             # storename=data['storename']
-#             # menuname = data['food']
-#             # price = data['money']
-#             # nutrient = data['nutrient']
-#             #print(menuname, price, nutrient)
-
-#             img_file = request.files['file']
-#             if img_file:
-#                 img_file.save("./flask-server/static/img/"+img_file.filename)
-#                 #print(img_file)
-           
-#             #return render_template("result_menu.html", result=result)
-#             # data['food'] 이면 menuname 밑에 menuname 으로 들어가서 storename으로 바꿈(데이터 똑바로 들어감)
-#             if DB.insert_menu( storename,data, img_file.filename):
-#                 # 아니 데이터가 넘어가긴 하는데...?
-#                 #  return redirect(url_for("view_created_menu",data = data, img_path="static/img/"+img_file.filename, menuname=menuname,storename=storename ))
-#                 #  return render_template("index.html")
-#                 return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
-#             else:
-#                 return "The submitted menu already exists!"
-#     # return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
-#     return redirect(url_for("view_created_menu",data = data, img_path="static/img/"+img_file.filename))
-
 @app.route("/CreateMenu/<storename>/<food>",methods=['GET','POST'])
 def Submit_menu(storename,food):
     if request.method == 'POST':

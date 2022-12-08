@@ -112,9 +112,10 @@ class DBhandler:
     def menu_duplicate_check(self, name,food):
         menus = self.db.child("MENU").child(name).get()
         for res in menus.each():
+            print (res.key())
             if res.key() == food:
                 return False
-        return menus
+        return True
     # 지금은 key값이 매장명임...
 
 
