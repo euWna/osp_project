@@ -72,8 +72,7 @@ class DBhandler:
     # 맛집 정보 중복 체크 함수(insert_store에서 사용)
     def store_duplicate_check(self, name):
         storedata = self.db.child("STORE").get()
-        if isinstance(storedata.val(), type(None)):
-            #print("NONE")
+        if storedata.val() == "":
             return True
         else:
             for res in storedata.each():
@@ -87,6 +86,16 @@ class DBhandler:
     def get_store(self):
         stores = self.db.child("STORE").get().val()
         return stores
+
+    def get_store_byname(self, storename):
+        stores = self.db.child("STORE").get()
+        target_value=""
+        for res in stores.each():
+            value = res.val()
+            if value['storename'] == storename:
+                target_value=value
+                break
+        return target_value
 
     # 메뉴
     def insert_menu(self,storename,data,img_path):

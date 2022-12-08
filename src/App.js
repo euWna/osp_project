@@ -40,9 +40,9 @@ function App() {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/CreateStore" element={<CreateStore />}></Route>
           <Route path="/RegisteredStore/:storename" element={<RegisteredStore />}></Route>
-          <Route path="/CreateMenu/:id" element={<CreateMenu />}></Route>
+          <Route path="/CreateMenu/:storename" element={<CreateMenu />}></Route>
           
-          <Route path="/CreateReview/:id" element={<CreateReview />}></Route>
+          <Route path="/CreateReview/:storename" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/MyPage" element={<MyPage />}></Route>

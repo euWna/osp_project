@@ -29,11 +29,11 @@ def view_registeredstore(storename):
     return render_template("index.html")
 
 @app.route("/CreateMenu/<storename>")
-def view_menu(store_id):
+def view_menu(storename):
     return render_template("index.html")
 
 @app.route("/CreateReview/<storename>")
-def view_review(store_id):
+def view_review(storename):
     return render_template("index.html")
 
 @app.route("/StoreListView")
@@ -77,19 +77,19 @@ def login_user():
 
 
 ##################### Submit Data #####################
-@app.route("/CreateStore_submit", methods=['GET', 'POST'])
+@app.route("/CreateStore_submit", methods=['POST'])
 def Submit_store():
     if request.method == 'POST':
-        data = request.form
-        name = data['storename']
+        storedata = request.form
+        storename = storedata['storename']
         img_file = request.files['file']
         # img_random = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
         # if img_file:
         #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
             img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장
-        if DB.insert_store(data['storename'], data, img_file.filename):
-            return redirect(url_for('view_menu', store_id=name))
+        if DB.insert_store(storename, storedata, img_file.filename):
+            return redirect(url_for('view_registeredstore', storename=storename))
         else:
             return "The submitted store already exists!"
 
@@ -136,10 +136,6 @@ def Submit_Review():
     if request.method == 'POST':
         data = request.form
         #print(data)
-
-        username = data['username']
-        reviewtitle = data['reviewtitle']
-        reviewdesc = data['reviewdesc']
         #print(username,"\n",reviewtitle, '\n', reviewdesc)
         
         img_file = request.files['file']
