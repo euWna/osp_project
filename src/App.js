@@ -39,10 +39,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/CreateStore" element={<CreateStore />}></Route>
-
           <Route path="/CreateMenu/:storename" element={<CreateMenu />}></Route>
-          <Route path="/CreateReview/:storename" element={<CreateReview />}></Route>
-
+          <Route path="/CreateReview" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/MyPage" element={<MyPage />}></Route>
@@ -50,7 +48,7 @@ function App() {
           <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>
           <Route path="/ReviewAll" element={<ReviewAll />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
-          <Route path="/StoreDetail/:id" element={<StoreDetail />}></Route>
+          <Route path="/StoreDetail" element={<StoreDetail />}></Route>
           <Route path="/StoreListView" element={<StoreListView />}></Route>
           <Route path="/StoreListViews" element={<StoreListView />}></Route>
           <Route path="/CreateMenu/:storename/:food" element={<CreateMenu />}></Route>

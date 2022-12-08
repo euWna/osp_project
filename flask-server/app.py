@@ -71,12 +71,11 @@ def Submit_store():
         # if img_file:
         #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
-            img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장
+            img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
         if DB.insert_store(data['storename'], data, img_file.filename):
             return redirect(url_for('view', storename=name))
         else:
             return "The submitted store already exists!"
-
 
 
 @app.route("/CreateMenu/<storename>",methods=['GET','POST'])
@@ -88,7 +87,6 @@ def view(storename):
 def go_menucreate():
     return redirect(url_for('Submit_menu', request_method=request.method))
 '''
-
 
 @app.route("/CreateMenu/<storename>",methods=['GET','POST'])
 def view_createmenu():
@@ -173,26 +171,27 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
+#이미지 불러오기 함수였는데 안써도 됩니당
 # @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
 # def Get_img(storekey):
 #     print("///////////////////////////////")
 #     img_name = DB.db.child("STORE").child(storekey).child('img_path').get().val()
 #     # request.headers["content-type"] = "image/png"
-#     img = "http://127.0.0.1:5000/static/img/"+ img_name
-#     imgurl = json.dumps(img)
+#     img = "../../public/assets/"+ img_name
+#     print(img)
 #     # if request.method == 'GET':#겟요청이 들어오고있는건지...?안들어오고잇는거같아요...
-#     return imgurl #지금은 경로를 리턴해주는 중입니다
+#     return img #지금은 경로를 리턴해주는 중입니다
 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
+@app.route('/StoreListViews', methods=['GET','POST'])
+def list_stores2():
+    data = DB.get_store()
+    tot_count = len(data)
 
-# @app.route('/StoreListView', methods=['GET','POST'])
-# def list_stores():
-#     data = DB.get_stores()
-#     tot_count = len(data)
-#     return render_template("index.html", datas=data.items(), total=tot_count())
+    return render_template("index.html", datas=data.items(), total=tot_count())
 
 '''
 @app.route("/StoreListView",methods=['GET','POST'])
