@@ -1,9 +1,10 @@
 import styles from '../css/Contents.module.css';
 import samplelocation from "../img/location.png";
 import sample from '../img/sample.PNG';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-function Info() {
+function Info(props) {
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>
@@ -11,7 +12,7 @@ function Info() {
                     음식점 정보
                 </div>
                 <div>
-                    <img class={styles.image} src={sample} /><br/><br/>
+                    <img class={styles.image} src={sample} /><br /><br />
                 </div>
 
                 <div class={styles.info}>
@@ -22,10 +23,10 @@ function Info() {
                             "주소"
                         </div>
                     </div>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <div>
-                    <div class="Tag">카테고리 </div>
+                        <div class="Tag">카테고리 </div>
                         <div class={styles.site}>사이트 </div>
                         <div class={styles.phone}>전화번호 </div>
                         <div class={styles.time}>운영시간 </div>

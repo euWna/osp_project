@@ -4,19 +4,20 @@ import samplelocation from "../img/location.png";
 import { useState, useEffect } from 'react';
 
 function Storelist(props) {
-
+    var storename = props.name
+    console.log(storename)
     return (
-        <Link to="/StoreDetail">
+        <Link to={`/StoreDetail/${storename}`}>
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
-                 <img src={"http://127.0.0.1:5000/static/img/"+ `${props.img}`} width="295" height="125" />
+                    <img src={"http://127.0.0.1:5000/static/img/" + `${props.img}`} width="295" height="125" />
                 </div>
                 {/* 본문 박스 */}
                 <div class={styles.listdesc}>
                     <div class={styles.StoreName}>{props.name}</div>
                     <div class={styles.storelocation}>
                         <div class={styles.locationimg}>
-                        <img src={samplelocation} class={styles.locationimg} width="18" height="18" />
+                            <img src={samplelocation} class={styles.locationimg} width="18" height="18" />
                         </div>
                         <p class={styles.locationtext}>{props.location}</p>
                     </div>
