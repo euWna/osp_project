@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function Info(props) {
+    console.log(props.StoreInfo)
+    // StoreDetail에서 받아온 props.StoreInfo는 undefined로 뜸
+    // 그 외에도 하나도 못받아오고 있음
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>
@@ -21,7 +24,8 @@ function Info(props) {
                         {/* 맛집 이름만 넘김! props에서 UseParams로 받아온 것 */}
                         <div class={styles.storelocation}>
                             <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
-                            "주소"
+                            "주소"{props.storelocation}
+                            {/* storelocation 받아오지 못하는 중 */}
                         </div>
                     </div>
                     <br />

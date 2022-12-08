@@ -7,38 +7,37 @@ import NavBar from "../component/NavBar";
 import { useState, useEffect } from 'react';
 
 
-function StoreDetail() {
+function StoreDetail(props) {
     const params = useParams().storename;
-    // const [storedata, setData] = useState()
+
+    // const [registered, setData] = useState()
+    // var registeredarr = new Array();
+    // //var storearr = new Array(); 
 
     // useEffect(() => {
-    //     fetch(`/StoreDetail/${params}`, { //json 데이터를 받아옴
+    //     fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
     //         headers: {
     //             Accept: 'application/json',
     //             method: 'GET'
     //         }
     //     })
     //         .then(response => response.json())
-
     //         .then(jsonData => {
-
-    //             storedata = Object.values(jsonData)
-    //             storedata["key"] = Object.keys(jsonData) //키값 필요해서 가져옴
-
-    //             setData(storedata)
-    //             console.log(storedata)
+    //             registeredarr[0] = jsonData;
+    //             setData(registeredarr);
     //         })
     //         .catch(
     //             (err) => console.log(err))
     // }, [])
-    // useEffect 가 뭔가 이상함 
-    // console.log(StoreInfo)
-
+    // console.log("출력확인");
+    // console.log(registered);
+    // useEffect 가 뭔가 이상함
+    //그냥 storedata 자체를 못받아오고 있음
 
     return (
         <div>
             <NavBar></NavBar>
-            <Info storename={params} />
+            <Info storename={params} storelocation={props.location} />
             <Menu />
             <Review />
         </div>

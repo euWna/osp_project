@@ -6,10 +6,11 @@ import StoreDetail from '../pages/StoreDetail';
 
 function Storelist(props) {
     var storename = props.name
+    var location = props.location
     console.log(storename)
     return (
         <Link to={`/StoreDetail/${storename}`}>
-            {/* <div >{storename}, {props.location}, {props.food}, {props.img}, {props.storekey}</div> */}
+            <div className={styles.SendDatas}>{storename}, {location}, {props.food}, {props.img}, {props.storekey}</div>
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
                     <img src={"http://127.0.0.1:5000/static/img/" + `${props.img}`} width="295" height="125" />
@@ -31,7 +32,7 @@ function Storelist(props) {
                     <div class={styles.reviewnum}>리뷰""개</div> */}
                 </div>
             </div>
-        </Link>
+        </Link >
     );
 }
 
