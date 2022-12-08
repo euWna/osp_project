@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../css/CreateStore.module.css";
 import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
+import { useState, useEffect } from 'react';
 
 function RegisteredStore() {
     const params = useParams().storename;

@@ -16,6 +16,7 @@ import Section from './pages/Homepage';
 
 
 import CreateStore from './pages/CreateStore';
+import RegisteredStore from './pages/CreateStore_registered'
 import CreateMenu from './pages/CreateMenu';
 import CreateReview from './pages/CreateReview';
 import Homepage from './pages/Homepage';
@@ -38,7 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/CreateStore" element={<CreateStore />}></Route>
-          <Route path="/RegisteredStore/:storename" element={<CreateStore />}></Route>
+          <Route path="/RegisteredStore/:storename" element={<RegisteredStore />}></Route>
           <Route path="/CreateMenu/:id" element={<CreateMenu />}></Route>
           <Route path="/CreateReview" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>

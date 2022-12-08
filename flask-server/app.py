@@ -27,7 +27,7 @@ def view_createstore():
 def view_registeredstore(storename):
     registered = DB.get_store_byname(storename)
     print(type(registered)," ", registered)
-    return registered
+    return render_template("index.html")
 
 @app.route("/CreateMenu/<store_id>")
 def view_menu(store_id):
