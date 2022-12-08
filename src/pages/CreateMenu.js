@@ -37,7 +37,7 @@ function CreateMenu() {
   // MinusButton = document.getElementsByClassName("MinusButton");
   // nutrient = document.getElementsByClassName("nutrient").innerHTML;
   // MinusButton.addEventListener("click", removeNutrient(nutrient));
-  // nutrient 대신 key 를 넣을 수 있으면 좋음
+  // nutrient 대신 key 를 넣을 수 있으면 좋음 
   const [menudata, setData] = useState()
   var menuarr = new Array();
 
@@ -79,7 +79,7 @@ function CreateMenu() {
               <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
             </div>
           </aside>
-          {/*
+          {/* 
         <div className={styles.row}>
           <span className={`${styles.cell} ${styles.col1}`}>
 
@@ -87,7 +87,7 @@ function CreateMenu() {
           <span className={`${styles.cell} ${styles.col2}`}></span>
         </div> */}
 
-          <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} onSubmit={NewValue()} method="post" enctype="multipart/form-data">
+          <form action={`http://127.0.0.1:5000/CreateMenu/${params}/${param2}`} onSubmit={NewValue()} method="post" enctype="multipart/form-data">
             <div id={styles.table}>
               <div className={styles.row}>
                 <span className={`${styles.cell} ${styles.col1}`}>{params}</span>

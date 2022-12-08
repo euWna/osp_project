@@ -92,7 +92,7 @@ def Submit_store():
         if img_file:
             img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
         if DB.insert_store(data['storename'], data, img_file.filename):
-            return redirect(url_for('view', storename=name))
+            return redirect(url_for('view', storename=storename))
         else:
             return "The submitted store already exists!"
 
@@ -114,12 +114,12 @@ def view_createmenu():
 @app.route("/CreateMenu/<storename>/<food>",methods=['GET','POST'])
 def Submit_menu(storename,food):
     if request.method == 'POST':
-
+           
             data = request.form
             storename=storename
             # storename=data.ref().parent().name()
             food=food
-
+      
             #print(data)
             # storename=data['storename']
             # menuname = data['food']
@@ -131,7 +131,7 @@ def Submit_menu(storename,food):
             if img_file:
                 img_file.save("./flask-server/static/img/"+img_file.filename)
                 #print(img_file)
-
+           
             #return render_template("result_menu.html", result=result)
             # data['food'] 이면 menuname 밑에 menuname 으로 들어가서 storename으로 바꿈(데이터 똑바로 들어감)
             if DB.insert_menu( storename,data, img_file.filename):
@@ -153,9 +153,9 @@ def view_created_menu(storename,food,data,img_path):
     # 여기서 문제가 생기는 이유가 뭘까요..?
     # storename이 Parent인데 이걸 받아오는 방법이...?
       return render_template("index.html",storename=storename,food=food,data=data,img_path=img_path)
-
-
-
+           
+        
+        
 @app.route("/CreateReview", methods=['GET','POST'])
 def view_createrefview():
     return render_template("index.html")
@@ -220,4 +220,3 @@ if __name__ == "__main__":
 @app.route("/StoreListView",methods=['GET','POST'])
 def view_storelist(store_id):
     return render_template("index.html")
-'''
