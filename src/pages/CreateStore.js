@@ -11,7 +11,7 @@ function CreateStore() {
                 <aside>
                     <div class={styles.asideleft}>
                         <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-                        <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
+                        <span class={styles.down}>메뉴</span>
                     </div>
                 </aside>
                 <form action="/CreateStore_submit" method="POST" enctype="multipart/form-data">
