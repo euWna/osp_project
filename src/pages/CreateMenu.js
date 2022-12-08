@@ -27,7 +27,7 @@ function MenuPlusBtn() {
   const params = params;
 
 
-  return (< Link to={`http://127.0.0.1:5000/CreateMenu/${params}`} />)
+  return (< Link to={`/CreateMenu/${params}`} />)
 }
 
 function CreateMenu() {
@@ -76,8 +76,8 @@ function CreateMenu() {
         <section>
           <aside class={styles.aside}>
             <div className={styles.asideleft}>
-              <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-              <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
+              <Link to={`/RegisteredStore/${params}`}  class={styles.up}>기본정보</Link>
+              <Link to={`/CreateMenu/${params}`}  class={styles.down}>메뉴</Link>
             </div>
           </aside>
           {/*
@@ -88,7 +88,7 @@ function CreateMenu() {
           <span className={`${styles.cell} ${styles.col2}`}></span>
         </div> */}
 
-          <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} onSubmit={NewValue()} method="post" enctype="multipart/form-data">
+          <form action={`/CreateMenu/${params}`} onSubmit={NewValue()} method="post" enctype="multipart/form-data">
             <div id={styles.table}>
               <div className={styles.row}>
                 <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
