@@ -91,7 +91,7 @@ function CreateMenuShow(props) {
                         </div>
                         <div className={styles.row}>
                             <span className={`${styles.cell} ${styles.col1}`}></span>
-                            <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" ><button on onClick={MenuPlusBtn(params)}>+ 메뉴 새로 추가하기</button></span>
+                            <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" ><button on onClick={MenuPlusBtn({ params })}>+ 메뉴 새로 추가하기</button></span>
                         </div>
                     </div>
                 </form>
