@@ -7,20 +7,24 @@ import { useState, useEffect } from 'react';
 function RegisteredStore() {
     const params = useParams().storename;
     console.log(params)
+
     const [registered, setData] = useState()
+    var registeredarr = new Array();
     //var storearr = new Array(); 
 
     useEffect(() => {
-        fetch(`/RegisteredStore/${params}`, { //json 데이터를 받아옴
+        fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
             headers: {
                 Accept: 'application/json',
                 method: 'GET'
             }
         })
         .then(response => response.json())
-        .then(response => {
-            console.log(response);
-            setData(response);
+        .then(jsonData => {
+            for (const [key] in Object.keys(jsonData)){
+                registered[key]=Object.values(jsonData)[key]
+            }
+            setData(registeredarr);
         })
         .catch(
             (err) => console.log(err))
@@ -36,8 +40,8 @@ function RegisteredStore() {
                         <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
                     </div>
                 </aside>
-                { registered && registered.map((a) => (
                 <form action="/CreateStore_submit" method="POST" enctype="multipart/form-data">
+                {   registered && registered.map((a) => 
                     <div id={styles.table}>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
@@ -91,8 +95,8 @@ function RegisteredStore() {
                             <span class={`${styles.cell} ${styles.col2}`}><input type="submit" value="기본 정보 등록" /></span>
                         </div>
                     </div>
+                    )}
                 </form>
-                ))}
             </section>
         </div>
     )

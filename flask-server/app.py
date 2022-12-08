@@ -25,8 +25,6 @@ def view_createstore():
 
 @app.route("/RegisteredStore/<storename>")
 def view_registeredstore(storename):
-    registered = DB.get_store_byname(storename)
-    print(type(registered)," ", registered)
     return render_template("index.html")
 
 @app.route("/CreateMenu/<store_id>")
@@ -55,9 +53,9 @@ def Submit_store():
         #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
             img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
-        if DB.insert_store(data['storename'], data, img_file.filename):
-            datajson = jsonify(data)
-            return redirect(url_for('view_registeredstore', storename=storename, registered=datajson)) #store_id : 랜덤키 반환하도록 database.py에서 함수 만들기
+        if DB.insert_store(storename, data, img_file.filename):
+            return redirect(url_for('view_registeredstore', storename=storename)) 
+            
         else:
             return "The submitted store already exists!"
 
@@ -106,8 +104,8 @@ def Submit_Review():
 
 
 ##################### Get data from DB #####################
-@app.route("/get_registered_store")
-def get_registered_store():
+@app.route("/get_registered_store/<storename>")
+def get_registered_store(storename):
     registered = DB.get_store_byname(storename)
     registered_json =  json.dumps(registered)
     return registered_json
