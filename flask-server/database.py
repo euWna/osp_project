@@ -1,5 +1,6 @@
 import pyrebase
 import json
+
 class DBhandler:
     def __init__(self):
         with open('flask-server/authentication/firebase_auth.json') as f:
@@ -7,7 +8,6 @@ class DBhandler:
 
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
-     
 
 
     #회원가입
@@ -83,44 +83,31 @@ class DBhandler:
         stores = self.db.child("STORE").get().val()
         return stores
 
-    def insert_menu(self,storename,data,img_path):
+    def insert_menu(self,name,data,img_path):
         menu_info ={
             "food" : data['food'],
             "money" : data['money'],
             "nutrient" : data['nutrient'],
-            "img_path" : img_path,
-            "storename" :storename
+            "img_path" : img_path
         }
-        menuname=data['food']
-        if self.menu_duplicate_check(storename,menuname):
-            self.db.child("MENU").child(storename).child(menuname).set(menu_info)
+        if self.menu_duplicate_check(name):
+            self.db.child("MENU").child(name).set(menu_info)
             #print(data,img_path)
             return True
         else:
             return False
 
     # 메뉴 정보 중복 체크 함수(insertmenu에서 사용)
-    # def menu_duplicate_check(self, name,food):
-    #     menus = self.db.child("MENU").child(name).get()
-    #     print (menus)
-    #     if menus==None:
-    #         return True
-
-    #     for res in menus.each():
-    #         if res.key() == food:
-    #             return False
-    #     return True
-    # 지금은 key값이 매장명임...
-    def menu_duplicate_check(self, storename, menuname):
-        menudata = self.db.child("MENU").child(storename).get()
-        if isinstance(menudata.val(), type(None)):
-            #print("NONE")
-            return True
-        else:
-            for res in menudata.each():
-                if res.key() == menuname:
-                    return False
+    def menu_duplicate_check(self, name):
+        menus = self.db.child("MENU").get()
+        for res in menus.each():
+            if res.key() == name:
+                return False
         return True
+
+
+
+
 
     def insert_review(self,name,data,img_path):
         review_info ={
@@ -133,4 +120,4 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
-   
+    
