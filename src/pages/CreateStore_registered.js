@@ -6,10 +6,9 @@ import { useState, useEffect } from 'react';
 
 function RegisteredStore() {
     const params = useParams().storename;
-    console.log(params)
 
     const [registered, setData] = useState()
-    //var registeredarr = new Array();
+    var registeredarr = new Array();
     //var storearr = new Array(); 
 
     useEffect(() => {
@@ -21,13 +20,14 @@ function RegisteredStore() {
         })
         .then(response => response.json())
         .then(jsonData => {
-            //registered = Object.values(jsonData);
-            setData(jsonData);
-            console.log(registered);
+            registeredarr[0] = jsonData;
+            setData(registeredarr);
         })
         .catch(
             (err) => console.log(err))
     }, [])
+    console.log("출력확인");
+    console.log(registered);
 
     return (
         <div>
