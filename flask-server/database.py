@@ -62,7 +62,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" :  "./public/assets/" + img_path,
+            "img_path" : img_path,
         }
         if self.store_duplicate_check(name):
             self.db.child("STORE").push(store_info)
