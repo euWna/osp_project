@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file
+from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file, flash, session
 from database import DBhandler
 from collections import OrderedDict
+import hashlib
 import json
 import sys
 import string
@@ -22,6 +23,40 @@ def index():
 def refresh(site):
     return redirect
 
+# 회원가입 부분
+@app.route("/SignUp")
+def signup():
+    return render_template("index.html")
+
+@app.route("/SignUp_post", methods=['POST'])
+def register_user():
+    data=request.form
+    pw=request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.insert_user(data,pw_hash):
+        return render_template("index.html")
+    else:
+        flash("user id already exist!")
+        return render_template("index.html")
+# 회원가입 부분
+
+# 로그인 부분
+@app.route("/Login")
+def login():
+    return render_template("index.html")
+@app.route("/login_confirm", methods=['POST'])
+def login_user():
+    id_=request.form['id']
+    pw=request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.find_user(id_,pw_hash):
+        session['id']=id_
+        return redirect(url_for('list_restaurants'))
+    else:
+        flash("Wrong ID or PW!")
+        return render_template("login.html")
+# 로그인 부분
+
 @app.route("/CreateStore")
 def view_createstore():
     return render_template("index.html")
@@ -38,13 +73,14 @@ def Submit_store():
         if img_file:
             img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장
         if DB.insert_store(data['storename'], data, img_file.filename):
-            return redirect(url_for('view', store_id=name))
+            return redirect(url_for('view', storename=name))
         else:
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<store_id>")
-def view(store_id):
+
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view(storename):
     return render_template("index.html")
 
 '''
@@ -53,34 +89,55 @@ def go_menucreate():
     return redirect(url_for('Submit_menu', request_method=request.method))
 '''
 
-@app.route("/CreateMenu",methods=['GET','POST'])
-def Submit_menu():
-    if request.method == 'POST':
-            data = request.form
-            #print(data)
 
-            menuname = data['food']
-            price = data['money']
-            nutrient = data['nutrient']
+@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
+def view_createmenu():
+    return render_template("index.html")
+
+@app.route("/CreateMenu/<storename>/<food>",methods=['GET','POST'])
+def Submit_menu(storename,food):
+    if request.method == 'POST':
+           
+            data = request.form
+            storename=storename
+            # storename=data.ref().parent().name()
+            food=food
+      
+            #print(data)
+            # storename=data['storename']
+            # menuname = data['food']
+            # price = data['money']
+            # nutrient = data['nutrient']
             #print(menuname, price, nutrient)
 
             img_file = request.files['file']
             if img_file:
                 img_file.save("./flask-server/static/img/"+img_file.filename)
                 #print(img_file)
-
+           
             #return render_template("result_menu.html", result=result)
-
-            if DB.insert_menu(data['food'], data, img_file.filename):
-                return render_template("result_menu.html", result = data, img_path="static/img/"+img_file.filename)
+            # data['food'] 이면 menuname 밑에 menuname 으로 들어가서 storename으로 바꿈(데이터 똑바로 들어감)
+            if DB.insert_menu( storename,data, img_file.filename):
+                # 아니 데이터가 넘어가긴 하는데...?
+                #  return redirect(url_for("view_created_menu",data = data, img_path="static/img/"+img_file.filename, menuname=menuname,storename=storename ))
+                #  return render_template("index.html")
+                return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
+    return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
     '''
     else :
         if request_method == 'GET':
             request_method == 'POST'
             return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)'''
 
+
+def view_created_menu(storename,food,data,img_path):
+    # 여기서 문제가 생기는 이유가 뭘까요..?
+    # storename이 Parent인데 이걸 받아오는 방법이...?
+      return render_template("index.html",storename=storename,food=food,data=data,img_path=img_path)
+           
+        
         
 @app.route("/CreateReview", methods=['GET','POST'])
 def view_createrefview():
@@ -130,11 +187,11 @@ def list_stores():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
 
+
 # @app.route('/StoreListView', methods=['GET','POST'])
 # def list_stores():
 #     data = DB.get_stores()
 #     tot_count = len(data)
-
 #     return render_template("index.html", datas=data.items(), total=tot_count())
 
 '''

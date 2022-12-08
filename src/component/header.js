@@ -7,7 +7,7 @@ function Header() {
         <div>
             <header>
                 <div class={styles.logotitle}>
-                    <Link to="/"><img id={styles.homelogo} src={homelogo} /></Link>
+                    <Link to="/"><img id={styles.homelogo} src={homelogo} alt="homelogo" /></Link>
                     <Link to="/" class={styles.hometitle}>이화여자대학교 맛집 오픈소스</Link>
                 </div>
                 <div class={styles.signInUp}>
