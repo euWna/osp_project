@@ -11,21 +11,21 @@ function Info() {
                     음식점 정보
                 </div>
                 <div>
-                    <img class={styles.image} src={sample} /><br/><br/>
+                    <img class={styles.image} src={sample} alt="sample image" /><br /><br />
                 </div>
 
                 <div class={styles.info}>
                     <div>
                         <div class={styles.StoreName}>맛집 이름</div>
                         <div class={styles.storelocation}>
-                            <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
+                            <img src={samplelocation} class={styles.locationimg} width="24" height="24" alt='location image' />
                             "주소"
                         </div>
                     </div>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <div>
-                    <div class="Tag">카테고리 </div>
+                        <div class="Tag">카테고리 </div>
                         <div class={styles.site}>사이트 </div>
                         <div class={styles.phone}>전화번호 </div>
                         <div class={styles.time}>운영시간 </div>
