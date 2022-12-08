@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 import styles from '../css/Storelist.module.css';
 import samplelocation from "../img/location.png";
 import { useState, useEffect } from 'react';
+import StoreDetail from '../pages/StoreDetail';
 
 function Storelist(props) {
     var storename = props.name
     console.log(storename)
     return (
         <Link to={`/StoreDetail/${storename}`}>
+            {/* <div >{storename}, {props.location}, {props.food}, {props.img}, {props.storekey}</div> */}
             <div class={styles.listbox}>
                 <div className={styles.ImagePart}>
                     <img src={"http://127.0.0.1:5000/static/img/" + `${props.img}`} width="295" height="125" />

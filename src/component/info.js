@@ -17,7 +17,8 @@ function Info(props) {
 
                 <div class={styles.info}>
                     <div>
-                        <div class={styles.StoreName}>맛집 이름</div>
+                        <div class={styles.StoreName}>{props.storename}</div>
+                        {/* 맛집 이름만 넘김! props에서 UseParams로 받아온 것 */}
                         <div class={styles.storelocation}>
                             <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
                             "주소"

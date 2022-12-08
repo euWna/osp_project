@@ -6,8 +6,6 @@ import sys
 import string
 import random
 
-
-
 app = Flask(__name__)
 
 DB = DBhandler()
@@ -194,3 +192,11 @@ def list_stores():
 def view_storelist(store_id):
     return render_template("index.html")
 '''
+
+
+@app.route("/StoreDetail/<storename>", methods=['GET','POST'])
+def get_store_info(storename):
+    StoreInfo=DB.get_store(storename)
+    
+    MenuInfo=DB.get_menu(storename)
+    return render_template ("index.html",StoreInfo, MenuInfo)
