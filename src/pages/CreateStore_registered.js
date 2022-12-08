@@ -9,7 +9,7 @@ function RegisteredStore() {
     console.log(params)
 
     const [registered, setData] = useState()
-    var registeredarr = new Array();
+    //var registeredarr = new Array();
     //var storearr = new Array(); 
 
     useEffect(() => {
@@ -21,10 +21,9 @@ function RegisteredStore() {
         })
         .then(response => response.json())
         .then(jsonData => {
-            for (const [key] in Object.keys(jsonData)){
-                registered[key]=Object.values(jsonData)[key]
-            }
-            setData(registeredarr);
+            //registered = Object.values(jsonData);
+            setData(jsonData);
+            console.log(registered);
         })
         .catch(
             (err) => console.log(err))
@@ -41,8 +40,8 @@ function RegisteredStore() {
                     </div>
                 </aside>
                 <form action="/CreateStore_submit" method="POST" enctype="multipart/form-data">
-                {   registered && registered.map((a) => 
-                    <div id={styles.table}>
+                {   registered && registered.map((a => {
+                return <div id={styles.table}>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
                             <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="storename" value={a.storename}/></span>
@@ -95,7 +94,7 @@ function RegisteredStore() {
                             <span class={`${styles.cell} ${styles.col2}`}><input type="submit" value="기본 정보 등록" /></span>
                         </div>
                     </div>
-                    )}
+                    }))}
                 </form>
             </section>
         </div>

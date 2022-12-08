@@ -107,6 +107,7 @@ def Submit_Review():
 @app.route("/get_registered_store/<storename>")
 def get_registered_store(storename):
     registered = DB.get_store_byname(storename)
+    print(registered)
     registered_json =  json.dumps(registered)
     return registered_json
 
