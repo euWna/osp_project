@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 import { render } from "@testing-library/react";
 import { useState, useEffect } from 'react';
-import CreateMenuShow from "./CreateMenuShow";
+import CreateMenuShow from "./CreateMenu_registered";
 // function removeNutrient(nutrient) {
 //   // DB에서 정의...?
 // }

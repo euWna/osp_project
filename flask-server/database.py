@@ -69,7 +69,7 @@ class DBhandler:
         else:
             return False
         
-    # 맛집 정보 중복 체크 함수(insertStore에서 사용)
+    # 맛집 정보 중복 체크 함수(insert_store에서 사용)
     def store_duplicate_check(self, name):
         stores = self.db.child("STORE").get()
         for res in stores.each():
@@ -79,11 +79,12 @@ class DBhandler:
                 return False
         return True
 
-    # 맛집 데이터 가져오기
+    # 맛집 데이터 가져오기 (StoreListView.js)
     def get_store(self):
         stores = self.db.child("STORE").get().val()
         return stores
 
+    # 메뉴
     def insert_menu(self,storename,data,img_path):
         menu_info ={
             "food" : data['food'],

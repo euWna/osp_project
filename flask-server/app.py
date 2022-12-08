@@ -1,10 +1,11 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file
+from flask import Flask, jsonify, render_template, request, redirect, url_for, send_file, flash, session
 from database import DBhandler
 from collections import OrderedDict
+import hashlib
 import json
-import sys
 import string
 import random
+
 
 
 
@@ -27,11 +28,11 @@ def view_createstore():
 def view_registeredstore(storename):
     return render_template("index.html")
 
-@app.route("/CreateMenu/<store_id>")
+@app.route("/CreateMenu/<storename>")
 def view_menu(store_id):
     return render_template("index.html")
 
-@app.route("/CreateReview/<store_id>")
+@app.route("/CreateReview/<storename>")
 def view_review(store_id):
     return render_template("index.html")
 
@@ -148,6 +149,11 @@ def Submit_Review():
 
         if DB.insert_review(data['username'], data, img_file.filename):
             return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
+
+#################### Update Data in DB ######################
+
+
+
 
 
 ##################### Get data from DB #####################
