@@ -71,12 +71,16 @@ class DBhandler:
         
     # 맛집 정보 중복 체크 함수(insert_store에서 사용)
     def store_duplicate_check(self, name):
-        stores = self.db.child("STORE").get()
-        for res in stores.each():
-            value=res.val()
-            if value['storename']==name:
-            # if res.key() == name:
-                return False
+        storedata = self.db.child("STORE").get()
+        if isinstance(storedata.val(), type(None)):
+            #print("NONE")
+            return True
+        else:
+            for res in storedata.each():
+                value=res.val()
+                if value['storename'] == name:
+                # if res.key() == name:
+                    return False
         return True
 
     # 맛집 데이터 가져오기 (StoreListView.js)
