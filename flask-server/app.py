@@ -95,10 +95,10 @@ def Submit_menu(storename,food):
             return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)'''
 
 
-def view_created_menu():
+def view_created_menu(storename,food,data,img_path):
     # 여기서 문제가 생기는 이유가 뭘까요..?
     # storename이 Parent인데 이걸 받아오는 방법이...?
-      return render_template("index.html")
+      return render_template("index.html",storename=storename,food=food,data=data,img_path=img_path)
            
         
         
