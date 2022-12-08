@@ -27,6 +27,7 @@ import ReviewAll from './pages/ReviewAll';
 import SignUp from './pages/SignUp';
 import StoreDetail from './pages/StoreDetail';
 import StoreListView from './pages/StoreListView';
+import RegisteredStore from './pages/CreateStore_registered'
 
 //App.js를  index.js에서 렌더링 중입니다!
 
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/CreateStore" element={<CreateStore />}></Route>
+          <Route path="/RegisteredStore/:storename" element={<RegisteredStore />}></Route>
           <Route path="/CreateMenu/:id" element={<CreateMenu />}></Route>
           <Route path="/CreateReview/:id" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
