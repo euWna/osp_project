@@ -16,7 +16,7 @@ class Login extends React.Component {
                     <p>로그인</p>
                 </div>
                 <div className={styles.Left}>
-                    <input type="text" name="ID" defaultValue="ID"  />
+                    <input type="text" name="ID" defaultValue="ID" />
                     <input type="text" name="pwd" defaultValue="pwd" />
                     <button type="button" name="login_button">
                         로그인
@@ -24,7 +24,7 @@ class Login extends React.Component {
                 </div>
                 <div className={styles.Right}>
                     <p>아직 회원이 아니신가요?</p>
-                    <p>회원가입을 하시면 더 많은 기능을 사용하실 수 있습니.</p>
+                    <p>회원가입을 하시면 더 많은 기능을 사용하실 수 있습니다.</p>
                     <button type="button" name="goto_join_button">
                         회원가입
                     </button>
@@ -36,4 +36,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-

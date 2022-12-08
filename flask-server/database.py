@@ -10,7 +10,7 @@ class DBhandler:
 
 
 
-    #회원가입
+   #회원가입
     def insert_user(self, data, pwd):
         user_info = {
             "ID" : data['ID'],

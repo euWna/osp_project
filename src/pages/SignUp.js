@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "../component/header";
 import { Link } from 'react-router-dom';
 import styles from '../css/SignUp.module.css';
@@ -22,9 +22,9 @@ const SignUp = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        let data ;
+        let data;
         try {
-            if(newAccount) data = await createUserWithEmailAndPassword(authService, email, password);
+            if (newAccount) data = await createUserWithEmailAndPassword(authService, email, password);
             else data = await signInWithEmailAndPassword(authService, email, password);
         } catch (error) {
             setError(error.message);
@@ -48,9 +48,9 @@ const SignUp = () => {
                     required
                     value={password}
                     onChange={onChange} />
-                <Link to = "/MyPage"><input
+                <Link to="/MyPage"><input
                     type="submit"
-                    value= "회원가입" /></Link>
+                    value="회원가입" /></Link>
             </form>
         </div>
     )

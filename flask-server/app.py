@@ -57,6 +57,7 @@ def login_user():
         return render_template("login.html")
 # 로그인 부분
 
+
 @app.route("/CreateStore")
 def view_createstore():
     return render_template("index.html")
