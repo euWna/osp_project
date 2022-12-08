@@ -98,6 +98,13 @@ class DBhandler:
         else:
             return False
 
+    def get_menu(self,storename):
+        menus = self.db.child("MENU").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        print(storename)
+        print("/////////////////////////////////////")
+        print(menus)
+        return menus
+
     # 메뉴 정보 중복 체크 함수(insertmenu에서 사용)
     # def menu_duplicate_check(self, name,food):
     #     menus = self.db.child("MENU").child(name).get()

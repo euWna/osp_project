@@ -167,6 +167,14 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
+@app.route("/CreateMenu_send_data/<storename>", methods=['GET','POST'])
+def list_menu(storename):
+    if request.method == 'GET':
+        menudata = DB.get_menu(storename) #read the table
+        print(menudata)
+        menudatajson =  json.dumps(menudata)
+        return menudatajson
+
 #이미지 불러오기 함수였는데 안써도 됩니당
 # @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
 # def Get_img(storekey):
