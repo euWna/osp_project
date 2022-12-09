@@ -134,7 +134,12 @@ class DBhandler:
         self.db.child("REVIEW").child(name).set(review_info)
         print(data,img_path)
         return True
+    def get_store_info(self,storename):
         
+        storeInfo = self.db.child("STORE").child(storename).get().val
+       
+        return storeInfo
+
     def get_menu(self, storename):
         menudata = self.db.child("MENU").child(storename).get()
         if isinstance(menudata.val(), type(None)):

@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function Info(props) {
-    console.log(props.StoreInfo)
+    // console.log(props.StoreInfo)
     // StoreDetail에서 받아온 props.StoreInfo는 undefined로 뜸
     // 그 외에도 하나도 못받아오고 있음
     return (
