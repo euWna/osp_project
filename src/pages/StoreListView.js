@@ -31,7 +31,9 @@ function StoreListView() {
             .catch(
                 (err) => console.log(err))
     }, [])
-
+    console.log("여기부터가 storedata in StoreLIstView")
+    console.log(storedata)
+    console.log("여기까지가 storedata in StoreLIstView")
     return (
         <div>
             <NavBar />
@@ -60,7 +62,8 @@ function StoreListView() {
                         </div>
                         < div className={styles.Restaurant}>
                             {storedata && storedata.map((a => {
-                                return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} storekey={a.key} />
+                                return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} storekey={a.key} storedata={storedata} />
+
                             }))}
                         </div>
                     </div>

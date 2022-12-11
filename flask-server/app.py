@@ -197,4 +197,6 @@ def view_storelist(store_id):
 @app.route("/StoreDetail/<storename>", methods=['GET','POST'])
 def get_storename_info(storename):
     StoreInfo=DB.get_store_info(storename)
-    return render_template ("index.html",StoreInfo=StoreInfo)
+    # return render_template ("index.html",StoreInfo=StoreInfo)
+    storeInfojson =  json.dumps(StoreInfo)
+    return render_template("index.html",storeInfojson=storeInfojson)

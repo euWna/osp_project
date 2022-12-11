@@ -3,6 +3,7 @@ import styles from '../css/Storelist.module.css';
 import samplelocation from "../img/location.png";
 import { useState, useEffect } from 'react';
 import StoreDetail from '../pages/StoreDetail';
+import Info from './info';
 
 function Storelist(props) {
     var storename = props.name
@@ -18,15 +19,26 @@ function Storelist(props) {
     //         // storename: storename,
     //         // storelocation: storelocation
     //     }
-    // }
-
+    // }             
+    const storedata = props.storedata
+    console.log("여기서부터가 storelist.js 의 storedata")
+    console.log(storedata)
     return (
         <div>
-            <Link to={`/StoreDetail/${storename}`} >
-                <div className={styles.SendDatas}>
+
+            <Link to={`/StoreDetail/${this.state.storedata.storename}`}
+                state={{
+                    storelocation: this.state.storedata.storelocation
+                }}>
+                {/* <div className={styles.SendDatas}>
                     {storename}
                     {storelocation}
-                </div>
+                    {storedata && storedata.map((a => {
+                        const storename = { storename }, storelocation = { storelocation }, food = { food }, storedata = { storedata }
+
+                    }))}
+
+                </div> */}
                 {/* , {props.food}, {props.img}, {props.storekey} */}
                 {/* 위의 div는 정보를 넘겨주기 위함임 근데 안넘어감... */}
                 <div class={styles.listbox}>
