@@ -32,8 +32,7 @@ function MenuPlusBtn() {
 
 function CreateMenu() {
 
-  const params = useParams().storename;
-  console.log(params)
+  const params = useParams().id;
   const param2 = useParams().food;
   // MinusButton = document.getElementsByClassName("MinusButton");
   // nutrient = document.getElementsByClassName("nutrient").innerHTML;
@@ -43,33 +42,33 @@ function CreateMenu() {
   var menuarr = new Array();
 
   useEffect(() => {
-    fetch("/CreateMenu/<storename>/<food>", { //json 데이터를 받아옴
+    fetch(`/CreateMenu_send_data/${params}`, { //json 데이터를 받아옴
       headers: {
         Accept: 'application/json',
         method: 'GET'
       }
     })
-      .then(response => response.json())
-      .then(jsonData => {
-        for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
-          menuarr[key] = Object.values(jsonData)[key]
-          menuarr[key]["key"] = Object.keys(jsonData)[key] //키값 필요해서 가져옴
+    .then(response => response.json())
+    .then(jsonData => {
+        var length = Object.keys(jsonData).length
+        for(var i=0; i<length; i++) { //등록된 메뉴 갯수만큼 반복
+          menuarr[i]=Object.values(jsonData)[i]
+          // menuarr[i]["key"]=Object.keys(jsonData)[i] //키값 필요해서 가져옴
         }
         setData(menuarr)
-      })
+    })
       .catch(
         (err) => console.log(err))
-  }, [menuarr])
+  }, [])
 
+  console.log(menuarr)
 
-  if (Return_value == 1) {  //Return_value는 메뉴 등록 버튼을 누르면 1이 되게 하고 싶음  on submit으로 구현 예정
-    return (< div >
-      {menudata && menudata.map((a => {
-        return <CreateMenuShow storename={a.storename} food={a.food} price={a.money} nutrient={a.nutrient} />
-      }))}
-    </div>)
-  }
-  else {
+  // if (Return_value == 1) {  //Return_value는 메뉴 등록 버튼을 누르면 1이 되게 하고 싶음  on submit으로 구현 예정
+  //   return (< div >
+
+  //   </div>)
+  // }
+  // else {
     return (
       <div>
         <NavBar></NavBar>
@@ -92,6 +91,17 @@ function CreateMenu() {
             <div id={styles.table}>
               <div className={styles.row}>
                 <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
+                <span className={`${styles.cell} ${styles.col2}`}></span>
+              </div>
+
+              <div className={styles.row}>
+                <span className={`${styles.cell} ${styles.col1}`}>
+                {menudata && menudata.map((a => {
+                return <div>
+                  {a.food}
+                </div>
+                }))}
+                </span>
                 <span className={`${styles.cell} ${styles.col2}`}></span>
               </div>
               <div className={styles.row}>
@@ -125,16 +135,16 @@ function CreateMenu() {
                   </table>
                 </span>
               </div>
-              <div className={styles.row}>
+              {/* <div className={styles.row}>
                 <span className={`${styles.cell} ${styles.col1}`}></span>
                 <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" ><button on onClick={MenuPlusBtn(params)}>+ 메뉴 새로 추가하기</button></span>
-              </div>
+              </div> */}
             </div>
           </form>
         </section>
       </div>
     )
-  }
+  // }
 
 }
 
