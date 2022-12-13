@@ -73,7 +73,9 @@ class DBhandler:
     def store_duplicate_check(self, name):
         stores = self.db.child("STORE").get()
         for res in stores.each():
-            if res.key() == name:
+            value=res.val()
+            if value['storename']==name:
+            # if res.key() == name:
                 return False
         return True
 
