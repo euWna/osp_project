@@ -3,58 +3,42 @@ import Header from "../component/header";
 import { Link } from 'react-router-dom';
 import styles from '../css/SignUp.module.css';
 import NavBar from "../component/NavBar";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { authService } from '../firebase/fbInstance';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
 
 const SignUp = () => {
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [newAccount, setNewAccount] = useState(true);
-    const [error, setError] = useState('');
-
-    const toggleAccount = () => setNewAccount((prev) => !prev)
-    const onChange = (e) => {
-        const { target: { name, value } } = e;
-        if (name === "email") setEmail(value);
-        else if (name === "password") setPassword(value);
-    }
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        let data ;
+    const register = async () => {
         try {
-            if(newAccount) data = await createUserWithEmailAndPassword(authService, email, password);
-            else data = await signInWithEmailAndPassword(authService, email, password);
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                registerEmail,
+                registerPassword
+            );
+            console.log(user);
         } catch (error) {
-            setError(error.message);
+            console.log(error.message);
         }
-    }
+    };
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
-                <input
-                    name="email"
-                    type="text"
-                    placeholder='Email'
-                    required
-                    value={email}
-                    onChange={onChange} />
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    required
-                    value={password}
-                    onChange={onChange} />
-                <Link to = "/MyPage"><input
-                    type="submit"
-                    value= "회원가입" /></Link>
-            </form>
+            <input
+                placeholder="Email"
+                onChange={(e) => {
+                    setRegisterEmail(e.target.value);
+                }}
+            />
+            <input
+                placeholder="EmailPassword"
+                onChange={(e) => {
+                    setRegisterPassword(e.target.value);
+                }}
+            />
+            <button onClick={register}>CreateUser</button>
         </div>
-    )
-}
-
-
-export default SignUp
+    );
+};
+export default SignUp;
