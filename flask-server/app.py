@@ -6,6 +6,8 @@ import sys
 import string
 import random
 
+
+
 app = Flask(__name__)
 
 DB = DBhandler()
@@ -37,95 +39,48 @@ def view_review(store_id):
 def StoreListView():
     return render_template("index.html")
 
-    # 회원가입 부분
-@app.route("/SignUp")
-def signup():
-    return render_template("index.html")
-
-@app.route("/SignUp_post", methods=['POST'])
-def register_user():
-    data=request.form
-    pw=request.form['pw']
-    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
-    if DB.insert_user(data,pw_hash):
-        return render_template("index.html")
-    else:
-        flash("user id already exist!")
-        return render_template("index.html")
-# 회원가입 부분
-
-# 로그인 부분
-@app.route("/Login")
-def login():
-    return render_template("index.html")
-@app.route("/login_confirm", methods=['POST'])
-def login_user():
-    id_=request.form['id']
-    pw=request.form['pw']
-    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
-    if DB.find_user(id_,pw_hash):
-        session['id']=id_
-        return redirect(url_for('list_restaurants'))
-    else:
-        flash("Wrong ID or PW!")
-        return render_template("login.html")
-# 로그인 부분
-
 
 
 ##################### Submit Data #####################
-@app.route("/CreateStore_submit", methods=['GET', 'POST'])
+@app.route("/CreateStore_submit", methods=['POST'])
 def Submit_store():
     if request.method == 'POST':
         data = request.form
-        name = data['storename']
+        storename = data['storename']
         img_file = request.files['file']
         # img_random = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
         # if img_file:
         #     img_file.save("./flask-server/static/img/"+img_random+img_file.filename)
         if img_file:
-            img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장
-        if DB.insert_store(data['storename'], data, img_file.filename):
-            return redirect(url_for('view_menu', store_id=name))
+            img_file.save( "./public/assets/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
+        if DB.insert_store(storename, data, img_file.filename):
+            return redirect(url_for('view_registeredstore', storename=storename)) 
+            
         else:
             return "The submitted store already exists!"
 
-@app.route("/CreateMenu/<storename>",methods=['GET','POST'])
-def Submit_menu(storename):
+@app.route("/CreateMenu_submit",methods=['POST'])
+def Submit_menu():
     if request.method == 'POST':
-           
             data = request.form
-            storename=storename
-            # storename=data.ref().parent().name()
-            
-      
             #print(data)
-            # storename=data['storename']
-            # menuname = data['food']
-            # price = data['money']
-            # nutrient = data['nutrient']
+
+            menuname = data['food']
+            price = data['money']
+            nutrient = data['nutrient']
             #print(menuname, price, nutrient)
 
             img_file = request.files['file']
             if img_file:
                 img_file.save("./flask-server/static/img/"+img_file.filename)
                 #print(img_file)
-           
+
             #return render_template("result_menu.html", result=result)
-            # data['food'] 이면 menuname 밑에 menuname 으로 들어가서 storename으로 바꿈(데이터 똑바로 들어감)
-            if DB.insert_menu( storename,data, img_file.filename):
-                # 아니 데이터가 넘어가긴 하는데...?
-                #  return redirect(url_for("view_created_menu",data = data, img_path="static/img/"+img_file.filename, menuname=menuname,storename=storename ))
-                #  return render_template("index.html")
-                return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
+
+            if DB.insert_menu(data['food'], data, img_file.filename):
+                return render_template("result_menu.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
-    return render_template("index.html",data = data, img_path="static/img/"+img_file.filename)
-    '''
-    else :
-        if request_method == 'GET':
-            request_method == 'POST'
-            return redirect("http://127.0.0.1:5000/CreateMenu", request_method=request.method)'''
 
 
 @app.route("/CreateReview/<store_id>")        
@@ -151,7 +106,7 @@ def Submit_Review():
 ##################### Get data from DB #####################
 @app.route("/get_registered_store/<storename>")
 def get_registered_store(storename):
-    registered = DB.get_store(storename)
+    registered = DB.get_store_byname(storename)
     print(registered)
     registered_json =  json.dumps(registered)
     return registered_json
@@ -192,11 +147,3 @@ def list_stores():
 def view_storelist(store_id):
     return render_template("index.html")
 '''
-
-
-@app.route("/StoreDetail/<storename>", methods=['GET','POST'])
-def get_storename_info(storename):
-    StoreInfo=DB.get_store_info(storename)
-    # return render_template ("index.html",StoreInfo=StoreInfo)
-    storeInfojson =  json.dumps(StoreInfo)
-    return render_template("index.html",storeInfojson=storeInfojson)
