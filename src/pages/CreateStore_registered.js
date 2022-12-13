@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../css/CreateStore.module.css";
 import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback} from 'react';
 
 function RegisteredStore() {
     const params = useParams().storename;
@@ -29,14 +29,19 @@ function RegisteredStore() {
     console.log("출력확인");
     console.log(registered);
 
+    const [value, setValue] = useState('');
+    const onChange = useCallback(e=>{
+        setValue(e.target.value);
+    }, [])
+
     return (
         <div>
             <NavBar></NavBar>
             <section>
                 <aside>
                     <div class={styles.asideleft}>
-                        <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-                        <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
+                        <Link to={`/RegisteredStore/${params}`}  class={styles.up}>기본정보</Link>
+                        <Link to={`/CreateMenu/${params}`}  class={styles.down}>메뉴</Link>
                     </div>
                 </aside>
                 <form action="/CreateStore_submit" method="POST" enctype="multipart/form-data">
@@ -48,20 +53,20 @@ function RegisteredStore() {
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>주소</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="location" size="70" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="location" size="70" value={a.location}></input></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>전화번호</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="phonenumber" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="phonenumber" value={a.phonenumber}/></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>영업시간</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="time" name="time1" size="1" /> ~ <input type="time" name="time2" size="1" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="time" name="time1" size="1" value={a.time1}/> ~ <input type="time" name="time2" size="1" value={a.time2}/></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>카테고리</span>
                             <span class={`${styles.cell} ${styles.col2}`}>
-                                <select name="food">
+                                <select name="food" value={a.food}>
                                     <option value="">선택</option>
                                     <option value="kor">한식</option>
                                     <option value="jap">일식</option>
@@ -72,7 +77,7 @@ function RegisteredStore() {
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>주차장</span>
                             <span class={`${styles.cell} ${styles.col2}`}>
-                                <select name="park">
+                                <select name="park" value={a.parking}>
                                     <option value="yes">O</option>
                                     <option value="no">X</option>
                                 </select></span>
