@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../component/header";
 import styles from "../css/Login.module.css";
 import { Link } from 'react-router-dom';
 import NavBar from "../component/NavBar";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { authService } from '../firebase/fbInstance';
 
 class Login extends React.Component {
     render() {
@@ -14,7 +16,7 @@ class Login extends React.Component {
                     <p>로그인</p>
                 </div>
                 <div className={styles.Left}>
-                    <input type="text" name="ID" defaultValue="ID" />
+                    <input type="text" name="ID" defaultValue="ID"  />
                     <input type="text" name="pwd" defaultValue="pwd" />
                     <button type="button" name="login_button">
                         로그인
@@ -34,4 +36,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-
