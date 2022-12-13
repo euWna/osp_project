@@ -32,7 +32,7 @@ function MenuPlusBtn() {
 
 function CreateMenu() {
 
-  const params = useParams().id;
+  const params = useParams().storename;
   const param2 = useParams().food;
   // MinusButton = document.getElementsByClassName("MinusButton");
   // nutrient = document.getElementsByClassName("nutrient").innerHTML;
@@ -48,19 +48,19 @@ function CreateMenu() {
         method: 'GET'
       }
     })
-    .then(response => response.json())
-    .then(jsonData => {
+      .then(response => response.json())
+      .then(jsonData => {
         var length = Object.keys(jsonData).length
-        for(var i=0; i<length; i++) { //등록된 메뉴 갯수만큼 반복
-          menuarr[i]=Object.values(jsonData)[i]
+        for (var i = 0; i < length; i++) { //등록된 메뉴 갯수만큼 반복
+          menuarr[i] = Object.values(jsonData)[i]
           // menuarr[i]["key"]=Object.keys(jsonData)[i] //키값 필요해서 가져옴
         }
         setData(menuarr)
-    })
+      })
       .catch(
         (err) => console.log(err))
   }, [])
-
+  console.log("menuarr")
   console.log(menuarr)
 
   // if (Return_value == 1) {  //Return_value는 메뉴 등록 버튼을 누르면 1이 되게 하고 싶음  on submit으로 구현 예정
@@ -69,17 +69,17 @@ function CreateMenu() {
   //   </div>)
   // }
   // else {
-    return (
-      <div>
-        <NavBar></NavBar>
-        <section>
-          <aside class={styles.aside}>
-            <div className={styles.asideleft}>
-              <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-              <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
-            </div>
-          </aside>
-          {/*
+  return (
+    <div>
+      <NavBar></NavBar>
+      <section>
+        <aside class={styles.aside}>
+          <div className={styles.asideleft}>
+            <Link to="/CreateStore" class={styles.up}>기본정보</Link>
+            <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
+          </div>
+        </aside>
+        {/*
         <div className={styles.row}>
           <span className={`${styles.cell} ${styles.col1}`}>
 
@@ -87,63 +87,68 @@ function CreateMenu() {
           <span className={`${styles.cell} ${styles.col2}`}></span>
         </div> */}
 
-          <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} onSubmit={NewValue()} method="post" enctype="multipart/form-data">
-            <div id={styles.table}>
-              <div className={styles.row}>
-                <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
-                <span className={`${styles.cell} ${styles.col2}`}></span>
-              </div>
+        <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} onSubmit={NewValue()} method="POST" enctype="multipart/form-data">
+          <div id={styles.table}>
+            <div className={styles.row}>
+              <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
+              <span className={`${styles.cell} ${styles.col2}`}></span>
+            </div>
 
-              <div className={styles.row}>
-                <span className={`${styles.cell} ${styles.col1}`}>
+            <div className={styles.row}>
+              <span className={`${styles.cell} ${styles.col1}`}>
                 {menudata && menudata.map((a => {
-                return <div>
-                  {a.food}
-                </div>
+                  if ('' || null || undefined || 0 || NaN) {
+                    return <div>
+                      메뉴를 등록해주세요!
+                    </div>
+                  }
+                  return <div>
+                    {a.food}
+                  </div>
                 }))}
-                </span>
-                <span className={`${styles.cell} ${styles.col2}`}></span>
-              </div>
-              <div className={styles.row}>
-                <span className={`${styles.cell} ${styles.col1}`}></span>
-                <span className={`${styles.cell} ${styles.col2}`}>
-                  <table>
-                    <tr>
-                      <th>메뉴명</th>
-                      <td><input type="text" name="food" /></td>
-                    </tr>
-                    <tr>
-                      <th>가격</th>
-                      <td><input type="text" name="money" /></td>
-                    </tr>
-                    <tr>
-                      <th rowspan="2">영양성분</th>
-                      <td><input type="text" name="nutrient" placeholder="+" size="70" /></td>
-                    </tr>
-                    <tr>
-                      <td className="nutrient"><div className="MinusButton">-</div>계란</td>
-                      {/* 이부분 나중에 nutrient{i} 배열 반환하는 것으로 수정해서 동적으로 생성하게 해야함 */}
+              </span>
+              <span className={`${styles.cell} ${styles.col2}`}></span>
+            </div>
+            <div className={styles.row}>
+              <span className={`${styles.cell} ${styles.col1}`}></span>
+              <span className={`${styles.cell} ${styles.col2}`}>
+                <table>
+                  <tr>
+                    <th>메뉴명</th>
+                    <td><input type="text" name="food" /></td>
+                  </tr>
+                  <tr>
+                    <th>가격</th>
+                    <td><input type="text" name="money" /></td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">영양성분</th>
+                    <td><input type="text" name="nutrient" placeholder="+" size="70" /></td>
+                  </tr>
+                  <tr>
+                    <td className="nutrient"><div className="MinusButton">-</div>계란</td>
+                    {/* 이부분 나중에 nutrient{i} 배열 반환하는 것으로 수정해서 동적으로 생성하게 해야함 */}
 
-                    </tr>
-                    <tr>
-                      <th>대표사진</th>
-                      <td><input type="file" name="file" accept="image/*" /></td>
-                    </tr>
-                    <tr>
-                      <td><input type='submit' value="메뉴 정보 등록" /></td>
-                    </tr>
-                  </table>
-                </span>
-              </div>
-              {/* <div className={styles.row}>
+                  </tr>
+                  <tr>
+                    <th>대표사진</th>
+                    <td><input type="file" name="file" accept="image/*" /></td>
+                  </tr>
+                  <tr>
+                    <td><input type='submit' value="메뉴 정보 등록" /></td>
+                  </tr>
+                </table>
+              </span>
+            </div>
+            {/* <div className={styles.row}>
                 <span className={`${styles.cell} ${styles.col1}`}></span>
                 <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" ><button on onClick={MenuPlusBtn(params)}>+ 메뉴 새로 추가하기</button></span>
               </div> */}
-            </div>
-          </form>
-        </section>
-      </div>
-    )
+          </div>
+        </form>
+      </section>
+    </div>
+  )
   // }
 
 }

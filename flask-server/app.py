@@ -27,12 +27,12 @@ def view_createstore():
 def view_registeredstore(storename):
     return render_template("index.html")
 
-@app.route("/CreateMenu/<store_id>")
-def view_menu(store_id):
+@app.route("/CreateMenu/<storename>")
+def view_menu(storename):
     return render_template("index.html")
 
-@app.route("/CreateReview/<store_id>")
-def view_review(store_id):
+@app.route("/CreateReview/<storename>")
+def view_review(storename):
     return render_template("index.html")
 
 @app.route("/StoreListView")
@@ -59,8 +59,8 @@ def Submit_store():
         else:
             return "The submitted store already exists!"
 
-@app.route("/CreateMenu_submit",methods=['POST'])
-def Submit_menu():
+@app.route("/CreateMenu/<storename>",methods=['POST'])
+def Submit_menu(storename):
     if request.method == 'POST':
             data = request.form
             #print(data)
@@ -77,13 +77,13 @@ def Submit_menu():
 
             #return render_template("result_menu.html", result=result)
 
-            if DB.insert_menu(data['food'], data, img_file.filename):
-                return render_template("result_menu.html", result = data, img_path="static/img/"+img_file.filename)
+            if DB.insert_menu( storename,data, img_file.filename):
+                return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
 
 
-@app.route("/CreateReview/<store_id>")        
+@app.route("/CreateReview/<storename>")        
 def Submit_Review():
     if request.method == 'POST':
         data = request.form
@@ -119,6 +119,14 @@ def list_stores():
         storedata = DB.get_store() #read the table
         storedatajson =  json.dumps(storedata)
         return storedatajson
+
+@app.route("/CreateMenu_send_data/<storename>", methods=['GET','POST'])
+def list_menu(storename):
+    if request.method == 'GET':
+        menudata = DB.get_menu(storename) #read the table
+        print(menudata)
+        menudatajson =  json.dumps(menudata)
+        return menudatajson
 
 #이미지 불러오기 함수였는데 안써도 됩니당
 # @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴

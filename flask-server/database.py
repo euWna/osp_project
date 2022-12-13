@@ -84,6 +84,16 @@ class DBhandler:
         stores = self.db.child("STORE").get().val()
         return stores
 
+    def get_store_byname(self, storename):
+        stores = self.db.child("STORE").get()
+        target_value=""
+        for res in stores.each():
+            value = res.val()
+            if value['storename'] == storename:
+                target_value=value
+                break
+        return target_value
+
     def insert_menu(self,storename,data,img_path):
         menu_info ={
             "food" : data['food'],
@@ -140,13 +150,19 @@ class DBhandler:
        
         return storeInfo
 
-    def get_menu(self, storename):
-        menudata = self.db.child("MENU").child(storename).get()
-        if isinstance(menudata.val(), type(None)):
-            menu=None
-            return menu
-        else:
-            for res in menudata.each():
-                 menuInfo=self.db.child("MENU").child(storename).child(res.key).get()
+    # def get_menu(self, storename):
+    #     menudata = self.db.child("MENU").child(storename).get()
+    #     if isinstance(menudata.val(), type(None)):
+    #         menu=None
+    #         return menu
+    #     else:
+    #         for res in menudata.each():
+    #              menuInfo=self.db.child("MENU").child(storename).child(res.key).get()
                 
-        return menuInfo
+    #     return menuInfo
+    def get_menu(self,storename):
+        menus = self.db.child("MENU").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        print(storename)
+        print("/////////////////////////////////////")
+        print(menus)
+        return menus
