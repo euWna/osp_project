@@ -23,6 +23,7 @@ const Login = () => {
         setUser(currentUser);
     });
 
+
     //로그인
     const login = async () => {
         try {
@@ -44,22 +45,7 @@ const Login = () => {
 
     return (
         <div style={{ textAlign: "center", margin: 10 }}>
-            <div>
-                {/* 회원가입 */}
-                <input
-                    placeholder="Email"
-                    onChange={(e) => {
-                        setRegisterEmail(e.target.value);
-                    }}
-                />
-                <input
-                    placeholder="EmailPassword"
-                    onChange={(e) => {
-                        setRegisterPassword(e.target.value);
-                    }}
-                />
-                <button onClick={register}>CreateUser</button>
-            </div>
+
             <div>
                 {/* 로그인 */}
                 <h3>Login</h3>
