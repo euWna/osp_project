@@ -8,6 +8,9 @@ import Info from './info';
 function Storelist(props) {
     var storename = props.name
     var storelocation = props.location
+    var storefood = props.food
+    var storeimg = props.img
+    var storekey = props.storekey
     // const location = {
     //     pathname: '/StoreDetail/:storename',
     //     state: {
@@ -26,9 +29,12 @@ function Storelist(props) {
     return (
         <div>
 
-            <Link to={`/StoreDetail/${this.state.storedata.storename}`}
+            <Link to={`/StoreDetail/${storename}`}
                 state={{
-                    storelocation: this.state.storedata.storelocation
+                    storelocation: storelocation,
+                    storefood: storefood,
+                    storeimg: storeimg,
+                    storekey: storekey
                 }}>
                 {/* <div className={styles.SendDatas}>
                     {storename}

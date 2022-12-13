@@ -3,40 +3,39 @@ import samplelocation from "../img/location.png";
 import sample from '../img/sample.PNG';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import { useLocation } from "react-router-dom";
 function Info(props) {
     // console.log(props.StoreInfo)
     // StoreDetail에서 받아온 props.StoreInfo는 undefined로 뜸
     // 그 외에도 하나도 못받아오고 있음
+    console.log("info")
     console.log(props.storename)
+
     const [storedata, setData] = useState()
     var storearr = new Array();
     const storename = props.storename
+    const storelocation = props.storelocation
+    // console.log(storelocation)
     const params = useParams().storename;
-    useEffect(() => {
-        fetch("/StoreDetail/<storename>", { //json 데이터를 받아옴
-            headers: {
-                Accept: 'application/json',
-                method: 'GET'
-            }
-        })
-            .then(response => response.json())
-            .then(jsonData => {
-                for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
-                    storearr[key] = Object.values(jsonData)[key]
-                    storearr[key]["key"] = Object.keys(jsonData)[key] //키값 필요해서 가져옴
-                }
-                setData(storearr)
-            })
-            .catch(
-                (err) => console.log(err))
-    }, [])
+    // useEffect(() => {
+    //     fetch("/StoreDetail/<storename>", { //json 데이터를 받아옴
+    //         headers: {
+    //             Accept: 'application/json',
+    //             method: 'GET'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(jsonData => {
+    //             for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
+    //                 storearr[key] = Object.values(jsonData)[key]
+    //                 storearr[key]["key"] = Object.keys(jsonData)[key] //키값 필요해서 가져옴
+    //             }
+    //             setData(storearr)
+    //         })
+    //         .catch(
+    //             (err) => console.log(err))
+    // }, [])
 
-
-
-    console.log("storedata")
-    console.log(storedata)
-    // console.log(storedata[storelocation])
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>
@@ -44,7 +43,8 @@ function Info(props) {
                     음식점 정보
                 </div>
                 <div>
-                    <img class={styles.image} src={sample} /><br /><br />
+                    <img class={styles.image} src={props.storeimg} /><br /><br />
+                    {/* props.storeimg는 받아오지 못함 */}
                 </div>
 
                 <div class={styles.info}>
@@ -53,6 +53,7 @@ function Info(props) {
                         {/* 맛집 이름만 넘김! props에서 UseParams로 받아온 것 */}
                         <div class={styles.storelocation}>
                             <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
+                            {props.storelocation}
                             {/* "주소"{storearr.storelocation} */}
                             {/* storelocation 받아오지 못하는 중 */}
                         </div>
@@ -60,7 +61,7 @@ function Info(props) {
                     <br />
                     <br />
                     <div>
-                        <div class="Tag">카테고리 </div>
+                        <div class="Tag">{props.storefood} </div>
                         <div class={styles.site}>사이트 </div>
                         <div class={styles.phone}>전화번호 </div>
                         <div class={styles.time}>운영시간 </div>
