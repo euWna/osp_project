@@ -32,7 +32,7 @@ function MenuPlusBtn() {
 
 function CreateMenu() {
 
-  const params = useParams().id;
+  const params = useParams().storename;
   console.log(params)
   const param2 = useParams().food;
   // MinusButton = document.getElementsByClassName("MinusButton");

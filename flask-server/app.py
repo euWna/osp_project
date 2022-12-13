@@ -6,9 +6,6 @@ import json
 import string
 import random
 
-
-
-
 app = Flask(__name__)
 
 DB = DBhandler()
@@ -155,7 +152,7 @@ def Submit_Review():
 ##################### Get data from DB #####################
 @app.route("/get_registered_store/<storename>")
 def get_registered_store(storename):
-    registered = DB.get_store_byname(storename)
+    registered = DB.get_store(storename)
     print(registered)
     registered_json =  json.dumps(registered)
     return registered_json
@@ -196,3 +193,11 @@ def list_stores():
 def view_storelist(store_id):
     return render_template("index.html")
 '''
+
+
+@app.route("/StoreDetail/<storename>", methods=['GET','POST'])
+def get_storename_info(storename):
+    StoreInfo=DB.get_store_info(storename)
+    # return render_template ("index.html",StoreInfo=StoreInfo)
+    storeInfojson =  json.dumps(StoreInfo)
+    return render_template("index.html",storeInfojson=storeInfojson)

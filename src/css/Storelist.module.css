@@ -37,7 +37,7 @@
 }
 
 .storelocation {
-    display:flex;
+    display: flex;
     line-height: 20px;
     /* position: relative;
     top: 35px; */
@@ -89,4 +89,9 @@
     font-weight: 800;
     right: 50px;
     top: -27px;
+}
+
+.SendDatas {
+    /* display: none; */
+    visibility: hidden;
 }
