@@ -15,12 +15,18 @@
 }
 
 .ImagePart {
-    display: flex;
+    /* display: flex; */
     width: 240px;
-    align-items: center;
+    /* align-items: center; */
     margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+}
+
+.img{
+    width: 240px;
+    height: 150px;
+    object-fit: cover;
 }
 
 #MenuName {

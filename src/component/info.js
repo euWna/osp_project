@@ -19,9 +19,6 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
     const storetime1 = props.storetime1
     const storetime2 = props.storetime2
 
-    console.log("storeinfo 출력확인")
-    console.log(props.storelocation)
-
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>

@@ -25,8 +25,6 @@ function StoreDetail(props) {
     const storesite = location.state.storesite
     const storename = location.state.storename
     // const storekey = location.state.storekey
-    console.log("storedetail 출력확인")
-    console.log(storelocation)
 
     //이제 storeDetail까지는 정보 넘어감!!!!
     // const getStoreInfo = document.getElementsByClassName("SendDatas").item()

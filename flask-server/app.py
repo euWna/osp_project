@@ -124,6 +124,15 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
+# #맛집세부정보(storedetail)에서 메뉴 정보 받아오기
+# @app.route("/Menu_send_data", methods=['GET','POST'])
+# def list_Menu():
+#     if request.method == 'GET':
+#         storedata = DB.get_menu() #read the table
+#         storedatajson =  json.dumps(storedata)
+#         return storedatajson
+
+#메뉴 데이터 전송 함수
 @app.route("/CreateMenu_send_data/<storename>", methods=['GET','POST'])
 def list_menu(storename):
     if request.method == 'GET':

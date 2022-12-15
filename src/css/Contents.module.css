@@ -61,6 +61,11 @@
     padding-right: 60px;
 }
 
+.menulist{
+    height: 540px;
+    overflow: auto;
+}
+
 .image {
     float: center;
     width:50%;
