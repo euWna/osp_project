@@ -39,6 +39,10 @@ def view_review(storename):
 def StoreListView():
     return render_template("index.html")
 
+@app.route("/StoreDetail/<storename>")
+def view_StoreDetail(storename):
+    return render_template("index.html")   
+
 
 
 ##################### Submit Data #####################

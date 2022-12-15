@@ -4,37 +4,23 @@ import sample from '../img/sample.PNG';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
-function Info(props) {
-    // console.log(props.StoreInfo)
-    // StoreDetail에서 받아온 props.StoreInfo는 undefined로 뜸
-    // 그 외에도 하나도 못받아오고 있음
-    console.log("info")
-    console.log(props.storename)
 
-    const [storedata, setData] = useState()
-    var storearr = new Array();
-    const storename = props.storename
+function Info(props) { //storedetail에서 정보들 props로 받아옴
+
+    const storefood = props.storefood
+    const storeimg = props.storeimg
     const storelocation = props.storelocation
-    // console.log(storelocation)
-    const params = useParams().storename;
-    // useEffect(() => {
-    //     fetch("/StoreDetail/<storename>", { //json 데이터를 받아옴
-    //         headers: {
-    //             Accept: 'application/json',
-    //             method: 'GET'
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(jsonData => {
-    //             for (const [key] in Object.keys(jsonData)) { //식당 갯수만큼 반복
-    //                 storearr[key] = Object.values(jsonData)[key]
-    //                 storearr[key]["key"] = Object.keys(jsonData)[key] //키값 필요해서 가져옴
-    //             }
-    //             setData(storearr)
-    //         })
-    //         .catch(
-    //             (err) => console.log(err))
-    // }, [])
+    const storepark = props.storepark
+    const storephonenumber = props.storephonenumber
+    const storeprice1 = props.storeprice1
+    const storeprice2 = props.storeprice2
+    const storesite = props.storesite
+    const storename = props.storename
+    const storetime1 = props.storetime1
+    const storetime2 = props.storetime2
+
+    console.log("storeinfo 출력확인")
+    console.log(props.storelocation)
 
     return (
         <div class={styles.outer}>
@@ -43,28 +29,23 @@ function Info(props) {
                     음식점 정보
                 </div>
                 <div>
-                    <img class={styles.image} src={props.storeimg} /><br /><br />
-                    {/* props.storeimg는 받아오지 못함 */}
+                    <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img}/>
                 </div>
-
                 <div class={styles.info}>
                     <div>
-                        {/* <div class={styles.StoreName}>{storename}</div> */}
-                        {/* 맛집 이름만 넘김! props에서 UseParams로 받아온 것 */}
+                        <div class={styles.StoreName}>{storename}</div>
                         <div class={styles.storelocation}>
                             <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
                             {props.storelocation}
-                            {/* "주소"{storearr.storelocation} */}
-                            {/* storelocation 받아오지 못하는 중 */}
                         </div>
                     </div>
                     <br />
                     <br />
                     <div>
-                        <div class="Tag">{props.storefood} </div>
-                        <div class={styles.site}>사이트 </div>
-                        <div class={styles.phone}>전화번호 </div>
-                        <div class={styles.time}>운영시간 </div>
+                        <div class="Tag">#{storefood} </div>
+                        <div class={styles.site}>사이트 {storesite}</div>
+                        <div class={styles.phone}>전화번호 {storephonenumber}</div>
+                        <div class={styles.time}>운영시간 {storetime1}~{storetime2}</div>
                         <div class={styles.parking}>주차장 </div>
                     </div>
                 </div>

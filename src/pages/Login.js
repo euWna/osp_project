@@ -3,7 +3,7 @@ import Header from "../component/header";
 import styles from "../css/Login.module.css";
 import { Link } from 'react-router-dom';
 import NavBar from "../component/NavBar";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+// import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 // import { authService } from '../firebase/fbInstance';
 
 class Login extends React.Component {

@@ -12,11 +12,17 @@
 }
 
 .ImagePart {
-    display: flex;
-    width: 300px;
-    height: 130px;
-    align-items: center;
+    /* display: flex; */
+    width: 295px;
+    height: 125px;
+    /* align-items: center; */
     margin-left: 2px;
+}
+
+.img{
+    width: 295px;
+    height: 125px;
+    object-fit: cover;
 }
 
 .listdesc {

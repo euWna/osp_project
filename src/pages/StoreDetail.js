@@ -10,40 +10,31 @@ import { useLocation } from "react-router-dom";
 
 function StoreDetail(props) {
     const location = useLocation()
-    const storelocation = location.state.storelocation
-    // const [storedata, setData] = useState()
-    // var storearr = new Array();
-    const params = useParams().storename;
-    // const storename = params
-    // console.log(storename)
-    // useEffect(() => {
-    //     fetch(`/StoreDetail/${params}`, { //json 데이터를 받아옴
-    //         headers: {
-    //             Accept: 'application/json',
-    //             method: 'GET'
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(setData(storedata))
-    //         .catch(
-    //             (err) => console.log(err))
-    // }, [])
+    // const params = useParams().storename;
 
-    console.log("storelocation:")
+    // storelist에서 받아온 값들을 변수에 저장
+    const storefood = location.state.storefood
+    const storeimg = location.state.storeimg
+    const storelocation = location.state.storelocation
+    const storepark = location.state.storepark
+    const storephonenumber = location.state.storephonenumber
+    const storeprice1 = location.state.storeprice1
+    const storeprice2 = location.state.storeprice2
+    const storetime1 = location.state.storetime1
+    const storetime2 = location.state.storetime2
+    const storesite = location.state.storesite
+    const storename = location.state.storename
+    // const storekey = location.state.storekey
+    console.log("storedetail 출력확인")
     console.log(storelocation)
+
     //이제 storeDetail까지는 정보 넘어감!!!!
     // const getStoreInfo = document.getElementsByClassName("SendDatas").item()
     // textContent의 경우 display 와 상관없이 값을 가져온다고 함
-
-
-
     return (
         <div>
             <NavBar></NavBar>
-            {/* {storedata && storedata.map((a => {
-                return <Info name={a.storename} location={a.location} food={a.food} img={a.img_path} storekey={a.key} />
-            }))} */}
-            <Info storename={params} storelocation={storelocation} storeimg={location.state.storeimg} />
+            <Info storename={storename} storelocation={storelocation} storefood={storefood} storeimg={storeimg} pastoreparkrk={storepark} storephonenumber={storephonenumber} storeprice1={storeprice1} storeprice2={storeprice2} storesite={storesite} storetime1={storetime1} storetime2={storetime2} />
             <Menu />
             <Review />
         </div>
