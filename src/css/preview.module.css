@@ -1,0 +1,107 @@
+.prebox {
+    display:flex;
+    flex-direction: column
+}
+
+.pane {
+    display: inline-block;
+    width: 50%;
+    border: var(--grayborder);
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.pretitle {
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#paneName {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+    padding: 25px;
+    padding-left: 70px;
+    border-bottom: var(--grayborder);
+    vertical-align: middle;
+}
+
+.list{
+    height: 540px;
+    overflow: auto;
+}
+
+.ImagePart{
+    width: 500px;
+    height: 400px;
+}
+
+.image {
+    float: center;
+    width:50%;
+    border: var(--grayborder);
+}
+
+
+/*info */
+
+.info {
+    font-size: 16px;
+    float: left;
+    width: 50%;
+    text-align: left;
+    line-height: 200%;
+    padding: 30px;
+    padding-left: 100px;
+    padding-top: 0px;
+}
+
+.StoreName {
+    position: relative;
+    top: 30px;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.storelocation {
+    position: relative;
+    top: 50px;
+    font-size: 20px;
+
+}
+
+.locationimg {
+    position: relative;
+}
+
+.locationtext {
+    position: relative;
+    top: -23px;
+    left: 15px;
+    font-size: 10px;
+    color: rgb(120, 120, 120);
+}
+
+.Tag {
+    position: relative;
+    bottom: -13px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.heart {
+    position: relative;
+    top: 15px;
+}
+
+.heartimg {}
+
+.heartnum {
+    position: relative;
+    font-size: 13px;
+    font-weight: 800;
+    top: -24px;
+    left: 24px;
+}

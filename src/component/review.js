@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import styles from '../css/Contents.module.css';
 import ReviewPost from './reviewPost';
 
-function Review() {
+function Review(props) {
 
     const params = useParams().storename;
+
+    const storeimg = props.storeimg
 
     const [reviewdata, setData] = useState()
     var reviewarr = new Array();
@@ -29,8 +31,6 @@ function Review() {
           (err) => console.log(err))
     }, [])
 
-    console.log(reviewarr)
-
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>
@@ -39,7 +39,11 @@ function Review() {
                 </div>
                 <div class={styles.editPane}>
                     <span>여러분의 맛집 후기를 남겨주세요!</span>
-                    <Link to={`/CreateReview/${params}`}><button class={styles.button}>리뷰 등록</button></Link>
+                    <Link to={`/CreateReview/${params}`}
+                     state={{
+                        storeimg: storeimg
+                    }}
+                    ><button class={styles.button}>리뷰 등록</button></Link>
                 </div>
                 <div class={styles.Pane}>
                     <div class={styles.list}>

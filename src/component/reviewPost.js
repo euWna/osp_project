@@ -11,9 +11,6 @@ function ReviewPost(props) {
     const reviewusername = props.reviewusername
     const reviewstorename = props.reviewstorename
 
-    console.log("리뷰포스트 출력확인")
-    console.log(reviewdesc)
-
     return (
         <div class={styles.listbox}>
             <div className={styles.ImagePart}>

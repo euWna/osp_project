@@ -34,7 +34,7 @@ function StoreDetail(props) {
             <NavBar></NavBar>
             <Info storename={storename} storelocation={storelocation} storefood={storefood} storeimg={storeimg} pastoreparkrk={storepark} storephonenumber={storephonenumber} storeprice1={storeprice1} storeprice2={storeprice2} storesite={storesite} storetime1={storetime1} storetime2={storetime2} />
             <Menu />
-            <Review />
+            <Review storeimg={storeimg}/>
         </div>
     );
 }

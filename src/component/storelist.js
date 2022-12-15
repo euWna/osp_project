@@ -20,9 +20,17 @@ function Storelist(props) {
     
     var storekey = props.storekey
 
+    var present = props.present
+
+    const testHandler = event => {
+        if (present !== storename) {
+            event.preventDefault();
+        }
+      };
+
     return (
         <div>
-            <Link to={`/StoreDetail/${storename}`} //storelistview에서 받아온 데이터들을 storedetail에 props로 전달
+            <Link to={`/StoreDetail/${storename}`} onClick={testHandler}
                 state={{
                     storefood: storefood,
                     storeimg: storeimg,
@@ -37,21 +45,8 @@ function Storelist(props) {
                     storetime2: storetime2,
                     storekey: storekey
                 }}>
-                {/* <div className={styles.SendDatas}>
-                    {storename}
-                    {storelocation}
-                    {storedata && storedata.map((a => {
-                        const storename = { storename }, storelocation = { storelocation }, food = { food }, storedata = { storedata }
-
-                    }))}
-
-                </div> */}
-                {/* , {props.food}, {props.img}, {props.storekey} */}
-                {/* 위의 div는 정보를 넘겨주기 위함임 근데 안넘어감... */}
                 <div class={styles.listbox}>
-                    <div className={styles.ImagePart}>
                         <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img}/>
-                    </div>
                     {/* 본문 박스 */}
                     <div class={styles.listdesc}>
                         <div class={styles.StoreName}>{storename}</div>
@@ -69,8 +64,8 @@ function Storelist(props) {
                     <div class={styles.reviewnum}>리뷰""개</div> */}
                     </div>
                 </div>
-            </Link >
             {/* history.push({location}) */}
+            </Link >
         </div>
     );
 }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
 import { useState, useEffect } from 'react';
+import Preview from "../component/preview"
 
 function StoreListView() {
     const [storedata, setData] = useState()
@@ -26,11 +27,18 @@ function StoreListView() {
                     storearr[i]["key"] = Object.keys(jsonData)[i] //키값 필요해서 가져옴
                 }
                 setData(storearr)
-                console.log(storearr)
             })
             .catch(
                 (err) => console.log(err))
     }, [])
+
+    //클릭하면 오른쪽에 맛집 정보 프리뷰를 보여줌
+    const [content, setContent] = useState();
+
+    const handleClickButton = (e) => {
+        setContent(e);
+    };
+
     return (
         <div>
             <NavBar />
@@ -58,20 +66,21 @@ function StoreListView() {
                             </div>
                         </div>
                         < div className={styles.Restaurant}>
-                            {storedata && storedata.map((a => {
-                                return <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path}
-                                park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2}
-                                storekey={a.key} storedata={storedata} />
+                            {storedata&&storedata.map((a => { 
+                                if(content){
+                                    var state=content.storename
+                                }else{
+                                    var state=null
+                                }
+                                return <div onClick={()=>handleClickButton(a)}>
+                                <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state}/>
+                                </div>
                             }))}
                         </div>
                     </div>
                     <div class={styles.rightbox}>
                         <div className={styles.StoreMap}>
-                            {/*지도 API 추가할 부분*/}
-                        </div>
-                        <button type="button" name="next_button"></button>
-                        {/*음식점 목록과 지도 API 사이에 있는 버튼*/}
-                        <div class={styles.storelistdetail}>
+                            {content&&<Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2}/>}
                         </div>
                     </div>
                 </div >

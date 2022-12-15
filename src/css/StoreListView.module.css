@@ -51,11 +51,12 @@
 }
 
 .rightbox {
-    display: flex;
     flex-direction: column;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     height: 100%;
+    width:630px;
+    background-color: rgb(255, 255, 255);
 }
 
 .storemap {

@@ -1,21 +1,30 @@
 import React from "react";
 import styles from "../css/CreateReview.module.css";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 
-function CreateReview() {
+function CreateReview(props) {
 
     const params = useParams().storename;
+    const location = useLocation()
+    const storeimg = location.state.storeimg
+
 
     return (
         <div>
             <NavBar></NavBar>
+            <section>
             <aside class={styles.aside}>
                 <div class={styles.asideleft}>
+                    <div class={styles.ImagePart}>
+                        <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img}/>
+                    </div>
+                    <div class={styles.storename}>
+                     {params}
+                    </div>
                 </div>
             </aside>
             <form action={`http://127.0.0.1:5000/CreateReview/${params}`} method="POST" enctype="multipart/form-data">
-                <section>
                     <div id={styles.table}>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>전체 평점</span>
@@ -46,8 +55,9 @@ function CreateReview() {
                             <span class={`${styles.cell} ${styles.col1}`}><input type="submit" value="리뷰 등록" /></span>
                         </div>
                     </div>
-                </section>
             </form>
+            </section>
+
         </div>
     )
 }

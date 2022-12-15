@@ -11,17 +11,19 @@
     box-shadow: inset 0px 0px 0px 3px #98a99c;
 }
 
-.ImagePart {
-    /* display: flex; */
+/* .ImagePart {
     width: 295px;
     height: 125px;
-    /* align-items: center; */
-    margin-left: 2px;
+} */
+
+.link{
+    width: 100%;
+    height: 100%;
 }
 
 .img{
     width: 295px;
-    height: 125px;
+    height: 128px;
     object-fit: cover;
 }
 
