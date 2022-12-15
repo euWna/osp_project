@@ -9,8 +9,10 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 function StoreDetail(props) {
+    if(location){
+        
+    }
     const location = useLocation()
-    // const params = useParams().storename;
 
     // storelist에서 받아온 값들을 변수에 저장
     const storefood = location.state.storefood

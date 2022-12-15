@@ -5,10 +5,16 @@
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
     align-items: center;
+    /* background: var(--item-bg-color); */
+	cursor: pointer;
+	transition: all 0.3s;
 }
 
 .listbox:hover {
-    box-shadow: inset 0px 0px 0px 3px #98a99c;
+    transform: scale(1.1);
+	z-index: 100;
+	/* background: var(--item-hover-bg); */
+	/* color: var(--item-hover-color); */
 }
 
 /* .ImagePart {
@@ -16,13 +22,13 @@
     height: 125px;
 } */
 
-.link{
+/* .link{
     width: 100%;
     height: 100%;
-}
+} */
 
 .img{
-    width: 295px;
+    width: 350px;
     height: 128px;
     object-fit: cover;
 }
@@ -31,7 +37,7 @@
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-    margin-right: 25px;
+    margin-right: 50px;
 }
 
 .StoreName {

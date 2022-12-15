@@ -41,6 +41,7 @@ def StoreListView():
 
 @app.route("/StoreDetail/<storename>")
 def view_StoreDetail(storename):
+    print("/////////////////////")
     return render_template("index.html")   
 
 
@@ -89,7 +90,7 @@ def Submit_Review(storename):
         if img_file:
             img_file.save("./flask-server/static/img/"+img_file.filename)
         if DB.insert_review(storename, data, img_file.filename):
-            return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
+             return redirect(url_for('StoreListView')) 
 
 
 ##################### Get data from DB #####################

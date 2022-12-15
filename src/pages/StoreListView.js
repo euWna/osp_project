@@ -38,7 +38,7 @@ function StoreListView() {
     const handleClickButton = (e) => {
         setContent(e);
     };
-
+    
     return (
         <div>
             <NavBar />
@@ -46,7 +46,8 @@ function StoreListView() {
                 <div class={styles.all} >
                     <div className={styles.StoreList}>
                         <div className={styles.TopBar}>
-                            <span className={styles.Result}>결과건</span>
+                            {storedata&&<span className={styles.Result}>결과건{"("}{<div class={styles.number}>{storedata.length}</div>}{")"}</span>
+                            }
                             <div class={styles.dropdown}>
                                 <span className={styles.Dropdown1}>
                                     <select name="dropFood">
@@ -79,9 +80,10 @@ function StoreListView() {
                         </div>
                     </div>
                     <div class={styles.rightbox}>
-                        <div className={styles.StoreMap}>
-                            {content&&<Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2}/>}
-                        </div>
+                            { content
+                                ? <Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2}/>
+                                : <div class={styles.loading}>맛집을 선택해주세요!<div class={styles.lds_ellipsis}><div></div><div></div><div></div><div></div></div></div>
+                            }
                     </div>
                 </div >
             </section >
