@@ -110,18 +110,6 @@ class DBhandler:
         else:
             return False
 
-    # 메뉴 정보 중복 체크 함수(insertmenu에서 사용)
-    # def menu_duplicate_check(self, name,food):
-    #     menus = self.db.child("MENU").child(name).get()
-    #     print (menus)
-    #     if menus==None:
-    #         return True
-
-    #     for res in menus.each():
-    #         if res.key() == food:
-    #             return False
-    #     return True
-    # 지금은 key값이 매장명임...
     def menu_duplicate_check(self, storename, menuname):
         menudata = self.db.child("MENU").child(storename).get()
         if isinstance(menudata.val(), type(None)):
@@ -133,21 +121,21 @@ class DBhandler:
                     return False
         return True
 
-    def insert_review(self,name,data,img_path):
+    def insert_review(self, storename, data, img_path):
         review_info ={
+            "storename" : storename,
             "storescore" : data['storescore'],
             "username" : data['username'],
             "reviewtitle" : data['reviewtitle'],
             "reviewdesc" : data['reviewdesc'],
             "img_path" : img_path
         }
-        self.db.child("REVIEW").child(name).set(review_info)
-        print(data,img_path)
+        username=data['username']
+        self.db.child("REVIEW").child(storename).child(username).set(review_info)
         return True
+
     def get_store_info(self,storename):
-        
         storeInfo = self.db.child("STORE").child(storename).get().val
-       
         return storeInfo
 
     # def get_menu(self, storename):
@@ -162,7 +150,8 @@ class DBhandler:
     #     return menuInfo
     def get_menu(self,storename):
         menus = self.db.child("MENU").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
-        print(storename)
-        print("/////////////////////////////////////")
-        print(menus)
         return menus
+
+    def get_review(self,storename):
+        reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        return reviews

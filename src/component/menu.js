@@ -39,8 +39,8 @@ function Menu(){
                     <span>직접 메뉴를 등록하고 수정하세요!</span>
                     <Link to={`/Createmenu/${params}`}><button class={styles.button}>메뉴 정보 수정</button></Link>
                 </div>
-                <div class={styles.menuPane}>
-                    <div class={styles.menulist}>
+                <div class={styles.Pane}>
+                    <div class={styles.list}>
                         {menudata && menudata.map((a => {
                         return <div>
                             <MenuPost menuname={a.food} menuimg={a.img_path} menumoney={a.money}/>

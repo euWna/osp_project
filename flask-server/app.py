@@ -67,44 +67,29 @@ def Submit_store():
 def Submit_menu(storename):
     if request.method == 'POST':
             data = request.form
-            #print(data)
-
             menuname = data['food']
             price = data['money']
             nutrient = data['nutrient']
-            #print(menuname, price, nutrient)
-
             img_file = request.files['file']
             if img_file:
                 img_file.save("./flask-server/static/img/"+img_file.filename)
-                #print(img_file)
-
-            #return render_template("result_menu.html", result=result)
-
-            if DB.insert_menu( storename,data, img_file.filename):
+            if DB.insert_menu(storename, data, img_file.filename):
                 return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
             else:
                 return "The submitted menu already exists!"
 
-
-@app.route("/CreateReview/<storename>")        
-def Submit_Review():
+@app.route("/CreateReview/<storename>", methods=['POST'])        
+def Submit_Review(storename):
     if request.method == 'POST':
         data = request.form
-        #print(data)
-
         username = data['username']
         reviewtitle = data['reviewtitle']
         reviewdesc = data['reviewdesc']
-        #print(username,"\n",reviewtitle, '\n', reviewdesc)
-        
         img_file = request.files['file']
         if img_file:
-            img_file.save("../../public/assets/"+img_file.filename)
-            #print(img_file)
-
-        if DB.insert_review(data['username'], data, img_file.filename):
-            return render_template("result_review.html", result = data, img_path="static/img/"+img_file.filename)
+            img_file.save("./flask-server/static/img/"+img_file.filename)
+        if DB.insert_review(storename, data, img_file.filename):
+            return render_template("index.html", result = data, img_path="static/img/"+img_file.filename)
 
 
 ##################### Get data from DB #####################
@@ -137,8 +122,15 @@ def list_stores():
 def list_menu(storename):
     if request.method == 'GET':
         menudata = DB.get_menu(storename) #read the table
-        print(menudata)
         menudatajson =  json.dumps(menudata)
+        return menudatajson
+
+#리뷰 데이터 전송 함수
+@app.route("/Review_send_data/<storename>", methods=['GET','POST'])
+def list_review(storename):
+    if request.method == 'GET':
+        reviewdata = DB.get_review(storename) #read the table
+        menudatajson =  json.dumps(reviewdata)
         return menudatajson
 
 #이미지 불러오기 함수였는데 안써도 됩니당

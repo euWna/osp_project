@@ -1,19 +1,20 @@
 import React from "react";
 import styles from "../css/CreateReview.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 
 function CreateReview() {
+
+    const params = useParams().storename;
+
     return (
         <div>
             <NavBar></NavBar>
             <aside class={styles.aside}>
                 <div class={styles.asideleft}>
-                    <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-                    <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
                 </div>
             </aside>
-            <form action="http://127.0.0.1:5000/CreateReview" method="post" enctype="multipart/form-data">
+            <form action={`http://127.0.0.1:5000/CreateReview/${params}`} method="POST" enctype="multipart/form-data">
                 <section>
                     <div id={styles.table}>
                         <div class={styles.row}>
