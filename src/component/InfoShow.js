@@ -1,4 +1,4 @@
-import Info from "../component/info"
+import Info from "./info"
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 

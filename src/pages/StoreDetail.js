@@ -7,7 +7,7 @@ import NavBar from "../component/NavBar";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import InfoShow from "./InfoShow";
+import InfoShow from "../component/InfoShow";
 //이렇게 하면 info는 됨...
 function StoreDetail(props) {
     const params = useParams().storename;
