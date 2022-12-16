@@ -4,9 +4,11 @@ import sample from '../img/sample.PNG';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 function Info(props) { //storedetail에서 정보들 props로 받아옴
-
+    const navigate = useNavigate();
     const storefood = props.storefood
     const storeimg = props.storeimg
     const storelocation = props.storelocation
@@ -19,7 +21,16 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
     const storetime1 = props.storetime1
     const storetime2 = props.storetime2
     const params = useParams().storename;
+    const GoCreateReview = () => {
 
+        navigate(`/CreateReview/${storename}`);
+        console.log("Pushed")
+    }
+    const GoRegisteredStore = () => {
+
+        navigate(`/RegisteredStore/${storename}`);
+
+    }
     // const [storedata, setData] = useState()
     // var storearr = new Array();
 
@@ -70,8 +81,12 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                     </div>
                 </div>
                 <div class={styles.buttons}>
-                    <Link to="/CreateStore"><button class={styles.button}>정보 수정</button></Link>
-                    <Link to="/CreateReview"><button class={styles.button}>리뷰 등록</button></Link>
+                    <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
+                    <Link to={`/CreateReview/${params}`}
+                        state={{
+                            storefood: storefood,
+                            storeimg: storeimg
+                        }} ><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
                 </div>
 
                 <div class="map">

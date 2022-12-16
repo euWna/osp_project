@@ -97,6 +97,7 @@ def Submit_Review(storename):
 ##################### Get data from DB #####################
 @app.route("/get_registered_store/<storename>")
 def get_registered_store(storename):
+    # push=DB.AverageScore(storename)
     registered = DB.get_store_byname(storename)
     print(registered)
     registered_json =  json.dumps(registered)
