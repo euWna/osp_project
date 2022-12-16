@@ -18,7 +18,30 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
     const storename = props.storename
     const storetime1 = props.storetime1
     const storetime2 = props.storetime2
+    const params = useParams().storename;
 
+    // const [storedata, setData] = useState()
+    // var storearr = new Array();
+
+    // useEffect(() => {
+    //     fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
+    //         headers: {
+    //             Accept: 'application/json',
+    //             method: 'GET'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(jsonData => {
+    //             var length = Object.keys(jsonData).length
+    //             for (var i = 0; i < length; i++) { //등록된 메뉴 갯수만큼 반복
+    //                 storearr[i] = Object.values(jsonData)[i]
+    //             }
+    //             setData(storearr)
+    //         })
+    //         .catch(
+    //             (err) => console.log(err))
+    // }, [])
+    // console.log(storedata)
     return (
         <div class={styles.outer}>
             <div class={styles.pane}>
@@ -26,7 +49,7 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                     음식점 정보
                 </div>
                 <div>
-                    <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img}/>
+                    <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img} />
                 </div>
                 <div class={styles.info}>
                     <div>

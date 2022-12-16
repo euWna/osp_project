@@ -21,9 +21,14 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
     const storename = props.storename
     const storetime1 = props.storetime1
     const storetime2 = props.storetime2
-    const GoCreateStore = () => {
+    const GoRegisteredStore = () => {
 
         navigate(`/RegisteredStore/${storename}`);
+        console.log("Pushed")
+    }
+    const GoStoreDetail = () => {
+
+        navigate(`/StoreDetail/${storename}`);
         console.log("Pushed")
     }
     return (
@@ -62,9 +67,9 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
                 </div>
             </div>
             <div class={styles.buttons}>
-                <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoCreateStore} class={styles.button}>정보 수정</button></Link>
+                <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
                 <Link to={`/CreateReview/${props.storename}`}><button class={styles.button}>리뷰 등록</button></Link>
-                <Link to={`/StoreDetail/${props.storename}`}><button class={styles.button}>자세히 보기</button></Link>
+                <Link to={`/StoreDetail/${props.storename}`}><button onClick={GoStoreDetail} class={styles.button}>자세히 보기</button></Link>
             </div>
         </div>
     );
