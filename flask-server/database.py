@@ -156,3 +156,8 @@ class DBhandler:
     def get_review(self,storename):
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
         return reviews
+    def get_all_review(self):
+        stores=self.db.child("REVIEW").get().val()
+        for store in stores:
+            review_all=self.db.child("REVIEW").child(store).get().val()
+        return review_all

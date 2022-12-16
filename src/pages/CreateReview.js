@@ -4,9 +4,58 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import NavBar from '../component/NavBar';
 
+// var MenuInsertAt = document.getElementsByClassName("ForMenus")
+// var newCheckBox = document.createElement("input")
+// newCheckBox.setAttribute('type', 'checkbox')
+// newCheckBox.setAttribute('size', '70')
+// function CreateCheckBox(storename) {
+//     const params = useParams().storename;
+
+//     const [menudata, setData] = useState()
+//     var menuarr = new Array();
+
+//     useEffect(() => {
+//         fetch(`/CreateMenu_send_data/${params}`, { //json 데이터를 받아옴
+//             headers: {
+//                 Accept: 'application/json',
+//                 method: 'GET'
+//             }
+//         })
+//             .then(response => response.json())
+//             .then(jsonData => {
+//                 var length = Object.keys(jsonData).length
+//                 for (var i = 0; i < length; i++) { //등록된 메뉴 갯수만큼 반복
+//                     menuarr[i] = Object.values(jsonData)[i]
+//                 }
+//                 setData(menuarr)
+//             })
+//             .catch(
+//                 (err) => console.log(err))
+//     }, [])
+
+// newCheckBox.innerHTML({ menuarr[i]})
+
+// return (<>
+//     {menudata && menudata.map((a => {
+//         return <div>
+//             <MenuCheck menuname={a.food} />
+//         </div>
+//     }))} </>)
+
+
+
+// }
+// function MenuCheck(props) {
+//     var txt = document.createTextNode(props.menuname)
+//     newCheckBox.setAttribute('value', props.menuname)
+//     newCheckBox.appendChild(txt)
+//     MenuInsertAt.appendChild("newCheckBox")
+//     // MenuInsertAt.appendChild("newCheckBox")
+// }
 function CreateReview(props) {
 
     const params = useParams().storename;
+
     // const [reviewdata, setData] = useState()
     // var reviewarr = new Array();
     // useEffect(() => {
@@ -57,6 +106,10 @@ function CreateReview(props) {
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>리뷰 제목</span>
                             <span class={`${styles.cell} ${styles.col1}`}><input type="text" name="reviewtitle" size="70" /></span>
+                        </div>
+                        <div class={styles.row}>
+                            <span class={`${styles.cell} ${styles.col1}`}>메뉴이름</span>
+                            <span class={`${styles.cell} ${styles.col1} `}>{/*"ForMenus"*/}{/*CreateCheckBox(params)*/}</span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>리뷰 내용</span>

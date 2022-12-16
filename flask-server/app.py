@@ -134,6 +134,11 @@ def list_review(storename):
         reviewdata = DB.get_review(storename) #read the table
         menudatajson =  json.dumps(reviewdata)
         return menudatajson
+@app.route("/Review_send_data",methods=['GET'])
+def list_reviews():
+    all_reviews=DB.get_all_review()
+    reviewjson=json.dumps(all_reviews)
+    return reviewjson
 
 #이미지 불러오기 함수였는데 안써도 됩니당
 # @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
