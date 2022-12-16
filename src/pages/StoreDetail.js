@@ -8,14 +8,30 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import InfoShow from "./InfoShow";
-
+//이렇게 하면 info는 됨...
 function StoreDetail(props) {
     const params = useParams().storename;
+
     const [storedata, setData] = useState()
     var storearr = new Array();
+    // useEffect(() => {
+    //     fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
+    //         headers: {
+    //             Accept: 'application/json',
+    //             method: 'GET'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(jsonData => {
+    //             storearr[0] = jsonData;
+    //             setData(storearr);
+    //         })
+    //         .catch(
+    //             (err) => console.log(err))
+    // }, [])
 
     useEffect(() => {
-        fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
+        fetch(`/StoreDetail/${params}`, { //json 데이터를 받아옴
             headers: {
                 Accept: 'application/json',
                 method: 'GET'

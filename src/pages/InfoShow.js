@@ -23,13 +23,14 @@ function InfoShow() {
     }, [])
 
     console.log(storedata)
+    return (<>
+        {storedata && storedata.map((a => {
+            return <div>
+                <Info storename={a.storename} storelocation={a.location} storephonenumber={a.phonenumber}
+                    storetime1={a.time1} storetime2={a.time2} storefood={a.food} storepark={a.park} storeimg={a.img_path} storesite={a.site} storeprice1={a.price1} storeprice2={a.price2} />
+            </div>
+        }))}</>)
 
-    storedata && storedata.map((a => {
-        return <div>
-            <Info storename={a.storename} storelocation={a.location} storephonenumber={a.phonenumber}
-                storetime1={a.time1} storetime2={a.time2} storefood={a.food} storepark={a.park} storeimg={a.img_path} storesite={a.site} storeprice1={a.price1} storeprice2={a.price2} />
-        </div>
-    }))
 
 }
 

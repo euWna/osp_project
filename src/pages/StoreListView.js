@@ -38,7 +38,7 @@ function StoreListView() {
     const handleClickButton = (e) => {
         setContent(e);
     };
-    
+
     return (
         <div>
             <NavBar />
@@ -46,7 +46,7 @@ function StoreListView() {
                 <div class={styles.all} >
                     <div className={styles.StoreList}>
                         <div className={styles.TopBar}>
-                            {storedata&&<span className={styles.Result}>결과건{"("}{<div class={styles.number}>{storedata.length}</div>}{")"}</span>
+                            {storedata && <span className={styles.Result}>결과건{"("}{<div class={styles.number}>{storedata.length}</div>}{")"}</span>
                             }
                             <div class={styles.dropdown}>
                                 <span className={styles.Dropdown1}>
@@ -67,23 +67,23 @@ function StoreListView() {
                             </div>
                         </div>
                         < div className={styles.Restaurant}>
-                            {storedata&&storedata.map((a => { 
-                                if(content){
-                                    var state=content.storename
-                                }else{
-                                    var state=null
+                            {storedata && storedata.map((a => {
+                                if (content) {
+                                    var state = content.storename
+                                } else {
+                                    var state = null
                                 }
-                                return <div onClick={()=>handleClickButton(a)}>
-                                <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state}/>
+                                return <div onClick={() => handleClickButton(a)}>
+                                    <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state} />
                                 </div>
                             }))}
                         </div>
                     </div>
                     <div class={styles.rightbox}>
-                            { content
-                                ? <Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2}/>
-                                : <div class={styles.loading}>맛집을 선택해주세요!<div class={styles.lds_ellipsis}><div></div><div></div><div></div><div></div></div></div>
-                            }
+                        {content
+                            ? <Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2} />
+                            : <div class={styles.loading}>맛집을 선택해주세요!<div class={styles.lds_ellipsis}><div></div><div></div><div></div><div></div></div></div>
+                        }
                     </div>
                 </div >
             </section >
