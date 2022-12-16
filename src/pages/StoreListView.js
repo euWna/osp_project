@@ -7,11 +7,11 @@ import sample from "../img/sample.PNG";
 import StoreList from '../component/storelist';
 import { useState, useEffect } from 'react';
 import Preview from "../component/preview"
+import Catagories from '../component/catagories'
+
 
 function StoreListView() {
     const [storedata, setData] = useState()
-    var storearr = new Array();
-
     useEffect(() => {
         fetch("/StoreListView_send_data", { //json 데이터를 받아옴
             headers: {
@@ -21,16 +21,12 @@ function StoreListView() {
         })
             .then(response => response.json())
             .then(jsonData => {
-                var length = Object.keys(jsonData).length
-                for (var i = 0; i < length; i++) { //식당 갯수만큼 반복
-                    storearr[i] = Object.values(jsonData)[i]
-                    storearr[i]["key"] = Object.keys(jsonData)[i] //키값 필요해서 가져옴
-                }
-                setData(storearr)
+                setData(Object.values(jsonData));
             })
             .catch(
                 (err) => console.log(err))
     }, [])
+
 
     //클릭하면 오른쪽에 맛집 정보 프리뷰를 보여줌
     const [content, setContent] = useState();
@@ -38,7 +34,21 @@ function StoreListView() {
     const handleClickButton = (e) => {
         setContent(e);
     };
-    
+
+ 
+    //카테고리 정렬 코드
+    const allCategories = ['전체', ...new Set(storedata&&storedata.map((a) => a.food))];
+    const [menuItems, setMenuItems] = useState(storedata);
+
+    const filterItems = (category) => {
+        if (category === '전체') {
+        setMenuItems(storedata);
+        return;
+        }
+        const newItems = storedata.filter((item) => item.food === category);
+        setMenuItems(newItems);
+    };
+
     return (
         <div>
             <NavBar />
@@ -49,13 +59,8 @@ function StoreListView() {
                             {storedata&&<span className={styles.Result}>결과건{"("}{<div class={styles.number}>{storedata.length}</div>}{")"}</span>
                             }
                             <div class={styles.dropdown}>
-                                <span className={styles.Dropdown1}>
-                                    <select name="dropFood">
-                                        <option value="Dessert">디저트</option>
-                                        <option value="Korean">한식</option>
-                                        <option value="Japanese">일식</option>
-                                        <option value="Chinese">중식</option>
-                                    </select>
+                                <span>
+                                    {<Catagories categories={allCategories} filterItems={filterItems}/>}
                                 </span>
                                 <span className="Dropdown2">
                                     <select name="dropSort">
@@ -67,7 +72,8 @@ function StoreListView() {
                             </div>
                         </div>
                         < div className={styles.Restaurant}>
-                            {storedata&&storedata.map((a => { 
+                            {/* 카테고리별 정렬*/}
+                            {menuItems&&menuItems.map((a => { 
                                 if(content){
                                     var state=content.storename
                                 }else{
