@@ -38,7 +38,9 @@ function StoreListView() {
  
     //카테고리 정렬 코드
     const allCategories = ['전체', ...new Set(storedata&&storedata.map((a) => a.food))];
+    console.log("선"+JSON.stringify(storedata));
     const [menuItems, setMenuItems] = useState(storedata);
+    console.log("후"+menuItems);
 
     const filterItems = (category) => {
         if (category === '전체') {
@@ -73,7 +75,7 @@ function StoreListView() {
                         </div>
                         < div className={styles.Restaurant}>
                             {/* 카테고리별 정렬*/}
-                            {menuItems&&menuItems.map((a => { 
+                            {menuItems? menuItems.map((a => { 
                                 if(content){
                                     var state=content.storename
                                 }else{
@@ -82,7 +84,17 @@ function StoreListView() {
                                 return <div onClick={()=>handleClickButton(a)}>
                                 <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state}/>
                                 </div>
-                            }))}
+                            })) : storedata? 
+                            storedata.map((a => { 
+                                if(content){
+                                    var state=content.storename
+                                }else{
+                                    var state=null
+                                }
+                                return <div onClick={()=>handleClickButton(a)}>
+                                <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state}/>
+                                </div>})) : null
+                            }
                         </div>
                     </div>
                     <div class={styles.rightbox}>
