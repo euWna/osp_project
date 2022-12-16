@@ -41,15 +41,11 @@ function ReviewSection(props) {
     return <reviewsection className={styles.reviewsection}>
         <div className={styles.reviewsection}>
             <div className={styles.presentreview}>
-                {/* <ReviewPost reviewimg={reviewimg} reviewdesc={reviewdesc} reviewtitle={reviewtitle}
-                    reviewstorescore={reviewstorescore} reviewusername={reviewusername} reviewstorename={reviewstorename} /> */}
-                {/* 
-                <ReviewPost />
-                <ReviewPost /> */}
+
                 {reviewdata && reviewdata.map((a => {
                     return <div>
-                        <ReviewPost reviewimg={a.reviewimg} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle}
-                            reviewstorescore={a.reviewstorescore} reviewusername={a.reviewusername} reviewstorename={a.reviewstorename} />
+                        <ReviewPost reviewimg={a.img_path} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle}
+                            reviewstorescore={a.storescore} reviewusername={a.username} reviewstorename={a.storename} />
                     </div>
                 }))}
 
@@ -93,13 +89,7 @@ function ReviewAll() {
         <div className={styles.default}>
             <div className={styles.body}>
                 <NavBar></NavBar>
-                {reviewdata && reviewdata.map((a => {
-                    return <div>
-                        <ReviewSection reviewimg={a.reviewimg} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle}
-                            reviewstorescore={a.reviewstorescore} reviewusername={a.reviewusername} reviewstorename={a.reviewstorename} />
-                    </div>
-                }))}
-
+                <ReviewSection />
             </div>
         </div>
     );
