@@ -5,6 +5,7 @@ import json
 import sys
 import string
 import random
+import hashlib
 
 
 

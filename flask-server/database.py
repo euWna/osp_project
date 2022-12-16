@@ -8,6 +8,7 @@ class DBhandler:
 
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
+        firebaseEmailAuth = firebase.auth()
 
            #회원가입
     def insert_user(self, data, pwd):
