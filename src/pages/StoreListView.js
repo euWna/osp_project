@@ -51,6 +51,8 @@ function StoreListView() {
         setMenuItems(newItems);
     };
 
+    const [selected, setSelected] = useState("전체");
+
     return (
         <div>
             <NavBar />
@@ -61,16 +63,7 @@ function StoreListView() {
                             {storedata&&<span className={styles.Result}>결과건{"("}{<div class={styles.number}>{storedata.length}</div>}{")"}</span>
                             }
                             <div class={styles.dropdown}>
-                                <span>
-                                    {<Catagories categories={allCategories} filterItems={filterItems}/>}
-                                </span>
-                                <span className="Dropdown2">
-                                    <select name="dropSort">
-                                        <option value="SortByRecommendation">추천순</option>
-                                        <option value="SortByReview">리뷰많은 순</option>
-                                        <option value="SortByPrice">가격 낮은 순</option>
-                                    </select>
-                                </span>
+                                    {<Catagories categories={allCategories} filterItems={filterItems} selected={selected} setSelected={setSelected}/>} 
                             </div>
                         </div>
                         < div className={styles.Restaurant}>
