@@ -5,6 +5,7 @@ import json
 import sys
 import string
 import random
+import hashlib
 
 
 
@@ -96,11 +97,11 @@ def Submit_Review(storename):
 ##################### Get data from DB #####################
 @app.route("/get_registered_store/<storename>")
 def get_registered_store(storename):
+    # avg=DB.AverageScore(storename)
     registered = DB.get_store_byname(storename)
     print(registered)
     registered_json =  json.dumps(registered)
     return registered_json
-
 
 #맛집목록조회 / 리액트에 json으로 보내주고 리액트에 proxy 추가...?
 @app.route("/StoreListView_send_data", methods=['GET','POST'])
@@ -133,6 +134,15 @@ def list_review(storename):
         reviewdata = DB.get_review(storename) #read the table
         menudatajson =  json.dumps(reviewdata)
         return menudatajson
+@app.route("/Review_send_data",methods=['GET'])
+def list_reviews():
+    all_reviews=DB.get_all_review()
+    reviewjson=json.dumps(all_reviews)
+    return reviewjson
+# def make_average():
+#     stores=DB.get_store
+#     for store in stores:
+#         avg=DB.AverageScore(store)
 
 #이미지 불러오기 함수였는데 안써도 됩니당
 # @app.route("/get_img/<storekey>", methods=['GET']) #랜덤생성된 식당 키값으로 데이터 받아옴
