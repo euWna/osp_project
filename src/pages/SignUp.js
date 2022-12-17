@@ -1,63 +1,45 @@
-// import React, { useState } from "react";
-// import Header from "../component/header";
-// import { Link } from 'react-router-dom';
-// import styles from '../css/SignUp.module.css';
-// import NavBar from "../component/NavBar";
-// import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-// import firebase from "../../flask-server";
-// import 'firebase/auth';
-// // import { authService } from '../firebase/fbInstance';
-// const authService = firebase.auth();
 
-// const SignUp = () => {
+import React, { useState } from "react";
+import Header from "../component/header";
+import { Link } from 'react-router-dom';
+import styles from '../css/SignUp.module.css';
+import NavBar from "../component/NavBar";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
 
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     const [newAccount, setNewAccount] = useState(true);
-//     const [error, setError] = useState('');
+const SignUp = () => {
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
 
-//     const toggleAccount = () => setNewAccount((prev) => !prev)
-//     const onChange = (e) => {
-//         const { target: { name, value } } = e;
-//         if (name === "email") setEmail(value);
-//         else if (name === "password") setPassword(value);
-//     }
+    const register = async () => {
+        try {
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                registerEmail,
+                registerPassword
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
-//     const onSubmit = async (e) => {
-//         e.preventDefault();
-//         let data;
-//         try {
-//             if (newAccount) data = await createUserWithEmailAndPassword(authService, email, password);
-//             else data = await signInWithEmailAndPassword(authService, email, password);
-//         } catch (error) {
-//             setError(error.message);
-//         }
-//     }
-
-//     return (
-//         <div>
-//             <form onSubmit={onSubmit}>
-//                 <input
-//                     name="email"
-//                     type="text"
-//                     placeholder='Email'
-//                     required
-//                     value={email}
-//                     onChange={onChange} />
-//                 <input
-//                     name="password"
-//                     type="password"
-//                     placeholder="Password"
-//                     required
-//                     value={password}
-//                     onChange={onChange} />
-//                 <Link to="/MyPage"><input
-//                     type="submit"
-//                     value="회원가입" /></Link>
-//             </form>
-//         </div>
-//     )
-// }
-
-
-// export default SignUp
+    return (
+        <div>
+            <input
+                placeholder="Email"
+                onChange={(e) => {
+                    setRegisterEmail(e.target.value);
+                }}
+            />
+            <input
+                placeholder="EmailPassword"
+                onChange={(e) => {
+                    setRegisterPassword(e.target.value);
+                }}
+            />
+            <button onClick={register}>CreateUser</button>
+        </div>
+    );
+};
+export default SignUp;

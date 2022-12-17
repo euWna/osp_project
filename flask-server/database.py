@@ -8,6 +8,7 @@ class DBhandler:
 
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
+        firebaseEmailAuth = firebase.auth()
 
            #회원가입
     def insert_user(self, data, pwd):
@@ -45,8 +46,20 @@ class DBhandler:
             if value['ID'] == ID_ and value['pwd'] == pwd_:
                 return True
             return False
-    
-
+    #평균 평점 계산하고 push해주는 함수
+    def AverageScore(self,storename):
+        count = 0
+        sum = 0
+        users=self.db.child("REVIEW").child(storename).get().val()
+        if users: 
+            for user in users:
+                score=self.db.child("REVIEW").child(storename).child(user).get("storescore")
+                sum =sum +score
+                count =count+1
+            avg=sum/count      
+            self.db.child("STORE").child(storename).push({"avg_score" ,avg})     
+            # self.db.child("STORE").child(storename).ref('avg_score').push(avg)    
+        return avg
 
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
@@ -62,6 +75,7 @@ class DBhandler:
             "price2" : data['price2'],
             "site" : data['site'],
             "img_path" : img_path,
+            # "avg_score": "",
         }
         if self.store_duplicate_check(name):
             self.db.child("STORE").push(store_info)
@@ -192,3 +206,8 @@ class DBhandler:
     def get_review(self,storename):
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
         return reviews
+    def get_all_review(self):
+        stores=self.db.child("REVIEW").get().val()
+        for store in stores:
+            review_all=self.db.child("REVIEW").child(store).get().val()
+        return review_all
