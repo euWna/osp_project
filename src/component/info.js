@@ -87,6 +87,7 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                             storefood: storefood,
                             storeimg: storeimg
                         }} ><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
+
                 </div>
 
                 <div class="map">

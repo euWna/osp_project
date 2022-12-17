@@ -65,6 +65,22 @@ def Submit_store():
         else:
             return "The submitted store already exists!"
 
+@app.route("/UpdateStore_submit", methods=['POST'])
+def Update_store():
+    if request.method == 'POST':
+        data = request.form
+        storename = data['storename']
+        img_file = request.files['file']
+
+        if img_file:
+            img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
+        if DB.update_store(storename, data, img_file.filename):
+            return redirect(url_for('view_registeredstore', storename=storename)) 
+            
+        else:
+            return "The submitted store already exists!"
+
+
 @app.route("/CreateMenu/<storename>",methods=['POST'])
 def Submit_menu(storename):
     if request.method == 'POST':

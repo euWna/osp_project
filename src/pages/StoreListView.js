@@ -57,7 +57,7 @@ function StoreListView() {
 //=======
 //>>>>>>> 1217yj
     return (
-        <div>
+        <div class={styles.box_ns}>
             <NavBar />
             <section>
                 <div class={styles.all} >

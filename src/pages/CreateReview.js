@@ -95,17 +95,17 @@ function CreateReview(props) {
                             <span class={`${styles.cell} ${styles.col1}`}>전체 평점</span>
                             <span class={`${styles.cell} ${styles.col1}`}>
 
-                                <input type="text" name="storescore" size="70" />
+                                <input type="text" name="storescore" class={styles.box_input} size="70" />
                                 {/* <img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/> */}
                             </span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>작성자</span>
-                            <span class={`${styles.cell} ${styles.col1}`}><input type="text" name="username" /></span>
+                            <span class={`${styles.cell} ${styles.col1}`}><input type="text" name="username" class={styles.box_input} /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>리뷰 제목</span>
-                            <span class={`${styles.cell} ${styles.col1}`}><input type="text" name="reviewtitle" size="70" /></span>
+                            <span class={`${styles.cell} ${styles.col1}`}><input type="text" name="reviewtitle" class={styles.box_input} size="70" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>메뉴이름</span>
@@ -113,7 +113,7 @@ function CreateReview(props) {
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>리뷰 내용</span>
-                            <span class={`${styles.cell} ${styles.col1}`}><textarea name="reviewdesc" rows="10" cols="70" /></span>
+                            <span class={`${styles.cell} ${styles.col1}`}><textarea name="reviewdesc" class={styles.desc_input} rows="10" cols="70" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>사진</span>

@@ -93,11 +93,12 @@ class DBhandler:
                 return False
         return True
 
-    # 맛집 데이터 가져오기
+    # 전체 맛집 데이터 가져오기
     def get_store(self):
         stores = self.db.child("STORE").get().val()
         return stores
 
+    # 특정 맛집 데이터 가져오기
     def get_store_byname(self, storename):
         stores = self.db.child("STORE").get()
         target_value=""
@@ -107,6 +108,42 @@ class DBhandler:
                 target_value=value
                 break
         return target_value
+
+    # 맛집 정보 업데이트
+    def update_store(self,storename,data,img_path):
+        store_info ={
+            #"name" : name,
+            #"storename" : data['storename'],
+            "location" : data['location'],
+            "phonenumber" : data['phonenumber'], 
+            "time1" : data['time1'],
+            "time2" : data['time2'],
+            "food" : data['food'],
+            "park" : data['park'],
+            "price1" : data['price1'],
+            "price2" : data['price2'],
+            "site" : data['site'],
+            "img_path" : "static/image/"+img_path
+        }
+
+        stores = self.db.child("STORE").get()
+        for res in stores.each():
+            value = res.val()
+            if value['storename'] == storename:
+                self.db.child("STORE").child(res.key()).update(store_info)
+                return True
+
+
+        #self.db.child("STORE").child(name).
+        # if self.store_duplicate_check(name):
+        #     self.db.child("STORE").update(store_info)
+        #     #print(data,img_path)
+        #     return True
+        # else:
+        #     self.insert_store(self,name,data,img_path)
+        #     self.db.child("STORE").child(name).remove()
+        #     return True 
+
 
     def insert_menu(self,storename,data,img_path):
         menu_info ={

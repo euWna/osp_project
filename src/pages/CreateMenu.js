@@ -75,8 +75,8 @@ function CreateMenu() {
       <section>
         <aside class={styles.aside}>
           <div className={styles.asideleft}>
-            <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-            <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
+            <Link to={`/RegisteredStore/${params}`} class={styles.up}>기본정보</Link>
+            <Link to={`/CreateMenu/${params}`} class={styles.down}>메뉴</Link>
           </div>
         </aside>
         {/*
@@ -115,15 +115,15 @@ function CreateMenu() {
                 <table>
                   <tr>
                     <th>메뉴명</th>
-                    <td><input type="text" name="food" /></td>
+                    <td><input type="text" class={styles.box_input} name="food" /></td>
                   </tr>
                   <tr>
                     <th>가격</th>
-                    <td><input type="text" name="money" /></td>
+                    <td><input type="text" class={styles.box_input} name="money" /></td>
                   </tr>
                   <tr>
                     <th rowspan="2">영양성분</th>
-                    <td><input type="text" name="nutrient" placeholder="+" size="70" /></td>
+                    <td><input type="text" class={styles.box_input} name="nutrient" placeholder="+" size="70" /></td>
                   </tr>
                   <tr>
                     <td className="nutrient"><div className="MinusButton">-</div>계란</td>
