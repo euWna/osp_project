@@ -10,8 +10,6 @@
 
 # production
 /build
-
-*.pyc
 flask-server/__pycache__/
 flask-server/static/react/
 
