@@ -47,21 +47,19 @@ class DBhandler:
                 return True
             return False
     #평균 평점 계산하고 push해주는 함수
-    # def AverageScore(self,storename):
-    #     count = 0
-    #     sum = 0
-    #     users=self.db.child("REVIEW").child(storename).get().val()
-    #     if users: 
-    #         for user in users:
-    #             score=self.db.child("REVIEW").child(storename).child(user).child("storescore").get()
-    #             sum =sum +score
-    #             count =count+1
-    #         avg=sum/count
-    #         self.db.child("STORE").child(storename).set("avg_score")
-    #         for key, val in self.db.child("STORE").child(storename).order_by_key().get().val():
-    #             avg_score = {"avg_score": key, avg: val}
-    #             self.db.child("STORE").child(storename).set(avg_score)
-    #     return avg
+    def AverageScore(self,storename):
+        count = 0
+        sum = 0
+        users=self.db.child("REVIEW").child(storename).get().val()
+        if users: 
+            for user in users:
+                score=self.db.child("REVIEW").child(storename).child(user).get("storescore")
+                sum =sum +score
+                count =count+1
+            avg=sum/count      
+            self.db.child("STORE").child(storename).push({"avg_score" ,avg})     
+            # self.db.child("STORE").child(storename).ref('avg_score').push(avg)    
+        return avg
 
     #맛집 정보 입력 함수
     def insert_store(self,name,data,img_path):
@@ -77,7 +75,7 @@ class DBhandler:
             "price2" : data['price2'],
             "site" : data['site'],
             "img_path" : img_path,
-
+            # "avg_score": "",
         }
         if self.store_duplicate_check(name):
             self.db.child("STORE").push(store_info)
