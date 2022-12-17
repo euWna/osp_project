@@ -58,7 +58,6 @@ section {
   text-align: left;
   font-weight: 600;
   font-size: 16px;
-
 }
 
 .row {
@@ -80,13 +79,17 @@ section {
 
 .col2 {
   position: relative;
-  /* top:8px; */
   height: 50px;
   vertical-align: middle;
+  /* display:inline-block; */
 }
 
 .box {
   border: 10px solid #dcdcdc;
+}
+
+.box_double{
+  /* display: flex; */
 }
 
 .adding {
@@ -118,3 +121,36 @@ section {
 .down:hover {
   color: rgb(116, 139, 107);
 }
+
+.box_input {
+  font-family: inherit;
+  height: 50%;
+  border: 0;
+  /* background-color:#9b9b9b; */
+  border-color: #9b9b9b;
+  outline: 0;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+  /* padding: 7px 0; */
+  background:#eeeeee; 
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.box_input:focus {
+  /* padding-bottom: 6px; */
+  /* font-weight: 700; */
+  border-width: 3px;
+  /* background-image: linear-gradient(to right, #c6ccc1,#c6ccc1); */
+  border-image-slice: 1;
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+

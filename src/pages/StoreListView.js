@@ -40,7 +40,7 @@ function StoreListView() {
     };
     
     return (
-        <div>
+        <div class={styles.box_ns}>
             <NavBar />
             <section>
                 <div class={styles.all} >
