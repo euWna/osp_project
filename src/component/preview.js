@@ -55,7 +55,7 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
                         </div>
                 </div>
                 <div class={styles.buttons}>
-                    <Link to={`/CreateStore/${props.storename}`}><button class={styles.button}>정보 수정</button></Link>
+                    <Link to={`/RegisteredStore/${props.storename}`}><button class={styles.button}>정보 수정</button></Link>
                     <Link to={`/CreateReview/${props.storename}`}><button class={styles.button}>리뷰 등록</button></Link>
                     <Link to={`/StoreDetail/${props.storename}`}><button class={styles.button}>자세히 보기</button></Link>
                 </div>

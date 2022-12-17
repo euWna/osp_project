@@ -47,8 +47,8 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                     </div>
                 </div>
                 <div class={styles.buttons}>
-                    <Link to="/CreateStore"><button class={styles.button}>정보 수정</button></Link>
-                    <Link to="/CreateReview"><button class={styles.button}>리뷰 등록</button></Link>
+                    <Link to={`/RegisteredStore/${storename}`}><button class={styles.button}>정보 수정</button></Link>
+                    <Link to={`/CreateReview/${storename}`}><button class={styles.button}>리뷰 등록</button></Link>
                 </div>
 
                 <div class="map">

@@ -11,7 +11,7 @@ function CreateStore() {
                 <aside>
                     <div class={styles.asideleft}>
                         <Link to="/CreateStore" class={styles.up}>기본정보</Link>
-                        <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
+                        <span class={styles.down}>메뉴</span>
                     </div>
                 </aside>
                 <form action="/CreateStore_submit" method="POST" enctype="multipart/form-data">
@@ -37,9 +37,10 @@ function CreateStore() {
                             <span class={`${styles.cell} ${styles.col2}`}>
                                 <select name="food">
                                     <option value="">선택</option>
-                                    <option value="kor">한식</option>
-                                    <option value="jap">일식</option>
-                                    <option value="chi">중식</option>
+                                        <option value="한식">한식</option>
+                                        <option value="일식">일식</option>
+                                        <option value="중식">중식</option>
+                                        <option value="디저트">디저트</option>
                                 </select>
                             </span>
                         </div>
@@ -47,8 +48,8 @@ function CreateStore() {
                             <span class={`${styles.cell} ${styles.col1}`}>주차장</span>
                             <span class={`${styles.cell} ${styles.col2}`}>
                                 <select name="park">
-                                    <option value="yes">O</option>
-                                    <option value="no">X</option>
+                                    <option value="O">O</option>
+                                    <option value="X">X</option>
                                 </select></span>
                         </div>
                         <div class={styles.row}>
