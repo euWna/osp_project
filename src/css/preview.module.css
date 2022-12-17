@@ -1,3 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,900);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+
+.NotoSansKR {
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
+
 .prebox {
     width:100%
 }
@@ -147,12 +155,13 @@
     /*디자인*/
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    border-radius: 5px;
     border: 1px solid #202020;
     cursor: pointer;
     color: #000000;
-    font-family: Arial;
     font-size: 15px;
+    font-weight: 600;
+    font-family: 'Noto Sans KR';
     text-decoration: none;
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -171,4 +180,5 @@
         -webkit-transition: all 0.4s;
         -moz-transition: all 0.4s;
         transition: all 0.4s;
+        color: rgb(255, 255, 255);
 }

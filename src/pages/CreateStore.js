@@ -18,19 +18,19 @@ function CreateStore() {
                     <div id={styles.table}>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="storename" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" class={styles.box_input} name="storename" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>주소</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="location" size="70" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" class={styles.box_input} name="location" size="70" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>전화번호</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="phonenumber" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" class={styles.box_input} name="phonenumber" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>영업시간</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="time" name="time1" size="1" /> ~ <input type="time" name="time2" size="1" /></span>
+                            <span class={`${styles.cell} ${styles.col2} ${styles.box_double}`}><input type="time" class={styles.box_input} name="time1" size="1" /> ~ <input type="time" name="time2" class={styles.box_input} size="1" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>카테고리</span>
@@ -54,19 +54,19 @@ function CreateStore() {
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>가격대</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="price1" size="1" /> ~ <input type="text" name="price2" size="1" /></span>
+                            <span class={`${styles.cell} ${styles.col2} ${styles.box_double}`}><input type="text" class={styles.box_input} name="price1" size="1" /> ~ <input type="text" class={styles.box_input} name="price2" size="1" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>사이트</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="site" size="70" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" class={styles.box_input} name="site" size="70" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>대표사진</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="file" name="file" accept="image/*" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="file" class={styles.btn_image} name="file" accept="image/*" /></span>
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}></span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="submit" value="기본 정보 등록" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><input type="submit" class={styles.btn_submit} value="기본 정보 등록" /></span>
                         </div>
                     </div>
                 </form>

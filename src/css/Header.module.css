@@ -1,5 +1,9 @@
 :root {
     --ewhagreen: rgb(0, 70, 42);
+    --c-sidebar: #ffffff;
+    --c-default: #0f141a;
+    --c-active: #1DA1F2;
+    --c-hover: #ebf5fe;
 }
 
 /* *{
@@ -86,14 +90,14 @@ header {
 }
 
 /* 네비게이션 바 */
-
 nav {
     justify-content: center;
-    color: white;
-    background-color: var(--ewhagreen);
+    color: rgb(255, 255, 255);
+    background: #222228;
     /* background-color: rgb(77, 107, 91); */
     height: 62.5px;
     min-width: 1400px;
+    box-shadow: 3px 3px 3px rgba(116, 116, 116, 0.25);
 }
 
 nav .pageName {
@@ -115,5 +119,8 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgb(116, 139, 107);
+    background-color: var(--ewhagreen);
 }
+
+
+
