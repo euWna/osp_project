@@ -3,36 +3,70 @@ import Header from "../component/header";
 import styles from "../css/Login.module.css";
 import { Link } from 'react-router-dom';
 import NavBar from "../component/NavBar";
-// import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-// import { authService } from '../firebase/fbInstance';
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged, 
+    signInWithEmailAndPassword, 
+    signOut
+} from "firebase/auth";
+import { auth } from "./firebase";
 
-class Login extends React.Component {
-    render() {
+const Login = () => {
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    
+    const [loginEmail, setLoginEmail] = useState(""); // 코드 추가
+    const [loginPassword, setLoginPassword] = useState(""); // 코드 추가
+    const [user, setUser] = useState({}); // 코드 추가
 
-        return (
-            <div>
-                <NavBar></NavBar>
-                <div className={styles.Headline}>
-                    <p>로그인</p>
-                </div>
-                <div className={styles.Left}>
-                    <input type="text" name="ID" defaultValue="ID" />
-                    <input type="text" name="pwd" defaultValue="pwd" />
-                    <button type="button" name="login_button">
-                        로그인
-                    </button>
-                </div>
-                <div className={styles.Right}>
-                    <p>아직 회원이 아니신가요?</p>
-                    <p>회원가입을 하시면 더 많은 기능을 사용하실 수 있습니.</p>
-                    <button type="button" name="goto_join_button">
-                        회원가입
-                    </button>
-                </div>
-            </div>
-        );
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    });
+
+
+    //로그인
+    const login = async () => {
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
-}
+    //로그아웃
+    const logout = async () => {
+        await signOut(auth);
+    };
 
+    return (
+        <div style={{ textAlign: "center", margin: 10 }}>
+
+            <div>
+                {/* 로그인 */}
+                <h3>Login</h3>
+                <input
+                    placeholder="Email"
+                    onChange={(e) => {
+                        setLoginEmail(e.target.value);
+                    }}
+                />
+                <input
+                    placeholder="Password"
+                    onChange={(e) => {
+                        setLoginPassword(e.target.value);
+                    }}
+                />
+                <button onClick={login}>Login</button>
+                <div>User Logged In:</div>
+                <div>{user?.email}</div>
+                <button onClick={logout}>로그아웃</button>
+            </div>
+        </div>
+    );
+};
 export default Login;
