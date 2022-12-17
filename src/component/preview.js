@@ -50,7 +50,7 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
                     <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
                     <div class={styles.locationtext}>{props.storelocation}</div>
                 </div>
-//<<<<<<< 1217yj
+{/* <<<<<<< 1217yj */}
                 <div class={styles.Tag}>#{storefood} </div>
                 <div id={styles.table}>
                     <div class={styles.row}>
@@ -70,7 +70,7 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
                         <span class={`${styles.cell} ${styles.col1}`}>주차장</span>
                         <span class={`${styles.cell} ${styles.col2}`}>{storepark}</span>
                     </div>
-//=======
+{/* ======= */}
                 </div>
             </div>
             <div class={styles.buttons}>
