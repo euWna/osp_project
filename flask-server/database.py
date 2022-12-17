@@ -9,8 +9,7 @@ class DBhandler:
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
 
-
-    #회원가입
+           #회원가입
     def insert_user(self, data, pwd):
         user_info = {
             "ID" : data['ID'],
@@ -62,7 +61,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" :  "./public/assets/" + img_path,
+            "img_path" : img_path,
         }
         if self.store_duplicate_check(name):
             self.db.child("STORE").push(store_info)
@@ -74,7 +73,9 @@ class DBhandler:
     def store_duplicate_check(self, name):
         stores = self.db.child("STORE").get()
         for res in stores.each():
-            if res.key() == name:
+            value=res.val()
+            if value['storename']==name:
+            # if res.key() == name:
                 return False
         return True
 
@@ -83,41 +84,74 @@ class DBhandler:
         stores = self.db.child("STORE").get().val()
         return stores
 
-    def insert_menu(self,name,data,img_path):
+    def get_store_byname(self, storename):
+        stores = self.db.child("STORE").get()
+        target_value=""
+        for res in stores.each():
+            value = res.val()
+            if value['storename'] == storename:
+                target_value=value
+                break
+        return target_value
+
+    def insert_menu(self,storename,data,img_path):
         menu_info ={
             "food" : data['food'],
             "money" : data['money'],
             "nutrient" : data['nutrient'],
-            "img_path" : img_path
+            "img_path" : img_path,
+            "storename" :storename
         }
-        if self.menu_duplicate_check(name):
-            self.db.child("MENU").child(name).set(menu_info)
+        menuname=data['food']
+        if self.menu_duplicate_check(storename,menuname):
+            self.db.child("MENU").child(storename).child(menuname).set(menu_info)
             #print(data,img_path)
             return True
         else:
             return False
 
-    # 메뉴 정보 중복 체크 함수(insertmenu에서 사용)
-    def menu_duplicate_check(self, name):
-        menus = self.db.child("MENU").get()
-        for res in menus.each():
-            if res.key() == name:
-                return False
+    def menu_duplicate_check(self, storename, menuname):
+        menudata = self.db.child("MENU").child(storename).get()
+        if isinstance(menudata.val(), type(None)):
+            #print("NONE")
+            return True
+        else:
+            for res in menudata.each():
+                if res.key() == menuname:
+                    return False
         return True
 
-
-
-
-
-    def insert_review(self,name,data,img_path):
+    def insert_review(self, storename, data, img_path):
         review_info ={
+            "storename" : storename,
             "storescore" : data['storescore'],
             "username" : data['username'],
             "reviewtitle" : data['reviewtitle'],
             "reviewdesc" : data['reviewdesc'],
             "img_path" : img_path
         }
-        self.db.child("REVIEW").child(name).set(review_info)
-        print(data,img_path)
+        username=data['username']
+        self.db.child("REVIEW").child(storename).child(username).set(review_info)
         return True
-    
+
+    def get_store_info(self,storename):
+        storeInfo = self.db.child("STORE").child(storename).get().val
+        return storeInfo
+
+    # def get_menu(self, storename):
+    #     menudata = self.db.child("MENU").child(storename).get()
+    #     if isinstance(menudata.val(), type(None)):
+    #         menu=None
+    #         return menu
+    #     else:
+    #         for res in menudata.each():
+    #              menuInfo=self.db.child("MENU").child(storename).child(res.key).get()
+                
+    #     return menuInfo
+    def get_menu(self,storename):
+        menus = self.db.child("MENU").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        return menus
+
+    def get_review(self,storename):
+        reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        return reviews

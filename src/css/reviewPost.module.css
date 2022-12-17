@@ -11,7 +11,6 @@
     text-align: left;
     margin-left: 30px;
     font-weight: 600;
-    color:dimgray;
 }
 
 .ImagePart {
@@ -29,22 +28,29 @@
     object-fit: cover;
 }
 
-#MenuName {
+.user_name {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.store_name {
     font-size: 20px;
     font-weight: 600;
     color: black;
     margin-bottom: 7px;
 }
 
-.heart {
-    position: relative;
+.review_title{
     font-size: 15px;
-    font-weight: 800;
-    color:black;
-    margin-bottom: 5px;
+    font-weight: 600;
+    color: black;
 }
 
-.heartimg {
-    position: relative;
+.review_desc{
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(70, 70, 70);
 }
 
