@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+
+import React, { useState } from "react";
 import Header from "../component/header";
 import { Link } from 'react-router-dom';
 import styles from '../css/SignUp.module.css';
