@@ -10,6 +10,9 @@
 
 # production
 /build
+/flask-server/__pycache__/
+/flask-server/static/react/css/
+/flask-server/static/react/js/
 
 # misc
 .DS_Store
