@@ -102,16 +102,20 @@ function CreateReview() {
             <NavBar></NavBar>
             {storedata && storedata.map((a => {
                 return <section>
+                    
                     <aside class={styles.aside}>
                         <div class={styles.asideleft}>
                             <div class={styles.ImagePart}>
                                 <img src={"http://127.0.0.1:5000/static/img/" + `${a.img_path}`} class={styles.img} />
                             </div>
                             <div class={styles.storename}>
+                                <Link to={`/StoreDetail/${params}`} class={`${styles.DetailLink}`}>
                                 {params}
+                                </Link>
                             </div>
                         </div>
                     </aside>
+
                     <form action={`/CreateReview/${params}`} method="POST" enctype="multipart/form-data">
                         <div id={styles.table}>
                             <div class={styles.row}>

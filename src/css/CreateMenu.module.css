@@ -39,6 +39,7 @@
     bottom: 30px;
     right: 22px;
   }
+  
   #table {
     display: table;
     width: 900px;
@@ -48,6 +49,10 @@
     vertical-align: middle;
   }
   
+  .DetailLink:hover{
+    color: rgb(116, 139, 107);
+  }
+
   .cell {
     display: table-cell;
     padding: 3px;

@@ -16,6 +16,10 @@
     float: left;
   }
   
+  .DetailLink:hover{
+    color: rgb(116, 139, 107);
+  }
+
   .asideleft {
     position: relative;
     background-color: white;

@@ -51,6 +51,10 @@ section {
   vertical-align: middle;
 }
 
+.DetailLink:hover{
+  color: rgb(116, 139, 107);
+}
+
 .cell {
   display: table-cell;
   padding: 3px;
