@@ -78,7 +78,8 @@ def Update_store():
         img_file = request.files['file']
 
         if img_file:
-            img_file.save( "./flask-server/static/img/"+img_file.filename) #이미지 저장경로를 public/assets에 합니다
+            img_file.save( "./flask-server/static/img/"+img_file.filename)
+             #이미지 저장경로를 public/assets에 합니다
         if DB.update_store(storename, data, img_file.filename):
             return redirect(url_for('view_registeredstore', storename=storename))
         else:

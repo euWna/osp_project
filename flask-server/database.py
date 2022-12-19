@@ -79,6 +79,10 @@ class DBhandler:
             "img_path" : img_path,
             # "avg_score": "",
         }
+
+        if img_path == Null :
+            store_info["img_path"]=img_path
+
         if self.store_duplicate_check(name):
             self.db.child("STORE").push(store_info)
             return True
@@ -112,7 +116,7 @@ class DBhandler:
         return target_value
 
     # 맛집 정보 업데이트
-    def update_store(self,storename,data,img_path):
+    def update_store(self,storename,data,img_path):            
         store_info ={
             #"name" : name,
             #"storename" : data['storename'],
@@ -127,6 +131,9 @@ class DBhandler:
             "site" : data['site'],
             # "img_path" : img_path
         }
+
+        if img_path :
+            store_info["img_path"]=img_path
 
         stores = self.db.child("STORE").get()
         for res in stores.each():
@@ -208,7 +215,7 @@ class DBhandler:
 
     def get_review(self,storename):
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
-        sorted_by_times=self.db.child("REVIEW").child(storename).order_by_child("timestamp")
+        #sorted_by_times=self.db.child("REVIEW").child(storename).order_by_child("timestamp")
         return reviews
 
     def get_all_review(self):
