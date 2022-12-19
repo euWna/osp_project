@@ -172,8 +172,6 @@ def list_reviews():
 #     return img #지금은 경로를 리턴해주는 중입니다
 
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
 
 # 회원가입 부분
 @app.route("/SignUp")
@@ -182,12 +180,11 @@ def signup():
 
 @app.route("/SignUp_post", methods=['POST'])
 def register_user():
-    print("dfsdfdfsdsfa")
     data=request.form
     pwd=request.form['pwd']
     pwd_hash = hashlib.sha256(pwd.encode('utf-8')).hexdigest()
     if DB.insert_user(data,pwd_hash):
-        return render_template("index.html")
+        return redirect(url_for('index'))
     else:
         flash("user id already exist!")
         return render_template("index.html")
@@ -204,7 +201,7 @@ def login_user():
     pwd_hash = hashlib.sha256(pwd.encode('utf-8')).hexdigest()
     if DB.find_user(email_,pwd_hash):
         session['email']=email_
-        return redirect(url_for('list_restaurants'))
+        return redirect(url_for('index'))
     else:
         flash("Wrong ID or PW!")
         return render_template("login.html")
@@ -220,3 +217,5 @@ def list_stores():
 def view_storelist(store_id):
     return render_template("index.html")
 '''
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True)
