@@ -6,7 +6,6 @@ import { FaCaretDown } from 'react-icons/fa';
 
 
 const Categories = ({ categories, filterItems, selected, setSelected }) => {
-  console.log('여기까지 오나요?');
   const[isActive, setIsActive] = useState(false);
   return ( 
     <div class={styles.dropdown}>

@@ -77,6 +77,9 @@ section {
   vertical-align: middle;
 }
 
+/* class= {
+  `${styles.cell} ${styles.col2}`
+} */
 .col2 {
   position: relative;
   height: 50px;
@@ -153,4 +156,7 @@ section {
   transition: all 0.4s;
 }
 
-
+.alertbox{
+  display:flex;
+  align-items: center;
+}
