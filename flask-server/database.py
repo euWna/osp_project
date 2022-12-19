@@ -123,7 +123,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" : "static/image/"+img_path
+            # "img_path" : img_path
         }
 
         stores = self.db.child("STORE").get()
@@ -204,10 +204,12 @@ class DBhandler:
         return menus
 
     def get_review(self,storename):
-        reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 리뷰들을 가져옴
         return reviews
+
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()
+        print(stores)
         for store in stores:
             review_all=self.db.child("REVIEW").child(store).get().val()
-        return review_all
+        return stores

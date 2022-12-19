@@ -28,7 +28,7 @@ def view_createstore():
 def view_registeredstore(storename):
     return render_template("index.html")
 
-@app.route("/CreateMenu/<storename>")
+@app.route("/Createmenu/<storename>")
 def view_menu(storename):
     return render_template("index.html")
 
@@ -44,6 +44,10 @@ def StoreListView():
 def view_StoreDetail(storename):
     print("/////////////////////")
     return render_template("index.html")   
+
+@app.route("/reviewAll")
+def view_reviewAll():
+    return render_template("index.html") 
 
 
 
@@ -65,6 +69,7 @@ def Submit_store():
         else:
             return "The submitted store already exists!"
 
+#수정
 @app.route("/UpdateStore_submit", methods=['POST'])
 def Update_store():
     if request.method == 'POST':
@@ -80,7 +85,7 @@ def Update_store():
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<storename>",methods=['POST'])
+@app.route("/Createmenu/<storename>",methods=['POST'])
 def Submit_menu(storename):
     if request.method == 'POST':
             data = request.form
@@ -126,6 +131,28 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
+#홈페이지 랜덤 4개 받아오기
+@app.route("/Homepage_send_data", methods=['GET','POST'])
+def random_list_stores():
+    if request.method == 'GET':
+        storedata = DB.get_store() #read the table
+        random_storedata = random.sample(list(storedata.items()), 4) #중복없이 4개를 가져옵니다
+        for i in range (0,4): #식당 갯수(4)개만큼 반복
+            random_storename=random_storedata[i][1]['storename']
+            random_review_all = DB.get_review(random_storename) #랜덤뽑기된 식당 이름으로 리뷰데이터 가져옴
+            print("여기부터데이터4개임??")
+            print(random_review_all)
+            if (random_review_all) : #리뷰가 있으면
+                random_review = random.sample(list(random_review_all.items()), 1) #그중에 아무거나 하나 뽑음
+                random_storedata[i][1]['reviewtitle'] = random_review[0][1]['reviewtitle']
+                random_storedata[i][1]['reviewdesc'] = random_review[0][1]['reviewdesc']
+            else : #아직 등록된 리뷰가 없으면
+                random_storedata[i][1]['reviewtitle'] = '이런!'
+                random_storedata[i][1]['reviewdesc'] = '이 식당은 아직 등록된 리뷰가 없어요.'
+        random_storedatajson =  json.dumps(random_storedata)
+        return random_storedatajson
+
+
 # #맛집세부정보(storedetail)에서 메뉴 정보 받아오기
 # @app.route("/Menu_send_data", methods=['GET','POST'])
 # def list_Menu():
@@ -149,9 +176,14 @@ def list_review(storename):
         reviewdata = DB.get_review(storename) #read the table
         menudatajson =  json.dumps(reviewdata)
         return menudatajson
+
 @app.route("/Review_send_data",methods=['GET'])
 def list_reviews():
-    all_reviews=DB.get_all_review()
+    all_reviews=list(DB.get_all_review()) #배열
+    print(all_reviews)
+    for i in all_reviews :
+        print("//////////////")
+        print(i)
     reviewjson=json.dumps(all_reviews)
     return reviewjson
 # def make_average():
