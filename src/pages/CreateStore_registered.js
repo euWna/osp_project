@@ -83,7 +83,7 @@ function RegisteredStore() {
                         return <div id={styles.table}>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                               <span class={`${styles.cell} ${styles.col2}`}> <Link to={`/StoreDetail/${params}`}>{a.storename}</Link><input type="hidden" name="storename" value={a.storename} class={styles.box_input}
+                               <span class={`${styles.cell} ${styles.col2}`}> <Link to={`/StoreDetail/${params}`} class={`${styles.DetailLink}`}>{a.storename}</Link><input type="hidden" name="storename" value={a.storename} class={styles.box_input}
                                                                                     /* onChange={ (event) => { setName(event.target.value) }}*//></span>
                             </div>
                             <div class={styles.row}>

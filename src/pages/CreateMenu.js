@@ -96,6 +96,7 @@ function CreateMenu() {
 
             <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}>
+                등록된 메뉴
                 {menudata && menudata.map((a => {
                   if ('' || null || undefined || 0 || NaN) {
                     return <div>
