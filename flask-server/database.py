@@ -63,7 +63,9 @@ class DBhandler:
             # self.db.child("STORE").child(storename).ref('avg_score').push(avg)    
         return avg
 
-    #맛집 정보 입력 함수
+
+################ 맛집 정보 입력 관련 함수 ################
+    # 맛집 정보 등록
     def insert_store(self,name,data,img_path):
         store_info ={
             "storename" : data['storename'],
@@ -89,7 +91,7 @@ class DBhandler:
         else:
             return False
         
-    # 맛집 정보 중복 체크 함수(insertStore에서 사용)
+    # 맛집 정보 중복 체크 
     def store_duplicate_check(self, name):
         stores = self.db.child("STORE").get()
         for res in stores.each():
@@ -103,6 +105,12 @@ class DBhandler:
     def get_store(self):
         stores = self.db.child("STORE").get().val()
         return stores
+
+
+    def get_store_info(self,storename):
+        storeInfo = self.db.child("STORE").child(storename).get().val
+        return storeInfo
+
 
     # 특정 맛집 데이터 가져오기
     def get_store_byname(self, storename):
@@ -154,6 +162,8 @@ class DBhandler:
         #     return True 
 
 
+################ 메뉴 정보 입력 관련 함수 ################
+
     def insert_menu(self,storename,data,img_path):
         menu_info ={
             "food" : data['food'],
@@ -162,6 +172,10 @@ class DBhandler:
             "img_path" : img_path,
             "storename" :storename
         }
+
+        if img_path == "" :
+            menu_info["img_path"]="symbol-mark.png"
+
         menuname=data['food']
         if self.menu_duplicate_check(storename,menuname):
             self.db.child("MENU").child(storename).child(menuname).set(menu_info)
@@ -181,24 +195,6 @@ class DBhandler:
                     return False
         return True
 
-    def insert_review(self, storename, data, img_path):
-        review_info ={
-            "timestamp":data['timestamp'],
-            "storename" : storename,
-            "storescore" : data['storescore'],
-            "username" : data['username'],
-            "reviewtitle" : data['reviewtitle'],
-            "reviewdesc" : data['reviewdesc'],
-            "img_path" : img_path
-        }
-        username=data['username']
-        self.db.child("REVIEW").child(storename).child(username).set(review_info)
-        return True
-
-    def get_store_info(self,storename):
-        storeInfo = self.db.child("STORE").child(storename).get().val
-        return storeInfo
-
     # def get_menu(self, storename):
     #     menudata = self.db.child("MENU").child(storename).get()
     #     if isinstance(menudata.val(), type(None)):
@@ -212,6 +208,27 @@ class DBhandler:
     def get_menu(self,storename):
         menus = self.db.child("MENU").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
         return menus
+
+
+################ 리뷰 정보 입력 관련 함수 ################
+
+    def insert_review(self, storename, data, img_path):
+        review_info ={
+            "timestamp":data['timestamp'],
+            "storename" : storename,
+            "storescore" : data['storescore'],
+            "username" : data['username'],
+            "reviewtitle" : data['reviewtitle'],
+            "reviewdesc" : data['reviewdesc'],
+            "img_path" : img_path
+        }
+
+        if img_path == "" :
+            review_info["img_path"]="symbol-mark.png"
+
+        username=data['username']
+        self.db.child("REVIEW").child(storename).child(username).set(review_info)
+        return True
 
     def get_review(self,storename):
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
@@ -241,3 +258,6 @@ class DBhandler:
             review_all=self.db.child("REVIEW").child(store).get().val()
 
         return stores
+
+
+        

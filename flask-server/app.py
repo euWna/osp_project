@@ -161,6 +161,8 @@ def random_list_stores():
 #         storedatajson =  json.dumps(storedata)
 #         return storedatajson
 
+
+#
 #메뉴 데이터 전송 함수
 @app.route("/CreateMenu_send_data/<storename>", methods=['GET','POST'])
 def list_menu(storename):
