@@ -204,8 +204,9 @@ class DBhandler:
         return menus
 
     def get_review(self,storename):
-        reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 리뷰들을 가져옴
         return reviews
+
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()
         for store in stores:

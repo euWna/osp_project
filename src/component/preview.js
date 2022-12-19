@@ -21,6 +21,10 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
     const storename = props.storename
     const storetime1 = props.storetime1
     const storetime2 = props.storetime2
+
+    console.log("주차장...")
+    console.log(storepark)
+
     const GoRegisteredStore = () => {
 
         navigate(`/RegisteredStore/${storename}`);

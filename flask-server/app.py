@@ -128,6 +128,26 @@ def list_stores():
         storedatajson =  json.dumps(storedata)
         return storedatajson
 
+#홈페이지 랜덤 4개 받아오기
+@app.route("/Homepage_send_data", methods=['GET','POST'])
+def random_list_stores():
+    if request.method == 'GET':
+        storedata = DB.get_store() #read the table
+        random_storedata = random.sample(list(storedata.items()), 4) #중복없이 4개를 가져옵니다
+        for i in range (0,4): #객체 갯수(4)개만큼 반복
+            random_storename=random_storedata[i][1]['storename']
+            random_review_all = DB.get_review(random_storename) #랜덤뽑기된 식당 이름으로 리뷰데이터 가져옴
+            if (random_review_all) :
+                random_review = random.sample(list(random_review_all.items()), 1)
+                random_storedata[i][1]['reviewtitle'] = random_review[0][1]['reviewtitle']
+                random_storedata[i][1]['reviewdesc'] = random_review[0][1]['reviewdesc']
+            else :
+                random_storedata[i][1]['reviewtitle'] = '이런!'
+                random_storedata[i][1]['reviewdesc'] = '이 식당은 아직 등록된 리뷰가 없어요.'
+        random_storedatajson =  json.dumps(random_storedata)
+        return random_storedatajson
+
+
 # #맛집세부정보(storedetail)에서 메뉴 정보 받아오기
 # @app.route("/Menu_send_data", methods=['GET','POST'])
 # def list_Menu():
