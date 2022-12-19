@@ -6,11 +6,15 @@ import styles from '../css/SignUp.module.css';
 import NavBar from "../component/NavBar";
 
 
-function SignUp() {
+function SignUp({ setSignUpModalOpen, id, title, content, writer }) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
   
+    const closeSignUpModal = () => {
+      setSignUpModalOpen(false);
+    };
+    
     // const onNameHandler = (event) => {
     //   setName(event.currentTarget.value)
     // }
@@ -26,6 +30,13 @@ function SignUp() {
   
     return (
       <div className={styles.loginregister}>
+        <div className={styles.container}>
+        <button className={styles.close} onClick={closeSignUpModal}>
+                X
+            </button>
+            <h3>Sign Up</h3>
+            <div class={styles.logindesc}>
+                <div class={styles.inputbox}>
         <form action="/SignUp_post" method="POST" enctype="multipart/form-data">
           <div id={styles.table}>
             <div class={styles.row}>
@@ -48,6 +59,9 @@ function SignUp() {
           <input type="submit" class={styles.btn_submit} value="회원가입" />
           </div>
         </form>
+        </div>
+        </div>
+        </div>
       </div>
     );
   }

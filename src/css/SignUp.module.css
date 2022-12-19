@@ -1,62 +1,122 @@
-.loginregister{
-  width : 900px;
-  margin-left:auto; 
-  margin-right:auto;
-}  
-  
-  
-  
-  
-  #table {
-    display: table;
-    width: 500px;
-    margin-top: 50px;
-    margin-left:auto; 
-    margin-right:auto;
-
-    border-radius: 3px;
-    vertical-align: middle;
-  }
-
-
-  .cell {
-    display: table-cell;
-    padding: 3px;
-    /* border-bottom: 1px solid #DDD; */
-    text-align: left;
-
+/* .Header {
+    float: center;
+} */
+/* 
+.Headline {
+    font-family: 'Work Sans';
+    font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-  
-  }
-  
-  .row {
+    font-size: 55px;
+    line-height: 65px;
+    color: black;
+}
+.Left {
+    position: absolute;
+    width: 540px;
+    height: 443.72px;
+    left: 86px;
+    top: 369px;
+    color: black;
+}
+.Right {
+    position: absolute;
+    width: 717px;
+    height: 421.72px;
+    left: 723px;
+    top: 391px;
+    color: black;
+}
+.Right-p {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 47px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.button {
+    background: #00462A;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+} */
+.container {
     position: relative;
+    width: 400px;
+    height:250px;
+    padding: 30px 50px;
+    background: #FFF;
+    text-align: center;
+    border-radius: 15px;
+      /* 모달창 크기 */
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px;
+
+    z-index : 100;
+
+  /* 최상단 위치 */
+  z-index: 999;
   
-    /* left:80px; */
-    /* top :20px; */
+  /* 중앙 배치 */
+  /* top, bottom, left, right 는 브라우저 기준으로 작동한다. */
+  /* translate는 본인의 크기 기준으로 작동한다. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .col1 {
-    position: relative;
-    /* top:10px; */
-    left: 40px;
-    width: 180px;
-    height: 50px;
-    font-size : larger;
-    text-align : center;
+.container::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 420px;
+    background-position: top;
+    background-size: cover;
+    z-index: -11;
+}
+
+.inputbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.logindesc{
+
+}
+  
+  /* 모달창 내부 X버튼 */
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     vertical-align: middle;
-    background-color : #bcbcbc;;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-  }
 
-  .col2 {
-    position: relative;
-    /* top:10px; */
-    left: 40px;
-    width: 150px;
-    height: 25px;
-    vertical-align: middle;
-    background-color : #dcdcdc;
+    /*디자인*/
+    background: #222228;
+    border-radius: 15px;
+    border: 1px solid #202020;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
   }
