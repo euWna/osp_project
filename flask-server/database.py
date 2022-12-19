@@ -208,7 +208,7 @@ class DBhandler:
     #         for res in menudata.each():
     #              menuInfo=self.db.child("MENU").child(storename).child(res.key).get()
                 
-    #     return menuInfo
+    #     return menuIㄴnfo
     def get_menu(self,storename):
         menus = self.db.child("MENU").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
         return menus
