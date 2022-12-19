@@ -83,10 +83,11 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                 <div class={styles.buttons}>
                     <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
                     <Link to={`/CreateReview/${params}`}
-                        state={{
-                            storefood: storefood,
-                            storeimg: storeimg
-                        }} ><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
+                    // state={{
+                    //     storefood: storefood,
+                    //     storeimg: storeimg
+                    // }}
+                    ><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
 
                 </div>
 

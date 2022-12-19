@@ -76,19 +76,20 @@ function Preview(props) { //storedetail에서 정보들 props로 받아옴
             <div class={styles.buttons}>
                 <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
                 <Link to={`/CreateReview/${props.storename}`}
-                    state={{
-                        storefood: storefood,
-                        storeimg: storeimg,
-                        storelocation: storelocation,
-                        storepark: storepark,
-                        storephonenumber: storephonenumber,
-                        storeprice1: storeprice1,
-                        storeprice2: storeprice2,
-                        storename: storename,
-                        storesite: storesite,
-                        storetime1: storetime1,
-                        storetime2: storetime2
-                    }}><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
+                    // state={{
+                    //     storefood: storefood,
+                    //     storeimg: storeimg,
+                    //     storelocation: storelocation,
+                    //     storepark: storepark,
+                    //     storephonenumber: storephonenumber,
+                    //     storeprice1: storeprice1,
+                    //     storeprice2: storeprice2,
+                    //     storename: storename,
+                    //     storesite: storesite,
+                    //     storetime1: storetime1,
+                    //     storetime2: storetime2
+                    // }}
+                ><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
                 <Link to={`/StoreDetail/${props.storename}`}><button onClick={GoStoreDetail} class={styles.button}>자세히 보기</button></Link>
             </div>
         </div>

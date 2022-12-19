@@ -7,7 +7,7 @@ import ReviewPost from '../component/reviewPost'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function ReviewSection(props) {
+function ReviewSection() {
     // const reviewimg = props.reviewimg
     // const reviewdesc = props.reviewdesc
     // const reviewtitle = props.reviewtitle

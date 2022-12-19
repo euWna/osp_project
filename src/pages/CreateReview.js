@@ -52,7 +52,7 @@ import NavBar from '../component/NavBar';
 //     MenuInsertAt.appendChild("newCheckBox")
 //     // MenuInsertAt.appendChild("newCheckBox")
 // }
-function CreateReview(props) {
+function CreateReview() {
 
     const params = useParams().storename;
 
@@ -150,6 +150,7 @@ function CreateReview(props) {
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}></span>
                                 <span class={`${styles.cell} ${styles.col1}`}><input onClick={window.history.back} type="submit" value="리뷰 등록" /></span>
+
                                 {/* onClick={location.href(`/StoreDetail/${params}`)} */}
                             </div>
                             {/* onClick={window.location.href(`/StoreDetail/${params}`)}  */}
