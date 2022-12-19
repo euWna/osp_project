@@ -28,7 +28,7 @@ def view_createstore():
 def view_registeredstore(storename):
     return render_template("index.html")
 
-@app.route("/Createmenu/<storename>")
+@app.route("/CreateMenu/<storename>")
 def view_menu(storename):
     return render_template("index.html")
 
@@ -48,6 +48,11 @@ def view_StoreDetail(storename):
 @app.route("/reviewAll")
 def view_reviewAll():
     return render_template("index.html") 
+
+@app.route("/Login")
+def login():
+    return render_template("index.html")
+    
 
 
 
@@ -86,13 +91,10 @@ def Update_store():
             return "The submitted store already exists!"
 
 
-@app.route("/Createmenu/<storename>",methods=['POST'])
+@app.route("/CreateMenu/<storename>",methods=['POST'])
 def Submit_menu(storename):
     if request.method == 'POST':
             data = request.form
-            menuname = data['food']
-            price = data['money']
-            nutrient = data['nutrient']
             img_file = request.files['file']
             if img_file:
                 img_file.save("./flask-server/static/img/"+img_file.filename)
@@ -105,15 +107,11 @@ def Submit_menu(storename):
 def Submit_Review(storename):
     if request.method == 'POST':
         data = request.form
-        timestamp=data['timestamp']
-        username = data['username']
-        reviewtitle = data['reviewtitle']
-        reviewdesc = data['reviewdesc']
         img_file = request.files['file']
         if img_file:
             img_file.save("./flask-server/static/img/"+img_file.filename)
         if DB.insert_review(storename, data, img_file.filename):
-             return redirect(url_for('view_StoreDetail')) 
+             return render_template("index.html")
 
 
 ##################### Get data from DB #####################
@@ -142,8 +140,8 @@ def random_list_stores():
         for i in range (0,4): #식당 갯수(4)개만큼 반복
             random_storename=random_storedata[i][1]['storename']
             random_review_all = DB.get_review(random_storename) #랜덤뽑기된 식당 이름으로 리뷰데이터 가져옴
-            print("여기부터데이터4개임??")
-            print(random_review_all)
+            #rint("여기부터데이터4개임??")
+            #print(random_review_all)
             if (random_review_all) : #리뷰가 있으면
                 random_review = random.sample(list(random_review_all.items()), 1) #그중에 아무거나 하나 뽑음
                 random_storedata[i][1]['reviewtitle'] = random_review[0][1]['reviewtitle']
@@ -221,9 +219,7 @@ def register_user():
 # 회원가입 부분
 
 # 로그인 부분
-@app.route("/Login")
-def login():
-    return render_template("index.html")
+
 @app.route("/login_confirm", methods=['POST'])
 def login_user():
     email_=request.form['email']

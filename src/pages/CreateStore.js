@@ -84,6 +84,7 @@ function CreateStore() {
                             <span class={`${styles.cell} ${styles.col1}`}>주차장</span>
                             <span class={`${styles.cell} ${styles.col2}`}>
                                 <select name="park">
+                                    <option value="">선택</option>
                                     <option value="O">O</option>
                                     <option value="X">X</option>
                                 </select></span>

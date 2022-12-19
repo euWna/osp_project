@@ -106,7 +106,7 @@ function RegisteredStore() {
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>카테고리</span>
                                 <span class={`${styles.cell} ${styles.col2}`}>
-                                    <select name="food" value={a.food} defaultValue={a.food}>
+                                    <select name="food" key={a.food} defaultValue={a.food}>
                                     <option value="">선택</option>
                                         <option value="한식">한식</option>
                                         <option value="일식">일식</option>

@@ -80,8 +80,8 @@ class DBhandler:
             # "avg_score": "",
         }
 
-        if img_path == Null :
-            store_info["img_path"]=img_path
+        if img_path == "" :
+            store_info["img_path"]="symbol-mark.png"
 
         if self.store_duplicate_check(name):
             self.db.child("STORE").push(store_info)
@@ -158,7 +158,7 @@ class DBhandler:
         menu_info ={
             "food" : data['food'],
             "money" : data['money'],
-            "nutrient" : data['nutrient'],
+            # "nutrient" : data['nutrient'],
             "img_path" : img_path,
             "storename" :storename
         }

@@ -7,7 +7,7 @@ function NavBar() {
         <nav>
             <Link to="/ReviewAll" >리뷰 모아보기</Link>
             <Link to="/CreateStore" >맛집 정보 추가하기</Link>
-            <Link to="/StoreListView" >맛집 모아보기</Link>
+            {/* <Link to="/StoreListView" >맛집 모아보기</Link> */}
         </nav>
     );
 }

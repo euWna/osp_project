@@ -87,7 +87,7 @@ function CreateMenu() {
           <span className={`${styles.cell} ${styles.col2}`}></span>
         </div> */}
 
-        <form action={`http://127.0.0.1:5000/Createmenu/${params}`} onSubmit={NewValue()} method="POST" enctype="multipart/form-data">
+        <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} onSubmit={NewValue()} method="POST" enctype="multipart/form-data">
           <div id={styles.table}>
             <div className={styles.row}>
               <span className={`${styles.cell} ${styles.col1}`}>{params}</span>
@@ -120,15 +120,6 @@ function CreateMenu() {
                   <tr>
                     <th>가격</th>
                     <td><input type="text" class={styles.box_input} name="money" /></td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2">영양성분</th>
-                    <td><input type="text" class={styles.box_input} name="nutrient" placeholder="+" size="70" /></td>
-                  </tr>
-                  <tr>
-                    <td className="nutrient"><div className="MinusButton">-</div>계란</td>
-                    {/* 이부분 나중에 nutrient{i} 배열 반환하는 것으로 수정해서 동적으로 생성하게 해야함 */}
-
                   </tr>
                   <tr>
                     <th>대표사진</th>
