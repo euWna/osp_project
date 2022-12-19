@@ -10,19 +10,20 @@ class DBhandler:
         self.db = firebase.database()
         firebaseEmailAuth = firebase.auth()
 
-           #회원가입
+
+ #회원가입
     def insert_user(self, data, pwd):
         user_info = {
-            "ID" : data['ID'],
-            "pwd" : pwd,
-            "nickname" : data['nickname']
+            "nickname" : data['nickname'],
+            "email" : data['email'],
+            "pwd" : pwd
         }
-        if self.user_duplicate_check(str(data['ID'])):
-            self.db.child("user").push(user_info)
-            print(data)
-            return True
-        else:
-            return False
+        # if self.user_duplicate_check(str(data['email'])):
+        self.db.child("user").push(user_info)
+        print(data)
+        return True
+        # else:
+            # return False
 
     def user_duplicate_check(self, id_string):
         users = self.db.child("user").get()
@@ -32,20 +33,21 @@ class DBhandler:
         else:
             for res in users.each():
                 value = res.val()
-                if value['ID'] == id_string:
+                if value['email'] == id_string:
                     return False
             return True
 
 
     #로그인 부분
-    def find_user(self, ID_, pwd_):
+    def find_user(self, email_, pwd_):
         users = self.db.child("user").get()
         target_value=[]
         for res in users.each():
             value = res.val()
-            if value['ID'] == ID_ and value['pwd'] == pwd_:
+            if value['email'] == email_ and value['pwd'] == pwd_:
                 return True
             return False
+            
     #평균 평점 계산하고 push해주는 함수
     def AverageScore(self,storename):
         count = 0

@@ -1,68 +1,62 @@
-.SignIn {
-    float: center;
-    margin: 0;
-}
+.loginregister{
+  width : 900px;
+  margin-left:auto; 
+  margin-right:auto;
+}  
+  
+  
+  
+  
+  #table {
+    display: table;
+    width: 500px;
+    margin-top: 50px;
+    margin-left:auto; 
+    margin-right:auto;
 
-.SignIn-logo {
-    float: left;
-}
+    border-radius: 3px;
+    vertical-align: middle;
+  }
 
-.SignIn-div-Headline {
-    float: center;
-    display: flex;
-    text-align: center;
-}
 
-.SignIn-table-Th1 {
-    width: 20%;
-    background-color: rgba(217, 217, 217, 0.8);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.24);
-}
+  .cell {
+    display: table-cell;
+    padding: 3px;
+    /* border-bottom: 1px solid #DDD; */
+    text-align: left;
 
-.SignIn-table-tr {
-    width: 100%;
-}
+    font-weight: 600;
+    font-size: 16px;
+  
+  }
+  
+  .row {
+    position: relative;
+  
+    /* left:80px; */
+    /* top :20px; */
 
-#lastLine {
-    border-bottom: none;
-}
+  }
 
-.SignIn-table-input {
-    background-color: rgba(217, 217, 217, 0.21);
-    border: 1px solid #000000;
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    position: absolute;
-    width: 806px;
-    height: 56px;
-    left: 470px;
+  .col1 {
+    position: relative;
+    /* top:10px; */
+    left: 40px;
+    width: 180px;
+    height: 50px;
+    font-size : larger;
+    text-align : center;
+    vertical-align: middle;
+    background-color : #bcbcbc;;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  }
 
-}
-
-.SignIn-table-input.withButton {
-    width: 615px;
-}
-
-.SignIn-table-Th1-p {
-    font-size: 24px;
-    left: 470px;
-}
-
-.SignIn-table-button {
-    background-color: #00462A;
-    color: white;
-    position: absolute;
-    width: 171px;
-    height: 343px;
-    left: 1100px;
-}
-
-#black_button {
-    background-color: black;
-    position: absolute;
-    width: 337.97px;
-    height: 81px;
-    left: 551px;
-    top: 877px;
-    font-size: 30px;
-}
+  .col2 {
+    position: relative;
+    /* top:10px; */
+    left: 40px;
+    width: 150px;
+    height: 25px;
+    vertical-align: middle;
+    background-color : #dcdcdc;
+  }

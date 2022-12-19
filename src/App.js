@@ -37,6 +37,8 @@ function App() {
       <BrowserRouter>
         <Header></Header>
         <Routes>
+          <Route path="/Login" element={<Login />}></Route>
+          <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/CreateStore" element={<CreateStore />}></Route>
           <Route path="/RegisteredStore/:storename" element={<RegisteredStore />}></Route>
@@ -44,7 +46,6 @@ function App() {
           {/* <Route path="/CreateMenu/:id" element={<CreateMenu />}></Route> */}
           <Route path="/CreateReview/:storename" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
           <Route path="/MyPage" element={<MyPage />}></Route>
           <Route path="/MyPageBookmark" element={<MyPageBookmark />}></Route>
           <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>

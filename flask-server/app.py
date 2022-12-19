@@ -210,10 +210,10 @@ def signup():
 @app.route("/SignUp_post", methods=['POST'])
 def register_user():
     data=request.form
-    pw=request.form['pw']
-    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
-    if DB.insert_user(data,pw_hash):
-        return render_template("index.html")
+    pwd=request.form['pwd']
+    pwd_hash = hashlib.sha256(pwd.encode('utf-8')).hexdigest()
+    if DB.insert_user(data,pwd_hash):
+        return redirect(url_for('index'))
     else:
         flash("user id already exist!")
         return render_template("index.html")
@@ -225,12 +225,12 @@ def login():
     return render_template("index.html")
 @app.route("/login_confirm", methods=['POST'])
 def login_user():
-    id_=request.form['id']
-    pw=request.form['pw']
-    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
-    if DB.find_user(id_,pw_hash):
-        session['id']=id_
-        return redirect(url_for('list_restaurants'))
+    email_=request.form['email']
+    pwd=request.form['pwd']
+    pwd_hash = hashlib.sha256(pwd.encode('utf-8')).hexdigest()
+    if DB.find_user(email_,pwd_hash):
+        session['email']=email_
+        return redirect(url_for('index'))
     else:
         flash("Wrong ID or PW!")
         return render_template("login.html")
