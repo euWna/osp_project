@@ -97,7 +97,7 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                         <div class={styles.site}>사이트 {storesite}</div>
                         <div class={styles.phone}>전화번호 {storephonenumber}</div>
                         <div class={styles.time}>운영시간 {storetime1}~{storetime2}</div>
-                        <div class={styles.parking}>주차장 </div>
+                        <div class={styles.parking}>주차장 {storepark} </div>
                     </div>
                 </div>
                 <div class={styles.buttons}>
