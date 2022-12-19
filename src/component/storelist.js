@@ -4,8 +4,10 @@ import samplelocation from "../img/location.png";
 import { useState, useEffect } from 'react';
 import StoreDetail from '../pages/StoreDetail';
 import Info from './info';
+import { useNavigate } from 'react-router-dom';
 
 function Storelist(props) {
+    const navigate = useNavigate();
     var storefood = props.food
     var storeimg = props.img
     var storelocation = props.location
@@ -17,7 +19,7 @@ function Storelist(props) {
     var storename = props.name
     var storetime1 = props.time1
     var storetime2 = props.time2
-    
+
     var storekey = props.storekey
 
     var present = props.present
@@ -26,27 +28,32 @@ function Storelist(props) {
         if (present !== storename) {
             event.preventDefault();
         }
-      };
+        else {
+            navigate(`/StoreDetail/${storename}`)
+        }
+
+    };
 
     return (
         <div>
             <Link to={`/StoreDetail/${storename}`} onClick={testHandler}
-                state={{
-                    storefood: storefood,
-                    storeimg: storeimg,
-                    storelocation: storelocation,
-                    storepark: storepark,
-                    storephonenumber: storephonenumber,
-                    storeprice1 : storeprice1,
-                    storeprice2 : storeprice2,
-                    storename: storename,  
-                    storesite: storesite,
-                    storetime1: storetime1,
-                    storetime2: storetime2,
-                    storekey: storekey
-                }}>
+            // state={{
+            //     storefood: storefood,
+            //     storeimg: storeimg,
+            //     storelocation: storelocation,
+            //     storepark: storepark,
+            //     storephonenumber: storephonenumber,
+            //     storeprice1 : storeprice1,
+            //     storeprice2 : storeprice2,
+            //     storename: storename,  
+            //     storesite: storesite,
+            //     storetime1: storetime1,
+            //     storetime2: storetime2,
+            //     storekey: storekey
+            // }}
+            >
                 <div class={styles.listbox}>
-                        <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img}/>
+                    <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img} />
                     {/* 본문 박스 */}
                     <div class={styles.listdesc}>
                         <div class={styles.StoreName}>{storename}</div>
@@ -64,7 +71,7 @@ function Storelist(props) {
                     <div class={styles.reviewnum}>리뷰""개</div> */}
                     </div>
                 </div>
-            {/* history.push({location}) */}
+                {/* history.push({location}) */}
             </Link >
         </div>
     );
