@@ -7,39 +7,44 @@ import NavBar from "../component/NavBar";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
-const SignUp = () => {
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-
-    const register = async () => {
-        try {
-            const user = await createUserWithEmailAndPassword(
-                auth,
-                registerEmail,
-                registerPassword
-            );
-            console.log(user);
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
-
+function SignUp() {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+  
+    const onNameHandler = (event) => {
+      setName(event.currentTarget.value)
+    }
+    const onEmailHandler = (event) => {
+        setEmail(event.currentTarget.value)
+    }
+  
+    const onPasswordHandler = (event) => {
+        setPassword(event.currentTarget.value)
+    }
+  
+    const onConfirmPasswordHandler = (event) => {
+        setConfirmPassword(event.currentTarget.value)
+    }
+  
+    const onSubmit = (event) => {
+      event.preventDefault()
+      if(password !== confirmPassword) {
+        return alert('비밀번호와 비밀번호확인은 같아야 합니다.')
+      }
+    }
+  
     return (
-        <div>
-            <input
-                placeholder="Email"
-                onChange={(e) => {
-                    setRegisterEmail(e.target.value);
-                }}
-            />
-            <input
-                placeholder="EmailPassword"
-                onChange={(e) => {
-                    setRegisterPassword(e.target.value);
-                }}
-            />
-            <button onClick={register}>CreateUser</button>
-        </div>
+      <div class="loginregister">
+        <form>
+            <div><input name="name" type="nickname" placeholder="이름" value={name} onChange={onNameHandler} class="loginregister__input"/></div>
+            <div><input name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} class="loginregister__input"/></div>
+            <div><input name="password" type="pwd" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
+            <div><input name="confirmPassword" type="pwd" placeholder="비밀번호 확인" value={confirmPassword} onChange={onConfirmPasswordHandler} class="loginregister__input"/></div>
+            <div><button type="submit" onSubmit={onSubmit} class="loginregister__button">계정 생성하기</button></div>
+        </form>
+      </div>
     );
-};
-export default SignUp;
+  }
+  export default SignUp;

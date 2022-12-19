@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Switch, Route } from 'react-router-dom';
 
 import Header from './component/header';
 import NavBar from './component/NavBar';
@@ -37,6 +37,10 @@ function App() {
       <BrowserRouter>
         <Header></Header>
         <Routes>
+          <Switch>
+          <Route path="/Login" element={<Login />}></Route>
+          <Route path="/SignUp" element={<SignUp />}></Route>
+          </Switch>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/CreateStore" element={<CreateStore />}></Route>
           <Route path="/RegisteredStore/:storename" element={<RegisteredStore />}></Route>
@@ -44,7 +48,6 @@ function App() {
           {/* <Route path="/CreateMenu/:id" element={<CreateMenu />}></Route> */}
           <Route path="/CreateReview/:storename" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
           <Route path="/MyPage" element={<MyPage />}></Route>
           <Route path="/MyPageBookmark" element={<MyPageBookmark />}></Route>
           <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>

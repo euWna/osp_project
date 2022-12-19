@@ -11,62 +11,31 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 
-const Login = () => {
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState(""); 
     
-    const [loginEmail, setLoginEmail] = useState(""); // 코드 추가
-    const [loginPassword, setLoginPassword] = useState(""); // 코드 추가
-    const [user, setUser] = useState({}); // 코드 추가
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
-
-
-    //로그인
-    const login = async () => {
-        try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                loginEmail,
-                loginPassword
-            );
-            console.log(user);
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
-
-    //로그아웃
-    const logout = async () => {
-        await signOut(auth);
-    };
-
+    const onEmailHandler = (event) => {
+      setEmail(event.currentTarget.value);
+    }
+  
+    const onPasswordHandler = (event) => {
+      setPassword(event.currentTarget.value)
+  }
+  
+    const onSubmit = (event) => {
+      event.preventDefault();
+    }
+  
     return (
-        <div style={{ textAlign: "center", margin: 10 }}>
-
-            <div>
-                {/* 로그인 */}
-                <h3>Login</h3>
-                <input
-                    placeholder="Email"
-                    onChange={(e) => {
-                        setLoginEmail(e.target.value);
-                    }}
-                />
-                <input
-                    placeholder="Password"
-                    onChange={(e) => {
-                        setLoginPassword(e.target.value);
-                    }}
-                />
-                <button onClick={login}>Login</button>
-                <div>User Logged In:</div>
-                <div>{user?.email}</div>
-                <button onClick={logout}>로그아웃</button>
-            </div>
+        <div class="loginregister">
+          <form>
+              <div><input name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} class="loginregister__input"/></div>
+              <div><input name="password" type="pwd" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
+              <div><button type="submit" onSubmit={onSubmit} class="loginregister__button">로그인</button></div>
+          </form>
         </div>
-    );
-};
-export default Login;
+      );
+    }
+  
+  export default Login;
