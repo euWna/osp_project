@@ -209,6 +209,7 @@ class DBhandler:
 
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()
+        print(stores)
         for store in stores:
             review_all=self.db.child("REVIEW").child(store).get().val()
-        return review_all
+        return stores

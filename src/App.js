@@ -48,7 +48,7 @@ function App() {
           <Route path="/MyPage" element={<MyPage />}></Route>
           <Route path="/MyPageBookmark" element={<MyPageBookmark />}></Route>
           <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>
-          <Route path="/ReviewAll" element={<ReviewAll />}></Route>
+          <Route path="/reviewAll" element={<ReviewAll />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/StoreDetail/:storename" element={<StoreDetail />}></Route>
           {/*<Route path="/CreateMenu/:storename" element={<CreateMenu />}></Route>*/}
