@@ -24,7 +24,7 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
     const GoCreateReview = () => {
 
         navigate(`/CreateReview/${storename}`);
-        console.log("Pushed")
+        // console.log("Pushed")
     }
     const GoRegisteredStore = () => {
 
@@ -90,9 +90,9 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
 
                 </div>
 
-                <div class="map">
+                {/* <div class="map">
                     지도API
-                </div>
+                </div> */}
             </div>
         </div>
     );

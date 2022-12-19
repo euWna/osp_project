@@ -86,7 +86,8 @@ function Homepage() {
       <div class={styles.Hbox}>
         <Link to="/StoreListView" class={styles.homeButton}>맛집 모아보기</Link>
         <Link to="/CreateStore" class={styles.homeButton}>맛집 정보 추가하기</Link>
-        <Link to="/reviewAll" class={styles.homeButton}>리뷰 모아보기</Link>
+        <Link to="/ReviewAll" class={styles.homeButton}>리뷰 모아보기</Link>
+        {/* 여기서 ReviewAll이어야 라우팅 제대로 되는데 혹시 git 오류로 안바뀌면 바꿔주세요 */}
         {/* 페이지 링크는 이렇게 걸어주세요 */}
       </div>
     </div>

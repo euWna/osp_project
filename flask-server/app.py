@@ -96,7 +96,7 @@ def Submit_menu(storename):
             else:
                 return "The submitted menu already exists!"
 
-@app.route("/CreateReview/<storename>", methods=['POST'])        
+@app.route("/StoreDetail/<storename>", methods=['POST'])        
 def Submit_Review(storename):
     if request.method == 'POST':
         data = request.form
@@ -153,6 +153,7 @@ def list_review(storename):
 @app.route("/Review_send_data",methods=['GET'])
 def list_reviews():
     all_reviews=DB.get_all_review()
+    # all_reviews=DB.get_review
     reviewjson=json.dumps(all_reviews)
     return reviewjson
 # def make_average():

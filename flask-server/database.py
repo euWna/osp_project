@@ -208,6 +208,19 @@ class DBhandler:
         return reviews
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()
+        # review_all[100]
+        review_all={}
+        review_info={}
+        i=0
         for store in stores:
-            review_all=self.db.child("REVIEW").child(store).get().val()
+            # review_all=zip(review_all, review_instore)
+            user=self.db.child("REVIEW").child(store).get()
+            if user:
+                # review=self.db.child("REVIEW").child(store).get().val()
+                keys=self.db.child("REVIEW").child(store).get().key()
+                # for keyinreview in keys:
+                    # review_all[store]=[user][keyinreview]=self.db.child("REVIEW").child(store).get(keyinreview)
+                    # i=i+1
+                review_info[user]=self.db.child(store).get().val()
+            review_all[store]={review_info}
         return review_all

@@ -27,6 +27,7 @@ function ReviewSection(props) {
             .then(response => response.json())
             .then(jsonData => {
                 var length = Object.keys(jsonData).length
+                // var length = Object(jsonData).length
                 for (var i = 0; i < length; i++) { //식당 갯수만큼 반복
                     reviewarr[i] = Object.values(jsonData)[i]
                     reviewarr[i]["key"] = Object.keys(jsonData)[i] //키값 필요해서 가져옴
