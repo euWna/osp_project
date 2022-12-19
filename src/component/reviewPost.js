@@ -17,8 +17,8 @@ function ReviewPost(props) {
                 <img src={"http://127.0.0.1:5000/static/img/" + `${reviewimg}`} class={styles.img} />
             </div>
             <div class={styles.listdesc}>
-                <div className={styles.user_name}>{reviewusername}</div>
-                <div className={styles.store_name}>{reviewstorename}</div>
+                <div className={styles.user_name}>{reviewusername} </div>
+                <div className={styles.store_name}>점수 : {reviewstorescore}점</div>
                 <div className={styles.review_title}>{reviewtitle}</div>
                 <div className={styles.review_desc}>{reviewdesc}</div>
             </div>
