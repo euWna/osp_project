@@ -10,12 +10,14 @@ class DBhandler:
         self.db = firebase.database()
         firebaseEmailAuth = firebase.auth()
 
-           #회원가입
+
+ #회원가입
     def insert_user(self, data, pwd):
         user_info = {
+            "nickname" : data['nickname'],
             "email" : data['email'],
             "pwd" : pwd,
-            "nickname" : data['nickname']
+            "confirmPassword" : pwd
         }
         if self.user_duplicate_check(str(data['email'])):
             self.db.child("user").push(user_info)

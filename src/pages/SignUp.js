@@ -33,14 +33,15 @@ function SignUp() {
       if(password !== confirmPassword) {
         return alert('비밀번호와 비밀번호확인은 같아야 합니다.')
       }
+      document.location.href('./pages/Homepage');
     }
   
     return (
-      <div class="loginregister">
+      <div className={styles.loginregister}>
         <form>
             <div><input name="name" type="nickname" placeholder="이름" value={name} onChange={onNameHandler} class="loginregister__input"/></div>
             <div><input name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} class="loginregister__input"/></div>
-            <div><input name="password" type="pwd" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
+            <div><input name="pwd" type="pwd" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
             <div><input name="confirmPassword" type="pwd" placeholder="비밀번호 확인" value={confirmPassword} onChange={onConfirmPasswordHandler} class="loginregister__input"/></div>
             <div><button type="submit" onSubmit={onSubmit} class="loginregister__button">계정 생성하기</button></div>
         </form>

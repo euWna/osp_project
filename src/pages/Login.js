@@ -28,7 +28,7 @@ function Login() {
     }
   
     return (
-        <div class="loginregister">
+        <div className={styles.loginregister}>
           <form>
               <div><input name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} class="loginregister__input"/></div>
               <div><input name="password" type="pwd" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
