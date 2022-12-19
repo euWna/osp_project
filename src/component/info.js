@@ -21,14 +21,34 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
     const storetime1 = props.storetime1
     const storetime2 = props.storetime2
     const params = useParams().storename;
+
+    const [storedata, setData] = useState()
+    var storearr = new Array();
+
+    useEffect(() => {
+        fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
+            headers: {
+                Accept: 'application/json',
+                method: 'GET'
+            }
+        })
+            .then(response => response.json())
+            .then(jsonData => {
+                storearr[0] = jsonData;
+                setData(storearr);
+            })
+            .catch((err) => console.log(err))
+    }, [])
+    console.log(storedata)
+
     const GoCreateReview = () => {
 
-        navigate(`/CreateReview/${storename}`);
+        navigate(`/CreateReview/${params}`);
         // console.log("Pushed")
     }
     const GoRegisteredStore = () => {
 
-        navigate(`/RegisteredStore/${storename}`);
+        navigate(`/RegisteredStore/${params}`);
 
     }
     // const [storedata, setData] = useState()
@@ -81,7 +101,7 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
                     </div>
                 </div>
                 <div class={styles.buttons}>
-                    <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
+                    <Link to={`/RegisteredStore/${params}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
                     <Link to={`/CreateReview/${params}`}
                     // state={{
                     //     storefood: storefood,

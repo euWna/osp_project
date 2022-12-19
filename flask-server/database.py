@@ -217,7 +217,7 @@ class DBhandler:
             user=self.db.child("REVIEW").child(store).get()
             if user:
                 # review=self.db.child("REVIEW").child(store).get().val()
-                keys=self.db.child("REVIEW").child(store).get().key()
+                # keys=self.db.child("REVIEW").child(store).get().key()
                 # for keyinreview in keys:
                     # review_all[store]=[user][keyinreview]=self.db.child("REVIEW").child(store).get(keyinreview)
                     # i=i+1
