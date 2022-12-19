@@ -68,6 +68,7 @@ body {
 }
 
 .thick {
+    --egreen: #00462A;
     font-weight: 900;
 }
 

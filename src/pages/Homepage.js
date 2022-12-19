@@ -42,7 +42,7 @@ function Section() {
         {/* <h2>HOT TOPIC</h2> */}
         <div className={styles['link-1']}>
           <a className={styles.hottopic} href="#">
-            <span className={styles.thick}>HOT </span><span class={styles.thin}>TOPIC</span>
+            <span className={styles.thick}>EWHA </span><span class={styles.thin}>HOT PLACES</span>
           </a>
           <p className={styles.homep}>오늘은 여기 어때요?</p>
         </div>

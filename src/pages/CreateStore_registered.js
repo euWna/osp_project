@@ -83,25 +83,25 @@ function RegisteredStore() {
                         return <div id={styles.table}>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                                <span class={`${styles.cell} ${styles.col2}`}> {a.storename} <input type="hidden" name="storename" value={a.storename} 
+                                <span class={`${styles.cell} ${styles.col2}`}> {a.storename} <input type="hidden" name="storename" value={a.storename} class={styles.box_input}
                                                                                     /* onChange={ (event) => { setName(event.target.value) }}*//></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>주소</span>
-                                <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="location" size="70" value={location}
+                                <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="location" size="70" value={location} class={styles.box_input}
                                                                                      onChange={ (event) => { setLocation(event.target.value) }}></input></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>전화번호</span>
-                                <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="phonenumber" value={phonenumber}
+                                <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="phonenumber" value={phonenumber} class={styles.box_input}
                                                                                      onChange={ (event) => { setPNumber(event.target.value) }}></input></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>영업시간</span>
                                 <span class={`${styles.cell} ${styles.col2}`}><input type="time" name="time1" size="1" value={time1} 
-                                                                                     onChange={ (event) => { setTime1(event.target.value) }}/> 
+                                                                                     onChange={ (event) => { setTime1(event.target.value) }} class={styles.box_input}/> 
                                                                             ~ <input type="time" name="time2" size="1" value={time2} 
-                                                                            onChange={ (event) => { setTime2(event.target.value) }} /></span>
+                                                                            onChange={ (event) => { setTime2(event.target.value) }} class={styles.box_input}/></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>카테고리</span>
@@ -111,6 +111,8 @@ function RegisteredStore() {
                                         <option value="한식">한식</option>
                                         <option value="일식">일식</option>
                                         <option value="중식">중식</option>
+                                        <option value="양식">양식</option>
+                                        <option value="분식">분식</option>
                                         <option value="디저트">디저트</option>
                                     </select>
                                 </span>
@@ -118,26 +120,27 @@ function RegisteredStore() {
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>주차장</span>
                                 <span class={`${styles.cell} ${styles.col2}`}>
-                                    <select name="park" value={a.park} defaultValue={a.park}>
+                                    <select name="park" key={a.park} defaultValue={a.park}>
+                                        <option value="">선택</option>
                                         <option value="O">O</option>
                                         <option value="X">X</option>
                                     </select></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>가격대</span>
-                                <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="price1" size="1" value={price1}
+                                <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="price1" size="1" value={price1} class={styles.box_input}
                                                                                      onChange={ (event) => { setPrice1(event.target.value) }}/>                                 
-                                                                             ~ <input type="text" name="price2" size="1"  value={price2}
+                                                                             ~ <input type="text" name="price2" size="1"  value={price2} class={styles.box_input}
                                                                                      onChange={ (event) => { setPrice2(event.target.value) }}/></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>사이트</span>
                                 <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="site" size="70" value={site}
-                                                                                     onChange={ (event) => { setSite(event.target.value) }}/></span>
+                                                                                     onChange={ (event) => { setSite(event.target.value) }} class={styles.box_input}/></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>대표사진</span>
-                                <span class={`${styles.cell} ${styles.col2}`}><input type="file" name="file" accept="image/*" /*value={a.img_path}/ file은 value 입력 못받음*//></span>
+                                <span class={`${styles.cell} ${styles.col2}`}><input type="file" name="file" accept="image/*" /*value={a.img_path}/ file은 value 입력 못받음*/ /></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}></span>
