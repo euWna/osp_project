@@ -42,19 +42,18 @@ function ReviewSection() {
             .catch(
                 (err) => console.log(err))
     }, [])
-    console.log(reviewdata)
+
+    // console.log(reviewdata)
 
     return <reviewsection className={styles.reviewsection}>
         <div className={styles.reviewsection}>
             <div className={styles.presentreview}>
-
                 {reviewdata && reviewdata.map((a => {
                     return <div>
                         <ReviewPost reviewimg={a.img_path} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle}
                             timestamp={a.timestamp} reviewstorescore={a.storescore} reviewusername={a.username} reviewstorename={a.storename} />
                     </div>
                 }))}
-
             </div>
             <div className={styles.hotreview}>
                 <div className={styles.title2}>최근 인기 리뷰</div>
@@ -67,7 +66,6 @@ function ReviewSection() {
 }
 
 function ReviewAll() {
-
     const [reviewdata, setData] = useState()
     var reviewarr = new Array();
 

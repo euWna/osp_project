@@ -5,11 +5,11 @@ import NavBar from '../component/NavBar';
 import { useState, useEffect } from 'react';
 
 
+
 function RegisteredStore() {
     const params = useParams().storename;
     const [registered, setData] = useState()
     var registeredarr = new Array();
-
     //const [name, setName] = useState() //매장명은 수정 못하도록
     const [location, setLocation] = useState()
     const [phonenumber, setPNumber] = useState()
@@ -64,6 +64,8 @@ function RegisteredStore() {
     //     setValue(e.target.value);
     // }, [])
 
+    
+
 
     return (
         <div>
@@ -75,7 +77,8 @@ function RegisteredStore() {
                         <Link to={`/CreateMenu/${params}`} class={styles.down}>메뉴</Link>
                     </div>
                 </aside>
-                <form action="/UpdateStore_submit" method="POST" enctype="multipart/form-data">
+                {/*  */}
+                <form  action="/UpdateStore_submit" method="POST" enctype="multipart/form-data">
                     {registered && registered.map((a => {
                         return <div id={styles.table}>
                             <div class={styles.row}>
@@ -142,6 +145,7 @@ function RegisteredStore() {
                             </div>
                         </div>
                     }))}
+                    
                 </form>
             </section>
         </div>

@@ -123,7 +123,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" : "static/image/"+img_path
+            # "img_path" : img_path
         }
 
         stores = self.db.child("STORE").get()
@@ -208,6 +208,7 @@ class DBhandler:
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
         sorted_by_times=self.db.child("REVIEW").child(storename).order_by_child("timestamp")
         return reviews
+
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()
         # # review_all[100]
@@ -225,4 +226,9 @@ class DBhandler:
         #             # i=i+1
         #         review_info[user]=self.db.child(store).get().val()
         #     review_all[store]={review_info}
+
+        print(stores)
+        for store in stores:
+            review_all=self.db.child("REVIEW").child(store).get().val()
+
         return stores

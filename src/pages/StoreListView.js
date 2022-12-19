@@ -22,6 +22,7 @@ function StoreListView() {
             .then(response => response.json())
             .then(jsonData => {
                 setData(Object.values(jsonData));
+
             })
             .catch(
                 (err) => console.log(err))
@@ -34,14 +35,10 @@ function StoreListView() {
     const handleClickButton = (e) => {
         setContent(e);
     };
-
-//<<<<<<< 1217/jy
  
     //카테고리 정렬 코드
     const allCategories = ['전체', ...new Set(storedata&&storedata.map((a) => a.food))];
-    console.log("선"+JSON.stringify(storedata));
     const [menuItems, setMenuItems] = useState(storedata);
-    console.log("후"+menuItems);
 
     const filterItems = (category) => {
         if (category === '전체') {
@@ -54,8 +51,6 @@ function StoreListView() {
 
     const [selected, setSelected] = useState("전체");
 
-//=======
-//>>>>>>> 1217yj
     return (
         <div class={styles.box_ns}>
             <NavBar />
@@ -95,7 +90,7 @@ function StoreListView() {
                     </div>
                     <div class={styles.rightbox}>
                         {content
-                            ? <Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2} />
+                            ? <Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} storepark={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2} />
                             : <div class={styles.loading}>맛집을 선택해주세요!<div class={styles.lds_ellipsis}><div></div><div></div><div></div><div></div></div></div>
                         }
                     </div>
