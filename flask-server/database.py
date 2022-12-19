@@ -125,7 +125,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" : "static/image/"+img_path
+            # "img_path" : img_path
         }
 
         stores = self.db.child("STORE").get()
@@ -176,6 +176,7 @@ class DBhandler:
 
     def insert_review(self, storename, data, img_path):
         review_info ={
+            "timestamp":data['timestamp'],
             "storename" : storename,
             "storescore" : data['storescore'],
             "username" : data['username'],
@@ -207,9 +208,29 @@ class DBhandler:
 
     def get_review(self,storename):
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        sorted_by_times=self.db.child("REVIEW").child(storename).order_by_child("timestamp")
         return reviews
+
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()
+        # # review_all[100]
+        # review_all={}
+        # review_info={}
+        # i=0
+        # for store in stores:
+        #     # review_all=zip(review_all, review_instore)
+        #     user=self.db.child("REVIEW").child(store).get()
+        #     if user:
+        #         # review=self.db.child("REVIEW").child(store).get().val()
+        #         # keys=self.db.child("REVIEW").child(store).get().key()
+        #         # for keyinreview in keys:
+        #             # review_all[store]=[user][keyinreview]=self.db.child("REVIEW").child(store).get(keyinreview)
+        #             # i=i+1
+        #         review_info[user]=self.db.child(store).get().val()
+        #     review_all[store]={review_info}
+
+        print(stores)
         for store in stores:
             review_all=self.db.child("REVIEW").child(store).get().val()
-        return review_all
+
+        return stores

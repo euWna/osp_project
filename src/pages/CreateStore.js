@@ -2,8 +2,43 @@ import React from "react";
 import styles from "../css/CreateStore.module.css";
 import { Link } from 'react-router-dom';
 import NavBar from '../component/NavBar';
+import Alert from '../component/Alert';
+import { useState, useEffect } from 'react';
 
 function CreateStore() {
+    const [storedata, setData] = useState()
+    useEffect(() => {
+        fetch("/StoreListView_send_data", { //json 데이터를 받아옴
+            headers: {
+                Accept: 'application/json',
+                method: 'GET'
+            }
+        })
+            .then(response => response.json())
+            .then(jsonData => {
+                setData(Object.values(jsonData));
+            })
+            .catch(
+                (err) => console.log(err))
+    },[])
+    //알람 뜨는 기능
+    const [alert, setAlert] = useState({ show: false, type: '', msg: '' });
+
+    const handleChange = (e) => {
+        //만약 이름 겹치면, 
+        storedata && storedata.map( item => {
+            if (item.storename == e.target.value){
+            showAlert(true, 'danger', '이미 등록된 맛집입니다!');
+        }
+        });
+        
+        
+    }
+    
+    const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg });
+    };
+
     return (
         <div>
             <NavBar></NavBar>
@@ -18,7 +53,8 @@ function CreateStore() {
                     <div id={styles.table}>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                            <span class={`${styles.cell} ${styles.col2}`}><input type="text" class={styles.box_input} name="storename" /></span>
+                            <span class={`${styles.cell} ${styles.col2}`}><div class={styles.alertbox}><input type="text" class={styles.box_input} name="storename" onChange={handleChange}/>{alert.show && <Alert {...alert} removeAlert={showAlert} />}</div></span>
+                            
                         </div>
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}>주소</span>
@@ -67,6 +103,7 @@ function CreateStore() {
                         <div class={styles.row}>
                             <span class={`${styles.cell} ${styles.col1}`}></span>
                             <span class={`${styles.cell} ${styles.col2}`}><input type="submit" class={styles.btn_submit} value="기본 정보 등록" /></span>
+                            
                         </div>
                     </div>
                 </form>
