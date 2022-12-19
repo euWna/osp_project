@@ -5,7 +5,7 @@ import styles from '../css/ReviewAll.module.css';
 import NavBar from '../component/NavBar';
 import ReviewPost from '../component/reviewPost'
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { json, useParams } from 'react-router-dom';
 
 function ReviewSection() {
     // const reviewimg = props.reviewimg
@@ -38,11 +38,6 @@ function ReviewSection() {
                     //         reviewarr[i][j] = Object.entries(jsonData)[j] //storename
                     //         reviewarr[i][j]["key"] = Object.entries(Object.keys(jsonData.reviewarr))[i] //키값 필요해서 가져옴}
                 }
-
-
-                // }
-                console.log(Object.values(jsonData)[1])
-                console.log("여기가 Object.values(jsonData)[1]")
             })
             .catch(
                 (err) => console.log(err))
@@ -56,7 +51,7 @@ function ReviewSection() {
                 {reviewdata && reviewdata.map((a => {
                     return <div>
                         <ReviewPost reviewimg={a.img_path} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle}
-                            reviewstorescore={a.storescore} reviewusername={a.username} reviewstorename={a.storename} />
+                            timestamp={a.timestamp} reviewstorescore={a.storescore} reviewusername={a.username} reviewstorename={a.storename} />
                     </div>
                 }))}
 

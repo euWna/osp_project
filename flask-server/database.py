@@ -174,6 +174,7 @@ class DBhandler:
 
     def insert_review(self, storename, data, img_path):
         review_info ={
+            "timestamp":data['timestamp'],
             "storename" : storename,
             "storescore" : data['storescore'],
             "username" : data['username'],
@@ -205,6 +206,7 @@ class DBhandler:
 
     def get_review(self,storename):
         reviews = self.db.child("REVIEW").child(storename).get().val() #해당 맛집의 메뉴들을 가져옴
+        sorted_by_times=self.db.child("REVIEW").child(storename).order_by_child("timestamp")
         return reviews
     def get_all_review(self):
         stores=self.db.child("REVIEW").get().val()

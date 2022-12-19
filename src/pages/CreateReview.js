@@ -55,6 +55,8 @@ import NavBar from '../component/NavBar';
 function CreateReview() {
 
     const params = useParams().storename;
+    const date = new Date();
+    const timestamp = date.getTime();
 
     // const [reviewdata, setData] = useState()
     // var reviewarr = new Array();
@@ -110,19 +112,20 @@ function CreateReview() {
                             </div>
                         </div>
                     </aside>
-                    <form action={`/StoreDetail/${params}`} method="POST" enctype="multipart/form-data">
+                    <form action={`/CreateReview/${params}`} method="POST" enctype="multipart/form-data">
                         <div id={styles.table}>
                             <div class={styles.row}>
+                                <input type="hidden" name="timestamp" value={timestamp}></input>
                                 <span class={`${styles.cell} ${styles.col1}`}>전체 평점</span>
                                 <span class={`${styles.cell} ${styles.col1}`}>
 
                                     {/* <input type="text" name="storescore" class={styles.box_input} size="70" /> */}
                                     <select name="storescore">
-                                        <option value={"one"}>1</option>
-                                        <option value={"two"}>2</option>
-                                        <option value={"three"}>3</option>
-                                        <option value={"four"}>4</option>
-                                        <option value={"five"}>5</option>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
                                     </select>
                                     {/* <img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/> */}
                                 </span>

@@ -48,7 +48,7 @@ function Review(props) {
         <div class={styles.Pane}>
           <div class={styles.list}>
             {reviewdata && reviewdata.map((a => {
-              return <ReviewPost reviewimg={a.img_path} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle} reviewstorescore={a.storescore} reviewusername={a.username} reviewstorename={a.storename} />
+              return <ReviewPost timestamp={a.timestamp} reviewimg={a.img_path} reviewdesc={a.reviewdesc} reviewtitle={a.reviewtitle} reviewstorescore={a.storescore} reviewusername={a.username} reviewstorename={a.storename} />
             }))}
           </div>
         </div>

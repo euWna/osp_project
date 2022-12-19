@@ -96,10 +96,11 @@ def Submit_menu(storename):
             else:
                 return "The submitted menu already exists!"
 
-@app.route("/StoreDetail/<storename>", methods=['POST'])        
+@app.route("/CreateReview/<storename>", methods=['POST'])        
 def Submit_Review(storename):
     if request.method == 'POST':
         data = request.form
+        timestamp=data['timestamp']
         username = data['username']
         reviewtitle = data['reviewtitle']
         reviewdesc = data['reviewdesc']
@@ -107,7 +108,7 @@ def Submit_Review(storename):
         if img_file:
             img_file.save("./flask-server/static/img/"+img_file.filename)
         if DB.insert_review(storename, data, img_file.filename):
-             return redirect(url_for('StoreListView')) 
+             return redirect(url_for('view_StoreDetail')) 
 
 
 ##################### Get data from DB #####################
@@ -173,8 +174,6 @@ def list_reviews():
 #     return img #지금은 경로를 리턴해주는 중입니다
 
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
 
 # 회원가입 부분
 @app.route("/SignUp")
@@ -220,3 +219,6 @@ def list_stores():
 def view_storelist(store_id):
     return render_template("index.html")
 '''
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True)
