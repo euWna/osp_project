@@ -16,15 +16,14 @@ class DBhandler:
         user_info = {
             "nickname" : data['nickname'],
             "email" : data['email'],
-            "pwd" : pwd,
-            "confirmPassword" : pwd
+            "pwd" : pwd
         }
-        if self.user_duplicate_check(str(data['email'])):
-            self.db.child("user").push(user_info)
-            print(data)
-            return True
-        else:
-            return False
+        # if self.user_duplicate_check(str(data['email'])):
+        self.db.child("user").push(user_info)
+        print(data)
+        return True
+        # else:
+            # return False
 
     def user_duplicate_check(self, id_string):
         users = self.db.child("user").get()

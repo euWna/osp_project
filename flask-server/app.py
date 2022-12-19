@@ -182,10 +182,9 @@ def signup():
 
 @app.route("/SignUp_post", methods=['POST'])
 def register_user():
+    print("dfsdfdfsdsfa")
     data=request.form
-    nickname=request.form['nickname']
     pwd=request.form['pwd']
-    confirmPassword=request.form['pwd']
     pwd_hash = hashlib.sha256(pwd.encode('utf-8')).hexdigest()
     if DB.insert_user(data,pwd_hash):
         return render_template("index.html")
