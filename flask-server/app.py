@@ -28,7 +28,7 @@ def view_createstore():
 def view_registeredstore(storename):
     return render_template("index.html")
 
-@app.route("/CreateMenu/<storename>")
+@app.route("/Createmenu/<storename>")
 def view_menu(storename):
     return render_template("index.html")
 
@@ -86,7 +86,7 @@ def Update_store():
             return "The submitted store already exists!"
 
 
-@app.route("/CreateMenu/<storename>",methods=['POST'])
+@app.route("/Createmenu/<storename>",methods=['POST'])
 def Submit_menu(storename):
     if request.method == 'POST':
             data = request.form

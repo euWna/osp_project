@@ -22,6 +22,7 @@ function StoreListView() {
             .then(response => response.json())
             .then(jsonData => {
                 setData(Object.values(jsonData));
+
             })
             .catch(
                 (err) => console.log(err))
@@ -37,9 +38,7 @@ function StoreListView() {
  
     //카테고리 정렬 코드
     const allCategories = ['전체', ...new Set(storedata&&storedata.map((a) => a.food))];
-    console.log("선"+JSON.stringify(storedata));
     const [menuItems, setMenuItems] = useState(storedata);
-    console.log("후"+menuItems);
 
     const filterItems = (category) => {
         if (category === '전체') {
