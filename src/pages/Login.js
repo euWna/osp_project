@@ -1,33 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../component/header";
-import "./Login.css";
-class Login extends React.Component {
-    render() {
+import styles from "../css/Login.module.css";
+import { Link } from 'react-router-dom';
 
-        return (
-            <div>
-                <Header></Header>
-                <div className="Headline">
-                    <p>로그인</p>
-                </div>
-                <div className="Left">
-                    <input type="text" name="ID" defaultValue="ID" />
-                    <input type="text" name="pwd" defaultValue="pwd" />
-                    <button type="button" name="login_button">
-                        로그인
-                    </button>
-                </div>
-                <div className="Right">
-                    <p>아직 회원이 아니신가요?</p>
-                    <p>회원가입을 하시면 더 많은 기능을 사용하실 수 있습니.</p>
-                    <button type="button" name="goto_join_button">
-                        회원가입
-                    </button>
-                </div>
-            </div>
-        );
-    };
 
-}
-export default Login;
-
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState(""); 
+    
+  
+    return (
+        <div className={styles.loginregister}>
+          <form action="/login_confirm" method="POST" enctype="multipart/form-data">
+              <div><input name="email" type="email" placeholder="이메일" className="loginregister__input"/></div>
+              <div><input name="pwd" type="password" placeholder="비밀번호" className="loginregister__input"/></div>
+              <div><input type="submit" class={styles.btn_submit} value="로그인" /></div>
+          </form>
+        </div>
+      );
+    }
+  
+  export default Login;

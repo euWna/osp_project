@@ -1,0 +1,126 @@
+:root {
+    --ewhagreen: rgb(0, 70, 42);
+    --c-sidebar: #ffffff;
+    --c-default: #0f141a;
+    --c-active: #1DA1F2;
+    --c-hover: #ebf5fe;
+}
+
+/* *{
+    font-family: 'a드림고딕2';
+} */
+
+a {
+    text-decoration: none;
+    /*링크 밑줄 제거*/
+    color: inherit;
+    /*링크 색상 제거*/
+}
+
+header {
+    display: flex;
+    min-width: 1400px;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    /* position:sticky;
+    top: 0;
+    left: 0;
+    right: 0; */
+    background-color: white;
+    align-items: center;
+}
+
+.logotitle {
+    display: flex;
+    align-items: center;
+}
+
+.hometitle {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ewhagreen);
+}
+
+.hometitle:hover {}
+
+.signInUp {
+    display: flex;
+    float: right;
+    top: 25px;
+    align-items: center
+}
+
+.signInUp a {
+    margin-left: 10px;
+    position: relative;
+    margin-right: 50px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.signInUp a:hover {
+    color: #01c9ca;
+}
+
+.signInUp a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transform: scale(0);
+    transition: all 0.2s;
+}
+
+.signInUp a:hover:before {
+    background: #01c9ca;
+    transform: scale(1);
+}
+
+#homelogo {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+}
+
+/* 네비게이션 바 */
+nav {
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    background: #222228;
+    /* background-color: rgb(77, 107, 91); */
+    height: 62.5px;
+    min-width: 1400px;
+    box-shadow: 3px 3px 3px rgba(116, 116, 116, 0.25);
+}
+
+nav .pageName {
+    font: 25px bolder;
+    /* margin-left: 30px; */
+
+}
+
+nav a {
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    /* border-right: 1px solid white; */
+    font-size: 15px;
+    float: right;
+    /* margin-top:10px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 150px;
+}
+
+nav a:hover {
+    background-color: var(--ewhagreen);
+}
+
+
+

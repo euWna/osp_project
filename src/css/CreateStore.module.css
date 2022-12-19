@@ -1,0 +1,156 @@
+/* body{
+  background-color: rgb(238, 238, 238);
+  } */
+
+section {
+  display: flex;
+  justify-content: center;
+  min-width: 1400px;
+}
+
+.aside {
+  /* width:200px; */
+  height: 400px;
+  /* background-color: rgb(238, 238, 238); */
+  padding: 20px;
+  float: left;
+}
+
+.asideleft {
+  position: relative;
+  background-color: white;
+  /* border: solid #dcdcdc 2px; */
+  width: 230px;
+  height: 150px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  margin-top: 20px;
+  margin-right: 20px;
+
+  /* left:30px; */
+}
+
+.up {
+  position: absolute;
+  top: 30px;
+  right: 22px;
+}
+
+.down {
+  position: absolute;
+  bottom: 30px;
+  right: 22px;
+}
+
+#table {
+  display: table;
+  width: 900px;
+  margin-top: 20px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.cell {
+  display: table-cell;
+  padding: 3px;
+  /* border-bottom: 1px solid #DDD; */
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.row {
+  position: relative;
+  background-color: white;
+  /* left:80px; */
+  /* top :20px; */
+  border: solid #dcdcdc 0.5px;
+}
+
+.col1 {
+  position: relative;
+  /* top:10px; */
+  left: 40px;
+  width: 150px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.col2 {
+  position: relative;
+  height: 50px;
+  vertical-align: middle;
+  /* display:inline-block; */
+}
+
+.box {
+  border: 10px solid #dcdcdc;
+}
+
+.box_double{
+  /* display: flex; */
+}
+
+.adding {
+  float: left;
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 35px;
+  margin-right: 750px;
+}
+
+
+.up {
+  color: #214832;
+  line-height: 30px;
+  font-weight: 600;
+  font-size: 25px;
+  text-align: right;
+
+}
+
+.down {
+  color: #adb5bd;
+  line-height: 50px;
+  font-weight: 600;
+  font-size: 25px;
+  text-align: right;
+}
+
+.down:hover {
+  color: rgb(116, 139, 107);
+}
+
+.box_input {
+  font-family: inherit;
+  height: 50%;
+  border: 0;
+  /* background-color:#9b9b9b; */
+  border-color: #9b9b9b;
+  outline: 0;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+  /* padding: 7px 0; */
+  background:#eeeeee; 
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.box_input:focus {
+  /* padding-bottom: 6px; */
+  /* font-weight: 700; */
+  border-width: 3px;
+  /* background-image: linear-gradient(to right, #c6ccc1,#c6ccc1); */
+  border-image-slice: 1;
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+

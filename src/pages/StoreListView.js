@@ -1,104 +1,107 @@
 import React from "react";
 import Header from "../component/header";
 import NavBar from "../component/NavBar";
-import "./StoreListView.css";
-class StoreListView extends React.Component {
-    render() {
-        return (
-            <div>
-                <Header></Header>
-                <NavBar></NavBar>
-                <div className="Searching">
+import styles from "../css/StoreListView.module.css";
+import { Link } from 'react-router-dom';
+import sample from "../img/sample.PNG";
+import StoreList from '../component/storelist';
+import { useState, useEffect } from 'react';
+import Preview from "../component/preview"
+import Catagories from '../component/catagories'
 
-                    <input type="text" name="search_box" value="다양한 맛집을 검색해보세요" />
-                    <img src="" alt="검색버튼 이미지"></img>
-                </div>
-                <div className="TopBtn">
-                    <button type="button" name="top_join_button">회원가입</button>
-                    <button type="button" name="top_login_button">로그인</button>
-                </div>
-                <div className="StoreList">
-                    <div className="TopBar">
-                        <div>결과건</div>
 
-                        <div className="Dropdown1">
-                            <select className="" name="dropFood" size="">
+function StoreListView() {
+    const [storedata, setData] = useState()
+    useEffect(() => {
+        fetch("/StoreListView_send_data", { //json 데이터를 받아옴
+            headers: {
+                Accept: 'application/json',
+                method: 'GET'
+            }
+        })
+            .then(response => response.json())
+            .then(jsonData => {
+                setData(Object.values(jsonData));
+            })
+            .catch(
+                (err) => console.log(err))
+    }, [])
 
-                                <option value="Dessert">디저트</option>
-                                <option value="Korean">한식</option>
-                                <option value="Japanese">일식</option>
-                                <option value="Chinese">중식</option>
-                            </select>
+
+    //클릭하면 오른쪽에 맛집 정보 프리뷰를 보여줌
+    const [content, setContent] = useState();
+
+    const handleClickButton = (e) => {
+        setContent(e);
+    };
+
+//<<<<<<< 1217/jy
+ 
+    //카테고리 정렬 코드
+    const allCategories = ['전체', ...new Set(storedata&&storedata.map((a) => a.food))];
+    console.log("선"+JSON.stringify(storedata));
+    const [menuItems, setMenuItems] = useState(storedata);
+    console.log("후"+menuItems);
+
+    const filterItems = (category) => {
+        if (category === '전체') {
+        setMenuItems(storedata);
+        return;
+        }
+        const newItems = storedata.filter((item) => item.food === category);
+        setMenuItems(newItems);
+    };
+
+    const [selected, setSelected] = useState("전체");
+
+//=======
+//>>>>>>> 1217yj
+    return (
+        <div class={styles.box_ns}>
+            <NavBar />
+            <section>
+                <div class={styles.all} >
+                    <div className={styles.StoreList}>
+                        <div className={styles.TopBar}>
+                            {storedata && <span className={styles.Result}>결과건{"("}{<div class={styles.number}>{storedata.length}</div>}{")"}</span>
+                            }
+                            <div class={styles.dropdown}>
+                                    {<Catagories categories={allCategories} filterItems={filterItems} selected={selected} setSelected={setSelected}/>} 
+                            </div>
                         </div>
-                        <div className="Dropdown2">
-                            <select className="" name="dropSort" size="">
-
-                                <option value="SortByRecommendation">추천순</option>
-                                <option value="SortByReview">리뷰많은 순</option>
-                                <option value="SortByPrice">가격 낮은 순</option>
-                            </select>
+                        < div className={styles.Restaurant}>
+                            {/* 카테고리별 정렬*/}
+                            {menuItems? menuItems.map((a => { 
+                                if (content) {
+                                    var state = content.storename
+                                } else {
+                                    var state = null
+                                }
+                                return <div onClick={() => handleClickButton(a)}>
+                                    <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state} />
+                                </div>
+                            })) : storedata? 
+                            storedata.map((a => { 
+                                if(content){
+                                    var state=content.storename
+                                }else{
+                                    var state=null
+                                }
+                                return <div onClick={()=>handleClickButton(a)}>
+                                <StoreList name={a.storename} location={a.location} food={a.food} img={a.img_path} park={a.park} phonenumber={a.phonenumber} price1={a.price1} price2={a.price2} site={a.site} time1={a.time1} time2={a.time2} storekey={a.key} storedata={storedata} present={state}/>
+                                </div>})) : null
+                            }
                         </div>
                     </div>
-                    < div className="Restaurant">
-                        <div className="Restaurant1">
-                            <img src="" alt="restaurant1_img" />
-                            <p className="StoreName">음식점 이름</p>
-                            {/*store 데이터 가져와서 바꿀 것*/}
-                            <img src="" alt="locationImg" />
-                            {/*위치 이모지*/}
-                            <p>음식점 주소</p>
-                            {/* store 데이터 가져와서 수정*/}
-                            <p className="Tag">태그</p>
-                            {/*store 데이터 가져와서 수정*/}
-                            <img src="" alt="좋아요 수" />
-                            {/*<Heart></Heart> */}
-                            <img src="" alt="평점" />
-                            {/*<StoreScore></StoreScore> */}
-                            <p>리뷰""개</p>
-                        </div>
-                        <div className="Restaurant2">
-                            <img src="" alt="restaurant2_img" />
-                            <p className="StoreName">음식점 이름</p>
-                            {/*store 데이터 가져와서 바꿀 것*/}
-                            <img src="" alt="locationImg" />
-                            {/*위치 이모지*/}
-                            <p>음식점 주소</p>
-                            {/* store 데이터 가져와서 수정*/}
-                            <p className="Tag">태그</p>
-                            {/*store 데이터 가져와서 수정*/}
-                            <img src="" alt="좋아요 수" />
-                            {/*<Heart></Heart> */}
-                            <img src="" alt="평점" />
-                            {/*<StoreScore></StoreScore> */}
-                            <p>리뷰""개</p>
-                        </div>
-                        <div className="Restaurant3">
-                            <img src="" alt="restaurant3_img" />
-                            <p className="StoreName">음식점 이름</p>
-                            {/*store 데이터 가져와서 바꿀 것*/}
-                            <img src="" alt="locationImg" />
-                            {/*위치 이모지*/}
-                            <p>음식점 주소</p>
-                            {/* store 데이터 가져와서 수정*/}
-                            <p className="Tag">태그</p>
-                            {/*store 데이터 가져와서 수정*/}
-                            <img src="" alt="좋아요 수" />
-                            {/*<Heart></Heart> */}
-                            <img src="" alt="평점" />
-                            {/*<StoreScore></StoreScore> */}
-                            <p>리뷰""개</p>
-                        </div>
-                        <div className="StoreMap">
-                            {/*지도 API 추가할 부분*/}
-                        </div>
-                        <button type="button" name="next_button"></button>
-                        {/*음식점 목록과 지도 API 사이에 있는 버튼*/}
-
+                    <div class={styles.rightbox}>
+                        {content
+                            ? <Preview storename={content.storename} storelocation={content.location} storefood={content.food} storeimg={content.img_path} pastoreparkrk={content.park} storephonenumber={content.phonenumber} storeprice1={content.price1} storeprice2={content.price2} storesite={content.site} storetime1={content.time1} storetime2={content.time2} />
+                            : <div class={styles.loading}>맛집을 선택해주세요!<div class={styles.lds_ellipsis}><div></div><div></div><div></div><div></div></div></div>
+                        }
                     </div>
-                </div>
-            </div>
-
-        )
-    }
+                </div >
+            </section >
+        </div >
+    )
 }
 export default StoreListView;

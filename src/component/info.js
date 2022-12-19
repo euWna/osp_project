@@ -1,36 +1,93 @@
-import '../css/Contents.css';
-import homelogo from '../img/symbol-mark.png'
+import styles from '../css/Contents.module.css';
+import samplelocation from "../img/location.png";
+import sample from '../img/sample.PNG';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
-function Info(){
-    return(
-        <div class="outer">
-            <div class="pane">
-                <div id="paneName">
+function Info(props) { //storedetail에서 정보들 props로 받아옴
+    const navigate = useNavigate();
+    const storefood = props.storefood
+    const storeimg = props.storeimg
+    const storelocation = props.storelocation
+    const storepark = props.storepark
+    const storephonenumber = props.storephonenumber
+    const storeprice1 = props.storeprice1
+    const storeprice2 = props.storeprice2
+    const storesite = props.storesite
+    const storename = props.storename
+    const storetime1 = props.storetime1
+    const storetime2 = props.storetime2
+    const params = useParams().storename;
+    const GoCreateReview = () => {
+
+        navigate(`/CreateReview/${storename}`);
+        console.log("Pushed")
+    }
+    const GoRegisteredStore = () => {
+
+        navigate(`/RegisteredStore/${storename}`);
+
+    }
+    // const [storedata, setData] = useState()
+    // var storearr = new Array();
+
+    // useEffect(() => {
+    //     fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
+    //         headers: {
+    //             Accept: 'application/json',
+    //             method: 'GET'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(jsonData => {
+    //             var length = Object.keys(jsonData).length
+    //             for (var i = 0; i < length; i++) { //등록된 메뉴 갯수만큼 반복
+    //                 storearr[i] = Object.values(jsonData)[i]
+    //             }
+    //             setData(storearr)
+    //         })
+    //         .catch(
+    //             (err) => console.log(err))
+    // }, [])
+    // console.log(storedata)
+    return (
+        <div class={styles.outer}>
+            <div class={styles.pane}>
+                <div id={styles.paneName}>
                     음식점 정보
-                </div><br/>
+                </div>
                 <div>
-                <img class="image" src={homelogo}/><br/><br/>
+                    <img src={"http://127.0.0.1:5000/static/img/" + `${storeimg}`} class={styles.img} />
                 </div>
+                <div class={styles.info}>
+                    <div>
+                        <div class={styles.StoreName}>{storename}</div>
+                        <div class={styles.storelocation}>
+                            <img src={samplelocation} class={styles.locationimg} width="24" height="24" />
+                            {props.storelocation}
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div>
+                        <div class="Tag">#{storefood} </div>
+                        <div class={styles.site}>사이트 {storesite}</div>
+                        <div class={styles.phone}>전화번호 {storephonenumber}</div>
+                        <div class={styles.time}>운영시간 {storetime1}~{storetime2}</div>
+                        <div class={styles.parking}>주차장 </div>
+                    </div>
+                </div>
+                <div class={styles.buttons}>
+                    <Link to={`/RegisteredStore/${props.storename}`}><button onClick={GoRegisteredStore} class={styles.button}>정보 수정</button></Link>
+                    <Link to={`/CreateReview/${params}`}
+                        state={{
+                            storefood: storefood,
+                            storeimg: storeimg
+                        }} ><button onClick={GoCreateReview} class={styles.button}>리뷰 등록</button></Link>
 
-                <div class="info">
-                    <div id="info1">
-                        <div id="name">"맛집 이름"</div>
-                        <div id="address">"주소"</div>
-                        <div id="intro">"소개 한 줄 문구"</div>
-                    </div>
-                    <br/>
-                    <div id="info2">
-                        <div id="site">사이트 </div>
-                        <div id="category">카테고리 </div>
-                        <div id="phone">전화번호 </div>
-                        <div id="hours">운영시간 </div>
-                        <div id="parking">주차장 </div>
-                    </div>
-                </div>
-                <div class="buttons">
-                    <a href=""><button class="button">정보 수정</button></a>
-                    <a href=""><button class="button">리뷰 등록</button></a>
                 </div>
 
                 <div class="map">
