@@ -142,10 +142,10 @@ function CreateReview() {
                                 <span class={`${styles.cell} ${styles.col1}`}>리뷰 제목</span>
                                 <span class={`${styles.cell} ${styles.col1}`}><input type="text" name="reviewtitle" class={styles.box_input} size="70" /></span>
                             </div>
-                            <div class={styles.row}>
-                                <span class={`${styles.cell} ${styles.col1}`}>메뉴이름</span>
-                                <span class={`${styles.cell} ${styles.col1} `}>{/*"ForMenus"*/}{/*CreateCheckBox(params)*/}</span>
-                            </div>
+                            {/* <div class={styles.row}> */}
+                                {/* <span class={`${styles.cell} ${styles.col1}`}>메뉴이름</span> */}
+                                {/* <span class={`${styles.cell} ${styles.col1} `}>{/*"ForMenus"*/}{/*CreateCheckBox(params)</span> */} 
+                            {/* </div> */}
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>리뷰 내용</span>
                                 <span class={`${styles.cell} ${styles.col1}`}><textarea name="reviewdesc" class={styles.desc_input} rows="10" cols="70" /></span>
