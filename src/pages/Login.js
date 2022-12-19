@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 
-const Login = () => {
+const Login = ({ setLoginModalOpen, id, title, content, writer }) => {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     
@@ -23,6 +23,9 @@ const Login = () => {
         setUser(currentUser);
     });
 
+    const closeLoginModal = () => {
+        setLoginModalOpen(false);
+    };
 
     //로그인
     const login = async () => {
@@ -44,11 +47,16 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", margin: 10 }}>
+        <div>
 
-            <div>
+        <div className={styles.container}>
                 {/* 로그인 */}
-                <h3>Login</h3>
+                <button className={styles.close} onClick={closeLoginModal}>
+                X
+            </button>
+            <h3>Login</h3>
+            <div class={styles.logindesc}>
+                <div class={styles.inputbox}>
                 <input
                     placeholder="Email"
                     onChange={(e) => {
@@ -61,9 +69,11 @@ const Login = () => {
                         setLoginPassword(e.target.value);
                     }}
                 />
+                </div>
                 <button onClick={login}>Login</button>
                 <div>User Logged In:</div>
                 <div>{user?.email}</div>
+                </div>
                 <button onClick={logout}>로그아웃</button>
             </div>
         </div>
