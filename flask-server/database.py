@@ -123,7 +123,7 @@ class DBhandler:
             "price1" : data['price1'],
             "price2" : data['price2'],
             "site" : data['site'],
-            "img_path" : "static/image/"+img_path
+            # "img_path" : img_path
         }
 
         stores = self.db.child("STORE").get()

@@ -65,6 +65,7 @@ def Submit_store():
         else:
             return "The submitted store already exists!"
 
+#수정
 @app.route("/UpdateStore_submit", methods=['POST'])
 def Update_store():
     if request.method == 'POST':
