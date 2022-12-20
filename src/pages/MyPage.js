@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../css/MyPage.module.css";
-import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 

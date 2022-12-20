@@ -38,9 +38,6 @@ function SignUp({ setSignUpModalOpen, id, title, content, writer }) {
                   <span class={`${styles.cell} ${styles.col1}`}>비밀번호</span>
                   <span class={`${styles.cell} ${styles.col2}`}><input name="pwd" type="password" placeholder="비밀번호" classNames="loginregister__input" /></span>
                 </div>
-                {/* <div class={styles.row}> 
-              <span class={`${styles.cell} ${styles.col2}`}><input type="submit" class={styles.btn_submit} value="회원가입" /></span>
-            </div> */}
               </div>
               <div>
                 <input type="submit" class={styles.btn_submit} value="회원가입" />

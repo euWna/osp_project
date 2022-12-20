@@ -38,7 +38,6 @@ function CreateMenu() {
         var length = Object.keys(jsonData).length
         for (var i = 0; i < length; i++) { //등록된 메뉴 갯수만큼 반복
           menuarr[i] = Object.values(jsonData)[i]
-          // menuarr[i]["key"]=Object.keys(jsonData)[i] //키값 필요해서 가져옴
         }
         setData(menuarr)
       })

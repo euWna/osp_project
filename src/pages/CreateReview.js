@@ -57,7 +57,6 @@ function CreateReview() {
                                 <span class={`${styles.cell} ${styles.col1}`}>전체 평점</span>
                                 <span class={`${styles.cell} ${styles.col1}`}>
 
-                                    {/* <input type="text" name="storescore" class={styles.box_input} size="70" /> */}
                                     <select name="storescore">
                                         <option value={1}>1</option>
                                         <option value={2}>2</option>
@@ -65,7 +64,6 @@ function CreateReview() {
                                         <option value={4}>4</option>
                                         <option value={5}>5</option>
                                     </select>
-                                    {/* <img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/starone.jpg" width="30" height ="30"/><img src = "../img/startwo.jpg" width="30" height ="30"/> */}
                                 </span>
                             </div>
                             <div class={styles.row}>

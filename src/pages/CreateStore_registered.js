@@ -10,19 +10,13 @@ function RegisteredStore() {
     const params = useParams().storename;
     const [registered, setData] = useState()
     var registeredarr = new Array();
-    //const [name, setName] = useState() //매장명은 수정 못하도록
     const [location, setLocation] = useState()
     const [phonenumber, setPNumber] = useState()
     const [time1, setTime1] = useState()
     const [time2, setTime2] = useState()
-    //const [food, setCategory] = useState()
-    //const [park, setPark] = useState()   //select 태그들은 set함수 없이 value와 defaultValue를 함께 지정하는 것만으로도 수정기능을 구현할 수 있다.
     const [price1, setPrice1] = useState()
     const [price2, setPrice2] = useState()
     const [site, setSite] = useState()
-
-
-    //var storearr = new Array(); 
 
     useEffect(() => {
         fetch(`/get_registered_store/${params}`, { //json 데이터를 받아옴
@@ -36,7 +30,6 @@ function RegisteredStore() {
                 registeredarr[0] = jsonData;
                 setData(registeredarr);
                 console.log(registeredarr);
-                //setName(registeredarr[0].storename)
                 if (registeredarr) {
                     setLocation(registeredarr[0].location);
                     setPNumber(registeredarr[0].phonenumber);
@@ -67,8 +60,7 @@ function RegisteredStore() {
                         return <div id={styles.table}>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                                <span class={`${styles.cell} ${styles.col2}`}> <Link to={`/StoreDetail/${params}`} class={`${styles.DetailLink}`}>{a.storename}</Link><input type="hidden" name="storename" value={a.storename} class={styles.box_input}
-                                                                                    /* onChange={ (event) => { setName(event.target.value) }}*/ /></span>
+                                <span class={`${styles.cell} ${styles.col2}`}> <Link to={`/StoreDetail/${params}`} class={`${styles.DetailLink}`}>{a.storename}</Link><input type="hidden" name="storename" value={a.storename} class={styles.box_input} /></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>주소</span>

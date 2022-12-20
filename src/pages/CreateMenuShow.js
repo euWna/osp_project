@@ -55,7 +55,6 @@ function CreateMenuShow(props) {
                                     </tr>
                                     <tr>
                                         <td className="nutrient"><div className="MinusButton">-</div>계란</td>
-                                        {/* 이부분 나중에 nutrient{i} 배열 반환하는 것으로 수정해서 동적으로 생성하게 해야함 */}
 
                                     </tr>
                                     <tr>

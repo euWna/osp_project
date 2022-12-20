@@ -44,7 +44,6 @@ function Info(props) { //storedetail에서 정보들 props로 받아옴
     const GoCreateReview = () => {
 
         navigate(`/CreateReview/${params}`);
-        // console.log("Pushed")
     }
     const GoRegisteredStore = () => {
 
