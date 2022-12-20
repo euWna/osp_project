@@ -23,7 +23,6 @@ import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import MyPageBookmark from './pages/MyPageBookmark';
 import MyPageMenu from './pages/MyPageMenu';
-import ReviewAll from './pages/ReviewAll';
 import SignUp from './pages/SignUp';
 import StoreDetail from './pages/StoreDetail';
 import StoreListView from './pages/StoreListView';
@@ -48,7 +47,6 @@ function App() {
           <Route path="/MyPage" element={<MyPage />}></Route>
           <Route path="/MyPageBookmark" element={<MyPageBookmark />}></Route>
           <Route path="/MyPageMenu" element={<MyPageMenu />}></Route>
-          <Route path="/reviewAll" element={<ReviewAll />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/StoreDetail/:storename" element={<StoreDetail />}></Route>
           <Route path="/StoreListView" element={<StoreListView />}></Route>
