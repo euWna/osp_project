@@ -10,23 +10,19 @@
     text-transform: capitalize;
     color: #155724;
     background: #d4edda;
-    width : 20rem;
+    width: 20rem;
 }
 
 .danger {
-    /* height: 20px;
-    display: table-cell; */
-
-    margin-left:2rem;
+    margin-left: 2rem;
     align-items: center;
     text-align: center;
-        font-size: 0.7rem;
-        border-radius: 0.25rem;
-        letter-spacing: var(--spacing);
-        text-transform: capitalize;
+    font-size: 0.7rem;
+    border-radius: 0.25rem;
+    letter-spacing: var(--spacing);
+    text-transform: capitalize;
     color: #721c24;
     background: #f8d7da;
-    width : 8rem;
+    width: 8rem;
     vertical-align: middle;
 }
-

@@ -19,10 +19,6 @@ const styles = {
 
 root.render(
   <React.StrictMode>
-    {/* <Header />
-    <body style={styles}>
-    <Section></Section>
-    </body> */}
     <App></App>
   </React.StrictMode>
 );

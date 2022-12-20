@@ -43,7 +43,6 @@ function App() {
           <Route path="/CreateStore" element={<CreateStore />}></Route>
           <Route path="/RegisteredStore/:storename" element={<RegisteredStore />}></Route>
           <Route path="/CreateMenu/:storename" element={<CreateMenu />}></Route>
-          {/* <Route path="/CreateMenu/:id" element={<CreateMenu />}></Route> */}
           <Route path="/CreateReview/:storename" element={<CreateReview />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
           <Route path="/MyPage" element={<MyPage />}></Route>
@@ -52,7 +51,6 @@ function App() {
           <Route path="/reviewAll" element={<ReviewAll />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/StoreDetail/:storename" element={<StoreDetail />}></Route>
-          {/*<Route path="/CreateMenu/:storename" element={<CreateMenu />}></Route>*/}
           <Route path="/StoreListView" element={<StoreListView />}></Route>
         </Routes>
       </BrowserRouter>

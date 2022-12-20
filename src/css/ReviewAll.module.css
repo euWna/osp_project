@@ -2,18 +2,6 @@
     --egreen: #00462A;
 }
 
-/* body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    background-color: #e9e9e9;
-
-} */
-
-/* div {
-    display:inline-flex;
-} */
-
 .reviewsection {
     width: 100%;
     display: flex;
@@ -51,7 +39,7 @@
     position: absolute;
     top: 70px;
     left: 50px;
-    
+
     font-size: 20px;
     font-weight: 600;
 }

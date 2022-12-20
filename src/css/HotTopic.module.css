@@ -23,34 +23,20 @@ html {
 }
 
 body {
-    /* margin: 0px; */
-    /* margin-top: 80px; */
+
     font-family: 'Noto Sans KR';
     font-size: 17px;
     line-height: 1.5;
     min-width: 1400px;
-    /* background-color: #f1f1f1; */
     margin-bottom: 200px;
 }
 
-.img{
+.img {
     object-fit: cover;
 }
 
-/* input {
-    width: 500px;
-    height: 32px;
-    font-size: 15px;
-    border: 0;
-    border-radius: 2px;
-    outline: none;
-    padding-left: 10px;
-    background-color: rgb(233, 233, 233);
-  } */
-
 .section {
     text-align: center;
-    /* background-color: var(--egreen); */
     min-width: 1400px;
 }
 
@@ -142,8 +128,7 @@ body {
 }
 
 .hotlist:hover {
-    /* position:relative;
-	bottom:10px; */
+
     -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
     -ms-transform: scale(1.05);
@@ -203,10 +188,3 @@ body {
     line-height: 14px;
     color: #858585;
 }
-
-/* .star{
-    line-height: 33px;
-    align-items: center;
-    color: rgb(255, 206, 46);
-} */
-

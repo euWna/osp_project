@@ -5,19 +5,7 @@ import NavBar from '../component/NavBar';
 import { render } from "@testing-library/react";
 import { useState, useEffect } from 'react';
 import CreateMenuShow from "./CreateMenuShow";
-// function removeNutrient(nutrient) {
-//   // DB에서 정의...?
-// }
-// var i = 0;
-// var MenuPlus = document.getElementsById("menuPlus")
-// // for (i = 0; i < MenuPlus.length; i++) {
-// MenuPlus[i].addEventListener("click", (event) => {
-//   // render_template("index.html")
-//   // CreateMenu();
-//   // render("http://127.0.0.1:5000/CreateMenu/{params}");
-//   < Link to="http://127.0.0.1:5000/CreateMenu/" />
-// })
-// // }
+
 var Return_value = 0
 function NewValue() {
   return (Return_value = 1);
@@ -34,10 +22,7 @@ function CreateMenu() {
 
   const params = useParams().storename;
   const param2 = useParams().food;
-  // MinusButton = document.getElementsByClassName("MinusButton");
-  // nutrient = document.getElementsByClassName("nutrient").innerHTML;
-  // MinusButton.addEventListener("click", removeNutrient(nutrient));
-  // nutrient 대신 key 를 넣을 수 있으면 좋음
+
   const [menudata, setData] = useState()
   var menuarr = new Array();
 
@@ -63,12 +48,6 @@ function CreateMenu() {
   console.log("menuarr")
   console.log(menuarr)
 
-  // if (Return_value == 1) {  //Return_value는 메뉴 등록 버튼을 누르면 1이 되게 하고 싶음  on submit으로 구현 예정
-  //   return (< div >
-
-  //   </div>)
-  // }
-  // else {
   return (
     <div>
       <NavBar></NavBar>
@@ -79,13 +58,6 @@ function CreateMenu() {
             <Link to={`/CreateMenu/${params}`} class={styles.down}>메뉴</Link>
           </div>
         </aside>
-        {/*
-        <div className={styles.row}>
-          <span className={`${styles.cell} ${styles.col1}`}>
-
-          </span>
-          <span className={`${styles.cell} ${styles.col2}`}></span>
-        </div> */}
 
         <form action={`http://127.0.0.1:5000/CreateMenu/${params}`} onSubmit={NewValue()} method="POST" enctype="multipart/form-data">
           <div id={styles.table}>
@@ -132,10 +104,7 @@ function CreateMenu() {
                 </table>
               </span>
             </div>
-            {/* <div className={styles.row}>
-                <span className={`${styles.cell} ${styles.col1}`}></span>
-                <span className={`${styles.cell} ${styles.col2}`} id="menuPlus" ><button on onClick={MenuPlusBtn(params)}>+ 메뉴 새로 추가하기</button></span>
-              </div> */}
+
           </div>
         </form>
       </section>

@@ -1,171 +1,177 @@
 .all {
-    display: flex;
-    margin-top: 20px;
-    height: 710px;
+  display: flex;
+  margin-top: 20px;
+  height: 710px;
 }
 
-.allbox{
-    display: flex;
-    flex-direction: row-reverse
+.allbox {
+  display: flex;
+  flex-direction: row-reverse
 }
 
 .StoreList {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
 }
 
 .TopBar {
-    display: flex;
-    background-color: white;
-    width: 100%;
-    border-top: 1px solid #C6C6C6;
-    border-right: 1px solid #C6C6C6;
-    border-left: 1px solid #C6C6C6;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    justify-content: space-between;
-    border-top-left-radius: 5px ;
-    align-items: center
+  display: flex;
+  background-color: white;
+  width: 100%;
+  border-top: 1px solid #C6C6C6;
+  border-right: 1px solid #C6C6C6;
+  border-left: 1px solid #C6C6C6;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: space-between;
+  border-top-left-radius: 5px;
+  align-items: center
 }
 
 .Result {
-    display: flex;
-    margin-left: 15px;
-    margin-block: 5px;
-    font-size: 18px;
-    font-weight: 600;
+  display: flex;
+  margin-left: 15px;
+  margin-block: 5px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.number{
-    color: rgb(255, 113, 103);
+.number {
+  color: rgb(255, 113, 103);
 }
 
 .dropdown {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .Dropdown1 {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
-.Dropdown2 {}
-
-
 .Restaurant {
-    /* display: flex; */
-    border: 1px solid rgb(191, 191, 191);
-    width: 630px;
-    /* height: 120px; */
-    background-color: rgb(255, 255, 255);
-    /* box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25); */
-    overflow: auto;
-    z-index: 1;
+  border: 1px solid rgb(191, 191, 191);
+  width: 630px;
+  background-color: rgb(255, 255, 255);
+  overflow: auto;
+  z-index: 1;
 }
 
 /* STYLING SCROLLBAR */
 
 .Restaurant::-webkit-scrollbar {
-    display: none;
-    width: 0 !important;
-    /* width: 1vw; */
-  }
-  
-  /* TO STYLE THE SCROLLBAR TRACK */
+  display: none;
+  width: 0 !important;
+
+}
+
+/* TO STYLE THE SCROLLBAR TRACK */
 .Restaurant::-webkit-scrollbar-track {
-    background-color: #ffffff; /* THIS WILL SET THE COLOR OF THE SCROLLBAR TRACK */
-  }
-  
-  /* TO STYLE THE SCROLLBAR THUMB */
+  background-color: #ffffff;
+  /* THIS WILL SET THE COLOR OF THE SCROLLBAR TRACK */
+}
+
+/* TO STYLE THE SCROLLBAR THUMB */
 .Restaurant::-webkit-scrollbar-thumb {
-    background-color: rgb(191, 191, 191);
-    border: 0.2vw solid #ffffff;
-    border-top-right-radius: 5vw;
-  }
+  background-color: rgb(191, 191, 191);
+  border: 0.2vw solid #ffffff;
+  border-top-right-radius: 5vw;
+}
 
 .rightbox {
-    /* flex-direction: column; */
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    height: 100%;
-    width:630px;
-    background-color: rgb(255, 255, 255);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 100%;
+  width: 630px;
+  background-color: rgb(255, 255, 255);
 }
 
 .storelistdetail {
-    width: 630px;
-    background-color: rgb(255, 255, 255);
-    height: 50%;
+  width: 630px;
+  background-color: rgb(255, 255, 255);
+  height: 50%;
 }
 
 .loading {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 800;
-    color: rgb(255, 127, 127);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgb(255, 127, 127);
 }
 
 .lds_ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds_ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgb(255, 199, 199);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds_ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds_ellipsis1 0.6s infinite;
+}
+
+.lds_ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds_ellipsis2 0.6s infinite;
+}
+
+.lds_ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds_ellipsis2 0.6s infinite;
+}
+
+.lds_ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds_ellipsis 0.6s infinite;
+}
+
+@keyframes lds_ellipsis1 {
+  0% {
+    transform: scale(0);
   }
-  .lds_ellipsis div {
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: rgb(255, 199, 199);
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+  100% {
+    transform: scale(1);
   }
-  .lds_ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: lds_ellipsis1 0.6s infinite;
+}
+
+@keyframes lds_ellipsis3 {
+  0% {
+    transform: scale(1);
   }
-  .lds_ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: lds_ellipsis2 0.6s infinite;
+
+  100% {
+    transform: scale(0);
   }
-  .lds_ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: lds_ellipsis2 0.6s infinite;
+}
+
+@keyframes lds_ellipsis2 {
+  0% {
+    transform: translate(0, 0);
   }
-  .lds_ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: lds_ellipsis 0.6s infinite;
+
+  100% {
+    transform: translate(24px, 0);
   }
-  @keyframes lds_ellipsis1 {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes lds_ellipsis3 {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-  @keyframes lds_ellipsis2 {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(24px, 0);
-    }
-  }
+}

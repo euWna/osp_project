@@ -6,10 +6,6 @@
     --c-hover: #ebf5fe;
 }
 
-/* *{
-    font-family: 'a드림고딕2';
-} */
-
 a {
     text-decoration: none;
     /*링크 밑줄 제거*/
@@ -23,10 +19,6 @@ header {
     justify-content: space-between;
     padding-bottom: 15px;
     padding-top: 15px;
-    /* position:sticky;
-    top: 0;
-    left: 0;
-    right: 0; */
     background-color: white;
     align-items: center;
 }
@@ -42,8 +34,6 @@ header {
     font-size: 15px;
     color: var(--ewhagreen);
 }
-
-.hometitle:hover {}
 
 .signInUp {
     display: flex;
@@ -94,7 +84,6 @@ nav {
     justify-content: center;
     color: rgb(255, 255, 255);
     background: #222228;
-    /* background-color: rgb(77, 107, 91); */
     height: 62.5px;
     min-width: 1400px;
     box-shadow: 3px 3px 3px rgba(116, 116, 116, 0.25);
@@ -102,17 +91,11 @@ nav {
 
 nav .pageName {
     font: 25px bolder;
-    /* margin-left: 30px; */
-
 }
 
 nav a {
-    /* padding-left: 20px;
-    padding-right: 20px; */
-    /* border-right: 1px solid white; */
     font-size: 15px;
     float: right;
-    /* margin-top:10px; */
     padding-top: 20px;
     padding-bottom: 20px;
     width: 150px;
@@ -121,6 +104,3 @@ nav a {
 nav a:hover {
     background-color: var(--ewhagreen);
 }
-
-
-

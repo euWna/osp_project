@@ -7,7 +7,7 @@
 }
 
 .prebox {
-    width:100%
+    width: 100%
 }
 
 .pane {
@@ -17,13 +17,6 @@
     margin: 10px;
     background-color: rgb(255, 255, 255);
 }
-
-/* .pretitle {
-    line-height: 40px;
-    font-size: 25px;
-    font-weight: 600;
-    margin-bottom: 20px;
-} */
 
 #paneName {
     font-size: 30px;
@@ -35,7 +28,7 @@
     vertical-align: middle;
 }
 
-.list{
+.list {
     height: 540px;
     overflow: auto;
 }
@@ -62,35 +55,29 @@
 #table {
     display: table;
     vertical-align: middle;
-  }
+}
 
-  .cell {
+.cell {
     display: table-cell;
-    /* padding: 3px; */
     width: 80px;
     text-align: left;
     font-weight: 600;
     font-size: 16px;
-  }
-  
-  .row {
-    position: relative;
-  }
-  
-  .col1 {
-    position: relative;
-    vertical-align: middle;
-  }
-  
-  .col2 {
-    position: relative;
-    vertical-align: middle;
-  }
+}
 
-/* .desc{
-    display: inline;
-    margin-left: 10px;
-} */
+.row {
+    position: relative;
+}
+
+.col1 {
+    position: relative;
+    vertical-align: middle;
+}
+
+.col2 {
+    position: relative;
+    vertical-align: middle;
+}
 
 .StoreName {
     font-size: 30px;
@@ -127,8 +114,6 @@
     top: 15px;
 }
 
-.heartimg {}
-
 .heartnum {
     position: relative;
     font-size: 13px;
@@ -137,11 +122,11 @@
     left: 24px;
 }
 
-.buttons{
+.buttons {
     margin-top: 20px;
 }
 
-.button{
+.button {
     margin: 20px;
     padding-inline: 20px;
     padding-top: 5px;
@@ -168,17 +153,16 @@
     transition: all 0.4s;
 }
 
-.button:hover{
-        /* background-color:#0a0a0a; */
-        -webkit-transform: scale(1.05);
-        -moz-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        -o-transform: scale(1.05);
-        transform: scale(1.05);
-        background-color: var(--egreen);
-        /* color: rgb(255, 255, 255); */
-        -webkit-transition: all 0.4s;
-        -moz-transition: all 0.4s;
-        transition: all 0.4s;
-        color: rgb(255, 255, 255);
+.button:hover {
+
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+    background-color: var(--egreen);
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    color: rgb(255, 255, 255);
 }

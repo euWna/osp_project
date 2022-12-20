@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styles from "../css/CreateStore.module.css";
 import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
@@ -17,10 +17,10 @@ function RegisteredStore() {
     const [time2, setTime2] = useState()
     //const [food, setCategory] = useState()
     //const [park, setPark] = useState()   //select 태그들은 set함수 없이 value와 defaultValue를 함께 지정하는 것만으로도 수정기능을 구현할 수 있다.
-    const [price1, setPrice1]= useState()
-    const [price2, setPrice2]= useState()
-    const [site, setSite]= useState()
-    
+    const [price1, setPrice1] = useState()
+    const [price2, setPrice2] = useState()
+    const [site, setSite] = useState()
+
 
     //var storearr = new Array(); 
 
@@ -37,7 +37,7 @@ function RegisteredStore() {
                 setData(registeredarr);
                 console.log(registeredarr);
                 //setName(registeredarr[0].storename)
-                if (registeredarr){
+                if (registeredarr) {
                     setLocation(registeredarr[0].location);
                     setPNumber(registeredarr[0].phonenumber);
                     setTime1(registeredarr[0].time1);
@@ -50,22 +50,6 @@ function RegisteredStore() {
             .catch(
                 (err) => console.log(err))
     }, [])
-    //console.log("출력확인");
-    /*if(registered) {
-        console.log("storename");
-        setName(registered[0].storename)
-        console.log(registered[0].storename);
-        break;
-    } 무한루프 오류*/
-
-
-    // const [value, setValue] = useState('');
-    // const onChange = useCallback(e=>{
-    //     setValue(e.target.value);
-    // }, [])
-
-    
-
 
     return (
         <div>
@@ -78,36 +62,36 @@ function RegisteredStore() {
                     </div>
                 </aside>
                 {/*  */}
-                <form  action="/UpdateStore_submit" method="POST" enctype="multipart/form-data">
+                <form action="/UpdateStore_submit" method="POST" enctype="multipart/form-data">
                     {registered && registered.map((a => {
                         return <div id={styles.table}>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>매장명</span>
-                               <span class={`${styles.cell} ${styles.col2}`}> <Link to={`/StoreDetail/${params}`} class={`${styles.DetailLink}`}>{a.storename}</Link><input type="hidden" name="storename" value={a.storename} class={styles.box_input}
-                                                                                    /* onChange={ (event) => { setName(event.target.value) }}*//></span>
+                                <span class={`${styles.cell} ${styles.col2}`}> <Link to={`/StoreDetail/${params}`} class={`${styles.DetailLink}`}>{a.storename}</Link><input type="hidden" name="storename" value={a.storename} class={styles.box_input}
+                                                                                    /* onChange={ (event) => { setName(event.target.value) }}*/ /></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>주소</span>
                                 <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="location" size="70" value={location} class={styles.box_input}
-                                                                                     onChange={ (event) => { setLocation(event.target.value) }}></input></span>
+                                    onChange={(event) => { setLocation(event.target.value) }}></input></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>전화번호</span>
                                 <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="phonenumber" value={phonenumber} class={styles.box_input}
-                                                                                     onChange={ (event) => { setPNumber(event.target.value) }}></input></span>
+                                    onChange={(event) => { setPNumber(event.target.value) }}></input></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>영업시간</span>
-                                <span class={`${styles.cell} ${styles.col2}`}><input type="time" name="time1" size="1" value={time1} 
-                                                                                     onChange={ (event) => { setTime1(event.target.value) }} class={styles.box_input}/> 
-                                                                            ~ <input type="time" name="time2" size="1" value={time2} 
-                                                                            onChange={ (event) => { setTime2(event.target.value) }} class={styles.box_input}/></span>
+                                <span class={`${styles.cell} ${styles.col2}`}><input type="time" name="time1" size="1" value={time1}
+                                    onChange={(event) => { setTime1(event.target.value) }} class={styles.box_input} />
+                                    ~ <input type="time" name="time2" size="1" value={time2}
+                                        onChange={(event) => { setTime2(event.target.value) }} class={styles.box_input} /></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>카테고리</span>
                                 <span class={`${styles.cell} ${styles.col2}`}>
                                     <select name="food" key={a.food} defaultValue={a.food}>
-                                    <option value="">선택</option>
+                                        <option value="">선택</option>
                                         <option value="한식">한식</option>
                                         <option value="일식">일식</option>
                                         <option value="중식">중식</option>
@@ -129,14 +113,14 @@ function RegisteredStore() {
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>가격대</span>
                                 <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="price1" size="1" value={price1} class={styles.box_input}
-                                                                                     onChange={ (event) => { setPrice1(event.target.value) }}/>                                 
-                                                                             ~ <input type="text" name="price2" size="1"  value={price2} class={styles.box_input}
-                                                                                     onChange={ (event) => { setPrice2(event.target.value) }}/></span>
+                                    onChange={(event) => { setPrice1(event.target.value) }} />
+                                    ~ <input type="text" name="price2" size="1" value={price2} class={styles.box_input}
+                                        onChange={(event) => { setPrice2(event.target.value) }} /></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>사이트</span>
                                 <span class={`${styles.cell} ${styles.col2}`}><input type="text" name="site" size="70" value={site}
-                                                                                     onChange={ (event) => { setSite(event.target.value) }} class={styles.box_input}/></span>
+                                    onChange={(event) => { setSite(event.target.value) }} class={styles.box_input} /></span>
                             </div>
                             <div class={styles.row}>
                                 <span class={`${styles.cell} ${styles.col1}`}>대표사진</span>
@@ -148,7 +132,7 @@ function RegisteredStore() {
                             </div>
                         </div>
                     }))}
-                    
+
                 </form>
             </section>
         </div>

@@ -4,19 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import NavBar from '../component/NavBar';
 import { render } from "@testing-library/react";
 
-// function removeNutrient(nutrient) {
-//   // DB에서 정의...?
-// }
-// var i = 0;
-// var MenuPlus = document.getElementsById("menuPlus")
-// // for (i = 0; i < MenuPlus.length; i++) {
-// MenuPlus[i].addEventListener("click", (event) => {
-//   // render_template("index.html")
-//   // CreateMenu();
-//   // render("http://127.0.0.1:5000/CreateMenu/{params}");
-//   < Link to="http://127.0.0.1:5000/CreateMenu/" />
-// })
-// // }
+
 function MenuPlusBtn() {
 
     const params = params;
@@ -28,10 +16,7 @@ function CreateMenuShow(props) {
 
     const params = useParams().storename;
     const param2 = useParams().food;
-    // MinusButton = document.getElementsByClassName("MinusButton");
-    // nutrient = document.getElementsByClassName("nutrient").innerHTML;
-    // MinusButton.addEventListener("click", removeNutrient(nutrient));
-    // nutrient 대신 key 를 넣을 수 있으면 좋음 
+
 
 
     return (
@@ -44,12 +29,7 @@ function CreateMenuShow(props) {
                         <Link to="/CreateMenu" class={styles.down}>메뉴</Link>
                     </div>
                 </aside>
-                {/* 
-        <div className={styles.row}>
-          <span className={`${styles.cell} ${styles.col1}`}>
-          </span>
-          <span className={`${styles.cell} ${styles.col2}`}></span>
-        </div> */}
+
 
                 <form action={`http://127.0.0.1:5000/CreateMenu/${params}/${param2}`} method="post" enctype="multipart/form-data">
                     <div id={styles.table}>
